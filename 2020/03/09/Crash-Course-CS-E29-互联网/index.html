@@ -16,7 +16,7 @@
 <meta property="og:description" content="Crash-Course-CS-E29-互联网今天是新学期的第一天，接受了计算机网络相关的狂轰滥炸。说实话，一直都不太理解计算机网络的相关概念。只能对照着过去的笔记把Crash 再看一遍。  IP Internet Protocols UDP: User data protocols Checksum 校验和 TCP&#x2F;IP DNS domain name system OSI">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-03-09T13:24:09.000Z">
-<meta property="article:modified_time" content="2020-03-11T06:54:01.088Z">
+<meta property="article:modified_time" content="2020-03-27T06:29:51.026Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Crash Course CS">
@@ -216,7 +216,7 @@
 <p><strong>UDP则是为了把数据包送到正确的程序</strong></p>
 </blockquote>
 <h3 id="UDP的基本组成"><a href="#UDP的基本组成" class="headerlink" title="UDP的基本组成"></a>UDP的基本组成</h3><p>UDP包含三个部分，第一个部分是IP header，第二个部分存放Port和checksum，第三个部分则仍是payload。</p>
-<h4 id="Port-number"><a href="#Port-number" class="headerlink" title="Port number"></a>Port number</h4><p>每个想访问网络的程序，都要像Host的OS申请一个独一无二的端口号。</p>
+<h4 id="Port-number"><a href="#Port-number" class="headerlink" title="Port number"></a>Port number</h4><p>每个想访问网络的<strong>程序</strong>，都要像Host的OS申请一个独一无二的端口号。</p>
 <h3 id="Checksum"><a href="#Checksum" class="headerlink" title="Checksum"></a>Checksum</h3><p>checksum故名思义，就是将后面的每个payload的大小相加校对，以检查数据包在传输的过程中数据有无对视；</p>
 <p>然而，UDP不提供数据修复或者数据重发机制，对于发现有数据丢失的现象的包，它们一般都是discard掉。</p>
 <h2 id="TCP-IP"><a href="#TCP-IP" class="headerlink" title="TCP/IP"></a>TCP/IP</h2><h3 id="诞生逻辑-2"><a href="#诞生逻辑-2" class="headerlink" title="诞生逻辑"></a>诞生逻辑</h3><p>当然，有些对时间要求很高的程序，是可以接受packet loss的。比如我们在线播放视频的程序，你不得不选择降低清晰度来跟流畅度做一个trade off；比如在线射击的动作游戏，你总不能希望你的下一个shooting要等很久吧？（这也是为什么有了更好的TCP/IP以后，UDP还没有被摒弃的原因。）</p>

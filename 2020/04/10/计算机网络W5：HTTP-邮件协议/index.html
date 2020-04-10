@@ -6,24 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>专业英语W1 overview/ http | Chixinning的博客</title>
+  <title>计算机网络W5：HTTP /邮件协议 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="W1: course overview 简要介绍一下概念 感性认知">
+  <meta name="description" content="HTTP&#x2F;邮件协议 Socket:SMTP协议，邮件代理客户端 注意应用程序和应用层的协议之间的关系  Client-server:客户端与客户端之间并不会相互通讯。 而P2P存在相互对等。 通讯理解为进程间通讯的问题，通过sockets通讯 between client process and server process. 一个IP地址确定的主机上，如何确定进程呢，是通过端口号。 HTTP w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="专业英语W1 overview&#x2F; http">
-<meta property="og:url" content="http://yoursite.com/2020/03/15/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20overview:http/index.html">
+<meta property="og:title" content="计算机网络W5：HTTP &#x2F;邮件协议">
+<meta property="og:url" content="http://yoursite.com/2020/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW5%EF%BC%9AHTTP-%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="W1: course overview 简要介绍一下概念 感性认知">
+<meta property="og:description" content="HTTP&#x2F;邮件协议 Socket:SMTP协议，邮件代理客户端 注意应用程序和应用层的协议之间的关系  Client-server:客户端与客户端之间并不会相互通讯。 而P2P存在相互对等。 通讯理解为进程间通讯的问题，通过sockets通讯 between client process and server process. 一个IP地址确定的主机上，如何确定进程呢，是通过端口号。 HTTP w">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://i.loli.net/2020/03/15/H6Na2VsFcmDT79B.png">
-<meta property="article:published_time" content="2020-03-15T07:41:04.000Z">
-<meta property="article:modified_time" content="2020-04-03T06:30:54.711Z">
+<meta property="article:published_time" content="2020-04-10T05:06:33.000Z">
+<meta property="article:modified_time" content="2020-04-10T06:21:57.365Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="大二下">
-<meta property="article:tag" content="专业英语">
+<meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2020/03/15/H6Na2VsFcmDT79B.png">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -163,126 +161,61 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-专业英语W1 overview:http" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-计算机网络W5：HTTP-邮件协议" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      专业英语W1 overview/ http
+      计算机网络W5：HTTP /邮件协议
     </h1>
   
 
         
-        <a href="/2020/03/15/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20overview:http/" class="archive-article-date">
-  	<time datetime="2020-03-15T07:41:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
+        <a href="/2020/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW5%EF%BC%9AHTTP-%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
+  	<time datetime="2020-04-10T05:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="W1-course-overview"><a href="#W1-course-overview" class="headerlink" title="W1: course overview"></a>W1: course overview</h1><ul>
-<li>简要介绍一下概念</li>
-<li>感性认知</li>
+        <h1 id="HTTP-邮件协议"><a href="#HTTP-邮件协议" class="headerlink" title="HTTP/邮件协议"></a>HTTP/邮件协议</h1><blockquote>
+<p>Socket:SMTP协议，邮件代理客户端</p>
+<p>注意应用程序和应用层的协议之间的关系</p>
+</blockquote>
+<p>Client-server:客户端与客户端之间并不会相互通讯。</p>
+<p>而P2P存在相互对等。</p>
+<p>通讯理解为进程间通讯的问题，通过sockets通讯 between client process and server process.</p>
+<p>一个IP地址确定的主机上，如何确定进程呢，是通过端口号。</p>
+<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><ul>
+<li>web page objects</li>
+<li>hTML-file</li>
+<li>Object be accessed by url</li>
 </ul>
-<a id="more"></a>
-
-<h2 id="Core-technologies"><a href="#Core-technologies" class="headerlink" title="Core technologies"></a>Core technologies</h2><h3 id="PHP"><a href="#PHP" class="headerlink" title="PHP"></a>PHP</h3><p>PHP is a programming and templating language.</p>
-<ul>
-<li>extends HTML pages by adding server, code segments to HTML pages;</li>
-<li>Output of the execution of the PHP code is merged into the HTML page;</li>
-</ul>
-<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><p>data base engines abstract, structured query languange.</p>
-<p><strong>language to talk to databases</strong></p>
-<h3 id="Browser-i-e-Client"><a href="#Browser-i-e-Client" class="headerlink" title="Browser (i.e.Client)"></a>Browser (i.e.Client)</h3><h4 id="Javascript"><a href="#Javascript" class="headerlink" title="Javascript"></a>Javascript</h4><p>the builder of a web page to embed dynamic elements within a web page.</p>
-<p><strong>language to talk to browser through DOM (document object model)</strong></p>
-<blockquote>
-<p>对于各个浏览器来说，how JS done in Browser is different.</p>
-</blockquote>
-<h3 id="Query"><a href="#Query" class="headerlink" title="Query"></a>Query</h3><p>Portability layer; do things in DOM</p>
-<h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><p>data format</p>
-<h2 id="How-web-pages-get-constructed"><a href="#How-web-pages-get-constructed" class="headerlink" title="How web  pages get constructed?"></a>How web  pages get constructed?</h2><blockquote>
-<p>How web applications work?</p>
-<p>web applications have many layers of component.</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th align="left">Browser</th>
-<th align="center">Web server</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">html｜CSS｜DOM｜JS｜JQuery</td>
-<td align="center">PHP｜MYSQL</td>
-</tr>
-</tbody></table>
-<p>It is the *<em>HTTP Message *</em> that transmit between both.</p>
-<h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p>Hypertext Transfer Protocol</p>
-<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>Uniform Resource Locator</p>
-<blockquote>
-<p>为了能使网页间相互连接，每个网页需要一个唯一的地址，这个地址叫URL</p>
-</blockquote>
-<p>当你访问网页时(以crash course的课程网页为例)，发生了什么？</p>
-<ol>
-<li><p>DNS lookup</p>
-<p>DNS server 输出相应的IP</p>
-</li>
-<li><p>有了IP ,你的web browser(client ) open a TCP connection to a computer( the computer runs a special piece software called” Web server”网络服务器)</p>
-<p>网络服务器的端口是80</p>
-</li>
-<li><p>当你的PC和Web Server 已经连接好了以后，</p>
-<p>Your client ask that web server for the “courses” hyper text page by HTTP message.</p>
-<p>Ask 的过程实现：</p>
-<p>send message to the server: GET cmd.</p>
-<p>Server 会返回 web page hypertext we <strong>REQUEST</strong>ED</p>
-</li>
-<li><p>最终由你的浏览器完成hyper text的渲染</p>
-<p>渲染 就是把hyper text interpret 成你能理解的</p>
-</li>
+<h3 id="Apahce-web-server"><a href="#Apahce-web-server" class="headerlink" title="Apahce web server"></a>Apahce web server</h3><ol>
+<li>http : request(向服务器)</li>
+<li>http : response</li>
 </ol>
-<h4 id="What-problems-URL-solver"><a href="#What-problems-URL-solver" class="headerlink" title="What problems URL solver?"></a>What problems URL solver?</h4><p>Why URL can tell us the Web page we want to visit.</p>
-<p>How to get it? what protocols?</p>
-<p>Where to get it?which hosts to get to ?</p>
-<p>What to get? What kind of hosts that you might want to retrieve?</p>
+<p>HTTP:无状态的，即<strong>不会</strong>记录客户端任何消息，即它不认识客户端，所以使HTTP的管理相对简单。</p>
+<p>HTTP：建立连接，传输消息，关闭连接</p>
+<h3 id="两种连接方式"><a href="#两种连接方式" class="headerlink" title="两种连接方式"></a>两种连接方式</h3><h4 id="非持续连接"><a href="#非持续连接" class="headerlink" title="非持续连接"></a>非持续连接</h4><p>连接时最多只有一个对象只发送一个对象即<strong>关闭</strong>了</p>
+<h4 id="持续连接"><a href="#持续连接" class="headerlink" title="持续连接"></a>持续连接</h4><p>可以发很多的对象</p>
+<h5 id="RTT"><a href="#RTT" class="headerlink" title="RTT"></a>RTT</h5><p>整个花费的时间</p>
+<p>2RTT+file transmission</p>
 <blockquote>
-<p>Https:// <a href="http://www.dr-chunk.com/page1.htm" target="_blank" rel="noopener">www.dr-chunk.com/page1.htm</a></p>
+<p>真实的是多线程流水线的方式</p>
 </blockquote>
-<p>Https:HOW</p>
-<p> <a href="http://www.dr-chunk.com:WHERE">www.dr-chunk.com:WHERE</a></p>
-<p>page1.htm:WHAT </p>
-<h4 id="HTML-语言"><a href="#HTML-语言" class="headerlink" title="HTML(语言)"></a>HTML(语言)</h4><p>Web page hypertext is stored and sent as 普通文本</p>
-<p>​    c.f. ASCII </p>
-<p>​    同时对于普通文本来说，不就跟txt没区别了，hypertext的特性就需要一种特殊语言去标记一下，</p>
-<p>“Make up “ a text file with hyper text elements.</p>
-<h4 id="Get-data-from-the-server的两种方式"><a href="#Get-data-from-the-server的两种方式" class="headerlink" title="Get data from the server的两种方式"></a>Get data from the server的两种方式</h4><ol>
-<li><p>在地址栏中输入(type URL into browser and we get it)</p>
-</li>
-<li><p>在网页中点击并跳转, 打开另一个网页的超链接(hyper text navigation )</p>
-<p>anchor tags: </p>
-<p>href(hyper text reference)</p>
-<p>clickable links with an href equal to…</p>
-<p><img src="https://i.loli.net/2020/03/15/H6Na2VsFcmDT79B.png" alt="GetDatafromtheServer.png"></p>
-</li>
-</ol>
-<h2 id="How-your-web-browser-behave-on-behalf-of-you"><a href="#How-your-web-browser-behave-on-behalf-of-you" class="headerlink" title="How your web browser behave on behalf of you?"></a>How your web browser behave on behalf of you?</h2><h3 id="Click-Request-Response"><a href="#Click-Request-Response" class="headerlink" title="Click - Request - Response"></a>Click - Request - Response</h3><blockquote>
-<p>参见我的专业英语W1 作业</p>
-</blockquote>
-<p><a href="[https://www.ererzi.website/2020/03/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1/](https://www.ererzi.website/2020/03/10/专业英语W1/)">专业英语W1作业</a></p>
-<ul>
-<li>click on a request</li>
-<li>request sent to a server</li>
-<li>server: PHP makes a connection to database</li>
-<li>Browser :run DOM</li>
-</ul>
-<h2 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h2><p>Header </p>
-<p>Body</p>
-<p>metadata: basic information about the page.</p>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p>http无状态：不保留消息</p>
 <blockquote>
-<p>There are many requests to get the page (one page constructed)</p>
+<p>例再次登陆的时候不需要再次输入用户名和密码?</p>
 </blockquote>
+<p>user-server state:cookie</p>
+<p>本地仍会有cookie的文件，相当于状态，在web服务器端记录下了client端的状态。</p>
+<h3 id="web-caches-proxy-server"><a href="#web-caches-proxy-server" class="headerlink" title="web caches(proxy server)"></a>web caches(proxy server)</h3><p>代理服务器，不需要跑到原始的服务器那里去拿。</p>
+<p>好处：在isp这边缓存了网站部分，使访问速度会变快。</p>
+<p>问题：缓存的数据是否是最新的?</p>
 
       
 
@@ -325,7 +258,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
         		</li>
       		
 		</ul>
@@ -381,7 +314,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/15/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20overview:http/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW5%EF%BC%9AHTTP-%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -395,18 +328,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW2/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          专业英语W2 html and CSS
+          专业英语W4/5 PHP嵌入的原因
         
       </div>
     </a>
   
   
-    <a href="/2020/03/14/Missing-L6-version-control/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Missing L6 version control(1)</div>
+    <a href="/2020/04/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW4-Application-Layer/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机网络W4: Application Layer</div>
       <i class="icon-circle-right"></i>
     </a>
   

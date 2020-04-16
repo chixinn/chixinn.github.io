@@ -170,6 +170,204 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-专业英语W6：PHP-arrays" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/">专业英语W6：PHP arrays</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/" class="archive-article-date">
+  	<time datetime="2020-04-16T07:25:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>What is the most important difference between PHP arrays and C arrays? Based on your guess, what is the advantage of PHP arrays in Web programming?</strong> </p>
+        
+          <a class="article-more-a" href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-进程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/13/%E8%BF%9B%E7%A8%8B/">进程</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/13/%E8%BF%9B%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-04-13T05:35:59.065Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="2-4-进程状态与转换"><a href="#2-4-进程状态与转换" class="headerlink" title="2.4 进程状态与转换"></a>2.4 进程状态与转换</h2><h2 id="2-5-进程的实现"><a href="#2-5-进程的实现" class="headerlink" title="2.5 进程的实现"></a>2.5 进程的实现</h2><h3 id="进程控制块"><a href="#进程控制块" class="headerlink" title="进程控制块"></a>进程控制块</h3><ul>
+<li>记录进程相关信息</li>
+</ul>
+<h3 id="进程表"><a href="#进程表" class="headerlink" title="进程表"></a>进程表</h3><ul>
+<li>操作系统维护一个结构体数组</li>
+<li>数组元素(进程表项)，对应于一个进程块。kernel 维护</li>
+</ul>
+<h3 id="中断处理"><a href="#中断处理" class="headerlink" title="中断处理"></a>中断处理</h3><ul>
+<li>中断时，将当前进程相关信息进行保存，为中断处理程序作准备。</li>
+<li>中断对应中断号，中断号对应中断服务程序。</li>
+<li>发生中断后，原先有些进程被改变，分析一些等待队列。</li>
+<li>用 <strong>汇编语言程序</strong>进行进程的上下文切换。</li>
+</ul>
+<h2 id="2-6-线程和实现"><a href="#2-6-线程和实现" class="headerlink" title="2.6 线程和实现"></a>2.6 线程和实现</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>一个进程在一个地址空间里有多个控制流。</p>
+<h3 id="引入目的"><a href="#引入目的" class="headerlink" title="引入目的"></a>引入目的</h3><p>减少并发和执行的开销</p>
+<h3 id="进程间通讯v-s-线程间通讯"><a href="#进程间通讯v-s-线程间通讯" class="headerlink" title="进程间通讯v.s.线程间通讯"></a>进程间通讯v.s.线程间通讯</h3><p>进程间通讯：data共享</p>
+<p>线程间通讯：data不共享</p>
+<p>而多线程的一个坏处也是因为共享而存在对变量执行的竞争；</p>
+<h3 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h3><p>Web 服务器</p>
+<h3 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h3><h4 id="内核线程-操作系统的维护"><a href="#内核线程-操作系统的维护" class="headerlink" title="内核线程 (操作系统的维护)"></a>内核线程 (操作系统的维护)</h4><p>调度：从就绪队列取</p>
+<p>而阻塞时会将之移动到组赛的队列中。</p>
+<p>对于内核线程而言，线程是调度的单位，一个进程中的几个线程对于操作系统而言也是可见的，而其中一个线程阻塞时，不会导致整个操作系统阻塞。</p>
+<p>而对比用户线程，用户线程阻塞时可能会导致整个系统的暂停。</p>
+<h4 id="用户态-空间的线程"><a href="#用户态-空间的线程" class="headerlink" title="用户态/空间的线程"></a>用户态/空间的线程</h4><p>此时操作系统就不知道了。</p>
+<p>好处：轻量化；</p>
+<p>坏处：配合不好时可能会造成CPU的阻塞。</p>
+<h4 id="混合方案-Solaris"><a href="#混合方案-Solaris" class="headerlink" title="混合方案(Solaris)"></a>混合方案(Solaris)</h4><h3 id="并行化"><a href="#并行化" class="headerlink" title="并行化"></a>并行化</h3><p>多进程</p>
+<p>内核线程</p>
+<p>用户线程</p>
+<h3 id="线程和进程的比较"><a href="#线程和进程的比较" class="headerlink" title="线程和进程的比较"></a>线程和进程的比较</h3><h2 id="2-6进程间通讯"><a href="#2-6进程间通讯" class="headerlink" title="2.6进程间通讯"></a>2.6进程间通讯</h2><p>如何便捷通讯？</p>
+<p>如何保证时序来通讯？</p>
+<blockquote>
+<p>进程/线程通讯原理一样，不对线程赘述。</p>
+</blockquote>
+<h3 id="竞争条件"><a href="#竞争条件" class="headerlink" title="竞争条件"></a>竞争条件</h3><ul>
+<li>程序执行最后的结果<strong>取决于</strong>进程运行的精确时序。</li>
+<li>而操作系统又无法保证两次执行时的时序是一样的。</li>
+</ul>
+<blockquote>
+<p>假脱机打印(共享变量的修改不加以限定)</p>
+<p>奇怪现象：同时对in变量操作。即进程A和B同时需要读和更新；A写的会把B写的覆盖掉了。</p>
+</blockquote>
+<h3 id="临界区-critical-region"><a href="#临界区-critical-region" class="headerlink" title="临界区(critical region)"></a>临界区(critical region)</h3><ul>
+<li>对<strong>共享内存</strong>进行访问的<strong>程序片段</strong>(是这段代码)称作临界区</li>
+<li>避免竞争条件：<ul>
+<li>任何两个进程不能同时处于临界区</li>
+<li>不应对CPU的速度和数目作任何假设</li>
+<li>临界区外的进程不得阻塞其他进程</li>
+<li>不得使进程在临界区外无休止地等待</li>
+</ul>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/13/%E8%BF%9B%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-专业英语W4-5-PHP嵌入的原因" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -201,6 +399,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -988,175 +1205,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/03/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW3-Chapter1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语-W3-Cascading" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD-W3-Cascading/">专业英语 W3 Cascading</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD-W3-Cascading/" class="archive-article-date">
-  	<time datetime="2020-03-24T01:51:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>CSS stands for Cascading Style Sheet. Can you explain why it is cascading or what rule of CSS makes itself cascading?</strong> </p>
-        
-          <a class="article-more-a" href="/2020/03/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD-W3-Cascading/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD-W3-Cascading/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W2-电路交换-分组交换-网络性能的衡量" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW2-%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2-%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E7%9A%84%E8%A1%A1%E9%87%8F/">计算机网络W2:电路交换 分组交换 网络性能的衡量</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW2-%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2-%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E7%9A%84%E8%A1%A1%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2020-03-20T10:13:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><p>分组/电路交换</p>
-<p>衡量网络性能的指标。</p>
-        
-          <a class="article-more-a" href="/2020/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW2-%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2-%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E7%9A%84%E8%A1%A1%E9%87%8F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW2-%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2-%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E7%9A%84%E8%A1%A1%E9%87%8F/">展开全文 >></a>
         </p>
       
 

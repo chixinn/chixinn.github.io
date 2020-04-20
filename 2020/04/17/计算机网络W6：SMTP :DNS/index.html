@@ -6,28 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Chixinning的博客</title>
+  <title>计算机网络W6：SMTP /DNS | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/page/3/index.html">
+  <meta name="description" content="计算机网络原理与编程Overview邮件传输协议与域名解析协议 SMTP,POP3,IMAP DNS Web caches(proxy server)代理服务器 一般学校或ISP都会设置代理服务器。 这样访问时，可以访问代理服务器中的缓存。   如何查看代理服务器的IP地址? 可以通过浏览器端查询和设置。   HTTP 请求经过代理服务器，回来时在代理服务器处缓存，其余request不需要再到or">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络W6：SMTP &#x2F;DNS">
+<meta property="og:url" content="http://yoursite.com/2020/04/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW6%EF%BC%9ASMTP%20:DNS/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="计算机网络原理与编程Overview邮件传输协议与域名解析协议 SMTP,POP3,IMAP DNS Web caches(proxy server)代理服务器 一般学校或ISP都会设置代理服务器。 这样访问时，可以访问代理服务器中的缓存。   如何查看代理服务器的IP地址? 可以通过浏览器端查询和设置。   HTTP 请求经过代理服务器，回来时在代理服务器处缓存，其余request不需要再到or">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-17T05:06:33.000Z">
+<meta property="article:modified_time" content="2020-04-17T06:30:42.477Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="大二下">
+<meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
@@ -168,131 +161,218 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Missing-L6-version-control" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-计算机网络W6：SMTP :DNS" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/14/Missing-L6-version-control/">Missing L6 version control(1)</a>
+    <h1 class="article-title" itemprop="name">
+      计算机网络W6：SMTP /DNS
     </h1>
   
 
         
-        <a href="/2020/03/14/Missing-L6-version-control/" class="archive-article-date">
-  	<time datetime="2020-03-14T03:24:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-14</time>
+        <a href="/2020/04/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW6%EF%BC%9ASMTP%20:DNS/" class="archive-article-date">
+  	<time datetime="2020-04-17T05:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Lecture6-Version-control"><a href="#Lecture6-Version-control" class="headerlink" title="Lecture6: Version control"></a>Lecture6: Version control</h1><p>信息爆炸的时代区分专业领域人才的最好工具便是对概念的深刻掌握和理解吧？</p>
-<p>记老师在数据结构课上讲过的笑话：</p>
+        <h1 id="计算机网络原理与编程"><a href="#计算机网络原理与编程" class="headerlink" title="计算机网络原理与编程"></a>计算机网络原理与编程</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>邮件传输协议与域名解析协议</p>
+<p>SMTP,POP3,IMAP</p>
+<p>DNS</p>
+<h2 id="Web-caches-proxy-server-代理服务器"><a href="#Web-caches-proxy-server-代理服务器" class="headerlink" title="Web caches(proxy server)代理服务器"></a>Web caches(proxy server)代理服务器</h2><ul>
+<li>一般学校或ISP都会设置代理服务器。</li>
+<li>这样访问时，可以访问代理服务器中的<strong>缓存</strong>。</li>
+</ul>
 <blockquote>
-<p>在面试时，面试官问，你觉得你的C++怎么样？</p>
-<p>答曰，我精通C++</p>
-<p>那，你能解释一下多态的概念吗？</p>
-<p>…</p>
+<p>如何查看代理服务器的IP地址?</p>
+<p>可以通过浏览器端查询和设置。</p>
 </blockquote>
-<p>你会使用git 吗？</p>
-<p>会啊，push/pull/fetch/clone/branch/checkout就完了。</p>
-<p>真的如此吗?</p>
-        
-          <a class="article-more-a" href="/2020/03/14/Missing-L6-version-control/#more">more >></a>
-        
+<ul>
+<li>HTTP 请求经过代理服务器，回来时在代理服务器处缓存，其余request不需要再到origin server。</li>
+<li>而Wireshark运行时，只可以<strong>监控</strong>到<strong>客户端</strong>到<strong>代理服务器</strong>的消息</li>
+<li>客户端的缓存在本地评判与代理服务器的缓存策略不同，但是其目标还是相同的。</li>
+</ul>
+<h2 id="如何查看具体报文的表达"><a href="#如何查看具体报文的表达" class="headerlink" title="如何查看具体报文的表达?"></a>如何查看具体报文的表达?</h2><ul>
+<li>查询相关的RFC，即可以看到http的说明文档。mannual/dictionary c.f.</li>
+</ul>
+<h2 id="web-application书写好以后，是如何"><a href="#web-application书写好以后，是如何" class="headerlink" title="web application书写好以后，是如何?"></a>web application书写好以后，是如何?</h2><ul>
+<li>网页在书写好了以后需要被<strong>部署</strong>到一个服务器(Web 服务器 i.e. Apahe)上，且如果希望外网也访问的话，此即需要一个外网的IP，如果需要向内访问，也需要校内的IP地址；</li>
+<li>Personal server:可发展方便的预览，即将来发布出去时网站长什么样，即仅仅是为了开发调试。</li>
+</ul>
+<h2 id="内部IP地址"><a href="#内部IP地址" class="headerlink" title="内部IP地址"></a>内部IP地址</h2><ul>
+<li>内网间的联系通过内网IP的转换。</li>
+<li>局部范围内的IP地址。</li>
+</ul>
+<a id="more"></a>
+
+<h2 id="electronic-mail-SMTP"><a href="#electronic-mail-SMTP" class="headerlink" title="electronic mail: SMTP"></a>electronic mail: SMTP</h2><p>网络上的异步/同步通讯方式。</p>
+<p>邮件传输是<strong>经典的异步信息</strong>传输。</p>
+<h3 id="主要组成"><a href="#主要组成" class="headerlink" title="主要组成"></a>主要组成</h3><ul>
+<li><p>User agents(用户代理)</p>
+<p>如果以www.方式登陆邮件网站，此时即为HTTP的传输方式，并不是我们考虑的SMTP传输方式。</p>
+<p>此处我们考虑的是类似于outlook/网易邮箱大师/foxmail这种邮件代理</p>
+</li>
+<li><p>mail servers(邮件服务器)</p>
+</li>
+<li><p>Simple mail transfer protocol:SMTP </p>
+</li>
+</ul>
+<h3 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h3><p>user agent-&gt; Alice’s mail server(163信箱) -&gt; Bob’s mail server -&gt;Bob’s user agent(ECNU 信箱)；</p>
+<p>“报文队列”</p>
+<h3 id="邮件协议"><a href="#邮件协议" class="headerlink" title="邮件协议"></a>邮件协议</h3><p>简单邮件传输协议：</p>
+<p>​    <strong>邮件服务器</strong>之间的协议: SMTP</p>
+<p>邮件访问协议：</p>
+<p>​    POP3/IAMP</p>
+<p>邮件发送协议：SMTP</p>
+<h3 id="用户代理"><a href="#用户代理" class="headerlink" title="用户代理"></a>用户代理</h3><ul>
+<li>a.k.a “mail reader”</li>
+<li>编写邮件等等</li>
+<li>outgoing /incoming/messages stored on server</li>
+</ul>
+<h3 id="client-server端的确定"><a href="#client-server端的确定" class="headerlink" title="client /server端的确定"></a>client /server端的确定</h3><ul>
+<li>请求的发起者是client</li>
+<li>等待响应请求是server</li>
+</ul>
+<h3 id="传输层-TCP连接"><a href="#传输层-TCP连接" class="headerlink" title="传输层:TCP连接"></a>传输层:TCP连接</h3><h3 id="Sample-SMTP-interaction"><a href="#Sample-SMTP-interaction" class="headerlink" title="Sample SMTP interaction"></a>Sample SMTP interaction</h3><p>报文格式：状态码+状态码的解释</p>
+<p>S： hamberger.edu</p>
+<p>C: crepes.fr</p>
+<p>S: 220 服务就绪 hamburger.edu</p>
+<p>C: HELO creps.fr(状态码与状态码的解释)</p>
+<p>正文的最后以<strong>点</strong>结束</p>
+<h3 id="SMTPc-f-HTTP"><a href="#SMTPc-f-HTTP" class="headerlink" title="SMTPc.f.HTTP"></a>SMTPc.f.HTTP</h3><table>
+<thead>
+<tr>
+<th></th>
+<th>HTTP</th>
+<th>SMTP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>模式</td>
+<td>拉</td>
+<td>推</td>
+</tr>
+<tr>
+<td>7位ASCII码</td>
+<td>不是必须</td>
+<td>必须</td>
+</tr>
+<tr>
+<td>报文中的OBJect是否独立包装</td>
+<td>是</td>
+<td>不是</td>
+</tr>
+</tbody></table>
+<h3 id="Mail-message-format"><a href="#Mail-message-format" class="headerlink" title="Mail message format"></a>Mail message format</h3><ul>
+<li>邮件报文格式</li>
+<li>报文格式查询RFC 822</li>
+<li>c.f.握手协议：先握手再进行报文传输 最后关闭</li>
+</ul>
+<h3 id="3-phases-of-transfer"><a href="#3-phases-of-transfer" class="headerlink" title="3 phases of transfer"></a>3 phases of transfer</h3><ul>
+<li>handshaking </li>
+<li>transfer of messages</li>
+<li>closure</li>
+</ul>
+<h2 id="POP-IMAP邮件访问协议"><a href="#POP-IMAP邮件访问协议" class="headerlink" title="POP/IMAP邮件访问协议"></a>POP/IMAP邮件访问协议</h2><ul>
+<li>当然通过网站访问时是通过的HTTP的方式</li>
+</ul>
+<h3 id="POP3"><a href="#POP3" class="headerlink" title="POP3"></a>POP3</h3><ul>
+<li>firset phase(authorization)/授权阶段<ul>
+<li>client commands：</li>
+<li>server reponses</li>
+</ul>
+</li>
+<li>second phase:transaction /传输阶段<ul>
+<li>list（check new mails）</li>
+<li>retr（retrieve message by number)</li>
+<li>dele (delete mails )</li>
+<li>quit</li>
+</ul>
+</li>
+</ul>
+<h4 id="more-about-pop3"><a href="#more-about-pop3" class="headerlink" title="more about pop3"></a>more about pop3</h4><blockquote>
+<p>已读邮件不能再删除？</p>
+<p>邮件服务器一旦访问即收录到本地了。</p>
+</blockquote>
+<p>如果设置server端不备份呢?</p>
+<p>outlook 中的个性化配置</p>
+<h3 id="个性化设置：IMAP"><a href="#个性化设置：IMAP" class="headerlink" title="个性化设置：IMAP"></a>个性化设置：IMAP</h3><ul>
+<li>将文件都保存在server端。</li>
+<li>keeps user state across sessions:(会话)</li>
+<li>IMAP可以允许用户只读取报文的某些部分</li>
+</ul>
+<h2 id="DNS：domain-name-system"><a href="#DNS：domain-name-system" class="headerlink" title="DNS：domain name system"></a>DNS：domain name system</h2><p>Ifconfig：是得到的本地的局域网的IP地址。</p>
+<p>域名解析：将IP和域名关联映射起来。</p>
+<h3 id="域名解析方式"><a href="#域名解析方式" class="headerlink" title="域名解析方式"></a>域名解析方式</h3><p>与身份证不同的是我们是分布式的域名系统，即是一种层次的结构。</p>
+<blockquote>
+<p>根DNS/顶级DNS/权威DNS</p>
+</blockquote>
+<p>那么为什么要使用分层的域名管理系统呢?</p>
+<ol>
+<li>Internet不是那么严格的中心化组织管理来保证其可用性。</li>
+<li>利用分布式系统是为了提高可用性和可靠性</li>
+<li>而集中式的系统会容易出现单点故障</li>
+</ol>
+<ul>
+<li><p>为了更多的提供服务，一般服务器都是多个的；</p>
+<p>表面上可能访问的是一个服务器，而物理上是多个服务器对于用户来说不是很轻易可以感受的到。</p>
+<p>即许多IP地址都对应了一个域名。</p>
+</li>
+</ul>
+<h3 id="根DNS"><a href="#根DNS" class="headerlink" title="根DNS"></a>根DNS</h3><ul>
+<li>往往不负责域名解析，更多的根本地服务器和权威服务器打交道，我也解析不出来。</li>
+<li></li>
+<li>顶级域名服务器(TLD)/权威服务器</li>
+</ul>
+<h4 id="Local-DNS-name-server（本地域名服务"><a href="#Local-DNS-name-server（本地域名服务" class="headerlink" title="Local DNS name server（本地域名服务)"></a>Local DNS name server（本地域名服务)</h4><ul>
+<li>Does not strictly belong to hierarchy</li>
+</ul>
+<blockquote>
+<p>Sample:</p>
+<p>requesting host -&gt; local DNS server -&gt; root DNS server -&gt;Local DNS server -&gt; TLD DNS server-&gt; authorative</p>
+</blockquote>
+<p>Local DNS 是中间人(迭代式解析)[真实环境]</p>
+<p>root DNS 是中间人(递归式解析)[root server 所承受的压力大] （递归式的级联效应。）</p>
+<h3 id="DNS：caching-updating-records"><a href="#DNS：caching-updating-records" class="headerlink" title="DNS：caching ,updating records"></a>DNS：caching ,updating records</h3><p>是可以cache的</p>
+<h3 id="DNS-records"><a href="#DNS-records" class="headerlink" title="DNS records"></a>DNS records</h3><ul>
+<li>Ttl:一来一回的时间</li>
+<li>type=A/type=NS/type=CNAME(有些时候是别名)/type=MX</li>
+</ul>
+<h3 id="DNS-protocol-messages"><a href="#DNS-protocol-messages" class="headerlink" title="DNS protocol,messages"></a>DNS protocol,messages</h3><p>抓DNS的报文：上机作业；</p>
+<h3 id="Inserting-records-into-DNS"><a href="#Inserting-records-into-DNS" class="headerlink" title="Inserting records into DNS"></a>Inserting records into DNS</h3><p>注册域名的业务流程和映射最终是如何记录到分布式数据库里的？</p>
+<h3 id="Attacking-DNS"><a href="#Attacking-DNS" class="headerlink" title="Attacking DNS"></a>Attacking DNS</h3><ul>
+<li>DDos attacks</li>
+<li>redirect attacks</li>
+</ul>
+
       
 
       
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Missing Semester</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/14/Missing-L6-version-control/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW1/">计算机网络 W1</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW1/" class="archive-article-date">
-  	<time datetime="2020-03-13T06:54:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="计算机网络W1"><a href="#计算机网络W1" class="headerlink" title="计算机网络W1"></a>计算机网络W1</h1><h2 id="什么是计算机网络？"><a href="#什么是计算机网络？" class="headerlink" title="什么是计算机网络？"></a>什么是计算机网络？</h2><p>利用<strong>通信信道</strong>(物理上光纤电缆无线电波carrier)，将地理上分布的多个<strong>计算机系统</strong>(基础设施层级的软件)连接起来，在相应<strong>网络协议</strong>(软件编写要求)的支持下，实现信息传送、资源共享和网络计算功能的系统。</p>
-<blockquote>
-<p>生活和互联网息息相关；</p>
-</blockquote>
-<p>物理连接，协议软件基础设施层级通信；</p>
-<p>软件(基础设施)的编写要求：协议</p>
-<p>终端用户多在应用层；</p>
-<p>应用层从硬件软件的基础设施的构建；</p>
-        
-          <a class="article-more-a" href="/2020/03/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW1/#more">more >></a>
-        
-      
-
       
     </div>
     <div class="article-info article-info-index">
@@ -320,16 +400,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW1/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW6%EF%BC%9ASMTP%20:DNS/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/04/19/EDF%E8%BF%91%E4%BC%BC%E5%AE%9E%E6%97%B6%E8%B0%83%E5%BA%A6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          EDF近似实时调度
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">专业英语W6：PHP arrays</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -349,700 +497,14 @@
 
 
 
-
-  
-    <article id="post-markdown公式reference" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/13/markdown%E5%85%AC%E5%BC%8Freference/">markdown公式 reference</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/13/markdown%E5%85%AC%E5%BC%8Freference/" class="archive-article-date">
-  	<time datetime="2020-03-13T03:03:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>引用某些markdown 公式语法的Appendix</p>
-        
-          <a class="article-more-a" href="/2020/03/13/markdown%E5%85%AC%E5%BC%8Freference/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">参考资料</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/13/markdown%E5%85%AC%E5%BC%8Freference/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-植树节记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/12/%E6%A4%8D%E6%A0%91%E8%8A%82%E8%AE%B0/">植树节记</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/12/%E6%A4%8D%E6%A0%91%E8%8A%82%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-03-12T08:25:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>不以实践为目的的知识灌输都是耍流氓。<br>第一次学git是kfcoding<br>第二次学git是廖雪峰<br>第三次学git是上传gitlab的作业<br>第四次学git是实验楼<br>第五次学git是看Missing L6<br>看到第五次，终于理解了git的一点点眉目。<br>不断学以致用给自己制造练习机会吧。<br>总要吃<strong>青蛙</strong>的，先吃那个大的。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/12/%E6%A4%8D%E6%A0%91%E8%8A%82%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据科学的数学基础W1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/12/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W1/">数据科学的数学基础W1 课程概览 向量与矩阵基础</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/12/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W1/" class="archive-article-date">
-  	<time datetime="2020-03-12T01:39:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据科学的数学基础W1-course-overview-向量和矩阵基础"><a href="#数据科学的数学基础W1-course-overview-向量和矩阵基础" class="headerlink" title="数据科学的数学基础W1:course overview/ 向量和矩阵基础"></a>数据科学的数学基础W1:course overview/ 向量和矩阵基础</h1><h2 id="Course-Outline"><a href="#Course-Outline" class="headerlink" title="Course Outline"></a>Course Outline</h2><p><img src="https://i.loli.net/2020/03/12/ubHv3esVrM2GxqZ.png" alt="截屏2020-03-12上午9.14.37.png"></p>
-<p>ML：四个空间和三大函数的性质。</p>
-<p>四个空间：输入空间、输出空间、特征空间、假设空间；</p>
-<p>函数：线性函数、损失函数、目标函数；</p>
-        
-          <a class="article-more-a" href="/2020/03/12/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/12/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Crash-Course-CS-E30-万维网" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/11/Crash-Course-CS-E30-%E4%B8%87%E7%BB%B4%E7%BD%91/">Crash-Course-CS-E30-万维网</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/11/Crash-Course-CS-E30-%E4%B8%87%E7%BB%B4%E7%BD%91/" class="archive-article-date">
-  	<time datetime="2020-03-11T06:47:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Crash-Course-CS-E30-万维网"><a href="#Crash-Course-CS-E30-万维网" class="headerlink" title="Crash-Course-CS-E30-万维网"></a>Crash-Course-CS-E30-万维网</h1><p>The notion of Internet and www seems to be the substitution for each other. However, the www a.k.a world wide web is built on the top of the Internet network.</p>
-<p>如果说互联网(Internet)是数据传输的管道，各个建立在互联网之上的程序(其实这里application 理解成更广义上的程序会更好)都会使用。那么，www is the biggest application built on the Internet, and it is a huge distributed application running on millions of servers worldwide.</p>
-<p>We use <strong>web browser</strong> to get access to the <strong>www</strong>, the <strong>web application</strong>.</p>
-        
-          <a class="article-more-a" href="/2020/03/11/Crash-Course-CS-E30-%E4%B8%87%E7%BB%B4%E7%BD%91/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Crash Course CS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/11/Crash-Course-CS-E30-%E4%B8%87%E7%BB%B4%E7%BD%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-概率论W1 集合和概率模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/">概率论W1 集合和概率模型</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-03-11T00:23:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="概率论L1"><a href="#概率论L1" class="headerlink" title="概率论L1"></a>概率论L1</h1><h2 id="三门问题"><a href="#三门问题" class="headerlink" title="三门问题"></a>三门问题</h2><p>你是选择相信直觉，还是相信数学？</p>
-<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快排最差的情况</p>
-<p>快排性能的衡量：平均复杂度</p>
-<h2 id="概率在数据科学的应用"><a href="#概率在数据科学的应用" class="headerlink" title="概率在数据科学的应用"></a>概率在数据科学的应用</h2><p>算法分析</p>
-<p>大规模数据处理：随机算法的分析。</p>
-        
-          <a class="article-more-a" href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">概率论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统W1：引节" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/">操作系统W1：引节和实验环境的配置</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/" class="archive-article-date">
-  	<time datetime="2020-03-10T03:48:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="OS基本概念引入"><a href="#OS基本概念引入" class="headerlink" title="OS基本概念引入"></a>OS基本概念引入</h1><h2 id="course-overview"><a href="#course-overview" class="headerlink" title="course overview"></a>course overview</h2><blockquote>
-<p>本课程着重讲述操作系统的基本原</p>
-<p>理和各操作系统的共性</p>
-</blockquote>
-<h3 id="操作系统的功能"><a href="#操作系统的功能" class="headerlink" title="操作系统的功能"></a>操作系统的功能</h3><ul>
-<li>管理计算机软硬件资源</li>
-<li>拓展计算机的功能</li>
-<li>向用户提供服务</li>
-</ul>
-<h3 id="操作系统原理"><a href="#操作系统原理" class="headerlink" title="操作系统原理"></a>操作系统原理</h3><ul>
-<li><p>进程管理</p>
-</li>
-<li><p>I/O系统</p>
-</li>
-<li><p>存储管理（内存管理）</p>
-</li>
-<li><p>文件系统（磁盘上的数据管理）</p>
-<p>注意文件系统和I/O系统的相关性</p>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语W1 作业 http" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20%E4%BD%9C%E4%B8%9A%20http/">专业英语W1作业 http</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20%E4%BD%9C%E4%B8%9A%20http/" class="archive-article-date">
-  	<time datetime="2020-03-10T01:00:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="专业英语W1"><a href="#专业英语W1" class="headerlink" title="专业英语W1"></a>专业英语W1</h1><p><strong>Building Web Application in PHP</strong></p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Please describe in your own words what will happen to your brower and the web server when you click a link on a web page. Please provide as many details as possible, for instance, what HTTP message will be transmitted from the browser to the server.</p>
-<p>Your anwser must be in English. </p>
-        
-          <a class="article-more-a" href="/2020/03/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20%E4%BD%9C%E4%B8%9A%20http/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20%E4%BD%9C%E4%B8%9A%20http/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Crash-Course-CS-E29-互联网" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/09/Crash-Course-CS-E29-%E4%BA%92%E8%81%94%E7%BD%91/">Crash Course CS E29 互联网</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/09/Crash-Course-CS-E29-%E4%BA%92%E8%81%94%E7%BD%91/" class="archive-article-date">
-  	<time datetime="2020-03-09T13:24:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Crash-Course-CS-E29-互联网"><a href="#Crash-Course-CS-E29-互联网" class="headerlink" title="Crash-Course-CS-E29-互联网"></a>Crash-Course-CS-E29-互联网</h1><p>今天是新学期的第一天，接受了计算机网络相关的狂轰滥炸。说实话，一直都不太理解计算机网络的相关概念。只能对照着过去的笔记把Crash 再看一遍。</p>
-<ul>
-<li>IP Internet Protocols</li>
-<li>UDP: User data protocols</li>
-<li>Checksum 校验和</li>
-<li>TCP/IP</li>
-<li>DNS domain name system</li>
-<li>OSI  </li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/03/09/Crash-Course-CS-E29-%E4%BA%92%E8%81%94%E7%BD%91/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Crash Course CS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/09/Crash-Course-CS-E29-%E4%BA%92%E8%81%94%E7%BD%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1065,8 +527,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

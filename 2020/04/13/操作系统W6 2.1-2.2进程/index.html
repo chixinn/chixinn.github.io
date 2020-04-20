@@ -6,28 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Chixinning的博客</title>
+  <title>操作系统W6 2.1-2.2进程 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="2.1进程2.1.4 进程状态与转换2.1.5 进程的实现进程控制块 记录进程相关信息  进程表 操作系统维护一个结构体数组 数组元素(进程表项)，对应于一个进程块。kernel 维护  中断处理 中断时，将当前进程相关信息进行保存，为中断处理程序作准备。 中断对应中断号，中断号对应中断服务程序。 发生中断后，原先有些进程被改变，分析一些等待队列。 用 汇编语言程序进行进程的上下文切换。  2.1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统W6 2.1-2.2进程">
+<meta property="og:url" content="http://yoursite.com/2020/04/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW6%202.1-2.2%E8%BF%9B%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="2.1进程2.1.4 进程状态与转换2.1.5 进程的实现进程控制块 记录进程相关信息  进程表 操作系统维护一个结构体数组 数组元素(进程表项)，对应于一个进程块。kernel 维护  中断处理 中断时，将当前进程相关信息进行保存，为中断处理程序作准备。 中断对应中断号，中断号对应中断服务程序。 发生中断后，原先有些进程被改变，分析一些等待队列。 用 汇编语言程序进行进程的上下文切换。  2.1">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-13T07:00:00.000Z">
+<meta property="article:modified_time" content="2020-04-20T08:01:24.480Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="大二下">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
@@ -168,597 +161,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-2.3经典并发问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-操作系统W6 2.1-2.2进程" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/">2.3经典并发问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-04-20T07:58:41.555Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2-3经典并发问题"><a href="#2-3经典并发问题" class="headerlink" title="2.3经典并发问题"></a>2.3经典并发问题</h1><p>多应用2.2节进程信号量的内容。</p>
-<h2 id="哲学家进餐问题"><a href="#哲学家进餐问题" class="headerlink" title="哲学家进餐问题"></a>哲学家进餐问题</h2><p>提高并行度：两个人同时吃。只有一个人吃的话效率低。</p>
-<h3 id="解决方案1"><a href="#解决方案1" class="headerlink" title="解决方案1"></a>解决方案1</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> people_num 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LEFT</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RIGHT</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> THINKING 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HUNGURY 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EATING 2</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> semaphore;</span><br><span class="line">semaphore mutex=<span class="number">1</span>;</span><br><span class="line">semaphore s[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(TRUE)&#123;</span><br><span class="line">    think();</span><br><span class="line">    take_forks();</span><br><span class="line">    eat();</span><br><span class="line">    put_forks();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="读者-写者问题"><a href="#读者-写者问题" class="headerlink" title="读者-写者问题"></a>读者-写者问题</h2><ul>
-<li>读写互斥</li>
-<li>写写互斥</li>
-<li>读-读允许</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-进程间通信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">计算机网络W4: Application Layer</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="archive-article-date">
-  	<time datetime="2020-04-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2-2进程间通信"><a href="#2-2进程间通信" class="headerlink" title="2.2进程间通信"></a>2.2进程间通信</h1><p>如何保证多进程程序运行的结果是确定的?</p>
-        
-          <a class="article-more-a" href="/2020/04/20/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语project1-在线收藏夹" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/">专业英语project1:在线收藏夹</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/" class="archive-article-date">
-  	<time datetime="2020-04-20T01:08:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="在线收藏夹"><a href="#在线收藏夹" class="headerlink" title="在线收藏夹"></a>在线收藏夹</h1><h2 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h2><ul>
-<li>用户登陆注册系统</li>
-<li>收藏功能(存储功能)<ul>
-<li>收藏任意网站链接URL</li>
-<li>浏览URL，点击URL即可前往</li>
-</ul>
-</li>
-<li>注释功能<ul>
-<li>注释</li>
-<li>打标签</li>
-<li>通过标签进行搜索</li>
-</ul>
-</li>
-<li>管理功能<ul>
-<li>存储URL的增删</li>
-<li>修改与删除注释</li>
-<li>修改与删除标签</li>
-</ul>
-</li>
-<li>美化功能(CSS)</li>
-<li>网站部署于ucloud云平台</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语Project1 PHP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject1%20PHP/">专业英语Project1 PHP</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject1%20PHP/" class="archive-article-date">
-  	<time datetime="2020-04-20T01:07:55.538Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="专业英语Project1-PHP"><a href="#专业英语Project1-PHP" class="headerlink" title="专业英语Project1 PHP"></a>专业英语Project1 PHP</h1><p>![截屏2020-04-20上午8.13.57](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-04-20上午8.13.57.png)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject1%20PHP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-EDF近似实时调度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/19/EDF%E8%BF%91%E4%BC%BC%E5%AE%9E%E6%97%B6%E8%B0%83%E5%BA%A6/">EDF近似实时调度</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/19/EDF%E8%BF%91%E4%BC%BC%E5%AE%9E%E6%97%B6%E8%B0%83%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-04-19T08:02:36.245Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="EDF近似实时调度"><a href="#EDF近似实时调度" class="headerlink" title="EDF近似实时调度"></a>EDF近似实时调度</h1><p>1-增加系统调用chrt</p>
-<p>2-修改代码scheduler</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/19/EDF%E8%BF%91%E4%BC%BC%E5%AE%9E%E6%97%B6%E8%B0%83%E5%BA%A6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W6：SMTP :DNS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW6%EF%BC%9ASMTP%20:DNS/">计算机网络W6：SMTP /DNS</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW6%EF%BC%9ASMTP%20:DNS/" class="archive-article-date">
-  	<time datetime="2020-04-17T05:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="计算机网络原理与编程"><a href="#计算机网络原理与编程" class="headerlink" title="计算机网络原理与编程"></a>计算机网络原理与编程</h1><h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>邮件传输协议与域名解析协议</p>
-<p>SMTP,POP3,IMAP</p>
-<p>DNS</p>
-<h2 id="Web-caches-proxy-server-代理服务器"><a href="#Web-caches-proxy-server-代理服务器" class="headerlink" title="Web caches(proxy server)代理服务器"></a>Web caches(proxy server)代理服务器</h2><ul>
-<li>一般学校或ISP都会设置代理服务器。</li>
-<li>这样访问时，可以访问代理服务器中的<strong>缓存</strong>。</li>
-</ul>
-<blockquote>
-<p>如何查看代理服务器的IP地址?</p>
-<p>可以通过浏览器端查询和设置。</p>
-</blockquote>
-<ul>
-<li>HTTP 请求经过代理服务器，回来时在代理服务器处缓存，其余request不需要再到origin server。</li>
-<li>而Wireshark运行时，只可以<strong>监控</strong>到<strong>客户端</strong>到<strong>代理服务器</strong>的消息</li>
-<li>客户端的缓存在本地评判与代理服务器的缓存策略不同，但是其目标还是相同的。</li>
-</ul>
-<h2 id="如何查看具体报文的表达"><a href="#如何查看具体报文的表达" class="headerlink" title="如何查看具体报文的表达?"></a>如何查看具体报文的表达?</h2><ul>
-<li>查询相关的RFC，即可以看到http的说明文档。mannual/dictionary c.f.</li>
-</ul>
-<h2 id="web-application书写好以后，是如何"><a href="#web-application书写好以后，是如何" class="headerlink" title="web application书写好以后，是如何?"></a>web application书写好以后，是如何?</h2><ul>
-<li>网页在书写好了以后需要被<strong>部署</strong>到一个服务器(Web 服务器 i.e. Apahe)上，且如果希望外网也访问的话，此即需要一个外网的IP，如果需要向内访问，也需要校内的IP地址；</li>
-<li>Personal server:可发展方便的预览，即将来发布出去时网站长什么样，即仅仅是为了开发调试。</li>
-</ul>
-<h2 id="内部IP地址"><a href="#内部IP地址" class="headerlink" title="内部IP地址"></a>内部IP地址</h2><ul>
-<li>内网间的联系通过内网IP的转换。</li>
-<li>局部范围内的IP地址。</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/04/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW6%EF%BC%9ASMTP%20:DNS/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW6%EF%BC%9ASMTP%20:DNS/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语W6：PHP-arrays" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/">专业英语W6：PHP arrays</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/" class="archive-article-date">
-  	<time datetime="2020-04-16T07:25:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>What is the most important difference between PHP arrays and C arrays? Based on your guess, what is the advantage of PHP arrays in Web programming?</strong> </p>
-        
-          <a class="article-more-a" href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统W6 2.1-2.2进程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW6%202.1-2.2%E8%BF%9B%E7%A8%8B/">操作系统W6 2.1-2.2进程</a>
+    <h1 class="article-title" itemprop="name">
+      操作系统W6 2.1-2.2进程
     </h1>
   
 
@@ -827,6 +237,27 @@
       
 
       
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
     </div>
     <div class="article-info article-info-index">
       
@@ -853,16 +284,84 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW6%202.1-2.2%E8%BF%9B%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW6%202.1-2.2%E8%BF%9B%E7%A8%8B/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          专业英语W6：PHP arrays
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">专业英语W4/5 PHP嵌入的原因</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -882,212 +381,14 @@
 
 
 
-
-  
-    <article id="post-专业英语W4-5-PHP嵌入的原因" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/">专业英语W4/5 PHP嵌入的原因</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/" class="archive-article-date">
-  	<time datetime="2020-04-10T05:08:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Why do we embed PHP code in HTML? Why not put the code in a separate file, just as we do with C and Java? Please give your explanation.</strong><br><strong>(Reminder: be concise.)</strong></p>
-        
-          <a class="article-more-a" href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W5：HTTP-邮件协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW5%EF%BC%9AHTTP-%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE/">计算机网络W5：HTTP /邮件协议</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW5%EF%BC%9AHTTP-%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
-  	<time datetime="2020-04-10T05:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="HTTP-邮件协议"><a href="#HTTP-邮件协议" class="headerlink" title="HTTP/邮件协议"></a>HTTP/邮件协议</h1><blockquote>
-<p>Socket:SMTP协议，邮件代理客户端</p>
-<p>注意应用程序和应用层的协议之间的关系</p>
-</blockquote>
-<p>Client-server:客户端与客户端之间并不会相互通讯。</p>
-<p>而P2P存在相互对等。</p>
-<p>通讯理解为进程间通讯的问题，通过sockets通讯 between client process and server process.</p>
-<p>一个IP地址确定的主机上，如何确定进程呢，是通过端口号。</p>
-<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><ul>
-<li>web page objects</li>
-<li>hTML-file</li>
-<li>Object be accessed by url</li>
-</ul>
-<h3 id="Apahce-web-server"><a href="#Apahce-web-server" class="headerlink" title="Apahce web server"></a>Apahce web server</h3><ol>
-<li>http : request(向服务器)</li>
-<li>http : response</li>
-</ol>
-<p>HTTP:无状态的，即<strong>不会</strong>记录客户端任何消息，即它不认识客户端，所以使HTTP的管理相对简单。</p>
-<p>HTTP：建立连接，传输消息，关闭连接</p>
-<h3 id="两种连接方式"><a href="#两种连接方式" class="headerlink" title="两种连接方式"></a>两种连接方式</h3><h4 id="非持续连接"><a href="#非持续连接" class="headerlink" title="非持续连接"></a>非持续连接</h4><p>连接时最多只有一个对象只发送一个对象即<strong>关闭</strong>了</p>
-<h4 id="持续连接"><a href="#持续连接" class="headerlink" title="持续连接"></a>持续连接</h4><p>可以发很多的对象</p>
-<h5 id="RTT"><a href="#RTT" class="headerlink" title="RTT"></a>RTT</h5><p>整个花费的时间</p>
-<p>2RTT+file transmission</p>
-<blockquote>
-<p>真实的是多线程流水线的方式</p>
-</blockquote>
-<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p>http无状态：不保留消息</p>
-<blockquote>
-<p>例再次登陆的时候不需要再次输入用户名和密码?</p>
-</blockquote>
-<p>user-server state:cookie</p>
-<p>本地仍会有cookie的文件，相当于状态，在web服务器端记录下了client端的状态。</p>
-<h3 id="web-caches-proxy-server"><a href="#web-caches-proxy-server" class="headerlink" title="web caches(proxy server)"></a>web caches(proxy server)</h3><p>代理服务器，不需要跑到原始的服务器那里去拿。</p>
-<p>好处：在isp这边缓存了网站部分，使访问速度会变快。</p>
-<p>问题：缓存的数据是否是最新的?</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW5%EF%BC%9AHTTP-%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1110,8 +411,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

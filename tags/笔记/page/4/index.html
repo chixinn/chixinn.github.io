@@ -6,17 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>进程 | Chixinning的博客</title>
+  <title>Tag: 笔记 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="进程2.4 进程状态与转换2.5 进程的实现进程控制块 记录进程相关信息  进程表 操作系统维护一个结构体数组 数组元素(进程表项)，对应于一个进程块。kernel 维护  中断处理 中断时，将当前进程相关信息进行保存，为中断处理程序作准备。 中断对应中断号，中断号对应中断服务程序。 发生中断后，原先有些进程被改变，分析一些等待队列。 用 汇编语言程序进行进程的上下文切换。  2.6 线程和实现定">
-<meta property="og:type" content="article">
-<meta property="og:title" content="进程">
-<meta property="og:url" content="http://yoursite.com/2020/04/13/%E8%BF%9B%E7%A8%8B/index.html">
+  <meta name="description" content="learn from scratch">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chixinning的博客">
+<meta property="og:url" content="http://yoursite.com/tags/%E7%AC%94%E8%AE%B0/page/4/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="进程2.4 进程状态与转换2.5 进程的实现进程控制块 记录进程相关信息  进程表 操作系统维护一个结构体数组 数组元素(进程表项)，对应于一个进程块。kernel 维护  中断处理 中断时，将当前进程相关信息进行保存，为中断处理程序作准备。 中断对应中断号，中断号对应中断服务程序。 发生中断后，原先有些进程被改变，分析一些等待队列。 用 汇编语言程序进行进程的上下文切换。  2.6 线程和实现定">
+<meta property="og:description" content="learn from scratch">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-13T05:35:59.065Z">
-<meta property="article:modified_time" content="2020-04-13T07:16:47.071Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="C++">
@@ -170,215 +168,151 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-进程" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      进程
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2020" class="archive-year">2020</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/04/Missing-L2-tools/" class="archive-article-date">
+  	<time datetime="2020-03-04T03:51:22.319Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/04/Missing-L2-tools/">Missing-L2-tools</a>
     </h1>
   
 
-        
-        <a href="/2020/04/13/%E8%BF%9B%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-04-13T05:35:59.065Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h1><h2 id="2-4-进程状态与转换"><a href="#2-4-进程状态与转换" class="headerlink" title="2.4 进程状态与转换"></a>2.4 进程状态与转换</h2><h2 id="2-5-进程的实现"><a href="#2-5-进程的实现" class="headerlink" title="2.5 进程的实现"></a>2.5 进程的实现</h2><h3 id="进程控制块"><a href="#进程控制块" class="headerlink" title="进程控制块"></a>进程控制块</h3><ul>
-<li>记录进程相关信息</li>
-</ul>
-<h3 id="进程表"><a href="#进程表" class="headerlink" title="进程表"></a>进程表</h3><ul>
-<li>操作系统维护一个结构体数组</li>
-<li>数组元素(进程表项)，对应于一个进程块。kernel 维护</li>
-</ul>
-<h3 id="中断处理"><a href="#中断处理" class="headerlink" title="中断处理"></a>中断处理</h3><ul>
-<li>中断时，将当前进程相关信息进行保存，为中断处理程序作准备。</li>
-<li>中断对应中断号，中断号对应中断服务程序。</li>
-<li>发生中断后，原先有些进程被改变，分析一些等待队列。</li>
-<li>用 <strong>汇编语言程序</strong>进行进程的上下文切换。</li>
-</ul>
-<h2 id="2-6-线程和实现"><a href="#2-6-线程和实现" class="headerlink" title="2.6 线程和实现"></a>2.6 线程和实现</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>一个进程在一个地址空间里有多个控制流。</p>
-<h3 id="引入目的"><a href="#引入目的" class="headerlink" title="引入目的"></a>引入目的</h3><p>减少并发和执行的开销</p>
-<h3 id="进程间通讯v-s-线程间通讯"><a href="#进程间通讯v-s-线程间通讯" class="headerlink" title="进程间通讯v.s.线程间通讯"></a>进程间通讯v.s.线程间通讯</h3><p>进程间通讯：data共享</p>
-<p>线程间通讯：data不共享</p>
-<p>而多线程的一个坏处也是因为共享而存在对变量执行的竞争；</p>
-<h3 id="具体例子"><a href="#具体例子" class="headerlink" title="具体例子"></a>具体例子</h3><p>Web 服务器</p>
-<h3 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h3><h4 id="内核线程-操作系统的维护"><a href="#内核线程-操作系统的维护" class="headerlink" title="内核线程 (操作系统的维护)"></a>内核线程 (操作系统的维护)</h4><p>调度：从就绪队列取</p>
-<p>而阻塞时会将之移动到组赛的队列中。</p>
-<p>对于内核线程而言，线程是调度的单位，一个进程中的几个线程对于操作系统而言也是可见的，而其中一个线程阻塞时，不会导致整个操作系统阻塞。</p>
-<p>而对比用户线程，用户线程阻塞时可能会导致整个系统的暂停。</p>
-<h4 id="用户态-空间的线程"><a href="#用户态-空间的线程" class="headerlink" title="用户态/空间的线程"></a>用户态/空间的线程</h4><p>此时操作系统就不知道了。</p>
-<p>好处：轻量化；</p>
-<p>坏处：配合不好时可能会造成CPU的阻塞。</p>
-<h4 id="混合方案-Solaris"><a href="#混合方案-Solaris" class="headerlink" title="混合方案(Solaris)"></a>混合方案(Solaris)</h4><h3 id="并行化"><a href="#并行化" class="headerlink" title="并行化"></a>并行化</h3><p>多进程</p>
-<p>内核线程</p>
-<p>用户线程</p>
-<h3 id="线程和进程的比较"><a href="#线程和进程的比较" class="headerlink" title="线程和进程的比较"></a>线程和进程的比较</h3><h2 id="2-6进程间通讯"><a href="#2-6进程间通讯" class="headerlink" title="2.6进程间通讯"></a>2.6进程间通讯</h2><p>如何便捷通讯？</p>
-<p>如何保证时序来通讯？</p>
-<blockquote>
-<p>进程/线程通讯原理一样，不对线程赘述。</p>
-</blockquote>
-<h3 id="竞争条件"><a href="#竞争条件" class="headerlink" title="竞争条件"></a>竞争条件</h3><ul>
-<li>程序执行最后的结果<strong>取决于</strong>进程运行的精确时序。</li>
-<li>而操作系统又无法保证两次执行时的时序是一样的。</li>
-</ul>
-<blockquote>
-<p>假脱机打印(共享变量的修改不加以限定)</p>
-<p>奇怪现象：同时对in变量操作。即进程A和B同时需要读和更新；A写的会把B写的覆盖掉了。</p>
-</blockquote>
-<h3 id="临界区-critical-region"><a href="#临界区-critical-region" class="headerlink" title="临界区(critical region)"></a>临界区(critical region)</h3><ul>
-<li>对<strong>共享内存</strong>进行访问的<strong>程序片段</strong>(是这段代码)称作临界区</li>
-<li>避免竞争条件：<ul>
-<li>任何两个进程不能同时处于临界区</li>
-<li>不应对CPU的速度和数目作任何假设</li>
-<li>临界区外的进程不得阻塞其他进程</li>
-<li>不得使进程在临界区外无休止地等待</li>
-</ul>
-</li>
-</ul>
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Missing Semester</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
+          
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
         </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/13/%E8%BF%9B%E7%A8%8B/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
   
-<nav id="article-nav">
-  
-    <a href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          专业英语W6：PHP arrays
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">专业英语W4/5 PHP嵌入的原因</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/03/03/Missing-L2/" class="archive-article-date">
+  	<time datetime="2020-03-03T03:02:40.047Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
+</a>
         </div>
-        
-        
-    </div>
-</aside>
-
-
-
+    	 
   
-  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/03/03/Missing-L2/">Missing-semester-MIT-L2  Shell</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Missing Semester</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+    
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2020/02/15/Crash%20Course%20CS%20E21:%20compression%20%E5%8E%8B%E7%BC%A9/" class="archive-article-date">
+  	<time datetime="2020-02-15T03:09:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-15</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2020/02/15/Crash%20Course%20CS%20E21:%20compression%20%E5%8E%8B%E7%BC%A9/">Crash Course CS E21 compression 压缩</a>
+    </h1>
   
 
+        <div class="article-info info-on-right">
+          
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Crash Course CS</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+          
+
+        </div>
+        <div class="clearfix"></div>
+    </header>
+  </div>
+</article>
+  
+  
+    </div></section>
   
 
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/tags/%E7%AC%94%E8%AE%B0/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/tags/%E7%AC%94%E8%AE%B0/">1</a><a class="page-number" href="/tags/%E7%AC%94%E8%AE%B0/page/2/">2</a><a class="page-number" href="/tags/%E7%AC%94%E8%AE%B0/page/3/">3</a><span class="page-number current">4</span>
+    </nav>
   
 
 
@@ -402,9 +336,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

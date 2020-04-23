@@ -170,6 +170,90 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-专业英语W7-functions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/">专业英语W7:functions</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/" class="archive-article-date">
+  	<time datetime="2020-04-23T05:59:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="专业英语W7-functions"><a href="#专业英语W7-functions" class="headerlink" title="专业英语W7:functions"></a>专业英语W7:functions</h1><p>All of you should have some experience with functions. Tell me about your experience - When do you choose to use functions? When do you choose not to use functions?</p>
+        
+          <a class="article-more-a" href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-基于2G，3G，4G的时间序列做5G的预测" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -202,7 +286,135 @@
 <li>地区内：3G出现对2G的影响，4G出现对3G的影响。两者应用曲线拟合。</li>
 <li>地区间：地区间2G的互相影响，地区间3G的互相影响，地区间4G的互相影响。</li>
 </ul>
+<h3 id="预测目标："><a href="#预测目标：" class="headerlink" title="预测目标："></a>预测目标：</h3><p>Pre：根据基站设备的历史数据：</p>
+<ul>
+<li>​    处理数据</li>
+<li>​     构建模型<ul>
+<li>分季度预测</li>
+<li>各区域5G市场规模、各区域无线<strong>整体市场</strong>规模。</li>
+</ul>
+</li>
+<li>市场规模v.s.市场份额</li>
+<li>存量/增量</li>
+</ul>
+<h2 id="本文的特殊符号记录-建模过程演示说明"><a href="#本文的特殊符号记录-建模过程演示说明" class="headerlink" title="本文的特殊符号记录/建模过程演示说明"></a>本文的特殊符号记录/建模过程演示说明</h2><h3 id="地区别称："><a href="#地区别称：" class="headerlink" title="地区别称："></a>地区别称：</h3><p>北美地区:NorAmer</p>
+<p>地区总体规模:District_total</p>
+<p>亚太地区：AisaPac</p>
+<h3 id="数据表格结构调整说明"><a href="#数据表格结构调整说明" class="headerlink" title="数据表格结构调整说明"></a>数据表格结构调整说明</h3><p>整体规模=2G+3G+4G+5G，故在各地区之间新增加5G列，同时设置5G/total的百分比列，以检查数据的合理性。</p>
+<h3 id="建模过程演示和说明文档"><a href="#建模过程演示和说明文档" class="headerlink" title="建模过程演示和说明文档"></a>建模过程演示和说明文档</h3><p>因为本次建模采用”时间序列”的分析方法，即意指从时间序列来看，这样对于无论是变量2G NorAmer还是变量2G AisaPac，总计变量间的相互影响的体现均以时间序列的最后结果变化所包括。</p>
+<p>所以，在<strong>观察维度</strong>条目中所提到的地区间影响和地区内2G/3G/4G间相互影响均被(Date,Variable)所描述。</p>
+<p>故以一个维度做示例进行建模。</p>
+<p>当然，对于不同的变量，其数据预处理时采用的异常值/缺失值处理方法会根据变量实际情况有所不同，会做一一阐述。</p>
+<h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><h3 id="处理缺失值"><a href="#处理缺失值" class="headerlink" title="处理缺失值"></a>处理缺失值</h3><p>本数据的缺失值均为规模为0时，为了后续处理方便以补0操作。</p>
+<p>对于规数据，对于记录为0数据进行缺失值处理：</p>
+<h4 id="如何判断数据是否为缺失值"><a href="#如何判断数据是否为缺失值" class="headerlink" title="如何判断数据是否为缺失值:"></a>如何判断数据是否为缺失值:</h4><p>现在根据历史现实来看，对于已有的2G/3G/4G，各地区基站建设规模若为0，则为缺失值。</p>
+<ul>
+<li>2G数据，根据现实来看不能为0.</li>
+<li>3G数据，因为数据均为实点值，以2008年为例，各地区数据出现第一个不为0时，后续数据若有为0，均判定为缺失值。</li>
+</ul>
+<h4 id="常见缺失值处理方法："><a href="#常见缺失值处理方法：" class="headerlink" title="常见缺失值处理方法："></a>常见缺失值处理方法：</h4><ul>
+<li><p>​    直接使用含有缺失值的特征</p>
+<p>​    因为总规模为0时，对于时间序列的处理会造成影响。</p>
+</li>
+<li><p>​    删除含有缺失值的特征</p>
+<p>为了保证时间序列的连贯性，此处采用需要对缺失值进行填补，故不可采用这个方法。</p>
+</li>
+<li><p>​    <strong>缺失值填补</strong></p>
+<ul>
+<li><p>均值插补：因为整体数据规模呈上升趋势，故不能采用均值插补或与之类似的众数插补。</p>
+</li>
+<li><p>多重插补[使用数据分析工具SPSS进行多重插补]</p>
+</li>
+<li><p>极大似然估计[使用数据分析工具SPSS进行多重插补]:</p>
+<ul>
+<li><p>原理：</p>
+<p>在缺失类型为随机缺失的条件下，假设模型对于完整的样本是正确的，那么通过观测数据的边际分布可以对未知参数进行<strong>极大似然估计</strong>(or expectation maximization)。</p>
+<p>对于极大似然的参数估计在实际中常采用EM方法。</p>
+</li>
+<li><p>在利用EM方法前，首先要对数据进行多元正态性检验：</p>
+<ul>
+<li>在一般的回归分析中，进行多元正态检验时，当样本量较大且单个变量为正态性时，多元正态检验即可完成。</li>
+<li>这里的单变量的正态检验即可以使用kstest的方法，[在python 库函数中即可提供]，可以采用SPSS 直接进入正态性检验。</li>
+<li>正态性检验是t检验等统计分析的前提。<ul>
+<li>P-P图与Q-Q图拟合的判断</li>
+</ul>
+</li>
+<li>当变量不符合正态分布时，此处不采用极大似然估计进行缺失值填补。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>成对缺失值估算</p>
+</li>
+<li><p>回归估算统计：</p>
+<ul>
+<li>使用回归的方法来填补缺失值(随机选择的个案的残差将添加到每项估算中)【残差选项】</li>
+<li>从输出文档中读取结果为：<ul>
+<li>回归平均值</li>
+<li>回归协方差</li>
+<li>回归相关性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>我这里使用SPSS自带的缺失值检测，SPSS自动把上文中所提到的0的情况略过，认为其不算缺失值，故这里选择其他数据工具对为0的情况进行删除。【即将其标记为缺失值】，然后再进行缺失值处理。</p>
+<h4 id="最终方案选择"><a href="#最终方案选择" class="headerlink" title="最终方案选择"></a>最终方案选择</h4><ol>
+<li>如果数据的正态性检验的结果，即柯尔莫戈洛夫-斯米诺夫(V)测试和夏皮洛-威尔克的显著性均大于5%时，才用EM方法进行缺失值填充。</li>
+<li>让数据的正态性检验结果没有通过时，采用回归平均值进行填充。</li>
+</ol>
+<h3 id="探测与检验异常值"><a href="#探测与检验异常值" class="headerlink" title="探测与检验异常值"></a>探测与检验异常值</h3><h4 id="利用SPSS探测和检验异常值"><a href="#利用SPSS探测和检验异常值" class="headerlink" title="利用SPSS探测和检验异常值"></a>利用SPSS探测和检验异常值</h4><ul>
+<li><p>初步筛查：</p>
+<ul>
+<li><p>利用数据的描述统计信息，对均值/标准差和最大最小值进行描述统计的初步判断</p>
+</li>
+<li><p>利用SPSS的箱形图：</p>
+<ul>
+<li><p>直观的展示异常数据：离群值/异常值</p>
+</li>
+<li><p>原理：利用”无数概括法”：</p>
+<p>以50%左右两个百分位数(即四分位数25和75下方的加权平均值)</p>
+<p>Upper=$Q_3+(2.2\times (Q_3-Q_1))$</p>
+<p>Lower=$Q_1-(2.2\times (Q_3-Q_1))$</p>
+<p>变量值超过第75%分位点和25%分位点上变量之差的1.5倍(箱体上方)</p>
+<p>变量值小于第75%分位点和25%分位点上变量值之差1.5倍(箱体下方)</p>
+</li>
+<li><p>查看“极值”表格：大于Upper或小于Lower的即为Outlier，这也是箱线图中的相关异常值点的说明。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>异常值处理：</p>
+<p>因为现有数据一共只有86条记录，不算较大的数据量；常用的删除异常值和结尾或缩尾处理均无法使用。</p>
+<ul>
+<li>异常值处理方法：<ul>
+<li>1-数据变换：<ul>
+<li>即符合正态分布的异常值可以采用对数变换的方法。</li>
+<li>不符合正态分布的异常值可以将其视为缺失值，利用现有的统计信息应用统计模型进行填补。</li>
+</ul>
+</li>
+<li>2- 用描述统计信息进行替代。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4><h3 id="冗余数据清洗"><a href="#冗余数据清洗" class="headerlink" title="冗余数据清洗"></a>冗余数据清洗</h3><p>因为1999与2000年两年的数据市场规模各地区均为0，故将这两年的数据删除。</p>
+<h3 id="时间变量分割提取"><a href="#时间变量分割提取" class="headerlink" title="时间变量分割提取"></a>时间变量分割提取</h3><p>使用python的groupby/map_date方法【函数定义详见代码】对数据做分类分割提取，以1,4,7,10为季度的分割点。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#分割季度</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mapDate</span><span class="params">(dateColSer)</span>:</span></span><br><span class="line">    datelist=[]</span><br><span class="line">    tmp=dateColSer</span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> tmp:</span><br><span class="line">        datelist.append(data[:<span class="number">2</span>])</span><br><span class="line">    <span class="keyword">return</span> datelist</span><br><span class="line"><span class="comment">#分割年</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mapYear</span><span class="params">(dateColSer)</span>:</span></span><br><span class="line">    datelist=[]</span><br><span class="line">    tmp=dateColSer</span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> tmp:</span><br><span class="line">        <span class="keyword">if</span>(data[<span class="number">2</span>:]==<span class="string">'99'</span>):</span><br><span class="line">            datelist.append(<span class="string">'1999'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            datelist.append(<span class="string">'20'</span>+data[<span class="number">2</span>:])</span><br><span class="line">    <span class="keyword">return</span> datelist</span><br></pre></td></tr></table></figure>
 
+
+
+<h3 id="处理整体规模与单纯加总的偏差"><a href="#处理整体规模与单纯加总的偏差" class="headerlink" title="处理整体规模与单纯加总的偏差"></a>处理整体规模与单纯加总的偏差</h3><h4 id="对于整体和2G-3G-4G-5G加总数值之间的距离"><a href="#对于整体和2G-3G-4G-5G加总数值之间的距离" class="headerlink" title="对于整体和2G/3G/4G/5G加总数值之间的距离"></a>对于整体和2G/3G/4G/5G加总数值之间的距离</h4><h4 id="5G数据的提取"><a href="#5G数据的提取" class="headerlink" title="5G数据的提取"></a>5G数据的提取</h4><p>因为所给数据中没有明确对</p>
+<h2 id="利用spss进行时间序列的建模"><a href="#利用spss进行时间序列的建模" class="headerlink" title="利用spss进行时间序列的建模"></a>利用spss进行时间序列的建模</h2><h3 id="时间序列简介"><a href="#时间序列简介" class="headerlink" title="时间序列简介"></a>时间序列简介</h3><h4 id="横截面数据与时间序列数据"><a href="#横截面数据与时间序列数据" class="headerlink" title="横截面数据与时间序列数据"></a>横截面数据与时间序列数据</h4><h5 id="横截面数据"><a href="#横截面数据" class="headerlink" title="横截面数据"></a>横截面数据</h5><p>横截面数据（cross section）时和时间无关的不同对象的观测值组成的数据。</p>
+<h5 id="时间序列数据"><a href="#时间序列数据" class="headerlink" title="时间序列数据"></a>时间序列数据</h5><p>同一对象在不同时间的观测值形成的数据</p>
+<h6 id="最大特点"><a href="#最大特点" class="headerlink" title="最大特点"></a>最大特点</h6><p>观测值并不独立，即可以使用变量过去的观测值对同一变量的未来值进行预测。</p>
+<h3 id="变量的时间序列图"><a href="#变量的时间序列图" class="headerlink" title="变量的时间序列图"></a>变量的时间序列图</h3><p>采用年/季度的格式进行时间序列图的绘制，同时辅以python可视化进行时间序列的初步感知。</p>
+<h3 id="时间序列的常用模型"><a href="#时间序列的常用模型" class="headerlink" title="时间序列的常用模型"></a>时间序列的常用模型</h3><h4 id="指数平滑模型"><a href="#指数平滑模型" class="headerlink" title="指数平滑模型"></a>指数平滑模型</h4><h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>利用过去观测值的加权平均来预测未来的观测值【此过程被称为平滑】，且离现在越近的观测值越要给予月中的权。</p>
+<h3 id="模型拟合结果评价"><a href="#模型拟合结果评价" class="headerlink" title="模型拟合结果评价"></a>模型拟合结果评价</h3><h4 id="残差"><a href="#残差" class="headerlink" title="残差"></a>残差</h4><h3 id="R-2"><a href="#R-2" class="headerlink" title="$R^2$"></a>$R^2$</h3><h4 id="平稳-R-2"><a href="#平稳-R-2" class="headerlink" title="平稳$R^2$"></a>平稳$R^2$</h4><h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3>
       
 
       
@@ -929,90 +1141,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW6%202.1-2.2%E8%BF%9B%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语W4-5-PHP嵌入的原因" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/">专业英语W4/5 PHP嵌入的原因</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/" class="archive-article-date">
-  	<time datetime="2020-04-10T05:08:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Why do we embed PHP code in HTML? Why not put the code in a separate file, just as we do with C and Java? Please give your explanation.</strong><br><strong>(Reminder: be concise.)</strong></p>
-        
-          <a class="article-more-a" href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/">展开全文 >></a>
         </p>
       
 

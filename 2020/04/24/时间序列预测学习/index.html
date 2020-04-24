@@ -6,15 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Chixinning的博客</title>
+  <title>时间序列预测学习 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/page/4/index.html">
+  <meta name="description" content="基于2G，3G，4G的时间序列做5G的预测Outline预测方法： ​    SPSS的回归分析-&gt;拟合【曲线&#x2F;直线】 因子分析法&#x2F;BP神经网络等建立模型都暂不可行。[虚拟数据无法根据已有信息提取出因子] 分别预测2G、3G、4G和total，相见得5G. 时间序列分析  观察维度：  重要时间点：3G出现时间点与4G出现时间点 地区内：3G出现对2G的影响，4G出现对3G的影响。两者应用曲">
+<meta property="og:type" content="article">
+<meta property="og:title" content="时间序列预测学习">
+<meta property="og:url" content="http://yoursite.com/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="基于2G，3G，4G的时间序列做5G的预测Outline预测方法： ​    SPSS的回归分析-&gt;拟合【曲线&#x2F;直线】 因子分析法&#x2F;BP神经网络等建立模型都暂不可行。[虚拟数据无法根据已有信息提取出因子] 分别预测2G、3G、4G和total，相见得5G. 时间序列分析  观察维度：  重要时间点：3G出现时间点与4G出现时间点 地区内：3G出现对2G的影响，4G出现对3G的影响。两者应用曲">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsNHgmtb.jpg">
+<meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsPXTbwx.jpg">
+<meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsx6Kejq.jpg">
+<meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsDUqEs4.jpg">
+<meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpstp7ndQ.jpg">
+<meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsgPCYgL.jpg">
+<meta property="article:published_time" content="2020-04-24T05:44:40.000Z">
+<meta property="article:modified_time" content="2020-04-24T05:45:07.399Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="C++">
@@ -29,6 +37,7 @@
 <meta property="article:tag" content="Developer">
 <meta property="article:tag" content="DataScience">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsNHgmtb.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -168,443 +177,325 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-概率论W1 集合和概率模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-时间序列预测学习" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/">概率论W1 集合和概率模型</a>
+    <h1 class="article-title" itemprop="name">
+      时间序列预测学习
     </h1>
   
 
         
-        <a href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-03-11T00:23:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
+        <a href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2020-04-24T05:44:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="概率论L1"><a href="#概率论L1" class="headerlink" title="概率论L1"></a>概率论L1</h1><h2 id="三门问题"><a href="#三门问题" class="headerlink" title="三门问题"></a>三门问题</h2><p>你是选择相信直觉，还是相信数学？</p>
-<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>快排最差的情况</p>
-<p>快排性能的衡量：平均复杂度</p>
-<h2 id="概率在数据科学的应用"><a href="#概率在数据科学的应用" class="headerlink" title="概率在数据科学的应用"></a>概率在数据科学的应用</h2><p>算法分析</p>
-<p>大规模数据处理：随机算法的分析。</p>
-        
-          <a class="article-more-a" href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">概率论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统W1：引节" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/">操作系统W1：引节和实验环境的配置</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/" class="archive-article-date">
-  	<time datetime="2020-03-10T03:48:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="OS基本概念引入"><a href="#OS基本概念引入" class="headerlink" title="OS基本概念引入"></a>OS基本概念引入</h1><h2 id="course-overview"><a href="#course-overview" class="headerlink" title="course overview"></a>course overview</h2><blockquote>
-<p>本课程着重讲述操作系统的基本原</p>
-<p>理和各操作系统的共性</p>
+        <h1 id="基于2G，3G，4G的时间序列做5G的预测"><a href="#基于2G，3G，4G的时间序列做5G的预测" class="headerlink" title="基于2G，3G，4G的时间序列做5G的预测"></a>基于2G，3G，4G的时间序列做5G的预测</h1><h1 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h1><h3 id="预测方法："><a href="#预测方法：" class="headerlink" title="预测方法："></a>预测方法：</h3><ul>
+<li>​    SPSS的回归分析-&gt;拟合【曲线/直线】</li>
+<li>因子分析法/BP神经网络等建立模型都暂不可行。[虚拟数据无法根据已有信息提取出因子]</li>
+<li>分别预测2G、3G、4G和total，相见得5G.</li>
+<li>时间序列分析</li>
+</ul>
+<p>观察维度：</p>
+<ul>
+<li>重要时间点：3G出现时间点与4G出现时间点</li>
+<li>地区内：3G出现对2G的影响，4G出现对3G的影响。两者应用曲线拟合。</li>
+<li>地区间：地区间2G的互相影响，地区间3G的互相影响，地区间4G的互相影响。</li>
+</ul>
+<h3 id="预测目标："><a href="#预测目标：" class="headerlink" title="预测目标："></a>预测目标：</h3><p>Pre：根据基站设备的历史数据：</p>
+<ul>
+<li>​    处理数据</li>
+<li>​     构建模型<ul>
+<li>分季度预测</li>
+<li>各区域5G市场规模、各区域无线<strong>整体市场</strong>规模。</li>
+</ul>
+</li>
+<li>市场规模v.s.市场份额</li>
+<li>存量/增量</li>
+</ul>
+<h2 id="本文的特殊符号记录-建模过程演示说明"><a href="#本文的特殊符号记录-建模过程演示说明" class="headerlink" title="本文的特殊符号记录/建模过程演示说明"></a>本文的特殊符号记录/建模过程演示说明</h2><h3 id="地区别称："><a href="#地区别称：" class="headerlink" title="地区别称："></a>地区别称：</h3><p>北美地区:NorAmer</p>
+<p>地区总体规模:District_total</p>
+<p>亚太地区：AisaPac</p>
+<h3 id="数据表格结构调整说明"><a href="#数据表格结构调整说明" class="headerlink" title="数据表格结构调整说明"></a>数据表格结构调整说明</h3><p>整体规模=2G+3G+4G+5G，故在各地区之间新增加5G列，同时设置5G/total的百分比列，以检查数据的合理性。</p>
+<p>显然，在较早时间段出现的5G数据，均为数据异常情况，转为异常值处理。</p>
+<h3 id="建模过程演示和说明文档"><a href="#建模过程演示和说明文档" class="headerlink" title="建模过程演示和说明文档"></a>建模过程演示和说明文档</h3><p>因为本次建模采用”时间序列”的分析方法，即意指从时间序列来看，这样对于无论是变量2G NorAmer还是变量2G AisaPac，总计变量间的相互影响的体现均以时间序列的最后结果变化所包括。</p>
+<p>所以，在<strong>观察维度</strong>条目中所提到的地区间影响和地区内2G/3G/4G间相互影响均被(Date,Variable)所描述。</p>
+<p>故以一个维度做示例进行建模。</p>
+<p>当然，对于不同的变量，其数据预处理时采用的异常值/缺失值处理方法会根据变量实际情况有所不同，但是整体的建模方法相同。</p>
+<h2 id="利用python可视化的数据分析初步感知"><a href="#利用python可视化的数据分析初步感知" class="headerlink" title="利用python可视化的数据分析初步感知"></a>利用python可视化的数据分析初步感知</h2><h2 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h2><h3 id="处理缺失值"><a href="#处理缺失值" class="headerlink" title="处理缺失值"></a>处理缺失值</h3><p>本数据的缺失值均为规模为0时，为了后续处理方便以补0操作。</p>
+<p>对于规数据，对于记录为0数据进行缺失值处理：</p>
+<h4 id="如何判断数据是否为缺失值"><a href="#如何判断数据是否为缺失值" class="headerlink" title="如何判断数据是否为缺失值:"></a>如何判断数据是否为缺失值:</h4><p>现在根据历史现实来看，对于已有的2G/3G/4G，各地区基站建设规模若为0，则为缺失值。</p>
+<ul>
+<li>2G数据，根据现实来看不能为0.</li>
+<li>3G数据，因为数据均为实点值，以2008年为例，各地区数据出现第一个不为0时，后续数据若有为0，均判定为缺失值。</li>
+</ul>
+<h4 id="常见缺失值处理方法："><a href="#常见缺失值处理方法：" class="headerlink" title="常见缺失值处理方法："></a>常见缺失值处理方法：</h4><ul>
+<li><p>​    直接使用含有缺失值的特征</p>
+<p>​    因为总规模为0时，对于时间序列的处理会造成影响。</p>
+</li>
+<li><p>​    删除含有缺失值的特征</p>
+<p>为了保证时间序列的连贯性，此处采用需要对缺失值进行填补，故不可采用这个方法。</p>
+</li>
+<li><p>​    <strong>缺失值填补</strong></p>
+<ul>
+<li><p>均值插补：因为整体数据规模呈上升趋势，故不能采用均值插补或与之类似的众数插补。</p>
+</li>
+<li><p>多重插补[使用数据分析工具SPSS进行多重插补]</p>
+</li>
+<li><p>极大似然估计[使用数据分析工具SPSS进行多重插补]:</p>
+<ul>
+<li><p>原理：</p>
+<p>在缺失类型为随机缺失的条件下，假设模型对于完整的样本是正确的，那么通过观测数据的边际分布可以对未知参数进行<strong>极大似然估计</strong>(or expectation maximization)。</p>
+<p>对于极大似然的参数估计在实际中常采用EM方法。</p>
+</li>
+<li><p>在利用EM方法前，首先要对数据进行多元正态性检验：</p>
+<ul>
+<li>在一般的回归分析中，进行多元正态检验时，当样本量较大且单个变量为正态性时，多元正态检验即可完成。</li>
+<li>这里的单变量的正态检验即可以使用kstest的方法，[在python 库函数中即可提供]，可以采用SPSS 直接进入正态性检验。</li>
+<li>正态性检验是t检验等统计分析的前提。<ul>
+<li>P-P图与Q-Q图拟合的判断</li>
+</ul>
+</li>
+<li>当变量不符合正态分布时，此处不采用极大似然估计进行缺失值填补。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>成对缺失值估算</p>
+</li>
+<li><p>回归估算统计：</p>
+<ul>
+<li>使用回归的方法来填补缺失值(随机选择的个案的残差将添加到每项估算中)【残差选项】</li>
+<li>从输出文档中读取结果为：<ul>
+<li>回归平均值</li>
+<li>回归协方差</li>
+<li>回归相关性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>我这里使用SPSS自带的缺失值检测，SPSS自动把上文中所提到的0的情况略过，认为其不算缺失值，故这里选择其他数据工具对为0的情况进行删除。【即将其标记为缺失值】，然后再进行缺失值处理。</p>
+<h4 id="最终方案选择"><a href="#最终方案选择" class="headerlink" title="最终方案选择"></a>最终方案选择</h4><ol>
+<li>如果数据的正态性检验的结果，即柯尔莫戈洛夫-斯米诺夫(V)测试和夏皮洛-威尔克的显著性均大于5%时，才用EM方法进行缺失值填充。</li>
+<li>让数据的正态性检验结果没有通过时，采用回归平均值进行填充。</li>
+</ol>
+<h3 id="探测与检验异常值"><a href="#探测与检验异常值" class="headerlink" title="探测与检验异常值"></a>探测与检验异常值</h3><h4 id="利用SPSS探测和检验异常值"><a href="#利用SPSS探测和检验异常值" class="headerlink" title="利用SPSS探测和检验异常值"></a>利用SPSS探测和检验异常值</h4><ul>
+<li><p>初步筛查：</p>
+<ul>
+<li><p>利用数据的描述统计信息，对均值/标准差和最大最小值进行描述统计的初步判断</p>
+</li>
+<li><p>利用SPSS的箱形图：</p>
+<ul>
+<li><p>直观的展示异常数据：离群值/异常值</p>
+</li>
+<li><p>原理：利用”无数概括法”：</p>
+<p>以50%左右两个百分位数(即四分位数25和75下方的加权平均值)</p>
+<p>Upper=$Q_3+(2.2\times (Q_3-Q_1))$</p>
+<p>Lower=$Q_1-(2.2\times (Q_3-Q_1))$</p>
+<p>变量值超过第75%分位点和25%分位点上变量之差的1.5倍(箱体上方)</p>
+<p>变量值小于第75%分位点和25%分位点上变量值之差1.5倍(箱体下方)</p>
+</li>
+<li><p>查看“极值”表格：大于Upper或小于Lower的即为Outlier，这也是箱线图中的相关异常值点的说明。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>异常值处理：</p>
+<p>因为现有数据一共只有86条记录，不算较大的数据量；常用的删除异常值和结尾或缩尾处理均无法使用。</p>
+<ul>
+<li><p>异常值处理方法：</p>
+<ul>
+<li><p>1-数据变换：</p>
+<ul>
+<li>即符合正态分布的异常值可以采用对数变换的方法。</li>
+<li>不符合正态分布的异常值可以将其视为缺失值，利用现有的统计信息应用统计模型进行填补。</li>
+</ul>
+</li>
+<li><p>2- 用描述统计信息进行替代。</p>
+<p>这里将异常数据，假设为数据记录等不可测原因使数据缺失，故这里将异常数据删除为缺失值，转为缺失值处理。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="冗余数据清洗"><a href="#冗余数据清洗" class="headerlink" title="冗余数据清洗"></a>冗余数据清洗</h3><p>因为1999与2000年两年的数据市场规模各地区均为0[缺失原因应该为历史还未出现历史]，故将这两年的数据删除。</p>
+<p>如果不清洗，两年的0权重会对整体建模走向有较大影响。</p>
+<blockquote>
+<p>这里以最早的2G为起始建模时间点。</p>
 </blockquote>
-<h3 id="操作系统的功能"><a href="#操作系统的功能" class="headerlink" title="操作系统的功能"></a>操作系统的功能</h3><ul>
-<li>管理计算机软硬件资源</li>
-<li>拓展计算机的功能</li>
-<li>向用户提供服务</li>
+<h3 id="时间变量分割提取"><a href="#时间变量分割提取" class="headerlink" title="时间变量分割提取"></a>时间变量分割提取</h3><p>使用python的groupby/map_date方法【函数定义详见代码】对数据做分类分割提取，以1,4,7,10为季度的分割点。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#分割季度</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mapDate</span><span class="params">(dateColSer)</span>:</span></span><br><span class="line">    datelist=[]</span><br><span class="line">    tmp=dateColSer</span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> tmp:</span><br><span class="line">        datelist.append(data[:<span class="number">2</span>])</span><br><span class="line">    <span class="keyword">return</span> datelist</span><br><span class="line"><span class="comment">#分割年</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mapYear</span><span class="params">(dateColSer)</span>:</span></span><br><span class="line">    datelist=[]</span><br><span class="line">    tmp=dateColSer</span><br><span class="line">    <span class="keyword">for</span> data <span class="keyword">in</span> tmp:</span><br><span class="line">        <span class="keyword">if</span>(data[<span class="number">2</span>:]==<span class="string">'99'</span>):</span><br><span class="line">            datelist.append(<span class="string">'1999'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            datelist.append(<span class="string">'20'</span>+data[<span class="number">2</span>:])</span><br><span class="line">    <span class="keyword">return</span> datelist</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="处理整体规模与单纯加总的偏差"><a href="#处理整体规模与单纯加总的偏差" class="headerlink" title="处理整体规模与单纯加总的偏差"></a>处理整体规模与单纯加总的偏差</h3><h4 id="对于整体和2G-3G-4G-5G加总数值之间的距离"><a href="#对于整体和2G-3G-4G-5G加总数值之间的距离" class="headerlink" title="对于整体和2G/3G/4G/5G加总数值之间的距离"></a>对于整体和2G/3G/4G/5G加总数值之间的距离</h4><h4 id="5G数据的提取"><a href="#5G数据的提取" class="headerlink" title="5G数据的提取"></a>5G数据的提取</h4><p>因为所给数据中没有明确对</p>
+<h2 id="利用spss进行时间序列的建模"><a href="#利用spss进行时间序列的建模" class="headerlink" title="利用spss进行时间序列的建模"></a>利用spss进行时间序列的建模</h2><h3 id="时间序列简介"><a href="#时间序列简介" class="headerlink" title="时间序列简介"></a>时间序列简介</h3><h4 id="横截面数据与时间序列数据"><a href="#横截面数据与时间序列数据" class="headerlink" title="横截面数据与时间序列数据"></a>横截面数据与时间序列数据</h4><h5 id="横截面数据"><a href="#横截面数据" class="headerlink" title="横截面数据"></a>横截面数据</h5><p>横截面数据（cross section）时和时间无关的不同对象的观测值组成的数据。</p>
+<h5 id="时间序列数据"><a href="#时间序列数据" class="headerlink" title="时间序列数据"></a>时间序列数据</h5><p>同一对象在不同时间的观测值形成的数据</p>
+<h6 id="最大特点"><a href="#最大特点" class="headerlink" title="最大特点"></a>最大特点</h6><p>观测值并不独立，即可以使用变量过去的观测值对同一变量的未来值进行预测。</p>
+<h6 id="成分的分离"><a href="#成分的分离" class="headerlink" title="成分的分离"></a>成分的分离</h6><ul>
+<li>trend 趋势</li>
+<li>周期性变化的季节成分(seasonal component)</li>
+<li>无法用趋势和季节模式解释的随机干扰</li>
 </ul>
-<h3 id="操作系统原理"><a href="#操作系统原理" class="headerlink" title="操作系统原理"></a>操作系统原理</h3><ul>
-<li><p>进程管理</p>
-</li>
-<li><p>I/O系统</p>
-</li>
-<li><p>存储管理（内存管理）</p>
-</li>
-<li><p>文件系统（磁盘上的数据管理）</p>
-<p>注意文件系统和I/O系统的相关性</p>
-</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语W1 作业 http" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20%E4%BD%9C%E4%B8%9A%20http/">专业英语W1作业 http</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20%E4%BD%9C%E4%B8%9A%20http/" class="archive-article-date">
-  	<time datetime="2020-03-10T01:00:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="专业英语W1"><a href="#专业英语W1" class="headerlink" title="专业英语W1"></a>专业英语W1</h1><p><strong>Building Web Application in PHP</strong></p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Please describe in your own words what will happen to your brower and the web server when you click a link on a web page. Please provide as many details as possible, for instance, what HTTP message will be transmitted from the browser to the server.</p>
-<p>Your anwser must be in English. </p>
-        
-          <a class="article-more-a" href="/2020/03/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20%E4%BD%9C%E4%B8%9A%20http/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20%E4%BD%9C%E4%B8%9A%20http/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Crash-Course-CS-E29-互联网" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/09/Crash-Course-CS-E29-%E4%BA%92%E8%81%94%E7%BD%91/">Crash Course CS E29 互联网</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/09/Crash-Course-CS-E29-%E4%BA%92%E8%81%94%E7%BD%91/" class="archive-article-date">
-  	<time datetime="2020-03-09T13:24:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Crash-Course-CS-E29-互联网"><a href="#Crash-Course-CS-E29-互联网" class="headerlink" title="Crash-Course-CS-E29-互联网"></a>Crash-Course-CS-E29-互联网</h1><p>今天是新学期的第一天，接受了计算机网络相关的狂轰滥炸。说实话，一直都不太理解计算机网络的相关概念。只能对照着过去的笔记把Crash 再看一遍。</p>
+<h3 id="变量的时间序列图"><a href="#变量的时间序列图" class="headerlink" title="变量的时间序列图"></a>变量的时间序列图</h3><p>采用年/季度的格式进行时间序列图的绘制，同时辅以python可视化进行时间序列的初步感知。</p>
+<h3 id="时间序列的常用模型"><a href="#时间序列的常用模型" class="headerlink" title="时间序列的常用模型"></a>时间序列的常用模型</h3><h4 id="移动平均：指数平滑模型"><a href="#移动平均：指数平滑模型" class="headerlink" title="移动平均：指数平滑模型"></a>移动平均：指数平滑模型</h4><h5 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h5><p>利用过去观测值的加权平均来预测未来的观测值【此过程被称为平滑】，且离现在越近的观测值越要给予月中的权。</p>
+<p>若记时刻$t$的观测值为$X_t$,时刻$t$的指数平滑记为$Y_t$</p>
+<p>指数平滑的数学模型为:</p>
+<p>$Y_t=\sum_{i=1}^t\alpha( 1-\alpha）^{t-i}X_i$，其中$\alpha$为权重系数。</p>
+<h5 id="成分分解"><a href="#成分分解" class="headerlink" title="成分分解"></a>成分分解</h5><p>变量的成分分解可以利用SPSS对时间序列做成分分解的结果:</p>
 <ul>
-<li>IP Internet Protocols</li>
-<li>UDP: User data protocols</li>
-<li>Checksum 校验和</li>
-<li>TCP/IP</li>
-<li>DNS domain name system</li>
-<li>OSI  </li>
+<li>误差：原序列的随机扰动$ER_t$</li>
+<li>季节调整后的序列$SA_t$</li>
+<li>季节因素$SF_t$</li>
+<li>去掉季节及随机扰动后的趋势及循环因素(trend-cycle series)$TC_t$</li>
 </ul>
-        
-          <a class="article-more-a" href="/2020/03/09/Crash-Course-CS-E29-%E4%BA%92%E8%81%94%E7%BD%91/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Crash Course CS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/09/Crash-Course-CS-E29-%E4%BA%92%E8%81%94%E7%BD%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Crash-Course-CS-E28-计算机网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/08/Crash-Course-CS-E28-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">Crash Course CS E28:计算机网络</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/08/Crash-Course-CS-E28-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="archive-article-date">
-  	<time datetime="2020-03-08T14:00:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Crash-Course-CS-E28-计算机网络"><a href="#Crash-Course-CS-E28-计算机网络" class="headerlink" title="Crash-Course-CS-E28-计算机网络"></a>Crash-Course-CS-E28-计算机网络</h1><p>明天正式开课的我来为计算机网络临时抱抱佛脚</p>
-<p>本文涉及如下概念的理解：</p>
+<p>序列分解以后与原有时间序列有 <strong>和差</strong>关系：</p>
 <ul>
-<li>局域网：Local Area Networks -LAN</li>
-<li>媒体访问控制</li>
-<li>载波 侦听 多路 地址 访问</li>
-<li>指数退避：指数级增长等待时间的方法” transmission protocol”</li>
-<li>冲突域</li>
-<li>电路交换</li>
-<li>报文交换</li>
-<li>分组交换</li>
+<li>$X_t=SF_t+SA_t$</li>
+<li>$X_t=SF_t+TC_t+ER_t$</li>
 </ul>
-        
-          <a class="article-more-a" href="/2020/03/08/Crash-Course-CS-E28-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/#more">more >></a>
-        
+<h5 id="带季节趋势的指数平滑"><a href="#带季节趋势的指数平滑" class="headerlink" title="带季节趋势的指数平滑"></a>带季节趋势的指数平滑</h5><p>即先计算扰动序列的指数平滑，再加上预测的季节和趋势成分作为最终的指数平滑数据。</p>
+<p>这可以在季节性分析中选择利用<strong>温斯特加性</strong>。</p>
+<h4 id="拟合法：ARIMA模型"><a href="#拟合法：ARIMA模型" class="headerlink" title="拟合法：ARIMA模型"></a>拟合法：ARIMA模型</h4><h5 id="与指数平滑的比较"><a href="#与指数平滑的比较" class="headerlink" title="与指数平滑的比较"></a>与指数平滑的比较</h5><p>拥有<strong>移动平均</strong>本质的指数平滑，能够提取确定性因素，而对于非确定性因素的提取，使用更多的是ARIMA模型。</p>
+<h2 id="模型拟合结果评价"><a href="#模型拟合结果评价" class="headerlink" title="模型拟合结果评价"></a>模型拟合结果评价</h2><h4 id="残差"><a href="#残差" class="headerlink" title="残差"></a>残差</h4><h3 id="R-2"><a href="#R-2" class="headerlink" title="$R^2$"></a>$R^2$</h3><p>当$R^2&gt;0.4$时，默认时间序列的拟合结果较好</p>
+<p>对于指数平滑模型，关注R^2$作为模型拟合度的评价。</p>
+<h4 id="平稳-R-2"><a href="#平稳-R-2" class="headerlink" title="平稳$R^2$"></a>平稳$R^2$</h4><p>对于ARIMA模型，关注平稳$R^2$作为模型拟合度的评价。</p>
+<h3 id="显著性"><a href="#显著性" class="headerlink" title="显著性"></a>显著性</h3><p>可通过ACF/偏ACF判断数据的显著性。</p>
+<p><img src="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsNHgmtb.jpg" alt="img"></p>
+<h3 id="应用时间预测的最终总结"><a href="#应用时间预测的最终总结" class="headerlink" title="应用时间预测的最终总结"></a>应用时间预测的最终总结</h3><p>无论使用何种模型进行预测，随着预测步长的增加，预测误差也会随之增大。</p>
+<h3 id="纯粹时间序列的基本概念"><a href="#纯粹时间序列的基本概念" class="headerlink" title="纯粹时间序列的基本概念"></a>纯粹时间序列的基本概念</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>不带有季节成分和 <strong>确定性趋势</strong>的时间序列或扰动序列，对于每一个固定的时间t，不同的$X_t$之间还存在着协方差和相关系数。</p>
+<h5 id="X-t-的自协方差函数"><a href="#X-t-的自协方差函数" class="headerlink" title="$X_t$的自协方差函数"></a>$X_t$的自协方差函数</h5><h5 id="X-t-的自相关函数"><a href="#X-t-的自相关函数" class="headerlink" title="$X_t$的自相关函数"></a>$X_t$的自相关函数</h5><h4 id="时间序列的平稳性"><a href="#时间序列的平稳性" class="headerlink" title="时间序列的平稳性"></a>时间序列的平稳性</h4><ul>
+<li>$X_t$的均值和方差为常数</li>
+<li>$X_t$的相关性也关于时间平移不变。</li>
+</ul>
+<blockquote>
+<p>通过序列图对时间序列的平稳性进行初步感知</p>
+</blockquote>
+<h2 id="最终建模结果评估"><a href="#最终建模结果评估" class="headerlink" title="最终建模结果评估"></a>最终建模结果评估</h2><ol>
+<li><p>建模结果调整</p>
+<p>将某些不符合实际意义的值，如出现负值的情况，在波动的情况下进行调整，更换建模方法和策略最终得出统计结果。</p>
+</li>
+<li><p>建模结果测试</p>
+<p>这里选择选取从2001年起15年(2015年Q4）的数据作为训练数据，2016Q1-2019Q4位测试数据，对所选取的模型进行评估。</p>
+</li>
+</ol>
+<h2 id="最终结果展示"><a href="#最终结果展示" class="headerlink" title="最终结果展示"></a>最终结果展示</h2><p><img src="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsPXTbwx.jpg" alt="img"></p>
+<p><img src="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsx6Kejq.jpg" alt="img"></p>
+<p><img src="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsDUqEs4.jpg" alt="img"></p>
+<p><img src="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpstp7ndQ.jpg" alt="img"></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a><img src="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsgPCYgL.jpg" alt="img"></h3>
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Crash Course CS</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/08/Crash-Course-CS-E28-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">展开全文 >></a>
-        </p>
-      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
 
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">专业英语W7:functions</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -624,407 +515,14 @@
 
 
 
-
-  
-    <article id="post-yilia主题的配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/08/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE/">yilia主题的配置</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/08/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-03-08T02:37:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h6 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h6><p>​    寒假兜兜转转的过去，也陆陆续续地逼自己写技术博客了。</p>
-<p>​    突然发现每次hexo d的时候就会把我远程的CNAME冲掉？我？</p>
-<p>​    然后ererzi.website就又404了Orz!</p>
-<p>​    然后又万能的百度，找到了解决方法，原来放在 <strong>source</strong>文件下的CNAME文件就不会被Hexo deploy掉了!</p>
-<p>​    <a href="https://blog.csdn.net/lewky_liu/article/details/85109524" target="_blank" rel="noopener">Hexo - CNAME文件在每次部署后就没了</a></p>
-<p>​    我按照这个solution<strong>在本地的<code>source\</code>目录下面新建了<code>CNAME</code>文件以后</strong>，发现deploy以后 <strong><code>CNAME</code></strong>并没有出现在我远程的仓库之中。</p>
-<p>​    我初步的猜测是我对deploy的部署功能理解的不是很深刻。</p>
-<p>​    但是在这个[将CNAME放置在public\文件夹下面就能很好的解决问题了](hexo博客每次deploy以后都要在设置里重新设置域名不然就会404怎么办? - Sailim的回答 - 知乎 <a href="https://www.zhihu.com/question/334170671/answer/745845841" target="_blank" rel="noopener">https://www.zhihu.com/question/334170671/answer/745845841</a>)</p>
-<p>​    果然科学技术是第一生产力，要不是博客写的稍微多了点自己乱，也不会逼自己去配置整理了Orz！</p>
-        
-          <a class="article-more-a" href="/2020/03/08/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/08/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-灵光一现的备忘" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/%E7%81%B5%E5%85%89%E4%B8%80%E7%8E%B0%E7%9A%84%E5%A4%87%E5%BF%98/">灵光一现的备忘</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/%E7%81%B5%E5%85%89%E4%B8%80%E7%8E%B0%E7%9A%84%E5%A4%87%E5%BF%98/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:13:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​    这个作为我平时的备忘使用，比如某些不是热别清楚的概念的灵光一现的把握，或者是一些专业的零散要素。</p>
-<p>​    计算机作为一门语言，我可以把它想象成去学英语。<br>​    <strong>编程学习，远不到拼天赋的层面。</strong><br>​    看了crash course study skills的 train attention muscle，不妨学以致用。</p>
-        
-          <a class="article-more-a" href="/2020/03/06/%E7%81%B5%E5%85%89%E4%B8%80%E7%8E%B0%E7%9A%84%E5%A4%87%E5%BF%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/%E7%81%B5%E5%85%89%E4%B8%80%E7%8E%B0%E7%9A%84%E5%A4%87%E5%BF%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Missing-L1-Shell" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/05/Missing-L1-Shell/">Missing-L1-Shell</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/05/Missing-L1-Shell/" class="archive-article-date">
-  	<time datetime="2020-03-05T06:05:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Lecture1-The-shell"><a href="#Lecture1-The-shell" class="headerlink" title="Lecture1: The shell"></a>Lecture1: The shell</h1><p>​    所有不加exercise的<strong>盲目</strong>啃理论都是耍流氓！</p>
-        
-          <a class="article-more-a" href="/2020/03/05/Missing-L1-Shell/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Missing Semester</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/05/Missing-L1-Shell/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-个人学习路线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/05/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">个人学习路线</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/05/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="archive-article-date">
-  	<time datetime="2020-03-05T03:13:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="个人学习路线规划"><a href="#个人学习路线规划" class="headerlink" title="个人学习路线规划"></a>个人学习路线规划</h1><p>写在前面</p>
-<hr>
-<p>我是不喜欢python，还是因为我考的太差了所以不喜欢python？</p>
-        
-          <a class="article-more-a" href="/2020/03/05/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/05/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-学习路线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/04/C-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">C++学习路线</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/04/C-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="archive-article-date">
-  	<time datetime="2020-03-04T14:58:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>语言学习和编程能力有gap: 基础四大件和企业级的实践</strong></p>
-        
-          <a class="article-more-a" href="/2020/03/04/C-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/04/C-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1047,8 +545,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

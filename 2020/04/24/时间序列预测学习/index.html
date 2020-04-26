@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>时间序列预测学习 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基于2G，3G，4G的时间序列做5G的预测Outline预测方法： ​    SPSS的回归分析-&gt;拟合【曲线&#x2F;直线】 因子分析法&#x2F;BP神经网络等建立模型都暂不可行。[虚拟数据无法根据已有信息提取出因子] 分别预测2G、3G、4G和total，相见得5G. 时间序列分析  观察维度：  重要时间点：3G出现时间点与4G出现时间点 地区内：3G出现对2G的影响，4G出现对3G的影响。两者应用曲">
+  <meta name="description" content="基于2G，3G，4G的时间序列做5G的预测 华为财务精英挑战赛初赛商赛赛题 为保密性不提供数据和具体描述 仅是个人主观答题">
 <meta property="og:type" content="article">
 <meta property="og:title" content="时间序列预测学习">
 <meta property="og:url" content="http://yoursite.com/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="基于2G，3G，4G的时间序列做5G的预测Outline预测方法： ​    SPSS的回归分析-&gt;拟合【曲线&#x2F;直线】 因子分析法&#x2F;BP神经网络等建立模型都暂不可行。[虚拟数据无法根据已有信息提取出因子] 分别预测2G、3G、4G和total，相见得5G. 时间序列分析  观察维度：  重要时间点：3G出现时间点与4G出现时间点 地区内：3G出现对2G的影响，4G出现对3G的影响。两者应用曲">
+<meta property="og:description" content="基于2G，3G，4G的时间序列做5G的预测 华为财务精英挑战赛初赛商赛赛题 为保密性不提供数据和具体描述 仅是个人主观答题">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsNHgmtb.jpg">
 <meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsPXTbwx.jpg">
@@ -22,7 +22,7 @@
 <meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpstp7ndQ.jpg">
 <meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsgPCYgL.jpg">
 <meta property="article:published_time" content="2020-04-24T05:44:40.000Z">
-<meta property="article:modified_time" content="2020-04-24T05:47:49.207Z">
+<meta property="article:modified_time" content="2020-04-26T05:15:44.826Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="DaSE">
@@ -187,7 +187,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="基于2G，3G，4G的时间序列做5G的预测"><a href="#基于2G，3G，4G的时间序列做5G的预测" class="headerlink" title="基于2G，3G，4G的时间序列做5G的预测"></a>基于2G，3G，4G的时间序列做5G的预测</h1><h1 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h1><h3 id="预测方法："><a href="#预测方法：" class="headerlink" title="预测方法："></a>预测方法：</h3><ul>
+        <h1 id="基于2G，3G，4G的时间序列做5G的预测"><a href="#基于2G，3G，4G的时间序列做5G的预测" class="headerlink" title="基于2G，3G，4G的时间序列做5G的预测"></a>基于2G，3G，4G的时间序列做5G的预测</h1><blockquote>
+<p>华为财务精英挑战赛初赛商赛赛题</p>
+<p>为保密性不提供数据和具体描述</p>
+<p>仅是个人主观答题</p>
+</blockquote>
+<a id="more"></a>
+
+<h1 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h1><h3 id="预测方法："><a href="#预测方法：" class="headerlink" title="预测方法："></a>预测方法：</h3><ul>
 <li>​    SPSS的回归分析-&gt;拟合【曲线/直线】</li>
 <li>因子分析法/BP神经网络等建立模型都暂不可行。[虚拟数据无法根据已有信息提取出因子]</li>
 <li>分别预测2G、3G、4G和total，相见得5G.</li>
@@ -210,7 +217,7 @@
 <li>市场规模v.s.市场份额</li>
 <li>存量/增量</li>
 </ul>
-<a id="more"></a>
+<!--more-->
 
 <h2 id="本文的特殊符号记录-建模过程演示说明"><a href="#本文的特殊符号记录-建模过程演示说明" class="headerlink" title="本文的特殊符号记录/建模过程演示说明"></a>本文的特殊符号记录/建模过程演示说明</h2><h3 id="地区别称："><a href="#地区别称：" class="headerlink" title="地区别称："></a>地区别称：</h3><p>北美地区:NorAmer</p>
 <p>地区总体规模:District_total</p>

@@ -6,28 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 大二下 | Chixinning的博客</title>
+  <title>操作系统 W9 进程概述与进程实现 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/tags/%E5%A4%A7%E4%BA%8C%E4%B8%8B/page/3/index.html">
+  <meta name="description" content="操作系统 W9 进程概述与进程实现main初始化流程(main.c) .s文件与.c文件   初始化中断控制器 初始化进程表与特权控指表 初始化boot image中的进程 设置IDLE为第一个运行的进程 显示欢迎信息 调用mpx386.s文件中的_restart函数开始进程调度(上下文切换)  硬件中断处理 通过CPU INT管脚通知CPU发生了中断 CPU发出INTA信号   硬件中断 硬件产">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统 W9 进程概述与进程实现">
+<meta property="og:url" content="http://yoursite.com/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="操作系统 W9 进程概述与进程实现main初始化流程(main.c) .s文件与.c文件   初始化中断控制器 初始化进程表与特权控指表 初始化boot image中的进程 设置IDLE为第一个运行的进程 显示欢迎信息 调用mpx386.s文件中的_restart函数开始进程调度(上下文切换)  硬件中断处理 通过CPU INT管脚通知CPU发生了中断 CPU发出INTA信号   硬件中断 硬件产">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-27T06:11:03.000Z">
+<meta property="article:modified_time" content="2020-04-27T07:14:46.597Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="大二下">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
@@ -168,454 +161,115 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Minix3 源码分析" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      操作系统 W9 进程概述与进程实现
+    </h1>
+  
+
+        
+        <a href="/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2020-04-27T06:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="操作系统-W9-进程概述与进程实现"><a href="#操作系统-W9-进程概述与进程实现" class="headerlink" title="操作系统 W9 进程概述与进程实现"></a>操作系统 W9 进程概述与进程实现</h1><h2 id="main初始化流程-main-c"><a href="#main初始化流程-main-c" class="headerlink" title="main初始化流程(main.c)"></a>main初始化流程(main.c)</h2><blockquote>
+<p>.s文件与.c文件</p>
+</blockquote>
+<ul>
+<li>初始化中断控制器</li>
+<li>初始化进程表与特权控指表</li>
+<li>初始化boot image中的进程</li>
+<li>设置IDLE为第一个运行的进程</li>
+<li>显示欢迎信息</li>
+<li>调用mpx386.s文件中的_restart函数开始进程调度(上下文切换)</li>
+</ul>
+<h2 id="硬件中断处理"><a href="#硬件中断处理" class="headerlink" title="硬件中断处理"></a>硬件中断处理</h2><ul>
+<li>通过CPU INT管脚通知CPU发生了中断</li>
+<li>CPU发出INTA信号</li>
+</ul>
+<blockquote>
+<p>硬件中断</p>
+<p>硬件产生中断信号</p>
+<p>通过中断控制器，决定给CPU发送发送何数值，给CPU发送相应的中断服务历程。</p>
+</blockquote>
+<ul>
+<li>中断控制器将数据放在系统数据总线上并通知处理器应执行哪个服务历程</li>
+</ul>
+<h3 id="软件中断"><a href="#软件中断" class="headerlink" title="软件中断"></a>软件中断</h3><p>执行汇编指令</p>
+<h3 id="中断处理过程"><a href="#中断处理过程" class="headerlink" title="中断处理过程"></a>中断处理过程</h3><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><ol>
+<li>硬件发送中断信号</li>
+<li>中断控制器<ol>
+<li>打断CPU</li>
+<li>send digital identification of the interrupting device</li>
+</ol>
+</li>
+<li>Kernel:<ol>
+<li>保存寄存器</li>
+<li>Send notification message to driver</li>
+<li>Restart a process</li>
+</ol>
+</li>
+</ol>
+<h4 id="系统调用（软件"><a href="#系统调用（软件" class="headerlink" title="系统调用（软件)"></a>系统调用（软件)</h4><ol>
+<li>Caller<ol>
+<li>将相应消息保存到CPU</li>
+<li>execute software interrupt instruction。</li>
+</ol>
+</li>
+<li>Kernel 同</li>
+</ol>
+<h3 id="restart"><a href="#restart" class="headerlink" title="_restart"></a>_restart</h3><p>Cold boot-&gt;restart</p>
+<h2 id="进程间通讯"><a href="#进程间通讯" class="headerlink" title="进程间通讯"></a>进程间通讯</h2><p>拷贝：从内核的物理拷贝(跨逻辑地址空间拷贝)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B：Send(A,&amp;m);</span><br><span class="line">A:Receive(B,&amp;m);</span><br><span class="line"><span class="comment">//对应两个不同的内核区域，故拷贝只能由内核来做。</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>若目标进程未在等待消息，则发送者被标记为阻塞，并挂入一个等待将消息发送到<strong>接受进程的进程队列</strong>中。</p>
+<p>即在接受进程的进程表里，接收进程维护一个链表，加一个指针指向发送者。</p>
+<p>在当一个进程执行RECEIVE时，内核检查<strong>该队列</strong>中是否存在向他发送消息的进程。如果存在，则消息从被阻塞的发送进程拷贝到接受进程。</p>
+<p>如果不存在这样的进程，则接受进程也会被阻塞。</p>
+</li>
+<li><p>如何将队列挂到连表中?</p>
+<p>Sys_call(proc.c)</p>
+</li>
+</ul>
+<h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD-W3-Cascading/" class="archive-article-date">
-  	<time datetime="2020-03-24T01:51:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD-W3-Cascading/">专业英语 W3 Cascading</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW2-%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2-%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E7%9A%84%E8%A1%A1%E9%87%8F/" class="archive-article-date">
-  	<time datetime="2020-03-20T10:13:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW2-%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2-%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2-%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E7%9A%84%E8%A1%A1%E9%87%8F/">计算机网络W2:电路交换 分组交换 网络性能的衡量</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/18/%E8%8B%B1%E8%AF%AD%E6%96%87%E5%8C%96%E6%AD%8C%E6%9B%B2%E8%B5%8F%E6%9E%90W2-%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82/" class="archive-article-date">
-  	<time datetime="2020-03-18T02:55:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/18/%E8%8B%B1%E8%AF%AD%E6%96%87%E5%8C%96%E6%AD%8C%E6%9B%B2%E8%B5%8F%E6%9E%90W2-%E8%AF%BE%E7%A8%8B%E8%A6%81%E6%B1%82/">英语文化歌曲赏析W2:课程要求</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW2%EF%BC%9Ajava%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2020-03-17T06:54:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW2%EF%BC%9Ajava%E5%9F%BA%E7%A1%80/">计算机网络W2：java基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW2/" class="archive-article-date">
-  	<time datetime="2020-03-16T01:42:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW2/">专业英语W2 html and CSS</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/15/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20overview:http/" class="archive-article-date">
-  	<time datetime="2020-03-15T07:41:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/15/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20overview:http/">专业英语W1 overview/ http</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW1/" class="archive-article-date">
-  	<time datetime="2020-03-13T06:54:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/13/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW1/">计算机网络 W1</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/12/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W1/" class="archive-article-date">
-  	<time datetime="2020-03-12T01:39:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/12/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W1/">数据科学的数学基础W1 课程概览 向量与矩阵基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-03-11T00:23:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/">概率论W1 集合和概率模型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">概率论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/" class="archive-article-date">
-  	<time datetime="2020-03-10T03:48:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/">操作系统W1：引节和实验环境的配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -635,22 +289,114 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW9%20minix3%E7%B3%BB%E7%BB%9F%E4%BB%BB%E5%8A%A1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          操作系统 W9 minix3系统任务
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">操作系统 W8 进程调度</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/%E5%A4%A7%E4%BA%8C%E4%B8%8B/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/tags/%E5%A4%A7%E4%BA%8C%E4%B8%8B/">1</a><a class="page-number" href="/tags/%E5%A4%A7%E4%BA%8C%E4%B8%8B/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/tags/%E5%A4%A7%E4%BA%8C%E4%B8%8B/page/4/">4</a><a class="extend next" rel="next" href="/tags/%E5%A4%A7%E4%BA%8C%E4%B8%8B/page/4/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
   
 
 
@@ -674,9 +420,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

@@ -170,6 +170,325 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-# 概率论W9:随机算法  " class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/06/#%20%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/"># 概率论W9:随机算法  </a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/06/#%20%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/" class="archive-article-date">
+  	<time datetime="2020-05-06T02:39:28.804Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="概率论W9-随机算法"><a href="#概率论W9-随机算法" class="headerlink" title="概率论W9:随机算法"></a>概率论W9:随机算法</h1><p>在某些程序的结果中,可以接受一定的不确定性:</p>
+<p>如:</p>
+<ol>
+<li>加密算法Cryptography</li>
+</ol>
+<blockquote>
+<p>允许程序的结果是由抛硬币来决定的.</p>
+</blockquote>
+<p>在牺牲一定准确度的情况下去获取更好的性能.</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="蒙特卡洛算法"><a href="#蒙特卡洛算法" class="headerlink" title="蒙特卡洛算法"></a>蒙特卡洛算法</h3><p>对于每个输入都有可能获得一个错掉的结果,但是最坏的运算时间是有规范的.</p>
+<h3 id="拉斯维加斯算法"><a href="#拉斯维加斯算法" class="headerlink" title="拉斯维加斯算法"></a>拉斯维加斯算法</h3><p>每个输出必然是正确的.</p>
+<p>运行时间由一定概率超过特定值,但整体运行时间的期望较好.</p>
+<h2 id="随机算法举例"><a href="#随机算法举例" class="headerlink" title="随机算法举例"></a>随机算法举例</h2><ol>
+<li>随机化快排(蒙特卡洛算法)</li>
+<li>MaxCut Problem</li>
+</ol>
+<h3 id="MaxCut-Problem"><a href="#MaxCut-Problem" class="headerlink" title="MaxCut Problem"></a>MaxCut Problem</h3><p>蒙特卡洛算法</p>
+<h3 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h3><p>拉斯维加斯算法</p>
+<h2 id="Bell-lab"><a href="#Bell-lab" class="headerlink" title="Bell lab"></a>Bell lab</h2><h3 id="Data-Stream"><a href="#Data-Stream" class="headerlink" title="Data Stream"></a>Data Stream</h3><h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>数据库与数据流:数据库 相对静态的数据.</p>
+<p>数据库与当前应用场景的不同:</p>
+<p>数据是快速到达的,当数据来的快并且规模大到磁盘存储能力之外;</p>
+<p>但我对数据的查询是固定的.</p>
+<p>如何做到数据不存,而是看到数据,如果是我正好需要的数据时,即可使用?</p>
+<p>数据流场景如下</p>
+<blockquote>
+<ol>
+<li><p>数据到达快</p>
+</li>
+<li><p>数据规模大</p>
+</li>
+<li><p>数据来不及存</p>
+</li>
+</ol>
+</blockquote>
+<p>分析任务不变;</p>
+<h4 id="具体举例"><a href="#具体举例" class="headerlink" title="具体举例"></a>具体举例</h4><p>通信领域的流量监控.</p>
+<p>监控的目的:</p>
+<ol>
+<li><p>垃圾流量检测</p>
+</li>
+<li><p>机器是否受到攻击.</p>
+<p>流量分布标准</p>
+</li>
+<li><p>调配流量游走方式</p>
+</li>
+</ol>
+<h4 id="数据流的处理要求"><a href="#数据流的处理要求" class="headerlink" title="数据流的处理要求:"></a>数据流的处理要求:</h4><ol>
+<li>数据只能被查看一遍</li>
+<li>存储(main memory)必须是有bound的.里面放的只是一个概要的压缩的数据结构.synopsis data structure;</li>
+</ol>
+<blockquote>
+<p>对于这样分析的算法却不一定需要最准确的结果,但是我要求的结果要deterministic bounds.或是概率有限.</p>
+<p>算法的效率是要变高的.</p>
+</blockquote>
+<h3 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h3><h4 id="取样"><a href="#取样" class="headerlink" title="取样"></a>取样</h4><ul>
+<li>对数据的随机取样,a small random sample S of the data often well- represents all the data.</li>
+</ul>
+<p>此时</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/06/#%20%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-操作系统第二次作业" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/">操作系统第二次作业</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/" class="archive-article-date">
+  	<time datetime="2020-05-02T15:07:43.555Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="操作系统第二次作业"><a href="#操作系统第二次作业" class="headerlink" title="操作系统第二次作业"></a>操作系统第二次作业</h1><ol start="2">
+<li><p>进程的三种状态:</p>
+<ol>
+<li>运行态(running,在该时刻实际占用处理机 )</li>
+<li>就绪态(Ready,可运行,因为其他进程正在进行而暂时被挂起)</li>
+<li>阻塞态(Blocked,除非某种外部事件发生,否则不能运行)</li>
+</ol>
+</li>
+<li><p>目前计算机上,中断处理程序使用汇编语言编写的原因:中断处理程序,以操作系统最底层的调度器为例,需要使用汇编语言程序存储寄存器值,设置新的栈等,即汇编语言代码要为新的当前进程进行装入寄存器值和内存映射并启动等现场保存工作.</p>
+</li>
+<li><p>进程和线程的本质区别:多个线程的执行流组成进程,进程是用来集合资源的,而线程是CPU调度中的实体.</p>
+</li>
+<li><p>在使用线程的系统中,每个线程都有一个堆栈,它存储着执行的历史.</p>
+</li>
+<li><p>竞争条件:两个多个进程读写某些共享数据,而最后的结果取决于进程运行的精确时序,称为竞争条件.</p>
+</li>
+<li><p>若采用时间片调度而不是优先级调度,是否会H继续陷入死循环:</p>
+<ol>
+<li>采用优先级调度陷入死循环的原因在于低优先级的进程永远处于被调度队列的较后位置,而正好于处于临界区时无法有其他进程再被调度形成死锁,故会陷入死循环;</li>
+<li>采用时间片调度也会发生这种情况,虽然时间片调度作为一种非抢占式进程,在时间片到、进程运行完毕或者进程执行原语操作时都会面临进程切换的问题,而当进程切换发生时,死锁也就会相应发生了.但是时间片调度仍然很大的避免了优先级高的无法离开临界区的问题.</li>
+</ol>
+</li>
+<li><p>读者-写者问题的3种形式化:</p>
+<ol>
+<li>读者优先: 当读者在读时,写者不能进行写,当有新的读者到来时,如果没有写,那么就可以立刻开始读.当写完成时,如果有一些读者和写者都在等待队列中时,读者的启动的优先级高,这些读者都可以同时启动.</li>
+<li>读者和写者具有公平的情况:读读共享,写写互斥,写读互斥.当我们开始进行读的时候我们需要一次性将读者队列读完.当我们进行写时,也要一次一次将写者等待队列写完.</li>
+<li>写者优先:当等待队列中有写者时,读者不可以被启动.即当有任何进程完成时,有写者在等待,读者都不可以被启动.</li>
+</ol>
+</li>
+<li><p>以下各种情况下的CPU运行公式:</p>
+<ol>
+<li><p>$\frac{T}{S+T}$</p>
+</li>
+<li><p>$\frac{T}{S+T}$</p>
+</li>
+<li><p>考虑context switch的次数:</p>
+<p>Context switch的次数为:$\frac{T}{ST/Q+T}$</p>
+</li>
+<li><p>当Q=S时,考虑$T&lt;Q时$,CPU利用率为:$\frac{T}{S+T}$当$T\ge Q$时,CPU 利用率为50$.</p>
+</li>
+<li><p>随着时间片越来越小,上下文切换花销所占的比重会越来越大,CPU会趋近于0.</p>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="27">
+<li><p>平均响应时间最短,最短作业优先在批处理系统中常常伴随着最短平均响应时间.</p>
+<p>所以调度的顺序在于x的值,x的大小在不同的位置有不同的调度顺序.</p>
+</li>
+<li><p>对于每种不同的调度算法计算不同的平均进程周转时间.</p>
+<ol>
+<li><p>时间片轮转: 程序具有多道处理能力,作业均获得公平的CPU份额.所以每个进程都占用$\frac{1}{5},\frac{1}{4},\frac{1}{3},\frac{1}{2},1$的CPU. 完成的时间为:10,8,6,4,2;故完成的时间为10,18,24,28,30.</p>
+<p>平均时间为110/5=22</p>
+</li>
+<li><p>优先级调度,按照:优先级54321的顺序,即6,8,10,2,4的顺序,故相应的完成时间为6,14,24,26,30,平均时间为:20</p>
+</li>
+<li><p>相应的完成时间为:10,16,18,22,30,平均时间为19.2</p>
+</li>
+<li><p>按照:2,4,6,8,10,相应的完成时间为:2,6,12,20,30,平均时间为 14</p>
+</li>
+</ol>
+</li>
+<li><p>$\frac{35}{50}+\frac{20}{100}+\frac{10}{200}+\frac{x}{250}\le1$</p>
+<p>故$x\le12.5$</p>
+</li>
+<li><p>优先级调度算法会引起饥饿问题.所以minix3的优先级调度(多级排队系统)会产生饥饿.</p>
+<p>对于某个低优先级而无穷等待的CPU,和超载的计算机系统,稳定的更高优先级的进程流会组织低优先级的进程获得CPU,此时对于低优先级的进程而言,就有饥饿的可能.</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-智能投顾(Robo-Advisory)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/02/%E6%99%BA%E8%83%BD%E6%8A%95%E9%A1%BE(Robo-Advisory)/">智能投顾(Robo-Advisory)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/02/%E6%99%BA%E8%83%BD%E6%8A%95%E9%A1%BE(Robo-Advisory)/" class="archive-article-date">
+  	<time datetime="2020-05-02T07:40:05.412Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="智能投顾-Robo-Advisory"><a href="#智能投顾-Robo-Advisory" class="headerlink" title="智能投顾(Robo-Advisory)"></a>智能投顾(Robo-Advisory)</h1><h2 id="定义-将可投资的资产进行组合"><a href="#定义-将可投资的资产进行组合" class="headerlink" title="定义:将可投资的资产进行组合"></a>定义:将可投资的资产进行组合</h2><p>目标:提供最优解</p>
+<p>利用的数据科学手段:大数据分析、量化金融模型与智能化算法</p>
+<p>优点:同一账户体系中分散配置的方式</p>
+<p>最优的资产组合和配置:机器学习最优化算法</p>
+<p>但核心还是落实于基础理财知识</p>
+<p>![截屏2020-05-02下午2.25.11](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-05-02下午2.25.11.png)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/02/%E6%99%BA%E8%83%BD%E6%8A%95%E9%A1%BE(Robo-Advisory)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-英语歌曲文化赏析 Blus &amp; R&amp;B(2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1180,258 +1499,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW7%20P2PCDNsocket/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语W7-functions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/">专业英语W7:functions</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/" class="archive-article-date">
-  	<time datetime="2020-04-23T05:59:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="专业英语W7-functions"><a href="#专业英语W7-functions" class="headerlink" title="专业英语W7:functions"></a>专业英语W7:functions</h1><p>All of you should have some experience with functions. Tell me about your experience - When do you choose to use functions? When do you choose not to use functions?</p>
-        
-          <a class="article-more-a" href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统W7:2.3经典并发问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/">操作系统W7:2.3经典并发问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-04-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="操作系统W7-2-3经典并发问题"><a href="#操作系统W7-2-3经典并发问题" class="headerlink" title="操作系统W7:2.3经典并发问题"></a>操作系统W7:2.3经典并发问题</h1><p>多应用2.2节进程信号量的内容。</p>
-        
-          <a class="article-more-a" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统W7: 进程间通信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">操作系统W7: 进程间通信</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="archive-article-date">
-  	<time datetime="2020-04-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2-2进程间通信"><a href="#2-2进程间通信" class="headerlink" title="2.2进程间通信"></a>2.2进程间通信</h1><p>如何保证多进程程序运行的结果是确定的?</p>
-        
-          <a class="article-more-a" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">展开全文 >></a>
         </p>
       
 

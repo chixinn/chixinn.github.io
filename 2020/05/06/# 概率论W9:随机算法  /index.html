@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Chixinning的博客</title>
+  <title># 概率论W9:随机算法   | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="概率论W9:随机算法在某些程序的结果中,可以接受一定的不确定性: 如:  加密算法Cryptography   允许程序的结果是由抛硬币来决定的.  在牺牲一定准确度的情况下去获取更好的性能. 分类蒙特卡洛算法对于每个输入都有可能获得一个错掉的结果,但是最坏的运算时间是有规范的. 拉斯维加斯算法每个输出必然是正确的. 运行时间由一定概率超过特定值,但整体运行时间的期望较好. 随机算法举例 随机化快">
+<meta property="og:type" content="article">
+<meta property="og:title" content="# 概率论W9:随机算法  ">
+<meta property="og:url" content="http://yoursite.com/2020/05/06/#%20%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="概率论W9:随机算法在某些程序的结果中,可以接受一定的不确定性: 如:  加密算法Cryptography   允许程序的结果是由抛硬币来决定的.  在牺牲一定准确度的情况下去获取更好的性能. 分类蒙特卡洛算法对于每个输入都有可能获得一个错掉的结果,但是最坏的运算时间是有规范的. 拉斯维加斯算法每个输出必然是正确的. 运行时间由一定概率超过特定值,但整体运行时间的期望较好. 随机算法举例 随机化快">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-06T02:39:28.804Z">
+<meta property="article:modified_time" content="2020-05-06T02:39:39.868Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="C++">
@@ -168,386 +170,212 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-# 概率论W9:随机算法  " class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      # 概率论W9:随机算法  
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/06/#%20%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/" class="archive-article-date">
+
+        
+        <a href="/2020/05/06/#%20%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/" class="archive-article-date">
   	<time datetime="2020-05-06T02:39:28.804Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/06/#%20%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/"># 概率论W9:随机算法  </a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="概率论W9-随机算法"><a href="#概率论W9-随机算法" class="headerlink" title="概率论W9:随机算法"></a>概率论W9:随机算法</h1><p>在某些程序的结果中,可以接受一定的不确定性:</p>
+<p>如:</p>
+<ol>
+<li>加密算法Cryptography</li>
+</ol>
+<blockquote>
+<p>允许程序的结果是由抛硬币来决定的.</p>
+</blockquote>
+<p>在牺牲一定准确度的情况下去获取更好的性能.</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="蒙特卡洛算法"><a href="#蒙特卡洛算法" class="headerlink" title="蒙特卡洛算法"></a>蒙特卡洛算法</h3><p>对于每个输入都有可能获得一个错掉的结果,但是最坏的运算时间是有规范的.</p>
+<h3 id="拉斯维加斯算法"><a href="#拉斯维加斯算法" class="headerlink" title="拉斯维加斯算法"></a>拉斯维加斯算法</h3><p>每个输出必然是正确的.</p>
+<p>运行时间由一定概率超过特定值,但整体运行时间的期望较好.</p>
+<h2 id="随机算法举例"><a href="#随机算法举例" class="headerlink" title="随机算法举例"></a>随机算法举例</h2><ol>
+<li>随机化快排(蒙特卡洛算法)</li>
+<li>MaxCut Problem</li>
+</ol>
+<h3 id="MaxCut-Problem"><a href="#MaxCut-Problem" class="headerlink" title="MaxCut Problem"></a>MaxCut Problem</h3><p>蒙特卡洛算法</p>
+<h3 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h3><p>拉斯维加斯算法</p>
+<h2 id="Bell-lab"><a href="#Bell-lab" class="headerlink" title="Bell lab"></a>Bell lab</h2><h3 id="Data-Stream"><a href="#Data-Stream" class="headerlink" title="Data Stream"></a>Data Stream</h3><h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>数据库与数据流:数据库 相对静态的数据.</p>
+<p>数据库与当前应用场景的不同:</p>
+<p>数据是快速到达的,当数据来的快并且规模大到磁盘存储能力之外;</p>
+<p>但我对数据的查询是固定的.</p>
+<p>如何做到数据不存,而是看到数据,如果是我正好需要的数据时,即可使用?</p>
+<p>数据流场景如下</p>
+<blockquote>
+<ol>
+<li><p>数据到达快</p>
+</li>
+<li><p>数据规模大</p>
+</li>
+<li><p>数据来不及存</p>
+</li>
+</ol>
+</blockquote>
+<p>分析任务不变;</p>
+<h4 id="具体举例"><a href="#具体举例" class="headerlink" title="具体举例"></a>具体举例</h4><p>通信领域的流量监控.</p>
+<p>监控的目的:</p>
+<ol>
+<li><p>垃圾流量检测</p>
+</li>
+<li><p>机器是否受到攻击.</p>
+<p>流量分布标准</p>
+</li>
+<li><p>调配流量游走方式</p>
+</li>
+</ol>
+<h4 id="数据流的处理要求"><a href="#数据流的处理要求" class="headerlink" title="数据流的处理要求:"></a>数据流的处理要求:</h4><ol>
+<li>数据只能被查看一遍</li>
+<li>存储(main memory)必须是有bound的.里面放的只是一个概要的压缩的数据结构.synopsis data structure;</li>
+</ol>
+<blockquote>
+<p>对于这样分析的算法却不一定需要最准确的结果,但是我要求的结果要deterministic bounds.或是概率有限.</p>
+<p>算法的效率是要变高的.</p>
+</blockquote>
+<h3 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h3><h4 id="取样"><a href="#取样" class="headerlink" title="取样"></a>取样</h4><ul>
+<li>对数据的随机取样,a small random sample S of the data often well- represents all the data.</li>
+</ul>
+<p>此时</p>
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/06/#%20%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/" class="archive-article-date">
-  	<time datetime="2020-05-02T15:07:43.555Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">操作系统第二次作业</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/">操作系统第二次作业</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/02/%E6%99%BA%E8%83%BD%E6%8A%95%E9%A1%BE(Robo-Advisory)/" class="archive-article-date">
-  	<time datetime="2020-05-02T07:40:05.412Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/02/%E6%99%BA%E8%83%BD%E6%8A%95%E9%A1%BE(Robo-Advisory)/">智能投顾(Robo-Advisory)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/01/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90%20Blus%20&%20R&B(2)/" class="archive-article-date">
-  	<time datetime="2020-05-01T01:02:30.193Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/01/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90%20Blus%20&%20R&B(2)/">英语歌曲文化赏析 Blus &amp; R&amp;B(2)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/30/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80L10A=LU/" class="archive-article-date">
-  	<time datetime="2020-04-30T04:05:14.657Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/30/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80L10A=LU/">数据科学的数学基础L10A=LU</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW9%20minix3%E7%B3%BB%E7%BB%9F%E4%BB%BB%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2020-04-27T07:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW9%20minix3%E7%B3%BB%E7%BB%9F%E4%BB%BB%E5%8A%A1/">操作系统 W9 minix3系统任务</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2020-04-27T06:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">操作系统 W9 进程概述与进程实现</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-04-26T06:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/">操作系统 W8 进程调度</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-04-24T05:44:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/">时间序列预测学习</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">DaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW7%20P2PCDNsocket/" class="archive-article-date">
-  	<time datetime="2020-04-24T05:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW7%20P2PCDNsocket/">计算机网络W7:P2P/CDN/socket</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -571,8 +399,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

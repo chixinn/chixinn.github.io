@@ -6,28 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 概率论 | Chixinning的博客</title>
+  <title>概率论W9/随机算法 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/tags/%E6%A6%82%E7%8E%87%E8%AE%BA/index.html">
+  <meta name="description" content="概率论W9:随机算法在某些程序的结果中,可以接受一定的不确定性:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概率论W9&#x2F;随机算法">
+<meta property="og:url" content="http://yoursite.com/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="概率论W9:随机算法在某些程序的结果中,可以接受一定的不确定性:">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-03-11T00:23:55.000Z">
+<meta property="article:modified_time" content="2020-05-08T04:57:36.982Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="大二下">
+<meta property="article:tag" content="概率论">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
@@ -168,36 +161,115 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-概率论W9:随机算法  " class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-03-11T00:23:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/">概率论W1 集合和概率模型</a>
+    <h1 class="article-title" itemprop="name">
+      概率论W9/随机算法
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/" class="archive-article-date">
+  	<time datetime="2020-03-11T00:23:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="概率论W9-随机算法"><a href="#概率论W9-随机算法" class="headerlink" title="概率论W9:随机算法"></a>概率论W9:随机算法</h1><p>在某些程序的结果中,可以接受一定的不确定性:</p>
+<a id="more"></a>
+
+<p>如:</p>
+<ol>
+<li>加密算法Cryptography</li>
+</ol>
+<blockquote>
+<p>允许程序的结果是由抛硬币来决定的.</p>
+</blockquote>
+<p>在牺牲一定准确度的情况下去获取更好的性能.</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><h3 id="蒙特卡洛算法"><a href="#蒙特卡洛算法" class="headerlink" title="蒙特卡洛算法"></a>蒙特卡洛算法</h3><p>对于每个输入都有可能获得一个错掉的结果,但是最坏的运算时间是有规范的.</p>
+<h3 id="拉斯维加斯算法"><a href="#拉斯维加斯算法" class="headerlink" title="拉斯维加斯算法"></a>拉斯维加斯算法</h3><p>每个输出必然是正确的.</p>
+<p>运行时间由一定概率超过特定值,但整体运行时间的期望较好.</p>
+<h2 id="随机算法举例"><a href="#随机算法举例" class="headerlink" title="随机算法举例"></a>随机算法举例</h2><ol>
+<li>随机化快排(蒙特卡洛算法)</li>
+<li>MaxCut Problem</li>
+</ol>
+<h3 id="MaxCut-Problem"><a href="#MaxCut-Problem" class="headerlink" title="MaxCut Problem"></a>MaxCut Problem</h3><p>蒙特卡洛算法</p>
+<h3 id="快排"><a href="#快排" class="headerlink" title="快排"></a>快排</h3><p>拉斯维加斯算法</p>
+<h2 id="Bell-lab"><a href="#Bell-lab" class="headerlink" title="Bell lab"></a>Bell lab</h2><h3 id="Data-Stream"><a href="#Data-Stream" class="headerlink" title="Data Stream"></a>Data Stream</h3><h4 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h4><p>数据库与数据流:数据库 相对静态的数据.</p>
+<p>数据库与当前应用场景的不同:</p>
+<p>数据是快速到达的,当数据来的快并且规模大到磁盘存储能力之外;</p>
+<p>但我对数据的查询是固定的.</p>
+<p>如何做到数据不存,而是看到数据,如果是我正好需要的数据时,即可使用?</p>
+<p>数据流场景如下</p>
+<blockquote>
+<ol>
+<li><p>数据到达快</p>
+</li>
+<li><p>数据规模大</p>
+</li>
+<li><p>数据来不及存</p>
+</li>
+</ol>
+</blockquote>
+<p>分析任务不变;</p>
+<h4 id="具体举例"><a href="#具体举例" class="headerlink" title="具体举例"></a>具体举例</h4><p>通信领域的流量监控.</p>
+<p>监控的目的:</p>
+<ol>
+<li><p>垃圾流量检测</p>
+</li>
+<li><p>机器是否受到攻击.</p>
+<p>流量分布标准</p>
+</li>
+<li><p>调配流量游走方式</p>
+</li>
+</ol>
+<h4 id="数据流的处理要求"><a href="#数据流的处理要求" class="headerlink" title="数据流的处理要求:"></a>数据流的处理要求:</h4><ol>
+<li>数据只能被查看一遍</li>
+<li>存储(main memory)必须是有bound的.里面放的只是一个概要的压缩的数据结构.synopsis data structure;</li>
+</ol>
+<blockquote>
+<p>对于这样分析的算法却不一定需要最准确的结果,但是我要求的结果要deterministic bounds.或是概率有限.</p>
+<p>算法的效率是要变高的.</p>
+</blockquote>
+<h3 id="处理过程"><a href="#处理过程" class="headerlink" title="处理过程"></a>处理过程</h3><h4 id="取样"><a href="#取样" class="headerlink" title="取样"></a>取样</h4><ul>
+<li>对数据的随机取样,a small random sample S of the data often well- represents all the data.</li>
+</ul>
+<p>此时</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -217,65 +289,115 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/" class="archive-article-date">
-  	<time datetime="2020-03-11T00:23:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          概率论W1 集合和概率模型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">操作系统W1：引节和实验环境的配置</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/">概率论W9/随机算法</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">概率论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -298,9 +420,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | Chixinning的博客</title>
+  <title>操作系统Project2Chrt系统调用和EDF算法 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/2/index.html">
+  <meta name="description" content="操作系统Project2:Chrt系统调用和EDF算法实验任务在MINIX3中实现Earliest-Deadline-First近似实时调度功能 1.增加系统调用chrt 2.修改MINIX3.3的调度算法  排版好累!!!!!">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统Project2Chrt系统调用和EDF算法">
+<meta property="og:url" content="http://yoursite.com/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="操作系统Project2:Chrt系统调用和EDF算法实验任务在MINIX3中实现Earliest-Deadline-First近似实时调度功能 1.增加系统调用chrt 2.修改MINIX3.3的调度算法  排版好累!!!!!">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsY8WSim.jpg">
+<meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsfMQo9h.jpg">
+<meta property="og:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsZEjqgX.jpg">
+<meta property="article:published_time" content="2020-05-15T02:43:08.282Z">
+<meta property="article:modified_time" content="2020-05-15T02:43:40.658Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="C++">
@@ -29,6 +34,7 @@
 <meta property="article:tag" content="Developer">
 <meta property="article:tag" content="DataScience">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsY8WSim.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -168,466 +174,372 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-操作系统Project2Chrt系统调用和EDF算法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      操作系统Project2Chrt系统调用和EDF算法
+    </h1>
+  
+
+        
+        <a href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-05-15T02:43:08.282Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="操作系统Project2-Chrt系统调用和EDF算法"><a href="#操作系统Project2-Chrt系统调用和EDF算法" class="headerlink" title="操作系统Project2:Chrt系统调用和EDF算法"></a>操作系统Project2:Chrt系统调用和EDF算法</h1><h2 id="实验任务"><a href="#实验任务" class="headerlink" title="实验任务"></a>实验任务</h2><p>在MINIX3中实现Earliest-Deadline-First近似实时调度功能</p>
+<p>1.增加系统调用chrt</p>
+<p>2.修改MINIX3.3的调度算法</p>
+<blockquote>
+<p>排版好累!!!!!</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h2><h3 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路:"></a>整体思路:</h3><p>类比于其它系统调用(fork)增加一个名为chrt的系统调用,这个系统调用同时为调用chrt的进程设置一个闹钟,同时这个系统调用通过_sys_call和_kernel_call向内核传递deadline信息;</p>
+<p>同时修改MINIX的调度算法,将调用chrt的进程的优先级设置为一个较高的合适的优先级,但不能是0优先级等,因为这样会和系统进程产生调度冲突;当这些调用chrt进程的优先级被设置较高时,与其余未调用chrt的进程或deadline=0的普通进程比,因为享有较高优先级,所以被优先调度;</p>
+<p>在设置了较高优先级队列的实时进程队列中,遍历整个队列,将原先的时间片轮转调度修改为离deadline最近的进程被置于队首被优先调度;</p>
+<p><strong>同时需要注意的是对离“deadline最近”这一概念的表达</strong></p>
+<p>设置deadtime=nowtime(调用chrt的时刻)+deadline(实际秒数);</p>
+<p>将deadtime作为参数,实际参与从<strong>应用层</strong>的传递;</p>
+<p>deadtime的理解是:deadtime反映了从调用chrt的时刻起,进程的结束调用时刻,所以只需要比较各个进程间的进程结束调用时刻,当调用时刻越早,即从数值上来看越小时,说明该进程越需要被优先调度;同时,即使是在后续deadtime时间内同一进程再次调用chrt修改了进程的deadtime时间,也是<strong>实时</strong>修改了进程的结束调用时刻;</p>
+<h3 id="1-增加系统调用chrt"><a href="#1-增加系统调用chrt" class="headerlink" title="1. 增加系统调用chrt"></a><strong>1.</strong> 增加系统调用chrt</h3><p><strong>int chrt(long deadline);*</strong></p>
+<p><strong>该系统调用实现的功能:</strong></p>
+<p><strong>a.</strong> <strong><em>\</em>Deadline=0,为普通进程,priority比实时进程的优先级低;**</strong></p>
+<p><strong>b.</strong> <strong><em>\</em>Deadline&gt;0,为实时进程,即该进程需要在*****</strong>*在deadline秒内结束.如果到达进程结束时间点时该进程仍然没有结束,则超过时间强制停止该进程;****</p>
+<p><strong><em>\</em>支持在进程的deadline时间内进行多次调用chrt修改deadline;**</strong></p>
+<p><strong>c.</strong> <strong><em>\</em>Deadline&lt;0;直接返回不成功;**</strong></p>
+<p><img src="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsY8WSim.jpg" alt="img"> </p>
+<p>在MINIX3中,用户进程发出的系统调用将被转换为发往服务器进程的消息;由服务器进程给系统任务进程发消息,由系统任务进程完成剩下的工作;</p>
+<p>由系统任务接受的消息类型:</p>
+<p>这里sys_chrt对应POSIX系统调用,属于进程管理类;</p>
+<p>系统函数库:在系统任务主程序system.c中每一个名字为do_xyz 形式的函数的源码在kernel/system/do_xyz.c文件中;在system.c中也添加响应编号的映射;</p>
+<p>MINIX3操作系统本身是由许多进程组成,这些系统进程之间通过消息传送机制相互通信,用户进程也可以通过消息传送机制与操作系统进程之间通信,从而请求操作系统的服务;</p>
+<p><strong>2.</strong> <strong><em>\</em>在MINIX操作系统下增加系统调用的流程:**</strong></p>
+<p><img src="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsfMQo9h.jpg" alt="img"> </p>
+<p>如上述流程图所示,分别从应用层,服务层,内核层进行系统调用;</p>
+<p><strong>A.</strong> <strong><em>\</em>内核层:**</strong></p>
+<p><strong><em>\</em>usr/src/minix/kernel/system.h,system.c:系统任务的总框架;**</strong></p>
+<p><strong><em>\</em>usr/src/minix/kernel/system/:包含了每个响应函数的源文件;**</strong></p>
+<p><strong><em>\</em>内核层需要实现的内容如下:**</strong></p>
+<p><strong><em>\</em>改内核信息，例如进程的截至时间。**</strong> </p>
+<p>q 在/usr/src/minix/kernel/system.h中添加do_chrt函数定义。 </p>
+<p>q 在/usr/src/minix/kernel/system/do_ chrt.c中添加do_chrt函数实现。参 </p>
+<p>考该文件下的do_fork文件，修改调用者进程信息。例如： </p>
+<p>pid_t fork(void) </p>
+<p>{ </p>
+<p>return(_syscall(PM_PROC_NR, PM_FORK, &amp;m)); </p>
+<p>} </p>
+<p>q 在/usr/src/minix/kernel/system/ 中Makefile.inc文件添加do_chrt.c条目。</p>
+<p>在/usr/src/minix/include/minix/com.h中定义SYS_CHRT编号。 </p>
+<p>q 在/usr/src/minix/kernel/system.c 中添加SYS_CHRT编号到do_chrt的映射。 </p>
+<p>q 在/usr/src/minix/commands/service/parse.c的system_tab中添加名称编号对</p>
+<p>内核层do_chrt.c的具体实现:</p>
+<p>int do_chrt(struct proc *caller, message *m_ptr)</p>
+<p>{</p>
+<p>struct proc *rp;</p>
+<p>long deadline;</p>
+<p>deadline = m_ptr-&gt;m2_l1;</p>
+<p>rp = proc_addr(m_ptr-&gt;m2_i1);/<em>获得调用chrt的进程的proc结构</em>/</p>
+<p>rp-&gt;p_deadline = deadline;</p>
+<p>return (OK);</p>
+<p>}</p>
+<p>注意这里的消息结构体:m2_l1表示进程的deadline,m2_i1表示进程是哪个进程;</p>
+<p>消息结构体在各层逻辑相同;</p>
+<p><strong>B.</strong> <strong><em>\</em>服务层:**</strong></p>
+<p><strong><em>\</em>PM服务实现进程的创建,启动与终止等系统调用;**</strong></p>
+<p>. 服务层：需要向MINIX系统的进程管理服务中注册chrt，使得 </p>
+<p>chrt服务可以向应用层提供 。 </p>
+<p>q 在/usr/src/minix/servers/pm/proto.h中添加chrt函数定义。 </p>
+<p>q 在/usr/src/minix/servers/pm/chrt.c中添加chrt函数实现，调用sys_chrt() </p>
+<p>q 在/usr/src/minix/include/minix/callnr.h中定义PM_CHRT编号。 </p>
+<p>q 在/usr/src/minix/servers/pm/Makefile中添加chrt.c条目。</p>
+<p>q 在/usr/src/minix/servers/pm/table.c 中调用映射表。 </p>
+<p>q 在/usr/src/minix/include/minix/syslib.h 中添加sys_ chrt () 定义。 </p>
+<p>q 在/usr/src/minix/lib/libsys/sys_chrt.c 中添加<strong><em>\</em>sys_chrt ()**</strong> 实现。可参照 </p>
+<p>该文件夹下的sys_fork文件，在实现中通过_kernel_call (调用号)向 </p>
+<p>内核传递。例如： </p>
+<p>int sys_fork(parent, child, child_endpoint, flags, msgaddr) </p>
+<p>{ </p>
+<p><strong><em>\</em>_kernel_call(SYS_FORK, &amp;m);**</strong> </p>
+<p>} </p>
+<p>q 在/usr/src/minix/lib/libsys 中的Makefile中添加sys_chrt.c条目。</p>
+<p>这里chrt.c调用sys_chrt.c,</p>
+<p>Sys_chrt.c在服务层需要像内核传递信息,信息是m2_i1和m2_l1;</p>
+<p>//声明风格模仿sys_fork.c</p>
+<p>int sys_chrt(who, deadline)</p>
+<p>long deadline;</p>
+<p>endpoint_t who;</p>
+<p>{</p>
+<p>message m;</p>
+<p>m.m2_l1=deadline;</p>
+<p>m.m2_i1=who;</p>
+<p>return _kernel_call(SYS_CHRT,&amp;m);</p>
+<p>}</p>
+<p><strong>C.</strong> <strong><em>\</em>应用层:**</strong></p>
+<p>应用层：需要添加的系统调用chrt可以定义在unistd头文件中， </p>
+<p>并在libc中添加chrt函数体实现 。 </p>
+<p>q 在/usr/src/include/unistd.h 中添加chrt函数定义。 </p>
+<p>q 在/usr/src/minix/lib/libc/sys/chrt.c中添加chrt函数实现。可用alarm函 </p>
+<p>数实现超时强制终止。参照该文件夹下fork.c文件，在实现中通过 </p>
+<p>_syscall (调用号)向系统服务传递。例如： </p>
+<p>pid_t fork(void) </p>
+<p>{ </p>
+<p>return(_syscall(PM_PROC_NR, PM_FORK, &amp;m)); </p>
+<p>} </p>
+<p>q 在/usr/src/minix/lib/libc/sys中Makefile.inc文件添加chrt.c条目（添加 </p>
+<p>C文件后，需在同目录下的Makefile/Makefile.inc中添加条目）。</p>
+<p>int chrt(long deadline)</p>
+<p>{</p>
+<p>struct timespec time;</p>
+<p>message m;</p>
+<p>memset(&amp;m, 0, sizeof(m));</p>
+<p>alarm((unsigned int)deadline);</p>
+<p>if(deadline&lt;0)</p>
+<p>return 0;</p>
+<p>if(deadline&gt;0){</p>
+<p>clock_gettime(CLOCK_REALTIME,&amp;time);</p>
+<p>deadline =time.tv_sec+deadline;//nowtime+deadline;</p>
+<p>}</p>
+<p>m.m2_l1=deadline;</p>
+<p>return(_syscall(PM_PROC_NR, PM_CHRT, &amp;m));//在消息结构体中将deadline放入</p>
+<p>}</p>
+<p><strong>3.</strong> <strong><em>\</em>修改系统调度算法,模拟EDF:early-deadline-first的近似实时调度:**</strong></p>
+<p><strong>A.</strong> <strong><em>\</em>MINIX系统的进程调度方式:**</strong></p>
+<p> n MINIX3使用一种多级调度算法。进程优先级数字越小，优先级越高， </p>
+<p>根据优先级不同分成了16个可运行进程队列。每个队列内部采用时间片轮转调度，找到最高非空优先级队列,选取队列首部可运行的进程,当用完了时间,则移到当前队列的队尾.</p>
+<p>n 将EDF添加到多级调度算法中,可控制入队实现实时调度入队是将当前剩余时间(终止时间-运行时间)大于0的进程添加到某个优先级队列，即设置进程优先级(需要选择合适的优先级否则执行效果不理想）。 </p>
+<p>n 在该队列内部将时间片轮转调度改成剩余时间最少优先调度，即将剩 </p>
+<p>余时间最小的进程移到队列首部。</p>
+<p>具体代码修改思路:</p>
+<p>1.修改proc.h为进程结构体增加deadline(deadtime)信息;</p>
+<p>2.修改enqueue()将进程加入至队尾函数,对于deadtime&gt;0(即实时进程,设置优先级为5);</p>
+<p>3.修改enqueue_head()将进程加入至队首函数,对于deadtime&gt;0(即实时进程,设置优先级为5);</p>
+<p>4.修改pick_proc()函数,对于之前设置的优先级5的队列,在该队列中进行进程调度时,从队列中返回一个可调度的进程,遍历设置的优先级队列，返回<strong><em>\</em>剩余时间最小*****</strong>*(deadtime)*<strong><em>并</em></strong>*可运行****的进程.</p>
+<p>Proc.c中代码如下</p>
+<p>if(q==5){//对于特殊的优先级队列</p>
+<p>rp=rdy_head[q];//rp是当前队首的第一个</p>
+<p>tmp=rp-&gt;p_nextready;//待调队列队首的下一个,实质承载遍历</p>
+<p>while(tmp!=NULL){//tmp非空才有遍历的价值</p>
+<p>if(tmp-&gt;p_deadline&gt;0){//当下一个不为0的时候:</p>
+<p>if(rp-&gt;p_deadline==0)&amp;&amp;proc_is_runnable(tmp))//如果队首进程是普通进程,注意这里不意味着优先级为5一定是实时进程;</p>
+<p>rp=tmp;</p>
+<p>else if(rp-&gt;deadline&gt;tmp-&gt;deadline)&amp;&amp;proc_is_runnable(tmp))</p>
+<p>rp=tmp;//deadtime早的享有优先调度的权利;</p>
+<p>}</p>
+<p>}</p>
+<p>tmp=tmp-&gt;p_nextready;</p>
+<p>}</p>
+<p>}</p>
+<p><strong>4.</strong> <strong><em>\</em>测试**</strong></p>
+<p>在测试中，在main函数中fork三个子进程(P1, P2, P3)，并为每个子进程设置id。 </p>
+<p>P1和P2为实时进程，deadline分别设为20s和15s。 </p>
+<p>三个子进程会打印出子进程id和循环次数。 </p>
+<p>第0s时：优先级 P2 &gt; P1 &gt; P3; </p>
+<p>第5s 时：P1设置deadline为5s，P1调用chrt(5); </p>
+<p>第5s后：优先级 P1 &gt; P2 &gt; P3; </p>
+<p>第10s时：P3设置deadline为3s，P3调用chrt(3); </p>
+<p>第10s后：优先级P3 &gt; P2;</p>
+<p>测试代码如下:</p>
+<p>void proc(int id);</p>
+<p>int main(void)</p>
+<p>{</p>
+<p>//创建三个子进程，并赋予子进程id</p>
+<p>for (int i = 0; i &lt; 3; i++)</p>
+<p>{</p>
+<p>if (fork() == 0)</p>
+<p>{</p>
+<p>proc(i);</p>
+<p>}</p>
+<p>}</p>
+<p>return 0;</p>
+<p>}</p>
+<p>void proc(int id)</p>
+<p>{</p>
+<p>int loop;</p>
+<p>switch (id)</p>
+<p>{</p>
+<p>case 0: //子进程1，设置deadline=20</p>
+<p>chrt(20);</p>
+<p>printf(“proc1 set success\n”);</p>
+<p>sleep(1);</p>
+<p>break;</p>
+<p>case 1: //子进程2，设置deadline=15</p>
+<p>chrt(15);</p>
+<p>printf(“proc2 set success\n”);</p>
+<p>sleep(1);</p>
+<p>break;</p>
+<p>case 2: //子进程3，普通进程</p>
+<p>chrt(0);</p>
+<p>printf(“proc3 set success\n”);</p>
+<p>break;</p>
+<p>}</p>
+<p>for (loop = 1; loop &lt; 40; loop++)</p>
+<p>{</p>
+<p>sleep(1); //睡眠，否则会打印很多信息</p>
+<p>printf(“prc%d heart beat %d\n”, id+1, loop);</p>
+<p>}</p>
+<p>exit(0);</p>
+<p>}</p>
+<p><img src="file:////private/var/folders/xn/lsx6487s6bd4jxbyb5k2ktq40000gn/T/com.kingsoft.wpsoffice.mac/wps-chixinning/ksohtml/wpsZEjqgX.jpg" alt="img"> </p>
+<p><strong><em>\</em>利用测试样例测试结果如上图所示;**</strong></p>
+<p><strong><em>\</em>通过git diff 工具可得,最终修改的minix系统src文件如下,被修改的文件在上述思维导图结构中已经给出:**</strong></p>
+<p><strong>1.***</strong>*内核层:****</p>
+<p>Src/minix/kernel/proc.h</p>
+<p>Src/minix/kernel/proc.c</p>
+<p>Src/minix/kernel/system/system.h</p>
+<p>Src/minix/kernel/system/do_chrt.c</p>
+<p>Src/minix/kernel/system/Makefile.inc</p>
+<p>Src/minix/kernel/commands/service/parse.c</p>
+<p><strong>2.***</strong>*服务层****</p>
+<p>Src/minix/servers/pm/proto.h</p>
+<p>Src/minix/servers/pm/table.c</p>
+<p>Src/minix/servers/pm/chrt.c</p>
+<p>Src/minix/servers/pm/Makefile.inc</p>
+<p>Src/minix/lib/libsys/sys_chrt.c</p>
+<p>Src/minix/lib/libsys/Makefile.inc</p>
+<p>Src/minix/include/minix/callnr.h</p>
+<p>Src/minix/include/minix/syslib.h</p>
+<p>Src/minix/include/minix/com.h</p>
+<p><strong>3.***</strong>*应用层****</p>
+<p>Src/include/unistd.h</p>
+<p>Src/minix/lib/libc/sys/chrt.c</p>
+<p>Src/minix/lib/libc/sys/Makefile.inc</p>
+<p>五、 <strong><em>\</em>总结**</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/30/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80L10A=LU/" class="archive-article-date">
-  	<time datetime="2020-04-30T04:05:14.657Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/30/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80L10A=LU/">数据科学的数学基础L10A=LU</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW9%20minix3%E7%B3%BB%E7%BB%9F%E4%BB%BB%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2020-04-27T07:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/14/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">英语歌曲文化赏析-乡村音乐3</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW9%20minix3%E7%B3%BB%E7%BB%9F%E4%BB%BB%E5%8A%A1/">操作系统 W9 minix3系统任务</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2020-04-27T06:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">操作系统 W9 进程概述与进程实现</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-04-26T06:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/">操作系统 W8 进程调度</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-04-24T05:44:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/">时间序列预测学习</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">DaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW7%20P2PCDNsocket/" class="archive-article-date">
-  	<time datetime="2020-04-24T05:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW7%20P2PCDNsocket/">计算机网络W7:P2P/CDN/socket</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/" class="archive-article-date">
-  	<time datetime="2020-04-23T05:59:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/">专业英语W7:functions</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-04-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/">操作系统W7:2.3经典并发问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="archive-article-date">
-  	<time datetime="2020-04-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">操作系统W7: 进程间通信</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/20/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90R&B%20blues/" class="archive-article-date">
-  	<time datetime="2020-04-20T02:55:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/20/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90R&B%20blues/">英语歌曲文化赏析:R&amp;B blues</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/7/">7</a><a class="extend next" rel="next" href="/archives/2020/page/3/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -651,8 +563,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

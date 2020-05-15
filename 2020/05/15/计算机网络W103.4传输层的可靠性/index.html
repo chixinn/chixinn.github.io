@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Chixinning的博客</title>
+  <title>计算机网络W103.4传输层的可靠性 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/6/index.html">
+  <meta name="description" content="计算机网络W10:3.4传输层的可靠性 传输层的协议都会需要的两个功能,即多路复用和多路分解; 网络层和传输层的接口是多路复用和多路分解; 损坏例子:比特位重置&#x2F;置返;   如何设计出可靠的数据传输? 在设计可靠的数据传输时需要注意哪些方面?">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络W103.4传输层的可靠性">
+<meta property="og:url" content="http://yoursite.com/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW103.4%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="计算机网络W10:3.4传输层的可靠性 传输层的协议都会需要的两个功能,即多路复用和多路分解; 网络层和传输层的接口是多路复用和多路分解; 损坏例子:比特位重置&#x2F;置返;   如何设计出可靠的数据传输? 在设计可靠的数据传输时需要注意哪些方面?">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-05-15T05:21:04.779Z">
+<meta property="article:modified_time" content="2020-05-15T06:51:40.488Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="C++">
@@ -168,449 +170,240 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-计算机网络W103.4传输层的可靠性" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计算机网络W103.4传输层的可靠性
+    </h1>
+  
+
+        
+        <a href="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW103.4%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7/" class="archive-article-date">
+  	<time datetime="2020-05-15T05:21:04.779Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="计算机网络W10-3-4传输层的可靠性"><a href="#计算机网络W10-3-4传输层的可靠性" class="headerlink" title="计算机网络W10:3.4传输层的可靠性"></a>计算机网络W10:3.4传输层的可靠性</h1><ol>
+<li>传输层的协议都会需要的两个功能,即多路复用和多路分解;</li>
+<li>网络层和传输层的接口是多路复用和多路分解;</li>
+<li>损坏例子:比特位重置/置返;</li>
+</ol>
+<hr>
+<p>如何设计出可靠的数据传输?</p>
+<p>在设计可靠的数据传输时需要注意哪些方面?</p>
+<a id="more"></a>
+
+<h2 id="可靠的数据传输"><a href="#可靠的数据传输" class="headerlink" title="可靠的数据传输"></a>可靠的数据传输</h2><h3 id="Challenge"><a href="#Challenge" class="headerlink" title="Challenge"></a>Challenge</h3><p>希望传输层提供可靠的服务给应用层;</p>
+<p>但传输层使用的网络层的服务却是不可靠的;</p>
+<h3 id="调用函数介绍"><a href="#调用函数介绍" class="headerlink" title="调用函数介绍"></a>调用函数介绍</h3><p>以packet分组为基本单位;</p>
+<ol>
+<li>rdt_send应用层,</li>
+<li>udt_send,rdt调用udt</li>
+<li>rdt_rcv,消息到达后</li>
+<li>Deliver_data;rdt调用deliver_data,可靠的data;</li>
+</ol>
+<hr>
+<blockquote>
+<p>处理challenge的状态从简单到复杂,难度一层层增加;</p>
+</blockquote>
+<h3 id="rdt1-0-理想状态-无差错"><a href="#rdt1-0-理想状态-无差错" class="headerlink" title="rdt1.0 理想状态:无差错"></a>rdt1.0 理想状态:无差错</h3><h4 id="表达协议的有限状态机"><a href="#表达协议的有限状态机" class="headerlink" title="表达协议的有限状态机"></a>表达协议的有限状态机</h4><p>利用FSM表示状态迁移,state从1迁移到状态2,往往是因为<strong>event causing state transition;</strong></p>
+<p>为了讲解方便:数据流单项,控制流双向;</p>
+<p>数据流:数据信息是单向的</p>
+<p>控制流:确认信息是双向的</p>
+<h4 id="假定网络层是一个可靠的数据传输"><a href="#假定网络层是一个可靠的数据传输" class="headerlink" title="假定网络层是一个可靠的数据传输"></a>假定网络层是一个可靠的数据传输</h4><p>可靠:</p>
+<ol>
+<li>no bit errors</li>
+<li>no loss of packets</li>
+</ol>
+<p>因为是可靠的,所以sender端一直是同一个状态;receive端也是如此;</p>
+<h3 id="rdt2-0数据损害状态-停等模式-即不会有并行的流水线"><a href="#rdt2-0数据损害状态-停等模式-即不会有并行的流水线" class="headerlink" title="rdt2.0数据损害状态(停等模式,即不会有并行的流水线)"></a>rdt2.0数据损害状态(停等模式,即不会有并行的流水线)</h3><p>此时bit error:flip bits,当产生差错的时候,使用checksum to detect bit errors(检查到发生差错了);<strong>当我校验到错误时,如何从错误恢复过来?</strong></p>
+<p>最基本的解决方法即为:<strong>重发</strong></p>
+<p>停等模式:对于单个packet而言,采用<strong>停等模式</strong></p>
+<p>ACK:返回给sender,checksum通过时;</p>
+<p>NAK:返回给sender,checksum不通过时;</p>
+<p>此时FSM变为:</p>
+<p>Sender:</p>
+<p>State1:wait for call from above(same as rdt1.0)</p>
+<p>State2:wait for ACK or NAK(发送后不是接着发送,而是等待一个ACK)</p>
+<p>event cause state transition here:发送packet这一事件</p>
+<p>Receiver:</p>
+<p>只有一个状态wait for call from below</p>
+<blockquote>
+<p>rdt2.0的致命弱点:当传回的ACK/NAK会损坏时如何解决呢?</p>
+<p>ACK/NAK损坏后,一定会重传,此时唯一差别是给消息加编号,重传会有duplicate的问题;</p>
+</blockquote>
+<p>Rdt2.1</p>
+<p>此时,接受者可能会收到两份一摸一样的packet,如何区分这两份一摸一样的packet,即我还是不知到接受者是否完好无损的发送了消息;</p>
+<p>此时,我如果给packet加一个sequence number0/1,就可以避免duplicate的问题了.</p>
+<p>即此时只需要0/1,即一个表示原始的包,另一个表示下一个新的重传;</p>
+<p>rdt2.2是否能只用ACK,而不使用NAK?</p>
+<p>如何只用ACK既能表达肯定又能表达否定?</p>
+<p>对上一次啊接受的序号重复发ACK,即接受者不发送NAK,send ACK for last  pkt receiverd ok</p>
+<p>如果接受者对同一个序号连续发送了两个相同ACK,即</p>
+<h3 id="Rdt3-0数据丢包状态"><a href="#Rdt3-0数据丢包状态" class="headerlink" title="Rdt3.0数据丢包状态"></a>Rdt3.0数据丢包状态</h3><p>考虑timeout机制;</p>
+<p>rdt3.0仍还是停等模式,</p>
+<p>停等模式的性能很低;</p>
+<h3 id="性能up-流水线"><a href="#性能up-流水线" class="headerlink" title="性能up,流水线"></a>性能up,流水线</h3><p>串行时为停等模式,pipeline并行模式;</p>
+<p>即一次传时,传了很多包,即很多包并行传送;</p>
+<h4 id="回退N步"><a href="#回退N步" class="headerlink" title="回退N步"></a>回退N步</h4><p>发送方最多保留N个已发送未确认的包;</p>
+<p>接受者这里发送累计确认cumulative ack;</p>
+<p>同时发送者也要设置超时定时器,一旦发生超时以后,把所有没有确认的消息都会再重复发送一遍;</p>
+<hr>
+<p>维护一个滑动窗口window N ;</p>
+<p>一个窗口只有一个定时器,定时器,send_base:<strong>最早未被确认的;</strong></p>
+<p>回退N步,假如send_base设置在2,当超时以后,从2开始,所有滑动窗口中的可发送的都要被重传;</p>
+<ol>
+<li>窗口滑动:有数据被确认</li>
+<li>窗口size:可发送的数据的个数;</li>
+</ol>
+<p>base=nextsequence为最早的已发送未确认;</p>
+<p>只有连续序号才会传输到上层应用;</p>
+<p>故假设发送1,2,3,4,5;</p>
+<p>2发了,但是2发送失败.即使3,4,5都收到了也会被扔掉;</p>
+<p>只能等2;</p>
+<p>故此时必须goback,即即使收到也会被丢掉重传;</p>
+<h4 id="选择重传"><a href="#选择重传" class="headerlink" title="选择重传"></a>选择重传</h4><p>GBN的改进:选择重传,失序的会被选择重传,</p>
+<p>在选择重传中,每一个packet一个定时期,而GBN只维护一个send_base处的定时器;</p>
+<p>sender和rec的窗口是不一样的;</p>
+<h3 id="性能finalup"><a href="#性能finalup" class="headerlink" title="性能finalup"></a>性能finalup</h3><hr>
+<blockquote>
+<p>没有学得拔尖，也没有玩得通透。既没有好好读书，也没有好好恋爱。还把眼睛给弄近视了[泪]，没有为喜欢的事全力以赴。“那道题我会做，那个人我是真的喜欢过。”</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-03-11T00:23:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW1%20%E9%9B%86%E5%90%88%E5%92%8C%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/">概率论W1 集合和概率模型</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">概率论</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW103.4%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/" class="archive-article-date">
-  	<time datetime="2020-03-11T00:23:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">操作系统Project2Chrt系统调用和EDF算法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/11/%E6%A6%82%E7%8E%87%E8%AE%BAW9:%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%20%20/">概率论W9/随机算法</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">概率论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/" class="archive-article-date">
-  	<time datetime="2020-03-10T03:48:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW1%EF%BC%9A%E5%BC%95%E8%8A%82/">操作系统W1：引节和实验环境的配置</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20%E4%BD%9C%E4%B8%9A%20http/" class="archive-article-date">
-  	<time datetime="2020-03-10T01:00:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW1%20%E4%BD%9C%E4%B8%9A%20http/">专业英语W1作业 http</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/09/Crash-Course-CS-E29-%E4%BA%92%E8%81%94%E7%BD%91/" class="archive-article-date">
-  	<time datetime="2020-03-09T13:24:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/09/Crash-Course-CS-E29-%E4%BA%92%E8%81%94%E7%BD%91/">Crash Course CS E29 互联网</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Crash Course CS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/08/Crash-Course-CS-E28-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="archive-article-date">
-  	<time datetime="2020-03-08T14:00:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/08/Crash-Course-CS-E28-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">Crash Course CS E28:计算机网络</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Crash Course CS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/08/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-03-08T02:37:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/08/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE/">yilia主题的配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/06/%E7%81%B5%E5%85%89%E4%B8%80%E7%8E%B0%E7%9A%84%E5%A4%87%E5%BF%98/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:13:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/06/%E7%81%B5%E5%85%89%E4%B8%80%E7%8E%B0%E7%9A%84%E5%A4%87%E5%BF%98/">灵光一现的备忘</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/05/Missing-L1-Shell/" class="archive-article-date">
-  	<time datetime="2020-03-05T06:05:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/05/Missing-L1-Shell/">Missing-L1-Shell</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Missing Semester</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/03/05/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="archive-article-date">
-  	<time datetime="2020-03-05T03:13:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/03/05/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">个人学习路线</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/7/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -634,8 +427,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

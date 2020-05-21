@@ -170,6 +170,508 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-最小二乘问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/">最小二乘问题</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-05-21T00:40:37.232Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="最小二乘问题"><a href="#最小二乘问题" class="headerlink" title="最小二乘问题"></a>最小二乘问题</h1><p>矩阵分解的应用,与线性回归等问题有着较为密切的联系.</p>
+<p>给出一条直线,使得所有点和直线所预测的点的误差的平方和最小.</p>
+<blockquote>
+<p>误差的平方和与2范数的关系</p>
+</blockquote>
+<p>即$min_{k,b}\sum_{i=1}^n(kx_i+b-y_i)^2$</p>
+<p>问题实质是求解<strong>线性回归</strong>的参数问题.</p>
+<hr>
+<p>给出数据集$x_1,x_2,…,x_n$,和用于预测的函数$y=w^Tx+b$数据的个数为n,数据的维度为m;所以当数据构成组成矩阵$A_{m\times n}$的列.</p>
+<p>即 arg($min_x||Ax-b||_2$)</p>
+<hr>
+        
+          <a class="article-more-a" href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-敏度分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">敏度分析</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2020-05-21T00:09:44.667Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="敏度分析"><a href="#敏度分析" class="headerlink" title="敏度分析"></a>敏度分析</h1><p>在本节中,将分析数据中扰动较小时对非奇异方阵线性方程解的影响.</p>
+<p>$A(X+\Delta x)=y+\Delta y$;</p>
+<blockquote>
+<p>关键问题,$\Delta y$较小时对$\Delta x$的影响</p>
+</blockquote>
+<p>$\frac{||\Delta x||_2{||x||_2}\le||A^{-1}||_2||A||_2\frac{||\Delta y||_2}{||y||_2}$</p>
+<p>注意,上式中,关键部分在于这里矩阵的范数的这个系数.</p>
+<h2 id="定义7"><a href="#定义7" class="headerlink" title="定义7"></a>定义7</h2><p>设,$\sigma_1,\sigma_n$分别是矩阵A的最大奇异值和最小奇异值,那么</p>
+<p>$||A||_2=\sigma1,||A^{-1}||_2=1/\sigma_n$</p>
+<p>因此,矩阵的条件数也可以定义为:</p>
+<p>$条件数(A)=\frac{\sigma_1}{\sigma_n}$;</p>
+<blockquote>
+<p>范数在数值计算中定义条件数的重要行.</p>
+</blockquote>
+<p>当条件数比较大时,y上的扰动可能会导致x上有很大的扰动,即方程对输入数据的变化非常敏感.</p>
+<p>A是奇异时:条件数-&gt;$\infin$</p>
+<h3 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h3><p>对于输入项的敏感性</p>
+<p>即将上式子中的比例替换为条件数</p>
+<h3 id="系数矩阵汇中扰动的敏感性"><a href="#系数矩阵汇中扰动的敏感性" class="headerlink" title="系数矩阵汇中扰动的敏感性"></a>系数矩阵汇中扰动的敏感性</h3><p>\frac{||x||_2}{||x+\Delta x||_2}</p>
+<h4 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h4><p>对A,y联合扰动的敏感型</p>
+<h3 id="引理3"><a href="#引理3" class="headerlink" title="引理3"></a>引理3</h3><p>![截屏2020-05-21上午8.35.33](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-05-21上午8.35.33.png)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数据挖掘过程Data Mining" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/20/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8BData%20Mining/">数据挖掘过程Data Mining</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/20/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8BData%20Mining/" class="archive-article-date">
+  	<time datetime="2020-05-20T00:58:54.127Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据挖掘过程Data-Mining"><a href="#数据挖掘过程Data-Mining" class="headerlink" title="数据挖掘过程Data Mining"></a>数据挖掘过程Data Mining</h1><h2 id="数据挖掘是什么"><a href="#数据挖掘是什么" class="headerlink" title="数据挖掘是什么?"></a>数据挖掘是什么?</h2><p>Models and patterns from massive observational data sets.</p>
+<h2 id="Components-of-Data-Mining-Algorithms"><a href="#Components-of-Data-Mining-Algorithms" class="headerlink" title="Components of Data Mining Algorithms"></a>Components of Data Mining Algorithms</h2><p>Components of data mining algorithms</p>
+<h3 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h3><p>Determining the nature and structure of the representatiom to be used.</p>
+<h3 id="Score-function"><a href="#Score-function" class="headerlink" title="Score function"></a>Score function</h3><p>Quantifying and comparing how well different represenatations fit the data</p>
+<h3 id="Search-optimization-method"><a href="#Search-optimization-method" class="headerlink" title="Search/optimization method"></a>Search/optimization method</h3><h3 id="Data-management"><a href="#Data-management" class="headerlink" title="Data management"></a>Data management</h3><h3 id="Measurement-scale"><a href="#Measurement-scale" class="headerlink" title="Measurement:scale"></a>Measurement:scale</h3><ol>
+<li><p>Nominal:类型的,即特性只能通过name来区分Hair color</p>
+</li>
+<li><p>Ordinal:attributes can be ordered.无法做减法</p>
+<p>Preference</p>
+<p>只能做保持序列的映射</p>
+</li>
+<li><p>Interval:距离有意义</p>
+<p>Temperature</p>
+</li>
+<li><p>Ratio:绝对零点,之间可以做比值</p>
+<p>Weight,income</p>
+</li>
+</ol>
+<h3 id="Why-measurements-are-important"><a href="#Why-measurements-are-important" class="headerlink" title="Why measurements are important?"></a>Why measurements are important?</h3><p>数据结构数据类型数据结构都在讲允许对这些数据做什么操作.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/20/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8BData%20Mining/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数学基础W11奇异值分解与优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/19/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W11%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E4%B8%8E%E4%BC%98%E5%8C%96/">数学基础W11奇异值分解与优化</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/19/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W11%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E4%B8%8E%E4%BC%98%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2020-05-19T08:24:40.542Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数学基础W11-奇异值分解与优化"><a href="#数学基础W11-奇异值分解与优化" class="headerlink" title="数学基础W11:奇异值分解与优化"></a>数学基础W11:奇异值分解与优化</h1><p>通过奇异值分解给出定理保证矩阵的低秩近似是存在的.</p>
+<ol>
+<li>将矩阵A表示成rank-1矩阵的和.</li>
+</ol>
+<h2 id="矩阵的最优近似"><a href="#矩阵的最优近似" class="headerlink" title="矩阵的最优近似"></a>矩阵的最优近似</h2><h3 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h3><p>给出了矩阵A和A^的误差大小</p>
+<p>A^是阶段性的奇异值分解.rank(A^)&lt;rank(A)</p>
+<p>$||A-X||_F=min||A-S||_F$</p>
+<p>称X为矩阵A在F范数 下的最优近似.</p>
+<p>F范数:平凡和再发方</p>
+<p>谱范数:矩阵最大的特征值/奇异值(2范数)</p>
+<h3 id="定理2"><a href="#定理2" class="headerlink" title="定理2"></a>定理2</h3><p>通过矩阵的奇异值分解,在F范数的意义下.可以求出近似矩阵X.即用A的截断奇异值分解来代表X.</p>
+<p>$A=U\Sigma V^T$</p>
+<h2 id="矩阵分解的应用"><a href="#矩阵分解的应用" class="headerlink" title="矩阵分解的应用"></a>矩阵分解的应用</h2><h3 id="线性方程组的求解"><a href="#线性方程组的求解" class="headerlink" title="线性方程组的求解"></a>线性方程组的求解</h3><ol>
+<li>直接法</li>
+<li>迭代法:很难求出解析解,只能求出近似解.</li>
+</ol>
+<h4 id="线性方程组的描述"><a href="#线性方程组的描述" class="headerlink" title="线性方程组的描述"></a>线性方程组的描述</h4><p>$Ax=y$,</p>
+<p>讨论线性方程组解的存在唯一性.</p>
+<p>即去讨论矩阵A的性质.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/19/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W11%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E4%B8%8E%E4%BC%98%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Matrix Methods in Data Analysis, Signal Processing, and Machine Learning  Mathematics Chapter0Overview" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/19/Matrix%20Methods%20in%20Data%20Analysis,%20Signal%20Processing,%20and%20Machine%20Learning%20%20Mathematics%20Chapter0Overview/">Matrix Methods in Data Analysis, Signal Processing, and Machine Learning  Mathematics Chapter0Overview</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/19/Matrix%20Methods%20in%20Data%20Analysis,%20Signal%20Processing,%20and%20Machine%20Learning%20%20Mathematics%20Chapter0Overview/" class="archive-article-date">
+  	<time datetime="2020-05-19T05:03:10.703Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Matrix-Methods-in-Data-Analysis-Signal-Processing-and-Machine-Learning-Mathematics-Chapter0-Overview"><a href="#Matrix-Methods-in-Data-Analysis-Signal-Processing-and-Machine-Learning-Mathematics-Chapter0-Overview" class="headerlink" title="Matrix Methods in Data Analysis, Signal Processing, and Machine Learning | Mathematics Chapter0:Overview"></a>Matrix Methods in Data Analysis, Signal Processing, and Machine Learning | Mathematics Chapter0:Overview</h1><ol>
+<li><p>What is Deep learning:</p>
+<p>研究一个function</p>
+<p>这个function干什么映射呢?</p>
+<p>Input data</p>
+<p>Output the meaning of the data</p>
+<p>Function 怎么获得呢?</p>
+</li>
+<li><p>Supporting subjects:</p>
+<p>Optimization: problems of minimizing the error.</p>
+<p>Statistics and probability</p>
+</li>
+<li><p>multiple variables calculus</p>
+</li>
+</ol>
+        
+          <a class="article-more-a" href="/2020/05/19/Matrix%20Methods%20in%20Data%20Analysis,%20Signal%20Processing,%20and%20Machine%20Learning%20%20Mathematics%20Chapter0Overview/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/19/Matrix%20Methods%20in%20Data%20Analysis,%20Signal%20Processing,%20and%20Machine%20Learning%20%20Mathematics%20Chapter0Overview/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-专业英语W11Chapter1 to the end" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/18/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW11Chapter1%20to%20the%20end/">专业英语W11Chapter1 to the end</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/18/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW11Chapter1%20to%20the%20end/" class="archive-article-date">
+  	<time datetime="2020-05-18T01:32:38.077Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="专业英语W11-Chapter1-to-the-end"><a href="#专业英语W11-Chapter1-to-the-end" class="headerlink" title="专业英语W11:Chapter1 to the end"></a>专业英语W11:Chapter1 to the end</h1><h2 id="Learnning-with-gradient-descent"><a href="#Learnning-with-gradient-descent" class="headerlink" title="Learnning with gradient descent"></a>Learnning with gradient descent</h2><ol>
+<li><p>训练集和测试机样本与过拟合:This helps give us <strong>confidence</strong> that our system can recognize digits from people whose writing it didn’t see during training.</p>
+</li>
+<li><p>手写识别训练集样本中:每一个训练图片都是一个$28\times28$像素的灰度图片,将其变成一个$784$维的向量,</p>
+<p>$y=y(x)$,y是一个output,10-维的;</p>
+</li>
+<li><p>Cost function:损失函数: mean squared error(MSE:均方误差)</p>
+</li>
+<li><p>Aim of our training algorithm: So the aim of our training algorithm will be to minimize the cost C(w,b)C(w,b) as a function of the weights and biases. </p>
+</li>
+<li><p>Gradient descent:we want to find a set of weights and biases which make the cost as small as possible.</p>
+</li>
+<li><p>Quadratic cost:二次代价函数</p>
+</li>
+<li><p>使用二次代价函数来评估模型的学习效果而不是直接使用成功分类的正确数量来评估模型的原因:</p>
+<p>成功分类的正确数量和weights 和biases不是呈一个线性关系;(Not smooth)这个不是线性关系让我们对weights 和cost的调整很难;</p>
+<p>对比之下:如果使用了smooth cost function ,我们就可以很明显的看出weight和cost变化后对结果的影响,我们也就知道该怎么调整了;</p>
+</li>
+<li><p>First focus on minimizing the quadratic cost ;</p>
+<p>Second examine the classification accuracy;</p>
+</li>
+<li><p>现有学习逻辑是:在已知函数的情况下,minimize the function;</p>
+<p>Use gradient descent to solve minimization problems;</p>
+<p>然后再回去看我们需要求minimization的函数是什么;</p>
+</li>
+<li><p>如何解决多变量函数求最小值的问题?尤其是当函数的自变量很多很多个的时候:</p>
+</li>
+<li><p>Ball rolls down to the bottom of the valley,do this simulation simply by derivatives (perhaps some second derivatives)</p>
+</li>
+<li><p>But what’s really exciting about the equation is that it lets us see <strong>how to choose Δv</strong> so as to make <strong>ΔC negative</strong>.</p>
+<p>Δv=−η∇C,η是<strong>学习率</strong>;</p>
+</li>
+<li><p>学习率参数的选取比较关键,太小会让我们变化下降的速度太慢,而且有时并不是下降;</p>
+</li>
+<li><p>我们⾸先限制步⻓为⼩的固定值，</p>
+<p>即 ∥<em>∆</em>v∥ = <em>ϵ</em>，<em>ϵ &gt;</em> 0。当步⻓固定时，我们要找到使得 <em>C</em> 减⼩最⼤的下降⽅向。</p>
+</li>
+<li><p>An idea called <em>stochastic gradient descent</em>(随机梯度下降)</p>
+<p>can be used to speed up learning. The idea is to estimate the gradient ∇C∇C by computing ∇Cx∇Cx for a small sample of randomly chosen training inputs. By averaging over this small sample it turns out that we can quickly get a good estimate of the true gradient ∇C∇C, and this helps speed up gradient descent, and thus learning.</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/18/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW11Chapter1%20to%20the%20end/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-用户画像构建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -507,524 +1009,9 @@
 
 
   
-    <article id="post-数据科学的数学基础W10(3)基于奇异值分解的矩阵的性质" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/14/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10(3)%E5%9F%BA%E4%BA%8E%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E7%9A%84%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%A7%E8%B4%A8/">数据科学的数学基础W10(3)基于奇异值分解的矩阵的性质</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/14/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10(3)%E5%9F%BA%E4%BA%8E%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E7%9A%84%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%A7%E8%B4%A8/" class="archive-article-date">
-  	<time datetime="2020-05-14T01:53:46.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据科学的数学基础W10-3-基于奇异值分解的矩阵的性质"><a href="#数据科学的数学基础W10-3-基于奇异值分解的矩阵的性质" class="headerlink" title="数据科学的数学基础W10(3):基于奇异值分解的矩阵的性质"></a>数据科学的数学基础W10(3):基于奇异值分解的矩阵的性质</h1><h2 id="基于奇异值分解的矩阵的性质"><a href="#基于奇异值分解的矩阵的性质" class="headerlink" title="基于奇异值分解的矩阵的性质"></a>基于奇异值分解的矩阵的性质</h2><p>设矩阵$A\in R^{m \times n}$;对角矩阵上非0元素等于矩阵的秩;</p>
-<p>$A=U\Sigma V^T$;</p>
-<p>$U$和$V$给出了四个基本子空间的一组正交基:</p>
-<p>$U$的前r列:A的列空间</p>
-<p>$U$的后m-r列:A的左零空间</p>
-<p>$V$的前r列,A的行空间</p>
-<p>$V$的后n-r列,A的零空间;</p>
-<h2 id="广义逆"><a href="#广义逆" class="headerlink" title="广义逆"></a>广义逆</h2><p>$A_{m\times n}$:</p>
-<p>$(AG)^T=AG$</p>
-<p>$(GA)^T=GA$</p>
-<p>$GAG=G$</p>
-<p>$AGA=A$</p>
-<p>如果G是A的Moore-Penrose逆,则G是A唯一的广义逆(以Moore-Penrose逆)的定义;</p>
-<blockquote>
-<p>当A为列满rank,A=($A^TA)^{-1}A^T$</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/14/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10(3)%E5%9F%BA%E4%BA%8E%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E7%9A%84%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%A7%E8%B4%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-概率论W10-DataStreams" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/">概率论W10:DataStreams</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/" class="archive-article-date">
-  	<time datetime="2020-05-13T01:02:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="概率论W10-DataStreams"><a href="#概率论W10-DataStreams" class="headerlink" title="概率论W10:DataStreams"></a>概率论W10:DataStreams</h1><ol>
-<li><p>当取样足够好的时候,当Datastream无限时,取样相当于一个物理规律.</p>
-</li>
-<li><p>Tail Inequalities;</p>
-</li>
-<li><p>一个经典的取样方法:Reservoir Sampling[水库抽样]</p>
-<p>Add each element to S with probability M/n;</p>
-</li>
-<li><p>Concise sampling</p>
-<p>以1/T的概率加入到取样之中.</p>
-</li>
-<li><p>如果我们用&lt;value, count&gt;来表示取样的样本，用concise sampling取样，对于什么样的&lt;value, count&gt;能做准确的估计，对于什么样的样本作出的估计是不准确的？</p>
-<p>Effective for answering hot list queries;</p>
-<p>所以,对k most frequent values的情况下的估计比较好;k most frequent 会在sampling中沉淀下来;</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数学基础W10矩阵的SVD分解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/">数学基础W10矩阵的SVD分解</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-05-12T06:44:38.783Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数学基础W10-矩阵的SVD分解"><a href="#数学基础W10-矩阵的SVD分解" class="headerlink" title="数学基础W10:矩阵的SVD分解"></a>数学基础W10:矩阵的SVD分解</h1><p>面对方阵:</p>
-<ol>
-<li>A=LU</li>
-<li>A=QR</li>
-<li>A=$Q\Lambda Q$</li>
-<li>正定矩阵的cholosky分解</li>
-</ol>
-<p>面对非方阵:</p>
-<p>$A_{m\times n}=SVD$;</p>
-<blockquote>
-<p>数学基础的重点;</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数学基础W10:对称矩阵的谱分解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10:%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E8%B0%B1%E5%88%86%E8%A7%A3/">数学基础W10:对称矩阵的谱分解</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10:%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E8%B0%B1%E5%88%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-05-12T05:10:30.309Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数学基础对称矩阵的谱分解"><a href="#数学基础对称矩阵的谱分解" class="headerlink" title="数学基础对称矩阵的谱分解"></a>数学基础对称矩阵的谱分解</h1><h2 id="谱分解"><a href="#谱分解" class="headerlink" title="谱分解"></a>谱分解</h2><p>对称矩阵的谱分解,即是对称矩阵的特征分解;</p>
-<p>特征分解:$A=PDP^{-1}$;</p>
-<p>矩阵可特征分解的条件:矩阵A的n个特征向量不同,即P是可逆的,即P的列向量线性无关.</p>
-<blockquote>
-<p>特别的,当A是对称矩阵时,P作为特征向量构成的矩阵为正交矩阵;</p>
-</blockquote>
-<h3 id="谱分解在机器学习的应用"><a href="#谱分解在机器学习的应用" class="headerlink" title="谱分解在机器学习的应用"></a>谱分解在机器学习的应用</h3><ol>
-<li><p>PCA降维</p>
-<p>最大特征值对应特征向量方向上往往含有较多有用信息,故矩阵在进行特征提取时可以放弃一些辅助的无用信息,仅保留较大的特征值.</p>
-</li>
-<li><p>压缩</p>
-</li>
-</ol>
-<h3 id="对称矩阵的好的性质"><a href="#对称矩阵的好的性质" class="headerlink" title="对称矩阵的好的性质"></a>对称矩阵的好的性质</h3><ol>
-<li>A是实对称矩阵,A的特征值是实数;</li>
-<li>A是 n阶矩阵,下面三个命题等价;<ol>
-<li>$A=A^T$</li>
-<li>$A=Q\Lambda Q^T,Q^T\Lambda Q=A$</li>
-<li>A的特征向量$q_1,q_2,…,q_n$是$R^n$的一组<strong>标准</strong>正交基;</li>
-</ol>
-</li>
-</ol>
-<blockquote>
-<p>副对称矩阵也有相应的对角化定理</p>
-</blockquote>
-<h3 id="谱分解定义"><a href="#谱分解定义" class="headerlink" title="谱分解定义"></a>谱分解定义</h3><p>也可以将对称矩阵A,$A=Q\Lambda Q^T=\sum_{i=1}^n\lambda_iq_iq_i^T$,即在这里写成了rank-1矩阵和的形式;</p>
-<h3 id="特征分解的几何意义"><a href="#特征分解的几何意义" class="headerlink" title="特征分解的几何意义"></a>特征分解的几何意义</h3><p>$设A=\lambda_1q_1q_1^T+\lambda_2q_2q_2^T,显然q_1和q_2是两组基;$</p>
-<p>$q_1^Tq_1=1;q_2^Tq_2=1;$</p>
-<p>所以</p>
-<h3 id="谱分解与二次函数的优化"><a href="#谱分解与二次函数的优化" class="headerlink" title="谱分解与二次函数的优化"></a>谱分解与二次函数的优化</h3><p>$Q(x)=x^TAx$,限制$||x||_2=1$;</p>
-<p>$xQ(x)=xx^TAx=Ax$,故当x等于某个特征向量时,$Q(x)$是对应的特征值;</p>
-<p>$Q(x)<em>{MAX}=\lambda</em>{MAX}$;</p>
-<p>$Q(x)<em>{MIN}=\lambda</em>{MIN}$;</p>
-<p>可以跟正半定矩阵特征值的性质相结合;$\lambda_{min}\ge0$;</p>
-<blockquote>
-<p>无向图的拉普拉斯矩阵L=D-A是正半定矩阵,故有</p>
-<p>min$x^TLx=0$;</p>
-</blockquote>
-<p><strong>所以,谱聚类问题转化成了相应的求次小特征值的问题</strong>;</p>
-<h3 id="瑞利商"><a href="#瑞利商" class="headerlink" title="瑞利商"></a>瑞利商</h3><p>$R(x)=\frac{x^TxA}{x^Tx}$</p>
-<p>A是正半定矩阵等价于R(x)$\ge$0;</p>
-<p><img src="https://i.loli.net/2020/05/12/p3wegGKbxdmVOYN.png" alt="截屏2020-05-12下午2.58.36.png"></p>
-<p><img src="https://i.loli.net/2020/05/12/cL3D6TqgBxaIRtN.png" alt="截屏2020-05-12下午2.59.32.png"></p>
-<h3 id="庞加莱不等式"><a href="#庞加莱不等式" class="headerlink" title="庞加莱不等式"></a>庞加莱不等式</h3><p>令$A\in S^n$,V是$R^n$中的任意一个k维自空间;</p>
-<p>存在单位向量x,y;<br>$$<br>x^TAx\le\lambda_k(A),y^TAy\ge\lambda_{n-k+1}(A)<br>$$</p>
-<h3 id="Poincare不等式的应用-极小极大准则"><a href="#Poincare不等式的应用-极小极大准则" class="headerlink" title="Poincare不等式的应用:极小极大准则"></a>Poincare不等式的应用:极小极大准则</h3><p><img src="https://i.loli.net/2020/05/12/VkwgrHauQ63bFdJ.png" alt="截屏2020-05-12下午3.04.54.png"></p>
-<blockquote>
-<p>极大极小准则可以用于比较两个对称矩阵和的特征值和原矩阵特征值的大小关系:</p>
-</blockquote>
-<p><img src="https://i.loli.net/2020/05/12/Ngn8BJTGeft4ir6.png" alt="截屏2020-05-12下午3.06.08.png"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10:%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E8%B0%B1%E5%88%86%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W8-UDP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW8-UDP/">计算机网络W8 传输层 TransportLayer</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW8-UDP/" class="archive-article-date">
-  	<time datetime="2020-05-08T04:58:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="计算机网络W8-传输层TransportLayer"><a href="#计算机网络W8-传输层TransportLayer" class="headerlink" title="计算机网络W8:传输层TransportLayer"></a>计算机网络W8:传输层TransportLayer</h1><h2 id="大作业"><a href="#大作业" class="headerlink" title="大作业"></a>大作业</h2><p>P119</p>
-<p>要求 完成书上的4个作业中的作业1和作业4.</p>
-<p>最好的是作业1和作业4都完成并串起来.</p>
-<p>基本要求:作业1 要完成,作业1完成才是project完成的底线.</p>
-<p>作业1要考虑大的负载和多线程.</p>
-<p>写正确v.s.写的<strong>性能</strong>提高.</p>
-<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><ul>
-<li><p>UDP与TCP的工作原理;</p>
-</li>
-<li><p>多路分解</p>
-</li>
-<li><p>TCP:可靠的数据传输,网络层的服务模式却是尽力而为,当IP层/链路无法保证可靠性时,TCP如何做到它是一种可靠的数据传输呢?</p>
-<p>在搭载了可靠上,又希望它能做到流量控制和拥塞控制;</p>
-<p>[难点]</p>
-</li>
-<li><p>UDP没有流量控制和拥塞控制;</p>
-</li>
-<li><p>多路复用</p>
-</li>
-<li><p>多路分解</p>
-</li>
-</ul>
-<p>传输层是端系统进程到端系统进程的,</p>
-<p>发送:多个application传入到一个网络;</p>
-<p>接收:网络/传输层如何将数据报文分解到多个应用层去.</p>
-        
-          <a class="article-more-a" href="/2020/05/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW8-UDP/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW8-UDP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-fucking-2020" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/06/fucking-2020/">fucking 2020</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/06/fucking-2020/" class="archive-article-date">
-  	<time datetime="2020-05-06T05:15:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="This-fucking-2020"><a href="#This-fucking-2020" class="headerlink" title="This fucking 2020"></a>This fucking 2020</h1><h1 id="This-fucking-major"><a href="#This-fucking-major" class="headerlink" title="This fucking major"></a>This fucking major</h1><h1 id="This-fucking-life"><a href="#This-fucking-life" class="headerlink" title="This fucking life"></a>This fucking life</h1><p>Life cannot be that rosy ha?</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/06/fucking-2020/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 

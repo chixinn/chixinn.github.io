@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | Chixinning的博客</title>
+  <title>最小二乘问题 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2020/page/2/index.html">
+  <meta name="description" content="最小二乘问题矩阵分解的应用,与线性回归等问题有着较为密切的联系. 给出一条直线,使得所有点和直线所预测的点的误差的平方和最小.  误差的平方和与2范数的关系  即$min_{k,b}\sum_{i&#x3D;1}^n(kx_i+b-y_i)^2$ 问题实质是求解线性回归的参数问题.  给出数据集$x_1,x_2,…,x_n$,和用于预测的函数$y&#x3D;w^Tx+b$数据的个数为n,数据的维度为m;所以当数据构成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="最小二乘问题">
+<meta property="og:url" content="http://yoursite.com/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="最小二乘问题矩阵分解的应用,与线性回归等问题有着较为密切的联系. 给出一条直线,使得所有点和直线所预测的点的误差的平方和最小.  误差的平方和与2范数的关系  即$min_{k,b}\sum_{i&#x3D;1}^n(kx_i+b-y_i)^2$ 问题实质是求解线性回归的参数问题.  给出数据集$x_1,x_2,…,x_n$,和用于预测的函数$y&#x3D;w^Tx+b$数据的个数为n,数据的维度为m;所以当数据构成">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1geztza0q9mj30r80r0gog.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gezu0gsl66j30r80n641b.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gezu1iuxyrj30r80dudii.jpg">
+<meta property="article:published_time" content="2020-05-21T00:40:37.232Z">
+<meta property="article:modified_time" content="2020-05-21T01:57:47.457Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="C++">
@@ -29,6 +34,7 @@
 <meta property="article:tag" content="Developer">
 <meta property="article:tag" content="DataScience">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1geztza0q9mj30r80r0gog.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -168,337 +174,232 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-最小二乘问题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      最小二乘问题
+    </h1>
+  
+
+        
+        <a href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-05-21T00:40:37.232Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="最小二乘问题"><a href="#最小二乘问题" class="headerlink" title="最小二乘问题"></a>最小二乘问题</h1><p>矩阵分解的应用,与线性回归等问题有着较为密切的联系.</p>
+<p>给出一条直线,使得所有点和直线所预测的点的误差的平方和最小.</p>
+<blockquote>
+<p>误差的平方和与2范数的关系</p>
+</blockquote>
+<p>即$min_{k,b}\sum_{i=1}^n(kx_i+b-y_i)^2$</p>
+<p>问题实质是求解<strong>线性回归</strong>的参数问题.</p>
+<hr>
+<p>给出数据集$x_1,x_2,…,x_n$,和用于预测的函数$y=w^Tx+b$数据的个数为n,数据的维度为m;所以当数据构成组成矩阵$A_{m\times n}$的列.</p>
+<p>即 arg($min_x||Ax-b||_2$)</p>
+<hr>
+<a id="more"></a>
+
+<p>$A_x-b$在这里代表的既是误差,又跟方程组$Ax=b$相联系</p>
+<p>(1)当$Ax=b$有解时,如何确定$x_0$,</p>
+<p>使得$||x_0||_2=min||x||_2$,为极小范数解</p>
+<p>(2)当$Ax=b$无解时,给出无解时的极小范数最小二乘解.</p>
+<p>有解时,确定x,满足其是解时,所有解中2范数最小的;</p>
+<p>无解时,要确定x,使误差Ax-b的2范数是最小的.</p>
+<hr>
+<blockquote>
+<p>最小二乘问题和方程组求解的联系</p>
+</blockquote>
+<blockquote>
+<p>现代数值计算方法 北京大学出版社 主编：肖筱南<br>我帮你简单叙述下最小二乘法的概念<br>对于你所述的这种矛盾方程组 是工程上的常见问题<br>而用最小二乘法是为了得到一个解,使其在每个方程中的误差之和达到最小<br>但每个误差有正有负,因此我们就以“偏差的平方和最小”为原则<br>具体的计算方法为<br>设矩阵A为矛盾方程组的系数矩阵 b为其等号右边的数值矩阵<br>则方程组用矩阵可表示为AX=b<br>两边同时左乘A的转置矩阵<br>即$A（A^T）X=（A^T）b$ （T为上标,即A的转置）<br>再解这个方程组<br>得到的解即为最优近似解</p>
+</blockquote>
+<h3 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h3><blockquote>
+<p>线性最小二乘问题的解<strong>总是存在的</strong>,而且其解唯一的充分必要条件是null(A)=0;</p>
+</blockquote>
+<p>记最小二乘问题的解为 $X_{LS}$, 即$X_{LS}$ = <em>{<strong>*x</strong> *∈</em> R<em>n</em> : <strong>x</strong>是 LS 问题(1)的解}</p>
+<p>则由定理1知，XLS 总是非空的，而且它仅有一个元素的充分必要条件是 <strong>A</strong> 的列线性无关。</p>
+<p>此外，不难证明，解集中有且仅有一个解其 2 范数最小，我们用 <em>x**LS</em> 表示之，并称其为最小范数解。</p>
+<h3 id="定理2"><a href="#定理2" class="headerlink" title="定理2"></a>定理2</h3><p>x属于最小二乘的解集,</p>
+<p>$A^TAx=A^Tb$;</p>
+<hr>
+<h3 id="如何理解最小二乘法"><a href="#如何理解最小二乘法" class="headerlink" title="如何理解最小二乘法?"></a>如何理解最小二乘法?</h3><p>最小二乘法的本质是什么？ - 马同学的回答 - 知乎 <a href="https://www.zhihu.com/question/37031188/answer/411760828" target="_blank" rel="noopener">https://www.zhihu.com/question/37031188/answer/411760828</a></p>
+<hr>
+<h3 id="正规化方法求最小二乘问题"><a href="#正规化方法求最小二乘问题" class="headerlink" title="正规化方法求最小二乘问题"></a>正规化方法求最小二乘问题</h3><p>A的广义逆:如果矩阵A是列满rank的话,那么A的广义逆是</p>
+<p>$(A^TA)^{-1}A^T$;</p>
+<p>故最小二乘问题的解x可表示为x=A的广义逆b.</p>
+<p>道，如果目标函数是可微，具有凸性并且问题</p>
+<p>是没有约束的，最优点由条件 ∇f(x) = 0 决定。在我们这种情况下，函数 <em>f</em> 在一点 <strong>x</strong> 处的梯度是非常容易看出是 $∇f(x) = A^T(Ax-b)$.</p>
+<h3 id="QR分解法求最小二乘问题"><a href="#QR分解法求最小二乘问题" class="headerlink" title="QR分解法求最小二乘问题"></a>QR分解法求最小二乘问题</h3><p>正交变换保持向量长度的不变性:2范数的意义之下.</p>
+<p>$||Qx||_2$=$||x||_2$;</p>
+<ol>
+<li><p>首先将A进行正交分解.$A_{m\times n}=Q\begin{pmatrix}R^{n\times n}\O \end{pmatrix}$</p>
+</li>
+<li><p>$||Ax-b||_2=||QRx-b||_2=||Q||_2||\begin{pmatrix}R^{n\times n}\O \end{pmatrix}x-Q^Tb||_2$</p>
+<p>在这里为了保持形式的统一,将b拆成$b_1和b_2$两部分.</p>
+</li>
+<li><p>arg(min||AX-b||_2)=min(Rx-b_1)</p>
+</li>
+<li><p>根据最小二乘与方程组的联系,只需要求$Rx=b_1$的解.</p>
+</li>
+</ol>
+<blockquote>
+<p>在计算机中一般使用基于 Householder 变换的 QR 分解，该算法有良好地数值性态，结果通</p>
+</blockquote>
+<p>常要比正则化方法精确。但是运算量也比较大，大约为 $2<em>mn^2 -2n^3/3 $,我们也可以使用 Givens 变换来实现 QR 分解，所需的运算量大约是 Householder 方法地两倍，但是如果 *</em>A** 有较多的零元素，则灵活地使用 Givens 变换会使运算量大为减少.</p>
+<h3 id="奇异值分解法求解最小二乘的问题"><a href="#奇异值分解法求解最小二乘的问题" class="headerlink" title="奇异值分解法求解最小二乘的问题"></a>奇异值分解法求解最小二乘的问题</h3><h3 id="欠定问题的最小范数解"><a href="#欠定问题的最小范数解" class="headerlink" title="欠定问题的最小范数解"></a>欠定问题的最小范数解</h3><p>![截屏2020-05-21上午9.38.14](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-05-21上午9.38.14.png)</p>
+<ol>
+<li><p>加权最小二乘,某些方程的残差项是需要拥有权重的.</p>
+</li>
+<li><p>约束最小二乘,在min的同时,也有Bx=f的约束条件.</p>
+</li>
+<li><p>总体最小二乘,数据矩阵和数据向量都有误差,不仅用校正向量$\Delta b$去干扰数据向量b,同时用校正矩阵$\Delta A$去干扰数据矩阵A,以便对A和b二者内存在的误差或噪声进行联合补偿.</p>
+<p>自然地，我们希望矫正数据矩阵和校正数据向量都尽量小。因此，总体最小二乘问题可以</p>
+<p>用约束优化问题叙述为：</p>
+<p>$min_{\Delta A,\Delta b},{x||\Delta A,\Delta b||_F^2=||\Delta A||_F^2+||\Delta b||_2^2}$</p>
+<p>subject to (<strong>A</strong> + ∆<strong>A</strong>)<strong>x</strong> = <strong>b</strong> + ∆<strong>b</strong>;</p>
+<p>约束条件有时也表示为 (<strong>b</strong> + ∆<strong>b</strong>) <em>∈</em> Col(<strong>A</strong> + ∆<strong>A</strong>)<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1geztza0q9mj30r80r0gog.jpg" alt="截屏2020-05-21上午9.47.16"></p>
+</li>
+</ol>
+<h2 id="最小二乘问题的解的敏感性"><a href="#最小二乘问题的解的敏感性" class="headerlink" title="最小二乘问题的解的敏感性"></a>最小二乘问题的解的敏感性</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gezu0gsl66j30r80n641b.jpg" alt="截屏2020-05-21上午9.50.22"></p>
+<blockquote>
+<p>这个定理告诉我们，在考虑 <strong>x</strong> 的相差误差时，若 <strong>b</strong> 有变化。只有它在 Col(<strong>A</strong>) 上的投影会对解产生影响。此外，这个定理还告诉我们，最小二乘问题之解的敏感性依赖于数 <em>κ</em>2(<strong>A</strong>)的大小。因此，我们称它为最小二乘问题的条件数。若 <em>κ</em>2(<strong>A</strong>) 很大，则称最小二乘问题是病态的；否则称为良态的。</p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gezu1iuxyrj30r80dudii.jpg" alt="截屏2020-05-21上午9.51.23"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/14/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10(3)%E5%9F%BA%E4%BA%8E%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E7%9A%84%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%A7%E8%B4%A8/" class="archive-article-date">
-  	<time datetime="2020-05-14T01:53:46.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/14/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10(3)%E5%9F%BA%E4%BA%8E%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E7%9A%84%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%A7%E8%B4%A8/">数据科学的数学基础W10(3)基于奇异值分解的矩阵的性质</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/" class="archive-article-date">
-  	<time datetime="2020-05-13T01:02:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-13</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">敏度分析</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/">概率论W10:DataStreams</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-05-12T06:44:38.783Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/">数学基础W10矩阵的SVD分解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10:%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E8%B0%B1%E5%88%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-05-12T05:10:30.309Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10:%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E8%B0%B1%E5%88%86%E8%A7%A3/">数学基础W10:对称矩阵的谱分解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW8-UDP/" class="archive-article-date">
-  	<time datetime="2020-05-08T04:58:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW8-UDP/">计算机网络W8 传输层 TransportLayer</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/06/fucking-2020/" class="archive-article-date">
-  	<time datetime="2020-05-06T05:15:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/06/fucking-2020/">fucking 2020</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/06/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-folk%E6%96%AF%E5%8D%A1%E5%B8%83%E7%BD%97%E9%9B%86%E5%B8%82/" class="archive-article-date">
-  	<time datetime="2020-05-06T02:55:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/06/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-folk%E6%96%AF%E5%8D%A1%E5%B8%83%E7%BD%97%E9%9B%86%E5%B8%82/">英语歌曲文化赏析-斯卡布罗集市</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/" class="archive-article-date">
-  	<time datetime="2020-05-02T15:07:43.555Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/">操作系统第二次作业</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/02/%E6%99%BA%E8%83%BD%E6%8A%95%E9%A1%BE(Robo-Advisory)/" class="archive-article-date">
-  	<time datetime="2020-05-02T07:40:05.412Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/02/%E6%99%BA%E8%83%BD%E6%8A%95%E9%A1%BE(Robo-Advisory)/">智能投顾(Robo-Advisory)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/30/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80L10A=LU/" class="archive-article-date">
-  	<time datetime="2020-04-30T04:05:14.657Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/30/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80L10A=LU/">数据科学的数学基础L10A=LU</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2020/">&amp;laquo; Prev</a><a class="page-number" href="/archives/2020/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/2020/page/3/">3</a><a class="page-number" href="/archives/2020/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2020/page/8/">8</a><a class="extend next" rel="next" href="/archives/2020/page/3/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -522,8 +423,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

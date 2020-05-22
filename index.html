@@ -170,6 +170,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-计算机网络W11TCP协议3.5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/">计算机网络W11TCP协议3.5</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/" class="archive-article-date">
+  	<time datetime="2020-05-22T05:12:03.629Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="计算机网络W11-TCP协议3-5"><a href="#计算机网络W11-TCP协议3-5" class="headerlink" title="计算机网络W11:TCP协议3.5"></a>计算机网络W11:TCP协议3.5</h1><blockquote>
+<p>如何在传输层设计出一个可靠的协议?</p>
+</blockquote>
+<p>IP地址是分配给我们的逻辑地址,MAC是硬件地址,存在IP地址与MAC硬件地址的翻译流程存在.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-最小二乘问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -672,6 +738,83 @@
 
 
   
+    <article id="post-Sigmoid 函数的什么性质 对神经网络有用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/17/Sigmoid%20%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8%20%E5%AF%B9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%9C%89%E7%94%A8/">Sigmoid 函数的什么性质 对神经网络有用</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/17/Sigmoid%20%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8%20%E5%AF%B9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%9C%89%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-05-17T12:02:06.796Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Sigmoid 函数的什么性质 对神经网络有用?</p>
+<p>1.sigmoid函数可以把实数域光滑的映射到[0,1]空间.</p>
+<p>所以sigmoid函数可以满足认知元对输出进行二分结果表示的要求.</p>
+<ol>
+<li>Sigmoid functions have much of the same qualitative behaviour as  perceptrons. Sigmoid function can  map real number field to [0,1] space smoothly, which can satisfy the requirement of perceptrons to produce binary output.</li>
+<li>The smoothness of sigmoid function is helpful to the adjustments of nerual networks. When we use perceptrons, if we adjust the weight and bias of a certain perceptron, we may make the outputs of the whole network change utterly. By contrast, Sigmoid function will  have little impact on the whole network if small adjustment is made. It is monotonically increasing in shape, continuous derivable and simple in derivative form, which is helpful to  predict the change of the output.</li>
+</ol>
+<p>2.利用sigmoid函数的smoothness的性质</p>
+<p>当我们对某一neuron的weight和bias进行调整的时候,这一调整对最终结果的影响较小. The smoothness of σσ means that small changes ΔwjΔwj in the weights and ΔbΔb in the bias will produce a small change ΔoutputΔoutput in the output from the neuron.So while sigmoid neurons have much of the same qualitative behaviour as perceptrons, they make it much easier to figure out how changing the weights and biases will change the output.</p>
+<p>Sigmoid function is monotonically increasing in shape, continuous derivable and simple in derivative form. It is a more suitable function</p>
+<p>sigmoid函数从形状上来看是单调增的,连续可导,导数形式简单,是一个比较合适的函数.</p>
+<p>神经网络和传统compute的区别在于automatically 调整weight 和bias去获得结果.</p>
+<p>当我们使用perceptrons的时候,如果对某一处的weight和bias 进行了调整,我们有时可能会使整个网络的整体结果进行了我们并不想要出现的变化.</p>
+<p>When we use perceptrons, if we adjust the weight and bias of a certain place, sometimes we may make the overall results of the whole network change which we do not want</p>
+<p>总结:</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/17/Sigmoid%20%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8%20%E5%AF%B9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%9C%89%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-用户画像构建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -833,153 +976,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/15/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW103.4%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统Project2Chrt系统调用和EDF算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/">操作系统Project2Chrt系统调用和EDF算法</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-05-15T02:43:08.282Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="操作系统Project2-Chrt系统调用和EDF算法"><a href="#操作系统Project2-Chrt系统调用和EDF算法" class="headerlink" title="操作系统Project2:Chrt系统调用和EDF算法"></a>操作系统Project2:Chrt系统调用和EDF算法</h1><h2 id="实验任务"><a href="#实验任务" class="headerlink" title="实验任务"></a>实验任务</h2><p>在MINIX3中实现Earliest-Deadline-First近似实时调度功能</p>
-<p>1.增加系统调用chrt</p>
-<p>2.修改MINIX3.3的调度算法</p>
-<blockquote>
-<p>排版好累!!!!!</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-英语歌曲文化赏析-乡村音乐3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/14/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/">英语歌曲文化赏析-乡村音乐3</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/14/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/" class="archive-article-date">
-  	<time datetime="2020-05-14T03:41:37.950Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="乡村音乐3"><a href="#乡村音乐3" class="headerlink" title="乡村音乐3"></a>乡村音乐3</h1><h2 id="Identification"><a href="#Identification" class="headerlink" title="Identification:"></a>Identification:</h2><blockquote>
-<p>以”Remeber me “歌曲引入</p>
-</blockquote>
-<p>Typical musical instruments: Mendolin(Blur grass曼陀林)/fidle(Violin:不是很排他)/Guita</p>
-<p>Typical voice:声音低沉有磁性鼻音浓重</p>
-<p>Melody:simple,but touching/easy to sing</p>
-<p>Dressing style:carboy-like ;</p>
-<p>Lyric:too straight forward even make people (含蓄)比较直白:</p>
-<pre><code>&gt;“You were the first so was I 
-&gt;
-&gt;We made love and then you cried
-&gt;
-&gt;---《Rememebr when》</code></pre>
-        
-          <a class="article-more-a" href="/2020/05/14/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/14/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/">展开全文 >></a>
         </p>
       
 

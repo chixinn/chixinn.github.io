@@ -8,15 +8,20 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>计算机网络W11TCP协议3.5 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计算机网络W11:TCP协议3.5 如何在传输层设计出一个可靠的协议?  IP地址是分配给我们的逻辑地址,MAC是硬件地址,存在IP地址与MAC硬件地址的翻译流程存在.">
+  <meta name="description" content="计算机网络W11:TCP协议3.5 如何在传输层设计出一个可靠的协议?  IP地址是分配给我们的逻辑地址,MAC是硬件地址,存在IP地址与MAC硬件地址的翻译流程存在. 当出现过早超时时,会有一些延迟ACK即重复收到ACK,此时什么都不做继续等待即可. 窗口大小:最多能忍受的已发送未确认的packet的个数. GBN的定时器:最早的已发送没有被确认的的分组上设置的timer,所以收到确认以后,我们">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络W11TCP协议3.5">
 <meta property="og:url" content="http://yoursite.com/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="计算机网络W11:TCP协议3.5 如何在传输层设计出一个可靠的协议?  IP地址是分配给我们的逻辑地址,MAC是硬件地址,存在IP地址与MAC硬件地址的翻译流程存在.">
+<meta property="og:description" content="计算机网络W11:TCP协议3.5 如何在传输层设计出一个可靠的协议?  IP地址是分配给我们的逻辑地址,MAC是硬件地址,存在IP地址与MAC硬件地址的翻译流程存在. 当出现过早超时时,会有一些延迟ACK即重复收到ACK,此时什么都不做继续等待即可. 窗口大小:最多能忍受的已发送未确认的packet的个数. GBN的定时器:最早的已发送没有被确认的的分组上设置的timer,所以收到确认以后,我们">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf16i7gm5dj30q80j07bl.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf16rxm5xbj30sq0j0dun.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf16uzaci5j30sq0ju7k6.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf17h4o5jtj30te0jutk2.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf17kjwc7xj30te0jugws.jpg">
 <meta property="article:published_time" content="2020-05-22T05:12:03.629Z">
-<meta property="article:modified_time" content="2020-05-22T05:12:26.086Z">
+<meta property="article:modified_time" content="2020-05-22T06:30:43.433Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="C++">
@@ -31,6 +36,7 @@
 <meta property="article:tag" content="Developer">
 <meta property="article:tag" content="DataScience">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf16i7gm5dj30q80j07bl.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -194,6 +200,85 @@
 <p>如何在传输层设计出一个可靠的协议?</p>
 </blockquote>
 <p>IP地址是分配给我们的逻辑地址,MAC是硬件地址,存在IP地址与MAC硬件地址的翻译流程存在.</p>
+<p>当出现过早超时时,会有一些延迟ACK即重复收到ACK,此时什么都不做继续等待即可.</p>
+<p>窗口大小:最多能忍受的已发送未确认的packet的个数.</p>
+<p>GBN的定时器:最早的已发送没有被确认的的分组上设置的timer,所以收到确认以后,我们的定时器会发生变化.</p>
+<a id="more"></a>
+
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><p>TCP是双工的,即A可以发给B,B可以发给A.即双工数据流,但受制于物理层的介质的分割.</p>
+<ul>
+<li><p>点对点</p>
+<p>无法组播或广播</p>
+</li>
+<li><p>可靠的,以字节流的方式,因为字节流的方式导致消息没有边界而产生粘包的问题.</p>
+</li>
+<li><p>pipelined:拥塞控制与流量控制.</p>
+<p>​        流量控制是以一对一对而言的,控制发送速度不要太快,接受者在缓冲区处不要溢出.发送者不要超过接受者的缓冲区的大小.</p>
+<p>​        拥塞控制,<strong>路由器</strong>缓冲区可能会出现拥塞,故问题在于如何控制发送?[整体而言]</p>
+</li>
+<li><p>Full duplex data</p>
+<ul>
+<li>双工</li>
+<li>MSS:最大报文长度,拆分的原因是受制于底层的物理链路.</li>
+</ul>
+</li>
+<li><p>TCP有一个建立连接的握手的过程.</p>
+</li>
+</ul>
+<h2 id="TCP报文结构"><a href="#TCP报文结构" class="headerlink" title="TCP报文结构."></a>TCP报文结构.</h2><p>sequence numbers;</p>
+<p>Byte stream “number” of first byte in segment’s data.</p>
+<p>ACK number:<strong>累计</strong>确认,即收到的都是有序的.</p>
+<p>ACK:下一个期望的.</p>
+<p>FIN:建立连接时的特殊的位要置为1</p>
+<p>RST</p>
+<p>WIN:window size</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf16i7gm5dj30q80j07bl.jpg" alt=""></p>
+<p>42和79是在握手时<strong>随机选择</strong>的初始值,为了避免某些不必要的冲突.</p>
+<p>[假定每一次的分组都只有一个byte]</p>
+<p>ACK=43,因为累积确认,表示小于43的都收到了.</p>
+<p>A-&gt;B的是80,是因为需要注意TCP是全双工和累积确认.</p>
+<h2 id="Timeout的值的设置"><a href="#Timeout的值的设置" class="headerlink" title="Timeout的值的设置"></a>Timeout的值的设置</h2><p>roundtrip time(一来一回)</p>
+<p>TCP:指数加权移动平均,在之前发送时的历史信息数据,对此做菜样.</p>
+<p>EstimatedRTT=(1-$\alpha$)*EstimatedRTT+$\alpha$SampleRTT(估算出的RTT)</p>
+<p>在估算的基础之外仍需要一个safety margin</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf16rxm5xbj30sq0j0dun.jpg" alt=""></p>
+<ul>
+<li>How to set TCP timeout value?</li>
+<li>How to get estimated RTT?</li>
+</ul>
+<h2 id="TCP-为什么可靠呢"><a href="#TCP-为什么可靠呢" class="headerlink" title="TCP 为什么可靠呢?"></a>TCP 为什么可靠呢?</h2><ol>
+<li>pipeline</li>
+<li>累计确认</li>
+<li>重传的定时器</li>
+</ol>
+<p>重传的原因:1. Timeout 2. duplicate acks</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf16uzaci5j30sq0ju7k6.jpg" alt=""></p>
+<p>timeout后需重传,重传后需要重启定时器.</p>
+<p>只有一个定时器,指向最早的未被确认的分组.</p>
+<h3 id="TCP快速重传"><a href="#TCP快速重传" class="headerlink" title="TCP快速重传"></a>TCP快速重传</h3><p>即使在timeout时间还没到,就主动发送了重复的ACK.</p>
+<h3 id="TCP-flow-control"><a href="#TCP-flow-control" class="headerlink" title="TCP flow control"></a>TCP flow control</h3><p>app process-&gt;TCP socket -&gt;TCP code -&gt;IP code</p>
+<h3 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制:"></a>流量控制:</h3><p>Tcp socket receiver buffers的大小是固定的.</p>
+<p>流量控制的大小如何控制?</p>
+<p>B会把rwnd填到报文头理发送给A. A需要控制已发送未确认的要比这个rwnd</p>
+<h2 id="连接管理"><a href="#连接管理" class="headerlink" title="连接管理"></a>连接管理</h2><ol>
+<li><p>连接到底是如何建立的?</p>
+<p>三次握手的过程.</p>
+<p>client和server的区别在于谁首先发起连接请求,因为TCP 是全双工的.</p>
+</li>
+<li><p>3次握手的目的?</p>
+<ul>
+<li>A-&gt;B让我们说话</li>
+<li>B-&gt;A 好的(B接受A发送无问题)</li>
+<li>A-&gt;B 你好(A 接受B发送无问题)</li>
+</ul>
+</li>
+<li><p>具体的3次握手的流程:</p>
+<p>TCP报文首部中的SYNbit=1,若置为1,则连接已经建立了.</p>
+<p>ACKbit与ACKnum</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf17h4o5jtj30te0jutk2.jpg" alt=""></p>
+</li>
+</ol>
+<h3 id="关闭连接"><a href="#关闭连接" class="headerlink" title="关闭连接"></a>关闭连接</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf17kjwc7xj30te0jugws.jpg" alt=""></p>
 
       
 

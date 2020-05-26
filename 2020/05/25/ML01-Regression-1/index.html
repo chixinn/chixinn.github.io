@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ML01:Regression(1) | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Regression常见regression 样例:  Stock Market Forecast f(股票)&#x3D;Dow Jones Industrial Average at tomorrow  Self-driving Car f(路况)&#x3D;方向盘角度  Recommendation f(使用者A 商品B)&#x3D;购买的可能性   Example ApplicationEstimating the Co">
+  <meta name="description" content="Regression常见regression 样例:  Stock Market Forecast f(股票)&#x3D;Dow Jones Industrial Average at tomorrow  Self-driving Car f(路况)&#x3D;方向盘角度  Recommendation f(使用者A在浏览商品B的相关)&#x3D;购买的可能性   Example ApplicationEstimating t">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ML01:Regression(1)">
 <meta property="og:url" content="http://yoursite.com/2020/05/25/ML01-Regression-1/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="Regression常见regression 样例:  Stock Market Forecast f(股票)&#x3D;Dow Jones Industrial Average at tomorrow  Self-driving Car f(路况)&#x3D;方向盘角度  Recommendation f(使用者A 商品B)&#x3D;购买的可能性   Example ApplicationEstimating the Co">
+<meta property="og:description" content="Regression常见regression 样例:  Stock Market Forecast f(股票)&#x3D;Dow Jones Industrial Average at tomorrow  Self-driving Car f(路况)&#x3D;方向盘角度  Recommendation f(使用者A在浏览商品B的相关)&#x3D;购买的可能性   Example ApplicationEstimating t">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-05-25T01:47:20.000Z">
-<meta property="article:modified_time" content="2020-05-25T01:59:37.859Z">
+<meta property="article:modified_time" content="2020-05-26T12:28:04.050Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
@@ -190,11 +190,65 @@
 <p>f(路况)=方向盘角度</p>
 </li>
 <li><p>Recommendation</p>
-<p>f(使用者A 商品B)=购买的可能性</p>
+<p>f(使用者A在浏览商品B的相关)=购买的可能性</p>
 </li>
 </ol>
 <h2 id="Example-Application"><a href="#Example-Application" class="headerlink" title="Example Application"></a>Example Application</h2><p>Estimating the Combat Power(CP) of a pokemon after evolution</p>
 <p>f(Pokeman基本值)=CP evolution</p>
+<p>用下标表示一个完整的东西的某一个component.</p>
+<p>用上标表示一个完整的object的编号.</p>
+<p>$X{cp}$/$X_{hp}/X_w/X_h$</p>
+<p>output是进化后的CP.</p>
+<h3 id="Process-of-ML"><a href="#Process-of-ML" class="headerlink" title="Process of ML"></a>Process of ML</h3><ol>
+<li><p>找model</p>
+</li>
+<li><p>定义model(func set)的好坏/合理</p>
+</li>
+<li><p>在funcset找最好的那个,</p>
+</li>
+</ol>
+<blockquote>
+<p>那么应该选择什么funcset对这个宝可梦呢?</p>
+</blockquote>
+<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><h4 id="Linear-Model-y-b-sum-w-ix-i"><a href="#Linear-Model-y-b-sum-w-ix-i" class="headerlink" title="Linear Model:y=b+$\sum w_ix_i$;"></a>Linear Model:y=b+$\sum w_ix_i$;</h4><p>$X_i$是input x的feature.</p>
+<p>$W_i$weight;</p>
+<p>$b$为bias.</p>
+<p>用$\hat{y}$表示一个正确的结果.</p>
+<blockquote>
+<p>定义了function后需要我们去判断funciton的好坏.那么我们该如何做去定义function的好坏呢?</p>
+</blockquote>
+<h3 id="Loss-function-L-function的function"><a href="#Loss-function-L-function的function" class="headerlink" title="Loss function L:(function的function)"></a>Loss function L:(function的function)</h3><p>Input: a function </p>
+<p>Output: how bad it is.</p>
+<p>在这里,如果我们还是线性的model的话,那么$f=f(w,b)=b+w.x_{cp}$</p>
+<p>则,$L(f)=L(w,b)$;</p>
+<p>$L(f)=\sum_{datasets}(\hat{y}-y_{estimation})^2$;</p>
+<p>估测误差越大,function越不好.</p>
+<h3 id="Step3-Best-Function"><a href="#Step3-Best-Function" class="headerlink" title="Step3:Best Function"></a>Step3:Best Function</h3><p>How to pick the “Best” Function?</p>
+<p>$f^*=arg min_fL(f)$;</p>
+<p>让$L(f)$最小的function.</p>
+<p>事实上在线性代数中,可以通过线性代数的方法找到让$L(f)$最小的function.</p>
+<h2 id="假设线代已经忘记了-Gradient-Descent"><a href="#假设线代已经忘记了-Gradient-Descent" class="headerlink" title="假设线代已经忘记了:Gradient Descent"></a>假设线代已经忘记了:Gradient Descent</h2><p>Consider loss function $L(w)$ with one parameter w;</p>
+<p>现在我们要找一个$w$,使$L(w)$最小.</p>
+<p>最暴力:穷举所有$w$可能的数值.</p>
+<p>想想在微积分中,<strong>导数小于0</strong>,表示<strong>函数</strong>的一个<strong>递减</strong>的趋势.</p>
+<p>“踏一步的stepsize”=$\begin{cases}现在的微分值\常数项learningRate(事先定好的一个scaler)\end{cases}$</p>
+<blockquote>
+<p>如果learning rate,在事先定好时较大,那么你在移动改变位置的时候,你的移动对你整体的那个loss的影响就比较大.</p>
+<p>learning rate up,学习效率 up.</p>
+</blockquote>
+<p>Initial position:$w^0$;</p>
+<p>$w^1$ $\leftarrow \eta\frac{dL}{dw}|_{w=w^0}$;</p>
+<p>$w^2$ $\leftarrow \eta\frac{dL}{dw}|_{w=w^2}$;</p>
+<p>在经过很多次迭代以后.会进入一个 <strong>Local Minimal a.k.a Local optimal</strong></p>
+<blockquote>
+<p>Local minimal  v.s. Global minimal</p>
+</blockquote>
+<p>但是在linear model 中,却不存在local minimal的问题.</p>
+<h3 id="How-about-2-paras"><a href="#How-about-2-paras" class="headerlink" title="How about 2 paras?"></a>How about 2 paras?</h3><p>那就原则两个位置,在两个位置上计算 <strong>偏</strong>微分就好了呀.</p>
+<blockquote>
+<p>所以说,偏微分是有关<strong>维度</strong>的理解.</p>
+</blockquote>
+<h3 id="梯度下降法名字里为什么要有”Gradient”"><a href="#梯度下降法名字里为什么要有”Gradient”" class="headerlink" title="梯度下降法名字里为什么要有”Gradient”?"></a>梯度下降法名字里为什么要有”Gradient”?</h3><p>$\nabla L=\begin{matrix}偏微分_w\偏微分_b\end{matrix}$</p>
 
       
 
@@ -306,6 +360,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/05/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W12%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97%E4%B9%8B%E7%89%B9%E5%BE%81%E5%80%BC%E9%97%AE%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          数学基础W12矩阵计算之特征值问题
+        
+      </div>
+    </a>
   
   
     <a href="/2020/05/25/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W11Hip-hop-culture/" id="article-nav-older" class="article-nav-link-wrap">

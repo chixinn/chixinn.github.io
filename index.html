@@ -170,6 +170,214 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Data-mining-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/27/Data-mining-2/">Data mining 2</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/27/Data-mining-2/" class="archive-article-date">
+  	<time datetime="2020-05-27T01:58:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Components-of-Data-Mining-Algorithms"><a href="#Components-of-Data-Mining-Algorithms" class="headerlink" title="Components of Data Mining Algorithms"></a>Components of Data Mining Algorithms</h1><ul>
+<li>Representation:Determing the nature and structure of the respresentation to be used.</li>
+<li>Score function: Quantifying and comparing how well different representation fit the data</li>
+<li>Search/Optimization  method: Choosing an algorithm process to optimize the score function.</li>
+<li>Data management: Deciding what principles of data management are required to implement the algorithms efficienly.</li>
+</ul>
+<hr>
+<p>数据分析里的数据类型</p>
+<h3 id="数据分析手段"><a href="#数据分析手段" class="headerlink" title="数据分析手段"></a>数据分析手段</h3><p>EDA(探索性的数据分析与可视化)</p>
+<ul>
+<li>探索数据的概率统计特征<ul>
+<li>Mean/Mode/Median/Quartile/Variance/Skewness(平均矩)</li>
+<li>Number of distinct values for a variable</li>
+</ul>
+</li>
+<li>可视化可以更直观的表示<ul>
+<li>Box Plot: v.s.Histogram(关注某一个y的取值到底有多少个)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="Statistical-reference"><a href="#Statistical-reference" class="headerlink" title="Statistical reference"></a>Statistical reference</h3><p>基于实验猜规律</p>
+<p>Model$\rightleftharpoons$Data</p>
+<blockquote>
+<p>思想实验与真实可进行的实验</p>
+</blockquote>
+<p>Statistical inference: inferring properties of an unknown data by guess a distribution and generating that distribution.</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf6qxslrjkj30xs0r04ii.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf6qyvri2qj30xs0r0k8p.jpg" alt=""></p>
+<blockquote>
+<p>我们关心的是MSE,即误差平方均值,是越小越好.</p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf6r1t9hg8j30xs0r0k47.jpg" alt=""></p>
+<p>所以MSE同时考虑了$Bias^2$和Variance.</p>
+<p>$Bias$意味着误差小,而Variance则说明置信度比较集中.</p>
+<p>而很多时候,这两者是矛盾的.</p>
+<hr>
+<h2 id="极大似然估计-likelihood"><a href="#极大似然估计-likelihood" class="headerlink" title="极大似然估计(likelihood)"></a>极大似然估计(likelihood)</h2><p>似然表示什么呢?</p>
+<p>意味着我观察到的数据,$\theta$模型产生数据的概率</p>
+<blockquote>
+<p>极大似然估计，通俗理解来说，<strong>就是利用已知的样本结果信息，反推最具有可能（最大概率）导致这些样本结果出现的模型参数值！</strong></p>
+</blockquote>
+<p><strong>换句话说，极大似然估计提供了一种给定观察数据来评估模型参数的方法，即：“模型已定，参数未知”。</strong></p>
+<h2 id="Types-of-Models"><a href="#Types-of-Models" class="headerlink" title="Types of Models"></a>Types of Models</h2><ul>
+<li>Predictive  Model</li>
+<li>建模</li>
+<li>结构化数据(时间序列)</li>
+</ul>
+<h3 id="Regression-有参数的模型"><a href="#Regression-有参数的模型" class="headerlink" title="Regression(有参数的模型)"></a>Regression(有参数的模型)</h3><ol>
+<li><p>给点拟合和逼近.</p>
+<p>​    piecewise:一段一段的去拟合</p>
+</li>
+</ol>
+<h3 id="非参数模型"><a href="#非参数模型" class="headerlink" title="非参数模型"></a>非参数模型</h3><p>有一些很小的kernel,kernel左右移动.进行叠加.</p>
+<p><strong>理解成小的山叠加起来变成大的山</strong></p>
+<p>加权函数叠加变成.</p>
+<blockquote>
+<p>如何评估模型的建模效果?</p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf6rdo64ghj30oc0j0n1v.jpg" alt=""></p>
+<p>这三个是哪个图的建模效果好呢?</p>
+<p>我们用什么样的手段,来帮助我们发现过拟合?</p>
+<blockquote>
+<p>交叉验证</p>
+</blockquote>
+<p>奥卡姆剃刀原则:如非必要,勿增实体</p>
+<p>MDL: Minimum Description Length，最小描述长度原则</p>
+<p>随机过程</p>
+<h4 id="分类模型"><a href="#分类模型" class="headerlink" title="分类模型"></a>分类模型</h4><ul>
+<li>逻辑回归</li>
+<li>bayes</li>
+<li>最近邻</li>
+<li>Support vector machines支持向量机</li>
+<li>Tree</li>
+</ul>
+<p><strong>Mixture of parametric models</strong></p>
+<blockquote>
+<p>Model complexity tend to grow exponetially with dimensions.</p>
+</blockquote>
+<h3 id="模型维度和建模复杂度"><a href="#模型维度和建模复杂度" class="headerlink" title="模型维度和建模复杂度."></a>模型维度和建模复杂度.</h3><h4 id="处理维度的方法"><a href="#处理维度的方法" class="headerlink" title="处理维度的方法"></a>处理维度的方法</h4><ul>
+<li>Feature selection</li>
+<li>Transformation:将其投影到子空间.(PCA:主成分分析法)</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/27/Data-mining-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Components of Data Mining Algorithms" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/27/Components%20of%20Data%20Mining%20Algorithms/">Components of Data Mining Algorithms</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/27/Components%20of%20Data%20Mining%20Algorithms/" class="archive-article-date">
+  	<time datetime="2020-05-27T01:58:20.362Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>- </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/27/Components%20of%20Data%20Mining%20Algorithms/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数学基础W12矩阵计算之特征值问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1004,170 +1212,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-敏度分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">敏度分析</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2020-05-21T00:09:44.667Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="敏度分析"><a href="#敏度分析" class="headerlink" title="敏度分析"></a>敏度分析</h1><p>在本节中,将分析数据中扰动较小时对非奇异方阵线性方程解的影响.</p>
-<p>$A(X+\Delta x)=y+\Delta y$;</p>
-<blockquote>
-<p>关键问题,$\Delta y$较小时对$\Delta x$的影响</p>
-</blockquote>
-<p>$\frac{||\Delta x||_2{||x||_2}\le||A^{-1}||_2||A||_2\frac{||\Delta y||_2}{||y||_2}$</p>
-<p>注意,上式中,关键部分在于这里矩阵的范数的这个系数.</p>
-<h2 id="定义7"><a href="#定义7" class="headerlink" title="定义7"></a>定义7</h2><p>设,$\sigma_1,\sigma_n$分别是矩阵A的最大奇异值和最小奇异值,那么</p>
-<p>$||A||_2=\sigma1,||A^{-1}||_2=1/\sigma_n$</p>
-<p>因此,矩阵的条件数也可以定义为:</p>
-<p>$条件数(A)=\frac{\sigma_1}{\sigma_n}$;</p>
-<blockquote>
-<p>范数在数值计算中定义条件数的重要行.</p>
-</blockquote>
-<p>当条件数比较大时,y上的扰动可能会导致x上有很大的扰动,即方程对输入数据的变化非常敏感.</p>
-<p>A是奇异时:条件数-&gt;$\infin$</p>
-<h3 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h3><p>对于输入项的敏感性</p>
-<p>即将上式子中的比例替换为条件数</p>
-<h3 id="系数矩阵汇中扰动的敏感性"><a href="#系数矩阵汇中扰动的敏感性" class="headerlink" title="系数矩阵汇中扰动的敏感性"></a>系数矩阵汇中扰动的敏感性</h3><p>\frac{||x||_2}{||x+\Delta x||_2}</p>
-<h4 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h4><p>对A,y联合扰动的敏感型</p>
-<h3 id="引理3"><a href="#引理3" class="headerlink" title="引理3"></a>引理3</h3><p>![截屏2020-05-21上午8.35.33](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-05-21上午8.35.33.png)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据挖掘过程Data Mining" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/20/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8BData%20Mining/">数据挖掘过程Data Mining</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/20/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8BData%20Mining/" class="archive-article-date">
-  	<time datetime="2020-05-20T00:58:54.127Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据挖掘过程Data-Mining"><a href="#数据挖掘过程Data-Mining" class="headerlink" title="数据挖掘过程Data Mining"></a>数据挖掘过程Data Mining</h1><h2 id="数据挖掘是什么"><a href="#数据挖掘是什么" class="headerlink" title="数据挖掘是什么?"></a>数据挖掘是什么?</h2><p>Models and patterns from massive observational data sets.</p>
-<h2 id="Components-of-Data-Mining-Algorithms"><a href="#Components-of-Data-Mining-Algorithms" class="headerlink" title="Components of Data Mining Algorithms"></a>Components of Data Mining Algorithms</h2><p>Components of data mining algorithms</p>
-<h3 id="Representation"><a href="#Representation" class="headerlink" title="Representation"></a>Representation</h3><p>Determining the nature and structure of the representatiom to be used.</p>
-<h3 id="Score-function"><a href="#Score-function" class="headerlink" title="Score function"></a>Score function</h3><p>Quantifying and comparing how well different represenatations fit the data</p>
-<h3 id="Search-optimization-method"><a href="#Search-optimization-method" class="headerlink" title="Search/optimization method"></a>Search/optimization method</h3><h3 id="Data-management"><a href="#Data-management" class="headerlink" title="Data management"></a>Data management</h3><h3 id="Measurement-scale"><a href="#Measurement-scale" class="headerlink" title="Measurement:scale"></a>Measurement:scale</h3><ol>
-<li><p>Nominal:类型的,即特性只能通过name来区分Hair color</p>
-</li>
-<li><p>Ordinal:attributes can be ordered.无法做减法</p>
-<p>Preference</p>
-<p>只能做保持序列的映射</p>
-</li>
-<li><p>Interval:距离有意义</p>
-<p>Temperature</p>
-</li>
-<li><p>Ratio:绝对零点,之间可以做比值</p>
-<p>Weight,income</p>
-</li>
-</ol>
-<h3 id="Why-measurements-are-important"><a href="#Why-measurements-are-important" class="headerlink" title="Why measurements are important?"></a>Why measurements are important?</h3><p>数据结构数据类型数据结构都在讲允许对这些数据做什么操作.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/20/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8BData%20Mining/">展开全文 >></a>
         </p>
       
 

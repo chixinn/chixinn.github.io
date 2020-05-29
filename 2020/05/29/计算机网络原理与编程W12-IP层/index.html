@@ -6,29 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Chixinning的博客</title>
+  <title>计算机网络原理与编程W12:IP层 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+  <meta name="description" content="IP 层:The Data PlaneSDN: software defined network:软件定义网络和软件定义一切. 本章重点 4.3节  network layer service models forwarding versus routing how a router works Generalized forwarding">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络原理与编程W12:IP层">
+<meta property="og:url" content="http://yoursite.com/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="IP 层:The Data PlaneSDN: software defined network:软件定义网络和软件定义一切. 本章重点 4.3节  network layer service models forwarding versus routing how a router works Generalized forwarding">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf99p1jmkdj30v40na7j5.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf99pdrs9gj30v40nak76.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9aaz564lj30v40nak6x.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9aiji5l7j30v40nawqi.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9ax1712fj30mw0na7ei.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9b074gnpj30ts0naanm.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9b2iiv2cj30fq06c76b.jpg">
+<meta property="article:published_time" content="2020-05-29T05:02:32.000Z">
+<meta property="article:modified_time" content="2020-05-29T06:44:14.250Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="大二下">
+<meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf99p1jmkdj30v40na7j5.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -168,726 +169,180 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-专业英语W6：PHP-arrays" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-计算机网络原理与编程W12-IP层" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/">专业英语W6：PHP arrays</a>
+    <h1 class="article-title" itemprop="name">
+      计算机网络原理与编程W12:IP层
     </h1>
   
 
         
-        <a href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/" class="archive-article-date">
-  	<time datetime="2020-04-16T07:25:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-16</time>
+        <a href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/" class="archive-article-date">
+  	<time datetime="2020-05-29T05:02:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>What is the most important difference between PHP arrays and C arrays? Based on your guess, what is the advantage of PHP arrays in Web programming?</strong> </p>
-        
-          <a class="article-more-a" href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/16/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW6%EF%BC%9APHP-arrays/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统W6 2.1-2.2进程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW6%202.1-2.2%E8%BF%9B%E7%A8%8B/">操作系统W6 2.1-2.2进程</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW6%202.1-2.2%E8%BF%9B%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-04-13T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2-1进程"><a href="#2-1进程" class="headerlink" title="2.1进程"></a>2.1进程</h1><p>操作系统W5的课睡过去了…</p>
-        
-          <a class="article-more-a" href="/2020/04/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW6%202.1-2.2%E8%BF%9B%E7%A8%8B/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/13/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW6%202.1-2.2%E8%BF%9B%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语W4-5-PHP嵌入的原因" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/">专业英语W4/5 PHP嵌入的原因</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/" class="archive-article-date">
-  	<time datetime="2020-04-10T05:08:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>Why do we embed PHP code in HTML? Why not put the code in a separate file, just as we do with C and Java? Please give your explanation.</strong><br><strong>(Reminder: be concise.)</strong></p>
-        
-          <a class="article-more-a" href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW4-5-PHP%E5%B5%8C%E5%85%A5%E7%9A%84%E5%8E%9F%E5%9B%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W5：HTTP-邮件协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW5%EF%BC%9AHTTP-%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE/">计算机网络W5：HTTP /邮件协议</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW5%EF%BC%9AHTTP-%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
-  	<time datetime="2020-04-10T05:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="HTTP-邮件协议"><a href="#HTTP-邮件协议" class="headerlink" title="HTTP/邮件协议"></a>HTTP/邮件协议</h1><blockquote>
-<p>Socket:SMTP协议，邮件代理客户端</p>
-<p>注意应用程序和应用层的协议之间的关系</p>
-</blockquote>
-<p>Client-server:客户端与客户端之间并不会相互通讯。</p>
-<p>而P2P存在相互对等。</p>
-<p>通讯理解为进程间通讯的问题，通过sockets通讯 between client process and server process.</p>
-<p>一个IP地址确定的主机上，如何确定进程呢，是通过端口号。</p>
-<h2 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h2><ul>
-<li>web page objects</li>
-<li>hTML-file</li>
-<li>Object be accessed by url</li>
+        <h1 id="IP-层-The-Data-Plane"><a href="#IP-层-The-Data-Plane" class="headerlink" title="IP 层:The Data Plane"></a>IP 层:The Data Plane</h1><p>SDN: software defined network:软件定义网络和软件定义一切.</p>
+<p>本章重点 4.3节</p>
+<ul>
+<li>network layer service models</li>
+<li>forwarding versus routing</li>
+<li>how a router works</li>
+<li>Generalized forwarding</li>
 </ul>
-<h3 id="Apahce-web-server"><a href="#Apahce-web-server" class="headerlink" title="Apahce web server"></a>Apahce web server</h3><ol>
-<li>http : request(向服务器)</li>
-<li>http : response</li>
-</ol>
-<p>HTTP:无状态的，即<strong>不会</strong>记录客户端任何消息，即它不认识客户端，所以使HTTP的管理相对简单。</p>
-<p>HTTP：建立连接，传输消息，关闭连接</p>
-<h3 id="两种连接方式"><a href="#两种连接方式" class="headerlink" title="两种连接方式"></a>两种连接方式</h3><h4 id="非持续连接"><a href="#非持续连接" class="headerlink" title="非持续连接"></a>非持续连接</h4><p>连接时最多只有一个对象只发送一个对象即<strong>关闭</strong>了</p>
-<h4 id="持续连接"><a href="#持续连接" class="headerlink" title="持续连接"></a>持续连接</h4><p>可以发很多的对象</p>
-<h5 id="RTT"><a href="#RTT" class="headerlink" title="RTT"></a>RTT</h5><p>整个花费的时间</p>
-<p>2RTT+file transmission</p>
+<a id="more"></a>
+
+<p>网络层在第四章的内容是数据平面,第五章的内容是控制平面.(宏观上调度逻辑)</p>
+<h2 id="Network-layer"><a href="#Network-layer" class="headerlink" title="Network layer"></a>Network layer</h2><p>终端系统上TCP/IP是5层的协议栈.</p>
+<p>TCP协议是不会运营在路由器上的.</p>
+<h2 id="Two-key-network-layer-functions"><a href="#Two-key-network-layer-functions" class="headerlink" title="Two key network-layer functions"></a>Two key network-layer functions</h2><h3 id="转发-forwarding"><a href="#转发-forwarding" class="headerlink" title="转发:forwarding"></a>转发:forwarding</h3><p>路由器是一个硬件.</p>
+<p>把一个packet从路由器的哪个路口到哪个出口.输入转发到相应的输出.</p>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>从源端到目的端找到一条路由.找到最优的代价最小的路径.</p>
+<h2 id="数据平面和控制平面"><a href="#数据平面和控制平面" class="headerlink" title="数据平面和控制平面"></a>数据平面和控制平面</h2><h3 id="数据平面"><a href="#数据平面" class="headerlink" title="数据平面"></a>数据平面</h3><p>微观的,路由器内部的.</p>
+<h3 id="控制平面"><a href="#控制平面" class="headerlink" title="控制平面"></a>控制平面</h3><p>宏观的,全网络的.</p>
+<p>传统实现方式:路由选择算法,明确图的结构和代价以后寻找到最优的.</p>
+<p>非传统实现方式:SDN</p>
 <blockquote>
-<p>真实的是多线程流水线的方式</p>
+<p>SDN 专门的服务器控制各个路由器来进行路由选择.</p>
+<p>此时我们对于整个硬件即是透明的.</p>
 </blockquote>
-<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><p>http无状态：不保留消息</p>
+<h4 id="单个路由器的控制平面"><a href="#单个路由器的控制平面" class="headerlink" title="单个路由器的控制平面"></a>单个路由器的控制平面</h4><p>路由器内部会有一个转发表.</p>
 <blockquote>
-<p>例再次登陆的时候不需要再次输入用户名和密码?</p>
+<p>各个路由器之间直接数据交换(无组织无距离)与Remote controller的对比(locally centralized control plane)</p>
 </blockquote>
-<p>user-server state:cookie</p>
-<p>本地仍会有cookie的文件，相当于状态，在web服务器端记录下了client端的状态。</p>
-<h3 id="web-caches-proxy-server"><a href="#web-caches-proxy-server" class="headerlink" title="web caches(proxy server)"></a>web caches(proxy server)</h3><p>代理服务器，不需要跑到原始的服务器那里去拿。</p>
-<p>好处：在isp这边缓存了网站部分，使访问速度会变快。</p>
-<p>问题：缓存的数据是否是最新的?</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW5%EF%BC%9AHTTP-%E9%82%AE%E4%BB%B6%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W4-Application-Layer" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW4-Application-Layer/">计算机网络W4: Application Layer</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW4-Application-Layer/" class="archive-article-date">
-  	<time datetime="2020-04-03T05:25:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Application-layer"><a href="#Application-layer" class="headerlink" title="Application layer"></a>Application layer</h1><p><em>无论是分布式或者网络应用也好，现在我们更关注的是性能，所以我们更经常地会用到是多线程。</em></p>
-<p>很多<strong>大型</strong>的<strong>底层系统</strong>基本只有两个语言的要求C++/JAVA。</p>
-<p><strong>花多一些时间在java上</strong></p>
-<p>期末大项目 使用java语言自己完成一个http server:重点在于性能的提升。</p>
-<p>编程<strong>不是智商</strong>的问题，而是<strong>是否练习</strong>的问题。</p>
-<p>对于本科生而言，拥有<strong>良好的代码能力</strong>都是一个非常好的技能点。</p>
-<blockquote>
-<p>Web and HTTP;</p>
-<p>electronic mail</p>
-<p>JAVA soket API</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/04/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW4-Application-Layer/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW4-Application-Layer/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统W4-project1-shell" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/31/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW4-project1-shell/">操作系统W4 project1 shell</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/31/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW4-project1-shell/" class="archive-article-date">
-  	<time datetime="2020-03-31T09:27:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="shell说明文档"><a href="#shell说明文档" class="headerlink" title="shell说明文档"></a>shell说明文档</h1><h2 id="文档大纲"><a href="#文档大纲" class="headerlink" title="文档大纲"></a>文档大纲</h2><p><img src="https://i.loli.net/2020/03/31/vIAF2XklUzRsiwy.png" alt="截屏2020-03-31下午5.13.17.png"></p>
-<h2 id="编译方法"><a href="#编译方法" class="headerlink" title="编译方法"></a>编译方法</h2><p>在目录下输入<code>clang -o shell shell.c tool.c command.c mytop.c</code>即可编译。</p>
-<p>输入<code>./shell</code>即可运行。</p>
-<h2 id="支持的功能"><a href="#支持的功能" class="headerlink" title="支持的功能"></a>支持的功能</h2><h3 id="内置"><a href="#内置" class="headerlink" title="内置"></a>内置</h3><p>Cd/mytop(top)/exit/histoy n</p>
-<h3 id="program"><a href="#program" class="headerlink" title="program"></a>program</h3><p>管道/重定向/带参数运行的程序。</p>
-<h2 id="支持的样例"><a href="#支持的样例" class="headerlink" title="支持的样例"></a>支持的样例</h2><ol>
-<li><p>cd/your/path</p>
-</li>
-<li><p>ls(-a/-l -a)</p>
-</li>
-<li><p>ls -a -l &gt; outfile</p>
-</li>
-<li><p>vi file</p>
-</li>
-<li><p>grep “parameters” &lt; inputfile</p>
-</li>
-<li><p>Ls -a -l | grep a</p>
-</li>
-<li><p>vi file &amp;</p>
-</li>
-<li><p>mytop</p>
-</li>
-<li><p>history n</p>
-</li>
-<li><p>Exit</p>
-</li>
-</ol>
-<h2 id="各文件说明"><a href="#各文件说明" class="headerlink" title="各文件说明"></a>各文件说明</h2><h3 id="shell-c"><a href="#shell-c" class="headerlink" title="shell.c"></a>shell.c</h3><p>shell函数的主体框架：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="comment">/*主体循环*/</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"$"</span>);</span><br><span class="line">        <span class="comment">/*fgets从文件标准输入一次读一行，</span></span><br><span class="line"><span class="comment">        当键入文件结束符（ctrl+D),fgets返回一个null指针*/</span></span><br><span class="line">        fgets(buf,MAXLINE,<span class="built_in">stdin</span>);</span><br><span class="line">        <span class="comment">/*把末尾的回车去掉*/</span></span><br><span class="line">        <span class="keyword">char</span> *<span class="built_in">find</span>;</span><br><span class="line">        <span class="built_in">find</span>=<span class="built_in">strchr</span>(buf,<span class="string">'\n'</span>);</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">find</span>)</span><br><span class="line">            *<span class="built_in">find</span>=<span class="string">'\0'</span>;</span><br><span class="line">      <span class="comment">/*保存历史命令*/</span></span><br><span class="line">        <span class="keyword">char</span> *tmp = (<span class="keyword">char</span>*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(buf));</span><br><span class="line">        <span class="built_in">strcpy</span>(tmp,buf);</span><br><span class="line">        history[historycount]=tmp ;</span><br><span class="line">        historycount++;</span><br><span class="line">      <span class="comment">/*解析命令*/</span></span><br><span class="line">        <span class="class"><span class="keyword">struct</span> <span class="title">cmdline</span> <span class="title">l</span>=<span class="title">parse_line</span>(<span class="title">buf</span>);</span></span><br><span class="line">      <span class="comment">/*执行命令*/</span></span><br><span class="line">        execmd(l,history,historycount);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="shell-h"><a href="#shell-h" class="headerlink" title="shell.h"></a>shell.h</h3><p>包含函数声明/常数定义/编译所用的头文件</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXLINE 1024 <span class="comment">/*命令最大长度*/</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STD_INPUT 0<span class="comment">/*标准输入*/</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> STD_OUTPUT 1<span class="comment">/*标准输出*/</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAX_ARGC 5<span class="comment">/*程序命令programA argv1 argv2参数最大大小*/</span></span></span><br></pre></td></tr></table></figure>
-
-<p>命令行结构：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">cmdline</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">char</span> *buf;<span class="comment">/*键盘键入的原始字符串*/</span></span><br><span class="line">    <span class="keyword">char</span> *parameters[MAXLINE];<span class="comment">/*按空格分割的参数args*/</span></span><br><span class="line">    <span class="keyword">int</span> argc;<span class="comment">/*参数个数*/</span></span><br><span class="line">    <span class="keyword">int</span> is_background;<span class="comment">/*是否是后置命令*/</span></span><br><span class="line">    <span class="keyword">int</span> is_special;<span class="comment">/*是否有特殊符号，如&gt;,&lt;,&gt;&gt;,|*/</span></span><br><span class="line">    <span class="keyword">int</span> special_position;<span class="comment">/*特殊符号位置*/</span></span><br><span class="line">    <span class="keyword">int</span> cmdnumber;<span class="comment">/*程序个数*/</span></span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>函数声明：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">issamestring</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span> *a,<span class="keyword">const</span> <span class="keyword">char</span> *b)</span></span>;<span class="comment">/*辅助函数，判断字符串是否相等*/</span></span><br><span class="line"><span class="function">struct cmdline <span class="title">parse_line</span><span class="params">(<span class="keyword">char</span> buf[])</span></span>;<span class="comment">/*parse*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">execmd</span><span class="params">(struct cmdline l,<span class="keyword">char</span> *history[],<span class="keyword">int</span> historycount)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*built-in cmds*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exe_mytop</span><span class="params">()</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exe_cd</span><span class="params">(<span class="keyword">char</span> *parameters[],<span class="keyword">char</span>* history[],<span class="keyword">int</span> historycount)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exe_history</span><span class="params">(<span class="keyword">char</span> *parameters[],<span class="keyword">char</span>* history[],<span class="keyword">int</span> historycount)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*支持的program*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exe_ls</span><span class="params">(struct cmdline oneline)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">exe_grep</span><span class="params">(struct cmdline oneline)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exe_vi</span><span class="params">(struct cmdline oneline)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*redirection and pipe*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">redirect</span><span class="params">(struct cmdline oneline)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pipeline</span><span class="params">(struct cmdline oneline)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pipel</span><span class="params">(<span class="keyword">char</span> *process1[],<span class="keyword">char</span> *process2[])</span></span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="tool-c"><a href="#tool-c" class="headerlink" title="tool.c"></a>tool.c</h3><p>包含了解析命令行、判断是否相等字符串、判断是否内置命令、执行命令的函数。</p>
-<h3 id="command-c"><a href="#command-c" class="headerlink" title="command.c"></a>command.c</h3><p>Shell.h中声明的函数的执行。</p>
-<h4 id="program命令"><a href="#program命令" class="headerlink" title="program命令"></a>program命令</h4><h5 id="ls-grep"><a href="#ls-grep" class="headerlink" title="ls/grep"></a>ls/grep</h5><p>ls/grep两个命令均是对文件IO逻辑的考察，逻辑相同，下以ls为例进行说明。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exe_ls</span><span class="params">(struct cmdline oneline)</span></span>&#123;</span><br><span class="line">  <span class="comment">/*如果没有特殊符号*/</span></span><br><span class="line">    <span class="keyword">if</span>(oneline.is_special==<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> pid,status;</span><br><span class="line">        pid=fork();</span><br><span class="line">        <span class="keyword">if</span>(pid&lt;<span class="number">0</span>)</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"fork error!"</span>);</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(pid ==<span class="number">0</span>)&#123;</span><br><span class="line">            execvp(<span class="string">"ls"</span>,oneline.parameters);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">                waitpid(<span class="number">-1</span>,&amp;status,<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="comment">/*如果有特殊符号，判断特殊符号的类别*/</span></span><br><span class="line">        <span class="keyword">if</span> ((issamestring(<span class="string">"&gt;"</span>, 	oneline.parameters[oneline.special_position]) == <span class="number">1</span>)||(issamestring(<span class="string">"&lt;"</span>, oneline.parameters[oneline.special_position]) == <span class="number">1</span>)||(issamestring(<span class="string">"&gt;&gt;"</span>, oneline.parameters[oneline.special_position]) == <span class="number">1</span>))</span><br><span class="line">          <span class="comment">/*特殊符号为重定向时*/</span></span><br><span class="line">            redirect(oneline);</span><br><span class="line">        <span class="keyword">else</span>&#123;  </span><br><span class="line">           <span class="comment">/*特殊符号为管道时*/</span></span><br><span class="line">            pipeline(oneline);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="vi-and-background-job"><a href="#vi-and-background-job" class="headerlink" title="vi and background job"></a>vi and background job</h5><p>linux的vi file &amp;很奇怪，是通过将子进程的标准输入输出映射到/dev/null实现的。</p>
-<p>我自己在minix3环境下实验了一下，发现无论是我自己的shell还是minix3原来的shell，都有如下提示：</p>
-<p><code>Vi&#39;s standard input and output must be a terminal</code></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exe_vi</span><span class="params">(struct cmdline oneline)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> pid,status;</span><br><span class="line">    pid=fork();</span><br><span class="line">    <span class="keyword">if</span>(pid&lt;<span class="number">0</span>)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"fork error!"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(pid ==<span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (oneline.is_background == <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="comment">/*子进程的标准输入、输出映射成/Dev/null*/</span></span><br><span class="line">            <span class="built_in">close</span>(<span class="number">0</span>);<span class="comment">//关闭标准输入</span></span><br><span class="line">            <span class="built_in">open</span>(<span class="string">"/dev/null"</span>, O_RDONLY);<span class="comment">//标准输入0指向空文件</span></span><br><span class="line">            <span class="built_in">close</span>(<span class="number">1</span>);<span class="comment">//关闭标准输出</span></span><br><span class="line">            <span class="built_in">open</span>(<span class="string">"/dev/null"</span>, O_RDONLY);<span class="comment">//标准输入1指向空文件</span></span><br><span class="line">            signal(SIGCHLD, SIG_IGN);</span><br><span class="line">            execvp(<span class="string">"vi"</span>, oneline.parameters);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            execvp(<span class="string">"vi"</span>, oneline.parameters);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        waitpid(<span class="number">-1</span>,&amp;status,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其余的background文件的实施 需要看父进程是否wait子进程。</p>
-<h5 id="redirection"><a href="#redirection" class="headerlink" title="redirection"></a>redirection</h5><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*管道和重定向*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">redirect</span><span class="params">(struct cmdline oneline)</span> </span>&#123;</span><br><span class="line">		<span class="comment">/*提取特殊符号前的数组argv1,argv2*/</span></span><br><span class="line">    <span class="keyword">char</span> *argv1[MAX_ARGC];</span><br><span class="line">    <span class="keyword">char</span> *argv2[MAX_ARGC];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;MAX_ARGC;i++)&#123;</span><br><span class="line">        argv1[i]=<span class="literal">NULL</span>;</span><br><span class="line">        argv2[i]=<span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; oneline.special_position; i++) &#123;</span><br><span class="line">        argv1[i] = oneline.parameters[i];</span><br><span class="line">    &#125;</span><br><span class="line">  <span class="comment">/*注意execvp和NULL */</span></span><br><span class="line">    argv1[oneline.special_position] = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> j=oneline.special_position+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; oneline.argc - oneline.special_position<span class="number">-1</span>; i++) &#123;</span><br><span class="line">        argv2[i] = oneline.parameters[j];</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    argv2[oneline.argc-oneline.special_position] = <span class="literal">NULL</span>;<span class="comment">//execvp使用；提取特殊命令后的programA 和program B//</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> pid, status, fd;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ((issamestring(<span class="string">"&gt;"</span>, oneline.parameters[oneline.special_position]) == <span class="number">1</span>)||(issamestring(<span class="string">"&gt;&gt;"</span>, oneline.parameters[oneline.special_position]) == <span class="number">1</span>))&#123;</span><br><span class="line">        fd = dup(<span class="number">1</span>);<span class="comment">//复制标准输出,此时dup返回的是最新空闲,即让一个最新空闲fd也指向1</span></span><br><span class="line">        <span class="built_in">close</span>(<span class="number">1</span>);<span class="comment">//关闭标准输出</span></span><br><span class="line">     &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        fd = dup(<span class="number">0</span>);<span class="comment">//复制，此时最新空闲的是fd</span></span><br><span class="line">        <span class="built_in">close</span>(<span class="number">0</span>);<span class="comment">//关闭标准输入</span></span><br><span class="line">&#125;</span><br><span class="line">     <span class="comment">/*先看文件是否存在，存在就覆盖写，不存在就创建写入*/</span></span><br><span class="line">        <span class="comment">/*fd要设置成全局变量，便于父进程对于文件描述符的恢复*/</span></span><br><span class="line">    pid = fork();</span><br><span class="line">    <span class="keyword">if</span> (pid &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"fork error!"</span>);</span><br><span class="line">            <span class="built_in">exit</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (pid == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="comment">/*子进程*/</span></span><br><span class="line">        <span class="keyword">if</span>(issamestring(<span class="string">"&gt;"</span>, oneline.parameters[oneline.special_position]) == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">open</span>(argv2[<span class="number">0</span>], O_WRONLY | O_CREAT | O_TRUNC);<span class="comment">//返回的fd是1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(issamestring(<span class="string">"&gt;&gt;"</span>, oneline.parameters[oneline.special_position]) == <span class="number">1</span>)&#123;</span><br><span class="line">            <span class="built_in">open</span>(argv2[<span class="number">0</span>],  O_WRONLY | O_CREAT | O_APPEND);<span class="comment">//返回的fd是1</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="built_in">open</span>(argv2[<span class="number">0</span>], O_RDONLY);</span><br><span class="line">        &#125;</span><br><span class="line">        execvp(argv1[<span class="number">0</span>],argv1);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">      <span class="comment">/*父进程*/</span></span><br><span class="line">        waitpid(<span class="number">-1</span>, &amp;status, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">if</span> ((issamestring(<span class="string">"&gt;"</span>, oneline.parameters[oneline.special_position]) == <span class="number">1</span>)||(issamestring(<span class="string">"&gt;&gt;"</span>, oneline.parameters[oneline.special_position]) == <span class="number">1</span>))</span><br><span class="line">            <span class="built_in">close</span>(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="built_in">close</span>(<span class="number">0</span>);</span><br><span class="line">        dup(fd);<span class="comment">//将当前最小的文件描述符1，指向fd指向的；</span></span><br><span class="line">        <span class="built_in">close</span>(fd);<span class="comment">//不让fd再指向1，即恢复最开始的状态</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*这里注意文件标识符的恢复问题*/</span></span><br><span class="line">    <span class="comment">/*文件表示符的恢复应该放在父进程里"执行*/</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-<h5 id="pipe"><a href="#pipe" class="headerlink" title="pipe"></a>pipe</h5><p>pipe的主体框架</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*提取Program A /B,此处同redirection*/</span>				</span><br><span class="line">			<span class="keyword">char</span> *argv1[MAX_ARGC];</span><br><span class="line">       <span class="keyword">char</span> *argv2[MAX_ARGC];</span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;MAX_ARGC;i++)&#123;</span><br><span class="line">           argv1[i]=<span class="literal">NULL</span>;</span><br><span class="line">           argv2[i]=<span class="literal">NULL</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; oneline.special_position; i++) &#123;</span><br><span class="line">           argv1[i] = oneline.parameters[i];</span><br><span class="line">       &#125;</span><br><span class="line">       argv1[oneline.special_position] = <span class="literal">NULL</span>;</span><br><span class="line">       <span class="keyword">int</span> j=oneline.special_position+<span class="number">1</span>;</span><br><span class="line">       <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; oneline.argc - oneline.special_position<span class="number">-1</span>; i++)&#123;</span><br><span class="line">           argv2[i] = oneline.parameters[j];</span><br><span class="line">           j++;</span><br><span class="line">       &#125;</span><br><span class="line">       argv2[oneline.argc-oneline.special_position] = <span class="literal">NULL</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">/*fork出两个子进程分别执行programA/programB */</span></span><br><span class="line">       <span class="keyword">int</span> status;</span><br><span class="line">       <span class="keyword">if</span>(fork()==<span class="number">0</span>)&#123;</span><br><span class="line">           pipel(argv1,argv2);</span><br><span class="line">           <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">else</span>&#123;</span><br><span class="line">           waitpid(<span class="number">-1</span>,&amp;status,<span class="number">0</span>);</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="mytop命令"><a href="#mytop命令" class="headerlink" title="mytop命令"></a>mytop命令</h4><p>mytop框架如下，参照minix3的top.c框架</p>
-<p>输出内容：</p>
-<pre><code>1. 总体内存大小，空闲内存大小，缓存大小；
-
-   2. 总体CPU使用占比。</code></pre><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exe_mytop</span><span class="params">()</span></span>&#123;</span><br><span class="line">    print_memifo();</span><br><span class="line">    getkinfo();</span><br><span class="line">    print_cpu();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>下面对mytop.c的函数做具体解释，部分宏定义来源于top.c参考源码。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*在psinfo文件下解析进程*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">proc</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> p_flags;</span><br><span class="line">    <span class="keyword">endpoint_t</span> p_endpoint;</span><br><span class="line">    <span class="keyword">pid_t</span> p_pid;</span><br><span class="line">    <span class="keyword">u64_t</span> p_cpucycles[CPUTIMENAMES];</span><br><span class="line">    <span class="keyword">int</span> p_priority;</span><br><span class="line">    <span class="keyword">endpoint_t</span> p_blocked;</span><br><span class="line">    <span class="keyword">time_t</span> p_user_time;</span><br><span class="line">    vir_bytes p_memory;</span><br><span class="line">    <span class="keyword">uid_t</span> p_effuid;</span><br><span class="line">    <span class="keyword">int</span> p_nice;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">tp</span> &#123;</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">proc</span> *<span class="title">p</span>;</span></span><br><span class="line">    <span class="keyword">u64_t</span> ticks;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/*注意ticks的动态变化*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">proc</span> *<span class="title">proc</span> = <span class="title">NULL</span>, *<span class="title">prev_proc</span> = <span class="title">NULL</span>;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*mytop的主体函数*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_memifo</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">getkinfo</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_cpu</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* print_cpu组成函数</span></span><br><span class="line"><span class="comment">1.getprocs-&gt;parsedir-&gt;parsefile;</span></span><br><span class="line"><span class="comment">2.printprocs-&gt;cputicks的计算*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">get_procs</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">print_procs</span><span class="params">(struct proc *prev_proc,struct proc *proc,<span class="keyword">int</span> cputimemode)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">parse_dir</span><span class="params">(<span class="keyword">void</span>)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">parse_file</span><span class="params">(<span class="keyword">pid_t</span> pid)</span></span>;</span><br><span class="line"><span class="comment">/*print_procs*/</span></span><br><span class="line"><span class="function"><span class="keyword">u64_t</span> <span class="title">cputicks</span><span class="params">(struct proc *p1, struct proc *p2, <span class="keyword">int</span> timemode)</span></span>;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/31/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW4-project1-shell/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W3 TCP:IP 协议栈" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW3%20TCP:IP%20%E5%8D%8F%E8%AE%AE%E6%A0%88/">计算机网络W3 TCP/IP 协议栈</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW3%20TCP:IP%20%E5%8D%8F%E8%AE%AE%E6%A0%88/" class="archive-article-date">
-  	<time datetime="2020-03-27T06:32:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="计算机网络W3-TCP-IP-协议栈"><a href="#计算机网络W3-TCP-IP-协议栈" class="headerlink" title="计算机网络W3 TCP/IP 协议栈"></a>计算机网络W3 TCP/IP 协议栈</h1><ul>
-<li>分组交换/电路交换都是一种物理的交换方式。</li>
-<li>实际万维网使用分组交换</li>
-<li>逻辑距离/物理距离。</li>
-<li>POP:入网点</li>
+<h2 id="Network-service-model"><a href="#Network-service-model" class="headerlink" title="Network service model"></a>Network service model</h2><p>网络层到底提供了什么样的服务呢?</p>
+<p>即网络层的service model是什么呢?</p>
+<p><strong>examples services for individual datagrams</strong></p>
+<p>对单个数据报文提供的服务模型</p>
+<ul>
+<li>guaranteed delivery</li>
+<li>guaranteed delivery with less than 40 msec delay</li>
 </ul>
-<p>1.4/1.5是重点</p>
-<p>丢包和延时</p>
-<p>延时：传输延时/排队延时</p>
-<p>丢包是不可避免的，缓冲区满时必然会丢包。</p>
-<h2 id="延时"><a href="#延时" class="headerlink" title="延时"></a>延时</h2><ol>
-<li><p>节点处理$d_{proc}$</p>
-<p>Check errors/</p>
-<p>determine output link/ typically &lt; msec</p>
-</li>
-<li><p>排队延时</p>
-</li>
-<li><p>传输延时$d_{trans}$</p>
-<p>虽然排队排到了</p>
-</li>
-<li><p>传播延时$d_{prop}$</p>
-<pre><code>3和4概念辨析：
-
-   3：将包从门里塞出去：与packet长度和带宽R(把带宽理解成门的大小)
-
-   4：赛出门以后，到达另一个节点的时间，与具体的路径长度有关(传输媒介的物理介质)
-
-   长度/传播塑料</code></pre></li>
+<hr>
+<p><strong>examples services for a flow of datagrams</strong></p>
+<p>对报文流提供的服务模型</p>
+<ul>
+<li>In-order datagram delivery</li>
+<li>guaranteed minimum bandwidth to flow</li>
+<li>restrictions on changes in inter-packet spacing </li>
+</ul>
+<hr>
+<p>Internet: best efforts(Servce model)</p>
+<p>Internet的服务模式是尽力而为.</p>
+<h2 id="What’s-inside-a-router"><a href="#What’s-inside-a-router" class="headerlink" title="What’s inside a router?"></a>What’s inside a router?</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>路由器就是做一个转发,路由器有很多个入口也有很多个出口.</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf99p1jmkdj30v40na7j5.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf99pdrs9gj30v40nak76.jpg" alt=""></p>
+<p>physical layer-&gt;data link layer-&gt;network layer:IP层的转发表.</p>
+<ul>
+<li>32位的Ip地址,即每8bit转化为一个字节.</li>
+</ul>
+<h3 id="转发表-最长前缀匹配"><a href="#转发表-最长前缀匹配" class="headerlink" title="转发表:最长前缀匹配"></a>转发表:最长前缀匹配</h3><p>最长前缀匹配算法.</p>
+<p>无论转发表多大,在一个时钟周期内总能完成寻址.</p>
+<p>但路由器的寻址需要它快,这是可以用硬件的相关协助</p>
+<h3 id="Switching-fabrics"><a href="#Switching-fabrics" class="headerlink" title="Switching fabrics"></a>Switching fabrics</h3><p>Transfer packet from input buffer to appropriate </p>
+<ul>
+<li>memory</li>
+<li>Bus </li>
+<li>Crossbar</li>
+</ul>
+<h4 id="First-generation-routers"><a href="#First-generation-routers" class="headerlink" title="First generation routers"></a>First generation routers</h4><p>memory</p>
+<h4 id="Switching-via-a-bus"><a href="#Switching-via-a-bus" class="headerlink" title="Switching via a bus"></a>Switching via a bus</h4><p>总线的争用,受制于总线的存取速度.</p>
+<h4 id="Cross-bar"><a href="#Cross-bar" class="headerlink" title="Cross bar"></a>Cross bar</h4><p>两两连接克服总线.</p>
+<h3 id="Input-port-queuing"><a href="#Input-port-queuing" class="headerlink" title="Input port queuing"></a>Input port queuing</h3><p>到达路由器的速度和路由器转发的速度的不匹配.</p>
+<p>所以路由器需要乱冲去</p>
+<h4 id="输入缓冲"><a href="#输入缓冲" class="headerlink" title="输入缓冲"></a>输入缓冲</h4><p>在进入路由器外进行等待</p>
+<h4 id="输出缓冲"><a href="#输出缓冲" class="headerlink" title="输出缓冲"></a>输出缓冲</h4><p>到的速度比处理的传输速度快</p>
+<p>当缓冲区不够时,丢包:</p>
+<ol>
+<li>尾部丢包/随机丢包</li>
+<li>Scheduling:选择性的丢包</li>
 </ol>
-<p>即propagation和transmission的区别</p>
-<h2 id="流量强度"><a href="#流量强度" class="headerlink" title="流量强度"></a>流量强度</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>La/R</p>
-<p>L是packet比特数</p>
-<p>La/R要小于1</p>
-<h2 id="晕塞控制"><a href="#晕塞控制" class="headerlink" title="晕塞控制"></a>晕塞控制</h2><p>接收方和发送方的速率的匹配</p>
-<p>一般不会有无限长队列，超过某一时常一般会丢包。</p>
-<h3 id="吞吐"><a href="#吞吐" class="headerlink" title="吞吐"></a>吞吐</h3><p>理论：<strong>接受者</strong>每秒能收到的比特数量，接受者真正能体验到的每秒钟能接收到的比特数，分瞬时和平均。管子跟流水一样，保证通畅是最小值。</p>
-<p>吞吐是带宽的最小值</p>
-<p>吞吐更强调<strong>端</strong>系统，取决于整个链路的<strong>瓶颈</strong>带宽。</p>
-<p>带宽是一段更取决于物理介质，点名哪里到哪里，这里的哪里不一定是端了。</p>
-<h2 id="邮寄"><a href="#邮寄" class="headerlink" title="邮寄"></a>邮寄</h2><p>收发是<strong>对等</strong>的。</p>
-<p>发：分发</p>
-<p>收：收起来</p>
-<hr>
-<h2 id="1-6-协议的层次结构"><a href="#1-6-协议的层次结构" class="headerlink" title="1.6 协议的层次结构"></a>1.6 协议的层次结构</h2><blockquote>
-<p>重点强调 <strong>对等的概念</strong></p>
-</blockquote>
-<p>层层之间功能服务的提供；</p>
-<p>分层协议栈（对等）</p>
-<p>向上提供</p>
-<p>向下使用</p>
-<p>有时相邻，很少跨层</p>
 <blockquote>
-<p>公共基础设施<strong>模块化</strong></p>
+<p>队列排序</p>
 </blockquote>
-<p>透明：不关心细节</p>
-<p>好处：服务无变化时，上层不关心。</p>
-<hr>
-<p>http协议是被实现在哪里的？</p>
-<p>​    被实现在http客户端和服务器.</p>
-<p>我们所写的网站是运行在<strong>服务器</strong>的，写的是服务器端的网站。浏览器的作用仅仅是前端显示。</p>
-<p>把浏览器端的文件下载过来在客户端显示。</p>
-<h2 id="TCP-IP协议栈"><a href="#TCP-IP协议栈" class="headerlink" title="TCP/IP协议栈"></a>TCP/IP协议栈</h2><p>appliction：支持各种应用</p>
-<p><strong>端口：标示运行在机器上的进程HTTP/FTP/SMTP</strong></p>
-<p><strong>transport：运行在两个主机上的一对进程之间的通讯TCP/UDP</strong></p>
-<p><strong>Network:一对端系统（主机）源到目的主机 Port/IP</strong> </p>
-<hr>
-<p>Link:相邻节点：网络层传输时会经过很多不同的介质，介质是透明MAC</p>
-<p>Physical：如何将比特从一个穿到另一个（比特流）</p>
-<hr>
-<p>进程间通讯：</p>
-<p><strong>同一</strong>台主机上进程的通讯：管道、信号｜ (共享内存)</p>
-<p><strong>不同</strong>主机上：在网络上一堆进程如何通讯，就利用端口。</p>
-<h2 id="ISO-OSI-refence-model"><a href="#ISO-OSI-refence-model" class="headerlink" title="ISO/OSI refence model"></a>ISO/OSI refence model</h2><h2 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation"></a>Encapsulation</h2><p>交换机两层</p>
-<p>router三层</p>
+<h5 id="How-much-buffering"><a href="#How-much-buffering" class="headerlink" title="How much buffering?"></a>How much buffering?</h5><p>RTT </p>
+<p>$\frac{RTT.c}{\sqrt{N}}$</p>
+<h5 id="Scheduling-policies-priority"><a href="#Scheduling-policies-priority" class="headerlink" title="Scheduling policies:priority"></a>Scheduling policies:priority</h5><p>维护优先级队列</p>
+<h5 id="Round-Robin-RR-scheduling"><a href="#Round-Robin-RR-scheduling" class="headerlink" title="Round Robin(RR) scheduling"></a>Round Robin(RR) scheduling</h5><h5 id="WFQ"><a href="#WFQ" class="headerlink" title="WFQ"></a>WFQ</h5><p>类比选课的意愿值</p>
+<h2 id="Internet-Protocol"><a href="#Internet-Protocol" class="headerlink" title="Internet Protocol"></a>Internet Protocol</h2><p>路由器的转发表是由路由算法算出来的.</p>
+<p>网络层的协议:routing protocols/IP protocols/ICMP protocols.</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9aaz564lj30v40nak6x.jpg" alt=""></p>
+<p>IPV4:版本:32位4字节的地址</p>
+<p>fragment:分片</p>
+<p>IP层下的链路层已经跟链路层相关了.</p>
+<p>用offset将这些片拼起来.</p>
+<p>Flgs:来标示这一片是最后一片.</p>
+<h3 id="MTU"><a href="#MTU" class="headerlink" title="MTU"></a>MTU</h3><p>mtu:最大传输单元</p>
+<p>链路层:相邻的路由器之间的通讯,每个链路的MTU可能会不同.</p>
+<p>IP是两台主机之间的通讯.</p>
+<p>“片”的组装是位于端系统的组装.</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9aiji5l7j30v40nawqi.jpg" alt=""></p>
+<p>一个IP的报文被链路层切成了3块.因为MTU是1500,而头部也占了20字节</p>
+<h3 id="IP寻址"><a href="#IP寻址" class="headerlink" title="IP寻址"></a>IP寻址</h3><p>无线网卡等借口的地址</p>
+<p>有线的地址</p>
+<p>点分十进制</p>
+<h4 id="子网-subnets"><a href="#子网-subnets" class="headerlink" title="子网(subnets)"></a>子网(subnets)</h4><p>前边的位是一样的.</p>
+<p>高位相同/低位区分</p>
+<p>将路由器去掉,去看有几个各自连接的孤岛.</p>
+<p>子网掩码:前多少位是一样的.</p>
+<p>如何理解子网掩码中的“子网”？ - Dion的回答 - 知乎 <a href="https://www.zhihu.com/question/21064101/answer/17056026" target="_blank" rel="noopener">https://www.zhihu.com/question/21064101/answer/17056026</a></p>
+<h4 id="内部地址"><a href="#内部地址" class="headerlink" title="内部地址"></a>内部地址</h4><p>不经过路由器(HUB)</p>
+<h3 id="CIDR"><a href="#CIDR" class="headerlink" title="CIDR"></a>CIDR</h3><p>无类别域间路由选择</p>
+<p>主机是如何得到IP地址的?</p>
+<p>How doesr a host get IP address?</p>
+<p>当前24位,则子网中由多少的IP地址,全0和全1(255.255….)部可以算,故算出来的结果需要-2.即255.255.255.255是一个广播地址.</p>
+<h4 id="硬编码hard-coded"><a href="#硬编码hard-coded" class="headerlink" title="硬编码hard-coded"></a>硬编码hard-coded</h4><h4 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h4><p>有一个租约:3600secs:即到期可以续约.</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9ax1712fj30mw0na7ei.jpg" alt=""></p>
+<p>DHCP不光只能拿到IP地址,它还可以配置很多信息.</p>
+<ul>
+<li><p><strong>网关</strong>:第一跳的路由器.first hop router</p>
+</li>
+<li><p>DNS server</p>
+</li>
+<li><p>network mask(子网掩码)</p>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9b074gnpj30ts0naanm.jpg" alt=""></p>
 <blockquote>
-<p>Crash 好乱啊Orz</p>
+<p>NAT,内部转换成外部的IP地址.</p>
 </blockquote>
 <blockquote>
-<p>栈的理解：协议一个个向下遵守，再从下向上遵守。</p>
+<p>作业:明确自己电脑的IP 地址是什么,再查询本地的子网掩码,默认网关.DNS 服务器</p>
+<p>如果看到的是10.开头的,查询家里是否有一个对外的(ISP分配给我的)</p>
+<p>再查询我的DHCP服务器在哪</p>
 </blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9b2iiv2cj30fq06c76b.jpg" alt=""></p>
 
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -915,16 +370,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW3%20TCP:IP%20%E5%8D%8F%E8%AE%AE%E6%A0%88/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">英文歌曲文化赏析W12:HIPHOP2</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -944,270 +458,14 @@
 
 
 
-
-  
-    <article id="post-计算机网络W3-java多线程编程基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW3-java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">计算机网络W3:java多线程编程基础</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW3-java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2020-03-26T06:32:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我的计网试验报告；</p>
-<p>详细代码见我的GitHub仓库。</p>
-        
-          <a class="article-more-a" href="/2020/03/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW3-java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW3-java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语W2-DOM-and-source-code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW2-DOM-and-source-code/">专业英语W2 DOM and source code</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW2-DOM-and-source-code/" class="archive-article-date">
-  	<time datetime="2020-03-24T02:49:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>In the developer console of your web browser, you can see the document object model of a web page, and you can also see its html source code. The two look similar most of the time, while they play different roles in your browser. Please elaborate the difference between document object model and html source code to a web brower.</p>
-        
-          <a class="article-more-a" href="/2020/03/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW2-DOM-and-source-code/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW2-DOM-and-source-code/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统W3-Chapter1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW3-Chapter1/">操作系统W3 Chapter1</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW3-Chapter1/" class="archive-article-date">
-  	<time datetime="2020-03-24T01:53:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="OS-第一章"><a href="#OS-第一章" class="headerlink" title="OS 第一章"></a>OS 第一章</h1><blockquote>
-<p>第一章课后习题的概念梳理</p>
-<p>笔记补全</p>
-<p>上级具体实验操作见实验报告笔记。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/03/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW3-Chapter1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/24/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW3-Chapter1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1230,8 +488,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

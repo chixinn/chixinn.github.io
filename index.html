@@ -170,6 +170,399 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ML01-Regression-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/29/ML01-Regression-2/">ML01-Regression-2</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/29/ML01-Regression-2/" class="archive-article-date">
+  	<time datetime="2020-05-29T00:19:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h1><h2 id="Case-Study-gt-Pokemon"><a href="#Case-Study-gt-Pokemon" class="headerlink" title="Case Study -&gt;Pokemon"></a>Case Study -&gt;Pokemon</h2><ol>
+<li><p>Gradient的定义:</p>
+<p>将对参数的偏微分,排列成一个向量.</p>
+</li>
+<li><p>Gradient Descent 的不足:</p>
+<p>对于存在Local optimal的模型的处理不佳.</p>
+<p>但是Linear Regression的模型是convex的,所以不存在local optimal的情况.</p>
+</li>
+</ol>
+<p>##关于模型训练结果的分析</p>
+<h3 id="How’s-the-result"><a href="#How’s-the-result" class="headerlink" title="How’s the result?"></a>How’s the result?</h3><p>因为我们更想得到的是generalization的结果,所以我们最关心的是error on new data(testing data) instead of training data itself.</p>
+<blockquote>
+<p>Training data上看起来更准一点就说明model更准了吗?</p>
+<p>过拟合与交叉验证.</p>
+</blockquote>
+<h3 id="How-can-we-do-better"><a href="#How-can-we-do-better" class="headerlink" title="How can we do better?"></a>How can we do better?</h3><blockquote>
+<p>Selecting another Model</p>
+</blockquote>
+<p>重新设计模型:</p>
+<p>原model:</p>
+<p>$y=b+wx_{cp}$;</p>
+<p>现在的model:</p>
+<p>$y=b+w_1x_{cp}+w_2x_{cp}^2$;</p>
+<p>How can we do more better?</p>
+<p>$y=b+w_1x_{cp}+w_2x_{cp}^2+w_3x_{cp}^3$</p>
+<h4 id="对于三次和二次在pokemon例子上的比较"><a href="#对于三次和二次在pokemon例子上的比较" class="headerlink" title="对于三次和二次在pokemon例子上的比较"></a>对于三次和二次在pokemon例子上的比较</h4><p><strong>Slightly</strong> better.</p>
+<h4 id="什么是“好的”model"><a href="#什么是“好的”model" class="headerlink" title="什么是“好的”model?"></a>什么是“好的”model?</h4><p>对于宝可梦模型,我们先后使用了1次2次…4次进行拟合,我们发现,随着模型的复杂度上升,我们的error on training data确实在下降,但是我们的error on testing da ta 却<strong>反而上升</strong>了.</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf916eob7uj30s20l813e.jpg" alt=""></p>
+<p>显然,当$w_4=0$时,三次模型所涵盖的表达都可以用4次模型的model表达出来.</p>
+<h2 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h2><p>为什么复杂model在training data上得到这么好的结果,而在testing上的error这么可怕呢?</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91eo6kffj30s20l8aj6.jpg" alt=""></p>
+<blockquote>
+<p>比如不是选择复杂的model,而是选择一个合适的model.</p>
+</blockquote>
+<h2 id="Let’s-collect-more-data"><a href="#Let’s-collect-more-data" class="headerlink" title="Let’s collect more data"></a>Let’s collect more data</h2><h3 id="What-are-the-hidden-factors"><a href="#What-are-the-hidden-factors" class="headerlink" title="What are the hidden factors?"></a>What are the hidden factors?</h3><p>进化后物种的影响仍是很大的.</p>
+<p>所以刚才的model本身就不好.</p>
+<blockquote>
+<p>Back to Step1.</p>
+</blockquote>
+<h2 id="Redesign-the-Model"><a href="#Redesign-the-Model" class="headerlink" title="Redesign the Model"></a>Redesign the Model</h2><blockquote>
+<p>不同的物种,不同的linear func</p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91k13gbij30s20l8jyn.jpg" alt=""></p>
+<p>可以用一种更奇妙的函数表示形式,将之前有if的式子表示成带信号处理(i.e.“是”即1,“不是”即0);</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91m87p2ej30s20l8thu.jpg" alt=""></p>
+<p>当我们的输入$x_s=Pidgey$时,其即$y=b_1.1+w_1x_{cp}$</p>
+<h3 id="Are-there-any-other-hidden-factors"><a href="#Are-there-any-other-hidden-factors" class="headerlink" title="Are there any other hidden factors?"></a>Are there any other hidden factors?</h3><p>把我们想到的factor 以后 都back to step 1.</p>
+<h3 id="如何处理overfitting"><a href="#如何处理overfitting" class="headerlink" title="如何处理overfitting?"></a>如何处理overfitting?</h3><h2 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h2><p>重新定义我们的loss function,把knowledge放进去进行Redesign.</p>
+<p>$Loss:y=b+\sum w_ix_i$;</p>
+<p>$L=\sum_n(\hat{y}^n-(b+\sum w_ix_i))^2+\lambda\sum(w_i)^2$</p>
+<p>对于正则项:我们期待一个越小的$w_i$这个function越好.</p>
+<p>参数接近0时:</p>
+<h3 id="平滑"><a href="#平滑" class="headerlink" title="平滑"></a>平滑</h3><p>平滑是什么意思?</p>
+<p>输入有变化时,整体的变化对输入的变化是 <strong>不敏感</strong>的.</p>
+<p>$y=b+\sum w_ix_i$;</p>
+<p>如果我们的输入变化$\Delta x$,那么相应的,我们的输出变化,$w_i\Delta x_i$.</p>
+<p>$w_i$越接近0,function越平滑</p>
+<h4 id="为什么我们喜欢平滑的function"><a href="#为什么我们喜欢平滑的function" class="headerlink" title="为什么我们喜欢平滑的function?"></a>为什么我们喜欢平滑的function?</h4><p>因为当我们的输入被噪声所干扰时,一个平滑的function会被噪声有很小的影响.</p>
+<p>$\lambda$越大,代表考虑regularization的smooth正则项的影响力越大.</p>
+<blockquote>
+<p>我们喜欢平滑的function,但我们不喜欢太平滑的function.</p>
+<p>最平滑的function是一条水平线.</p>
+</blockquote>
+<h3 id="为什么在正则项中没有加上b"><a href="#为什么在正则项中没有加上b" class="headerlink" title="为什么在正则项中没有加上b?"></a>为什么在正则项中没有加上b?</h3><blockquote>
+<p>在做regularization是不需要考虑bias一项的.</p>
+</blockquote>
+<p>bias是作为常数项只是函数的上下移动而已.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>对于我们没有得到的data,即在testing data中没有包含的测试数据.</p>
+<p>我们的最终建模系统是”Underestimate?””Overestimate”?</p>
+<p><strong>Following lectures :validation</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/29/ML01-Regression-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-计算机网络第三章课后作业;" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%89%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A;/">计算机网络第三章课后作业;</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%89%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A;/" class="archive-article-date">
+  	<time datetime="2020-05-27T15:26:14.749Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol start="3">
+<li>01010011+01100110=10111001;</li>
+</ol>
+<p>10111001+01110100=00101110;</p>
+<p>00101110的反码是11010001;</p>
+<p><strong>UDP的checksum的工作原理</strong>是将这些字分别相加,如果有加法溢出,即需要被回卷.如果该分组中没有引入差错,则显然在接收方处该和将是8个1,在16位下将是16个1.如果这些比特之一是0,那么该分组中即有差错.</p>
+<p>校验和使用反码求和的<strong>优点</strong>是：</p>
+<p>(1<strong>)不依赖</strong>系统的字节序是大端小端。即二进制反码和字节序无关.</p>
+<p>(2)求和过程中,先对校验序列求反码序列再循环进位求和,等于先二进制循环进位求和以后再对求和结果求反码,而先二进制循环进位求和以后再对求和结果求反码会大大减少求反码的次数.</p>
+<p>如果这些待校验序列中有1比特的差错,那么在循环进位求和的过程中,无论如何求和进位,这1比特的差错都会对最后的求和结果造成影响;而如果是有2比特位的差错的话,这个2比特的差错有可能检验不出来,因为在循环进位求和阶段该差错可能恰好被掩盖.</p>
+<ol start="11">
+<li><p>如果这个确认报文分组号的ACK发送信息被删除的话,当发送方发送了某一分组0,会进入等待ACK0的状态;此时,接收方的本来需要从一直等待来自下层的0的状态发生的变化,但这个状态变化需要对这个分组0进行ACK码的发送;</p>
+<p>但是,当ACK码发送的步骤被删除时,所以,发送方不会收到接收方任何ACK码的信息,<strong>而发送方仅当接收到ACK并且离开该状态时才能再发生rdt_send事件</strong>.所以不能删除,这样发送方和接收方的状态改变依赖于二者的相互等待.</p>
+</li>
+<li><p>对于发送方偶尔发送数据,在只使用NAK的协议下,发送方确认数据包是否发送成功只可以根据NAK的消息判断,例如当发送方收到了关于packet3的NAK消息时,不外加其他条件,发送方才知道packet3的发送失败,发送方才得以继续发送.</p>
+</li>
+</ol>
+<p>对于很少丢包的发送方发大量数据时,NAK协议会比只使用ACK更好,因为这样会减少<strong>额外确认码的发送</strong>,<strong>一并减少</strong>了<strong>发送开销</strong>.</p>
+<ol start="18">
+<li>设计的该SR协议的FSM</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf8g7tvgfcj30u0140aei.jpg" alt=""></p>
+<p>说明,因为一次发送一对包,所以00,和10,即一左一右的状态逻辑相同.</p>
+<p>以00和01表示一对分组中第一个包的新旧状态.</p>
+<p>以10和11表示一对分组中第二个包的新旧状态.</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf8g7tkzn8j30u014078y.jpg" alt=""></p>
+<p>而对于该SR协议的接收方,只需要在发送方的等待ACK功能替换为等待数据的过程.</p>
+<p>下面对该SR协议的接收方和发送方分别描述.</p>
+<p>发送方:</p>
+<ol>
+<li>等待上层数据和上层调用,检查下一个可用于该对分组的序号.如果序号位于发送方的窗口内,则将该对分组打包并发送.</li>
+<li>超时:设置定时器,一对分组中的每个分组必须拥有自己的逻辑定时器.</li>
+<li>收到ACK,一对被发送的分组中,倘若该分组序号在窗口内,则SR发送方进行标记,若一对分组中的两个包都被ACK确认,则SR发送方标记为该对已接收,进行窗口的滑动.</li>
+</ol>
+<p>接收方:</p>
+<ol>
+<li><p>同样维护以对为单位的接收窗口.如果收到的分组属于接收窗口内,则一个ACK进行发送,如果不位于窗口内,则暂时缓存.当接收窗口也进行滑动时,进行一对包的交付.</p>
+</li>
+<li><p>如果收到的分组属于接收窗口内,则必须进行一个ACK进行发送,用来确认该对的上一对分组包.</p>
+</li>
+<li><p>其他情况,进行忽略.</p>
+</li>
+<li><p>设计适合该机制的协议的FSM</p>
+</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf8gyz739bj30u0140u11.jpg" alt=""></p>
+<ol start="22">
+<li>a.发送窗口内的报文序号可能是多少,一种边界情况是,对k-1号分组及之前的所有分组都进行了确认,即k分组是发送方的窗口的第一个,所以,此时发送窗口的报文序号是k,k+1,k+2,k+3;另一种边界情况是发送方未收到ACK,即k-4,k-3,k-2,k-1;</li>
+</ol>
+<p>b. 因为接受方在等待分组k,那么说明接受方已经接受和确认了k-1及k-1之前的所有分组.如果包含这些分组的窗口大小及4个ACK确认没有到达发送方时,故ACK所有可能的值是k-4,k-3,k-2,k-1;但是因为发送方发送分组k-4,k-3,k-2,k-1的前提是收到了ACK(k-5),由累计确认的原则,ACK字段的所有可能的值是[k-5,k-1];</p>
+<ol start="23">
+<li>对于SR协议而言,为了避免新来的分组和重发的分组无法区分的情况,必须使窗口长度小于或等于序号空间大小的一半.</li>
+</ol>
+<p>因为序号空间是[0,k]/[0,k]重复应用的.设序号空间大小的一半为w,则w=k/2.</p>
+<p>当WinSize&gt;k/2时,</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf7xavkegnj30i00dkwpb.jpg" alt=""></p>
+<p>如本图所示,假设发送过程中,分组0,1,..,w都没有被收到ACK确认,此时第一个发送的分组0因超时而需要重传分组,故此时发送方需要发送分组0,而此时接受方因为实质是收到了分组0,1,..,w,只是他们对发送方的ACK码没有被发送方收到而已,故此时的接受方的窗口已经滑动到了w+1,…,w+WinSIze,这个序列的窗口段,这个序列的窗口段的分组序号为,w+1,w+2,…,k,…(如果有了最大的k,则需要从1处进行重置.)</p>
+<p>此时,接受方的窗口和分组序号的对应关系为:</p>
+<table>
+<thead>
+<tr>
+<th>接收方窗口移动</th>
+<th>分组序号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>w+1</td>
+<td>w+1</td>
+</tr>
+<tr>
+<td>w+2</td>
+<td>w+2</td>
+</tr>
+<tr>
+<td>w+3</td>
+<td>…</td>
+</tr>
+<tr>
+<td>w+w(因为w=k/2)</td>
+<td>k</td>
+</tr>
+<tr>
+<td>w+w+1(假设此时还未到WINSIZE)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>w+WinSize</td>
+<td>Winsize-w-1</td>
+</tr>
+</tbody></table>
+<p>由这个对照关系所知,当WinSize&gt;k/2时,此时在分组序号和k的交接处,因为w+w+1=k+1&lt;w+WinSIze,即此时接收方的窗口中会同时收到分组序号0的包(仅举例),而对于这个包和从接收方的角度来看,接收方无法分别这个包是新的一个序号0的包,还是一组新的重传.</p>
+<p>所以对于SR协议而言<strong>必须使窗口长度小于或等于序号空间大小的一半.</strong></p>
+<ol start="36">
+<li>对于为什么要3个冗余ACK后启动重传:</li>
+</ol>
+<p>结论:两次duplicated ACK时乱序造成的,而丢包会造成3次冗余的ACK.</p>
+<p>假设AB两个通信双方,A向B发送4个TCP Segment给B;</p>
+<p>发送方A以1,2,3,4的顺序进行发送.</p>
+<p>此时B方到达的顺序是:(仅发生乱序)</p>
+<p>Case1: 1,2,3,4则A收到1个ACK(N);[各一个]</p>
+<p>Case2: 1,2,4,3,则A收到会收到两个ACK(2)’</p>
+<p>Case3: 1,3,2,4,则A会收到两个ACK;</p>
+<p>Case4: 1,3,4,2则A会收到3个ACK(1);</p>
+<p>…</p>
+<p>此时B方到达的顺序是:(仅发生丢包)</p>
+<p>Case1:1,3,4,会收到3个ACK(1)</p>
+<p>Case2:1,4,3,仍是会收到3个ACK(1)</p>
+<p>总结如上,当TCP包乱序时,有概率可以收到3次重复ACK,而当TCP丢包时,则一定会收到ACK,此时如果针对这种情况启动快速重传则会很好的起到快速恢复的效果.</p>
+<ol start="37">
+<li>比较GBN,SR和TCP</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SR</th>
+<th>TCP</th>
+<th>GBN</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应答方式</td>
+<td>不累计应答</td>
+<td>累计应答下一个字节的sequence</td>
+<td>累计应答</td>
+</tr>
+<tr>
+<td>缓存机制</td>
+<td>缓存</td>
+<td>缓存</td>
+<td>不缓存,直接扔掉</td>
+</tr>
+<tr>
+<td>0</td>
+<td>ACK0</td>
+<td>ACK1</td>
+<td>ACK0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>发送丢失</td>
+<td>发送丢失</td>
+<td>发送丢失</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ACK2(缓存)</td>
+<td>ACK2(包2缓存)</td>
+<td>ACK0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ACK3(缓存)</td>
+<td>ACK2(包3缓存)</td>
+<td>ACK0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ACK4(缓存)</td>
+<td>ACK2(包4缓存)</td>
+<td>ACK0</td>
+</tr>
+<tr>
+<td>1重发</td>
+<td>ACK1</td>
+<td>ACK2,ACK5</td>
+<td>(1-4全重发)ACK1,ACK2,ACK3,ACK4</td>
+</tr>
+<tr>
+<td>总ACK数目</td>
+<td>5</td>
+<td>6</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<p>b .根据题目假设,超时的区间设置的很长,所以由上比较可知,当TCP收到3次duplicated ACK后会进行快速重传和恢复机制,所以TCP事件最短</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%89%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A;/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Data-mining-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1047,171 +1440,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADmini-batch%E7%9A%84%E4%BD%9C%E7%94%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W11TCP协议3.5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/">计算机网络W11:TCP协议3.5</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/" class="archive-article-date">
-  	<time datetime="2020-05-22T04:58:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="计算机网络W11-TCP协议3-5"><a href="#计算机网络W11-TCP协议3-5" class="headerlink" title="计算机网络W11:TCP协议3.5"></a>计算机网络W11:TCP协议3.5</h1><blockquote>
-<p>如何在传输层设计出一个可靠的协议?</p>
-</blockquote>
-<p>IP地址是分配给我们的逻辑地址,MAC是硬件地址,存在IP地址与MAC硬件地址的翻译流程存在.</p>
-<p>当出现过早超时时,会有一些延迟ACK即重复收到ACK,此时什么都不做继续等待即可.</p>
-<p>窗口大小:最多能忍受的已发送未确认的packet的个数.</p>
-<p>GBN的定时器:最早的已发送没有被确认的的分组上设置的timer,所以收到确认以后,我们的定时器会发生变化.</p>
-        
-          <a class="article-more-a" href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-最小二乘问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/">最小二乘问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-05-21T00:40:37.232Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="最小二乘问题"><a href="#最小二乘问题" class="headerlink" title="最小二乘问题"></a>最小二乘问题</h1><p>矩阵分解的应用,与线性回归等问题有着较为密切的联系.</p>
-<p>给出一条直线,使得所有点和直线所预测的点的误差的平方和最小.</p>
-<blockquote>
-<p>误差的平方和与2范数的关系</p>
-</blockquote>
-<p>即$min_{k,b}\sum_{i=1}^n(kx_i+b-y_i)^2$</p>
-<p>问题实质是求解<strong>线性回归</strong>的参数问题.</p>
-<hr>
-<p>给出数据集$x_1,x_2,…,x_n$,和用于预测的函数$y=w^Tx+b$数据的个数为n,数据的维度为m;所以当数据构成组成矩阵$A_{m\times n}$的列.</p>
-<p>即 arg($min_x||Ax-b||_2$)</p>
-<hr>
-        
-          <a class="article-more-a" href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 

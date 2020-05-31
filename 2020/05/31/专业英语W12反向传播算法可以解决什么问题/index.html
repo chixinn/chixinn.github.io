@@ -6,15 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Chixinning的博客</title>
+  <title>专业英语W12反向传播算法可以解决什么问题 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/page/9/index.html">
+  <meta name="description" content="专业英语W12:反向传播算法可以解决什么问题What problem does backpropagation solve? Explain it in your own words.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="专业英语W12反向传播算法可以解决什么问题">
+<meta property="og:url" content="http://yoursite.com/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="专业英语W12:反向传播算法可以解决什么问题What problem does backpropagation solve? Explain it in your own words.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+p%7D%7B%5Cpartial+q%7D">
+<meta property="og:image" content="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+p%7D%7B%5Cpartial+q%7D">
+<meta property="article:published_time" content="2020-05-31T13:25:33.297Z">
+<meta property="article:modified_time" content="2020-05-31T14:29:33.276Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="C">
 <meta property="article:tag" content="C++">
@@ -29,6 +33,7 @@
 <meta property="article:tag" content="Developer">
 <meta property="article:tag" content="DataScience">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+p%7D%7B%5Cpartial+q%7D">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -168,71 +173,139 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-yilia主题的配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-专业英语W12反向传播算法可以解决什么问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/08/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE/">yilia主题的配置</a>
+    <h1 class="article-title" itemprop="name">
+      专业英语W12反向传播算法可以解决什么问题
     </h1>
   
 
         
-        <a href="/2020/03/08/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2020-03-08T02:37:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-08</time>
+        <a href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-05-31T13:25:33.297Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h6 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h6><p>​    寒假兜兜转转的过去，也陆陆续续地逼自己写技术博客了。</p>
-<p>​    突然发现每次hexo d的时候就会把我远程的CNAME冲掉？我？</p>
-<p>​    然后ererzi.website就又404了Orz!</p>
-<p>​    然后又万能的百度，找到了解决方法，原来放在 <strong>source</strong>文件下的CNAME文件就不会被Hexo deploy掉了!</p>
-<p>​    <a href="https://blog.csdn.net/lewky_liu/article/details/85109524" target="_blank" rel="noopener">Hexo - CNAME文件在每次部署后就没了</a></p>
-<p>​    我按照这个solution<strong>在本地的<code>source\</code>目录下面新建了<code>CNAME</code>文件以后</strong>，发现deploy以后 <strong><code>CNAME</code></strong>并没有出现在我远程的仓库之中。</p>
-<p>​    我初步的猜测是我对deploy的部署功能理解的不是很深刻。</p>
-<p>​    但是在这个[将CNAME放置在public\文件夹下面就能很好的解决问题了](hexo博客每次deploy以后都要在设置里重新设置域名不然就会404怎么办? - Sailim的回答 - 知乎 <a href="https://www.zhihu.com/question/334170671/answer/745845841" target="_blank" rel="noopener">https://www.zhihu.com/question/334170671/answer/745845841</a>)</p>
-<p>​    果然科学技术是第一生产力，要不是博客写的稍微多了点自己乱，也不会逼自己去配置整理了Orz！</p>
-        
-          <a class="article-more-a" href="/2020/03/08/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE/#more">more >></a>
-        
+        <h1 id="专业英语W12-反向传播算法可以解决什么问题"><a href="#专业英语W12-反向传播算法可以解决什么问题" class="headerlink" title="专业英语W12:反向传播算法可以解决什么问题"></a>专业英语W12:反向传播算法可以解决什么问题</h1><p>What problem does backpropagation solve? Explain it in your own words.</p>
+<a id="more"></a>
+
+<p>机器学习的目标是最小化代价函数，代价函数是一个关于weight和偏置的复合函数。</p>
+<p>Backpropagation can solve the problem of the high cost of the partial derivative calculation.</p>
+<p>The goal of machine learning is to minimize the cost function, which is a composite function of weight and bias. Gradient descent is generally adopted to achieve such goal. In real cases, complex model  often involves the calculation of the partial derivatives of all variables of the multi-layer composite function, which will cost a lot. </p>
+<p>Why the  traditional calculation method of partial derivatives is very  redundant and become a problem? Because ,for instance, with  the upper node P and the lower node Q,  we want to find  the partial derivative of P to Q.  It is required to find all paths from the Q node to the P node, and for each path,  we have to get the product of all partial derivatives on the path, and then add up the product of all paths to get the partial derivative.</p>
+<p>On the contrary, backpropagation can only access each path once to find the partial derivative value of the vertex to all the lower nodes, thus solving the problem of redundant calculation.</p>
+<p>在最小化代价函数的过程中一般采取梯度下降算法。在真实的计算过程中，对于复杂模型，往往要涉及多层复合函数的所有变量的偏导数的计算，涉及到的计算代价会很大，而BP算法可以解决偏导数计算代价大的问题。</p>
+<p>In the real calculation process, for the complex model, it and BP algorithm can solve the problem of the high cost of the partial derivative calculation.</p>
+<p>对于上层节点p和下层节点q，要求得<img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+p%7D%7B%5Cpartial+q%7D" alt="[公式]">，需要找到从q节点到p节点的所有路径，并且对每条路径，求得该路径上的所有偏导数之乘积，然后将所有路径的 “乘积” 累加起来才能得到<img src="https://www.zhihu.com/equation?tex=%5Cfrac%7B%5Cpartial+p%7D%7B%5Cpartial+q%7D" alt="[公式]">的值。而这种传统的计算方法非常冗余，BP算法则是对每个路径只访问一次就能<strong>它对于每一个路径只访问一次就能求顶点对所有下层节点的偏导值。</strong></p>
+<p>The traditional calculation method is very redundant. BP algorithm can only access each path once * * it can only access each path once to find the partial derivative value of the vertex to all the lower nodes</p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/08/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
 
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0Chapter2%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">专业英语读书笔记Chapter2反向传播算法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -252,735 +325,14 @@
 
 
 
-
-  
-    <article id="post-灵光一现的备忘" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/06/%E7%81%B5%E5%85%89%E4%B8%80%E7%8E%B0%E7%9A%84%E5%A4%87%E5%BF%98/">灵光一现的备忘</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/06/%E7%81%B5%E5%85%89%E4%B8%80%E7%8E%B0%E7%9A%84%E5%A4%87%E5%BF%98/" class="archive-article-date">
-  	<time datetime="2020-03-06T03:13:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>​    这个作为我平时的备忘使用，比如某些不是热别清楚的概念的灵光一现的把握，或者是一些专业的零散要素。</p>
-<p>​    计算机作为一门语言，我可以把它想象成去学英语。<br>​    <strong>编程学习，远不到拼天赋的层面。</strong><br>​    看了crash course study skills的 train attention muscle，不妨学以致用。</p>
-        
-          <a class="article-more-a" href="/2020/03/06/%E7%81%B5%E5%85%89%E4%B8%80%E7%8E%B0%E7%9A%84%E5%A4%87%E5%BF%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/06/%E7%81%B5%E5%85%89%E4%B8%80%E7%8E%B0%E7%9A%84%E5%A4%87%E5%BF%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Missing-L1-Shell" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/05/Missing-L1-Shell/">Missing-L1-Shell</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/05/Missing-L1-Shell/" class="archive-article-date">
-  	<time datetime="2020-03-05T06:05:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Lecture1-The-shell"><a href="#Lecture1-The-shell" class="headerlink" title="Lecture1: The shell"></a>Lecture1: The shell</h1><p>​    所有不加exercise的<strong>盲目</strong>啃理论都是耍流氓！</p>
-        
-          <a class="article-more-a" href="/2020/03/05/Missing-L1-Shell/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Missing Semester</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/05/Missing-L1-Shell/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-个人学习路线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/05/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">个人学习路线</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/05/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="archive-article-date">
-  	<time datetime="2020-03-05T03:13:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="个人学习路线规划"><a href="#个人学习路线规划" class="headerlink" title="个人学习路线规划"></a>个人学习路线规划</h1><p>写在前面</p>
-<hr>
-<p>我是不喜欢python，还是因为我考的太差了所以不喜欢python？</p>
-        
-          <a class="article-more-a" href="/2020/03/05/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/05/%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-学习路线" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/04/C-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">C++学习路线</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/04/C-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/" class="archive-article-date">
-  	<time datetime="2020-03-04T14:58:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>语言学习和编程能力有gap: 基础四大件和企业级的实践</strong></p>
-        
-          <a class="article-more-a" href="/2020/03/04/C-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/04/C-%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-small-bugs-recoded" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/04/small-bugs-recoded/">small bugs recoded</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/04/small-bugs-recoded/" class="archive-article-date">
-  	<time datetime="2020-03-04T05:09:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>我发现我用vim 编辑器写的markdown 语法除了有hexo的默认生成的标题以后就啥也没有了QAQ</strong></p>
-<p><em>刚看了b站up的话，发现人确实需要总结和提炼吧</em></p>
-<p><em>从小就不是一个特别喜欢写日记的人，希望可以慢慢做的更好</em></p>
-        
-          <a class="article-more-a" href="/2020/03/04/small-bugs-recoded/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/04/small-bugs-recoded/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Missing-L2-tools" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/04/Missing-L2-tools/">Missing-L2-tools</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/04/Missing-L2-tools/" class="archive-article-date">
-  	<time datetime="2020-03-04T03:51:22.319Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Missing-L2-useful-tools"><a href="#Missing-L2-useful-tools" class="headerlink" title="Missing L2 useful tools"></a>Missing L2 useful tools</h1><p>date: 2020-3-4<br>[^Asides]:说实话，所有的工具和efficient techniques都需要不断尝试才能让这些技巧起到更好的作用。</p>
-        
-          <a class="article-more-a" href="/2020/03/04/Missing-L2-tools/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Missing Semester</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/04/Missing-L2-tools/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Missing-L2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/03/Missing-L2/">Missing-semester-MIT-L2  Shell</a>
-    </h1>
-  
-
-        
-        <a href="/2020/03/03/Missing-L2/" class="archive-article-date">
-  	<time datetime="2020-03-03T03:02:40.047Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Lecture2-Shell-and-useful-tools"><a href="#Lecture2-Shell-and-useful-tools" class="headerlink" title="Lecture2: Shell and useful tools"></a>Lecture2: Shell and useful tools</h1><p>[^Asides]: 弹幕精辟的总结了咖喱味以后，啃了两天才啃下硬骨头，后半部分的useful tools目前实战性不是很强，但多少需要学以致用。</p>
-        
-          <a class="article-more-a" href="/2020/03/03/Missing-L2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Missing Semester</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/03/Missing-L2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Crash Course CS E21: compression 压缩" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/15/Crash%20Course%20CS%20E21:%20compression%20%E5%8E%8B%E7%BC%A9/">Crash Course CS E21 compression 压缩</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/15/Crash%20Course%20CS%20E21:%20compression%20%E5%8E%8B%E7%BC%A9/" class="archive-article-date">
-  	<time datetime="2020-02-15T03:09:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Crush-Computer-Science-E21-Compression"><a href="#Crush-Computer-Science-E21-Compression" class="headerlink" title="Crush Computer Science E21 Compression"></a>Crush Computer Science E21 Compression</h1><ul>
-<li><p>压缩的原理：减少重复信息</p>
-</li>
-<li><p>压缩的两种方式：</p>
-<ul>
-<li>无损压缩：<ul>
-<li>run-length coding(消除冗余)</li>
-<li>DFTBA : code -&gt; data “mapping”</li>
-<li>Huffman Tree(用更紧凑的方法进行压缩)</li>
-</ul>
-</li>
-<li>有损压缩：<ul>
-<li>丢掉人们看不出的细节的有损压缩 : 删除人类无法感知的数据的方法 (perceptional coding)</li>
-<li>Lossy audio compressors : encode different frequency bands at different precisions </li>
-<li>各种“有损压缩图像格式”的基础 JPEG</li>
-<li>视频是一帧帧的图片， 压缩视频可以在压缩图片的更进一步的基础上，利用帧和帧之间的相似性。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Crash Course CS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/15/Crash%20Course%20CS%20E21:%20compression%20%E5%8E%8B%E7%BC%A9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-小池的博客开张了！" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/11/%E5%B0%8F%E6%B1%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%BC%A0%E4%BA%86%EF%BC%81/">小池的博客开张了！</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/11/%E5%B0%8F%E6%B1%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%BC%A0%E4%BA%86%EF%BC%81/" class="archive-article-date">
-  	<time datetime="2020-02-11T02:46:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="博客简介"><a href="#博客简介" class="headerlink" title="博客简介"></a>博客简介</h2><p>Ecnu dataScience 专业在读。<br>热爱生活的程序媛，永远处于减肥的路上。<br>热爱文科的工科生。<br>有匪真好看～</p>
-        
-          <a class="article-more-a" href="/2020/02/11/%E5%B0%8F%E6%B1%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%BC%A0%E4%BA%86%EF%BC%81/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/11/%E5%B0%8F%E6%B1%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%BC%A0%E4%BA%86%EF%BC%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1003,8 +355,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

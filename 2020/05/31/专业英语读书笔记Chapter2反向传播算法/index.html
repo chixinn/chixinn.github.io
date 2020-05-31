@@ -6,30 +6,34 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>计算机网络原理与编程W12:IP层 | Chixinning的博客</title>
+  <title>专业英语读书笔记Chapter2反向传播算法 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="IP 层:The Data PlaneSDN: software defined network:软件定义网络和软件定义一切. 本章重点 4.3节  network layer service models forwarding versus routing how a router works Generalized forwarding">
+  <meta name="description" content="专业英语读书笔记Chapter2:反向传播算法本章主要讲述如何计算Loss function的梯度，反向传播是这些梯度的快速算法，由梯度的定义可得，即是关于权重和偏置的偏导数。 反向传播算法：backpropagation. 感悟：如何改变权重和偏置来改变整个网络的行为。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络原理与编程W12:IP层">
-<meta property="og:url" content="http://yoursite.com/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/index.html">
+<meta property="og:title" content="专业英语读书笔记Chapter2反向传播算法">
+<meta property="og:url" content="http://yoursite.com/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0Chapter2%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="IP 层:The Data PlaneSDN: software defined network:软件定义网络和软件定义一切. 本章重点 4.3节  network layer service models forwarding versus routing how a router works Generalized forwarding">
+<meta property="og:description" content="专业英语读书笔记Chapter2:反向传播算法本章主要讲述如何计算Loss function的梯度，反向传播是这些梯度的快速算法，由梯度的定义可得，即是关于权重和偏置的偏导数。 反向传播算法：backpropagation. 感悟：如何改变权重和偏置来改变整个网络的行为。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf99p1jmkdj30v40na7j5.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf99pdrs9gj30v40nak76.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9aaz564lj30v40nak6x.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9aiji5l7j30v40nawqi.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9ax1712fj30mw0na7ei.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9b074gnpj30ts0naanm.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9b2iiv2cj30fq06c76b.jpg">
-<meta property="article:published_time" content="2020-05-29T05:02:32.000Z">
-<meta property="article:modified_time" content="2020-05-29T06:44:14.250Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfbjk9zsn3j31560fo78g.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfbk3kha60j30yk0lcq8t.jpg">
+<meta property="article:published_time" content="2020-05-31T02:51:27.919Z">
+<meta property="article:modified_time" content="2020-05-31T05:25:38.667Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="笔记">
-<meta property="article:tag" content="大二下">
-<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="C">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Shell">
+<meta property="article:tag" content="大数据后端">
+<meta property="article:tag" content="分布式系统">
+<meta property="article:tag" content="数据科学">
+<meta property="article:tag" content="机器学习">
+<meta property="article:tag" content="代码">
+<meta property="article:tag" content="OpenSource">
+<meta property="article:tag" content="Developer">
+<meta property="article:tag" content="DataScience">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf99p1jmkdj30v40na7j5.jpg">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfbjk9zsn3j31560fo78g.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -169,156 +173,87 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-计算机网络原理与编程W12-IP层" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-专业英语读书笔记Chapter2反向传播算法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      计算机网络原理与编程W12:IP层
+      专业英语读书笔记Chapter2反向传播算法
     </h1>
   
 
         
-        <a href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/" class="archive-article-date">
-  	<time datetime="2020-05-29T05:02:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
+        <a href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0Chapter2%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-05-31T02:51:27.919Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="IP-层-The-Data-Plane"><a href="#IP-层-The-Data-Plane" class="headerlink" title="IP 层:The Data Plane"></a>IP 层:The Data Plane</h1><p>SDN: software defined network:软件定义网络和软件定义一切.</p>
-<p>本章重点 4.3节</p>
-<ul>
-<li>network layer service models</li>
-<li>forwarding versus routing</li>
-<li>how a router works</li>
-<li>Generalized forwarding</li>
-</ul>
+        <h1 id="专业英语读书笔记Chapter2-反向传播算法"><a href="#专业英语读书笔记Chapter2-反向传播算法" class="headerlink" title="专业英语读书笔记Chapter2:反向传播算法"></a>专业英语读书笔记Chapter2:反向传播算法</h1><p>本章主要讲述如何计算Loss function的梯度，反向传播是这些<strong>梯度</strong>的快速算法，由梯度的定义可得，即是关于<strong>权重</strong>和<strong>偏置</strong>的偏导数。</p>
+<p>反向传播算法：backpropagation.</p>
+<p>感悟：如何改变权重和偏置来改变整个网络的行为。</p>
 <a id="more"></a>
 
-<p>网络层在第四章的内容是数据平面,第五章的内容是控制平面.(宏观上调度逻辑)</p>
-<h2 id="Network-layer"><a href="#Network-layer" class="headerlink" title="Network layer"></a>Network layer</h2><p>终端系统上TCP/IP是5层的协议栈.</p>
-<p>TCP协议是不会运营在路由器上的.</p>
-<h2 id="Two-key-network-layer-functions"><a href="#Two-key-network-layer-functions" class="headerlink" title="Two key network-layer functions"></a>Two key network-layer functions</h2><h3 id="转发-forwarding"><a href="#转发-forwarding" class="headerlink" title="转发:forwarding"></a>转发:forwarding</h3><p>路由器是一个硬件.</p>
-<p>把一个packet从路由器的哪个路口到哪个出口.输入转发到相应的输出.</p>
-<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>从源端到目的端找到一条路由.找到最优的代价最小的路径.</p>
-<h2 id="数据平面和控制平面"><a href="#数据平面和控制平面" class="headerlink" title="数据平面和控制平面"></a>数据平面和控制平面</h2><h3 id="数据平面"><a href="#数据平面" class="headerlink" title="数据平面"></a>数据平面</h3><p>微观的,路由器内部的.</p>
-<h3 id="控制平面"><a href="#控制平面" class="headerlink" title="控制平面"></a>控制平面</h3><p>宏观的,全网络的.</p>
-<p>传统实现方式:路由选择算法,明确图的结构和代价以后寻找到最优的.</p>
-<p>非传统实现方式:SDN</p>
+<h2 id="2-1-神经网络中使用矩阵快速计算输出的方法"><a href="#2-1-神经网络中使用矩阵快速计算输出的方法" class="headerlink" title="2.1 神经网络中使用矩阵快速计算输出的方法"></a>2.1 神经网络中使用矩阵快速计算输出的方法</h2><ul>
+<li>权重矩阵$w^l$</li>
+</ul>
+<p>相邻两层神经元之间的权值，是深度学习需要学习的参数(c.f. y=k*x+b)</p>
+<p>和直线拟合一样，</p>
+<p>深度学习训练目标函数：这个目标函数定义了什么样的参数才算一组“好参数”。</p>
+<p>在机器学习中，一般是采用成本函数（cost function），然后，训练目标就是通过调整每一个权值Wij来使得cost达到最小。</p>
+<p><strong>cost函数</strong>可以看成是由<strong>所有待求权值Wij为自变量的复合函数</strong>，而且基本上是非凸的，即<strong>含有许多局部最小值</strong>。但实际中发现，采用我们常用的<strong>梯度下降法</strong>就可以有效的求解最小化cost函数的问题。</p>
+<p>当我们将cost 函数表示为$H(W_{11}+W_{12}+W_{13}+…+w_{mn})$</p>
+<p>由梯度下降算法可得，BP</p>
 <blockquote>
-<p>SDN 专门的服务器控制各个路由器来进行路由选择.</p>
-<p>此时我们对于整个硬件即是透明的.</p>
+<p>作者：Anonymous<br>链接：<a href="https://www.zhihu.com/question/27239198/answer/89853077" target="_blank" rel="noopener">https://www.zhihu.com/question/27239198/answer/89853077</a><br>来源：知乎</p>
 </blockquote>
-<h4 id="单个路由器的控制平面"><a href="#单个路由器的控制平面" class="headerlink" title="单个路由器的控制平面"></a>单个路由器的控制平面</h4><p>路由器内部会有一个转发表.</p>
-<blockquote>
-<p>各个路由器之间直接数据交换(无组织无距离)与Remote controller的对比(locally centralized control plane)</p>
-</blockquote>
-<h2 id="Network-service-model"><a href="#Network-service-model" class="headerlink" title="Network service model"></a>Network service model</h2><p>网络层到底提供了什么样的服务呢?</p>
-<p>即网络层的service model是什么呢?</p>
-<p><strong>examples services for individual datagrams</strong></p>
-<p>对单个数据报文提供的服务模型</p>
 <ul>
-<li>guaranteed delivery</li>
-<li>guaranteed delivery with less than 40 msec delay</li>
+<li><p>偏置向量$b^l$</p>
+</li>
+<li><p>向量化函数，相当于对向量中的每个分量，即将每个分量作为输入，作为向量运算。</p>
+<p>$f(\begin{pmatrix}2\3\end{pmatrix})=\begin{pmatrix}f(2)\f(3)\end{pmatrix}=\begin{pmatrix}4\9\end{pmatrix}$</p>
+<p>这里向量$f$仅仅是对向量的每个元素进行平方运算。</p>
+</li>
+<li><p>引入了向量化函数后，$a^l=\sigma(w^la^{l-1}+b^l)$</p>
+</li>
+<li><p>中间变量$w^la^{l-1}+b^l$作为中间变量，为l层神经元的带权输入。</p>
+</li>
+<li><p>$z_j^l=\sum w_{jk}^la_k^{l-1}+b_j^l$</p>
+</li>
 </ul>
-<hr>
-<p><strong>examples services for a flow of datagrams</strong></p>
-<p>对报文流提供的服务模型</p>
-<ul>
-<li>In-order datagram delivery</li>
-<li>guaranteed minimum bandwidth to flow</li>
-<li>restrictions on changes in inter-packet spacing </li>
-</ul>
-<hr>
-<p>Internet: best efforts(Servce model)</p>
-<p>Internet的服务模式是尽力而为.</p>
-<h2 id="What’s-inside-a-router"><a href="#What’s-inside-a-router" class="headerlink" title="What’s inside a router?"></a>What’s inside a router?</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><p>路由器就是做一个转发,路由器有很多个入口也有很多个出口.</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf99p1jmkdj30v40na7j5.jpg" alt=""></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf99pdrs9gj30v40nak76.jpg" alt=""></p>
-<p>physical layer-&gt;data link layer-&gt;network layer:IP层的转发表.</p>
-<ul>
-<li>32位的Ip地址,即每8bit转化为一个字节.</li>
-</ul>
-<h3 id="转发表-最长前缀匹配"><a href="#转发表-最长前缀匹配" class="headerlink" title="转发表:最长前缀匹配"></a>转发表:最长前缀匹配</h3><p>最长前缀匹配算法.</p>
-<p>无论转发表多大,在一个时钟周期内总能完成寻址.</p>
-<p>但路由器的寻址需要它快,这是可以用硬件的相关协助</p>
-<h3 id="Switching-fabrics"><a href="#Switching-fabrics" class="headerlink" title="Switching fabrics"></a>Switching fabrics</h3><p>Transfer packet from input buffer to appropriate </p>
-<ul>
-<li>memory</li>
-<li>Bus </li>
-<li>Crossbar</li>
-</ul>
-<h4 id="First-generation-routers"><a href="#First-generation-routers" class="headerlink" title="First generation routers"></a>First generation routers</h4><p>memory</p>
-<h4 id="Switching-via-a-bus"><a href="#Switching-via-a-bus" class="headerlink" title="Switching via a bus"></a>Switching via a bus</h4><p>总线的争用,受制于总线的存取速度.</p>
-<h4 id="Cross-bar"><a href="#Cross-bar" class="headerlink" title="Cross bar"></a>Cross bar</h4><p>两两连接克服总线.</p>
-<h3 id="Input-port-queuing"><a href="#Input-port-queuing" class="headerlink" title="Input port queuing"></a>Input port queuing</h3><p>到达路由器的速度和路由器转发的速度的不匹配.</p>
-<p>所以路由器需要乱冲去</p>
-<h4 id="输入缓冲"><a href="#输入缓冲" class="headerlink" title="输入缓冲"></a>输入缓冲</h4><p>在进入路由器外进行等待</p>
-<h4 id="输出缓冲"><a href="#输出缓冲" class="headerlink" title="输出缓冲"></a>输出缓冲</h4><p>到的速度比处理的传输速度快</p>
-<p>当缓冲区不够时,丢包:</p>
-<ol>
-<li>尾部丢包/随机丢包</li>
-<li>Scheduling:选择性的丢包</li>
+<p>第l层第j个神经元的激活函数的带权输入。</p>
+<h2 id="2-2-关于代价函数的两个假设"><a href="#2-2-关于代价函数的两个假设" class="headerlink" title="2.2 关于代价函数的两个假设"></a>2.2 关于代价函数的两个假设</h2><h3 id="二次代价函数"><a href="#二次代价函数" class="headerlink" title="二次代价函数"></a>二次代价函数</h3><p>$C=\frac{1}{2n}\sum_x||y(x)-a^L(x)||^2$</p>
+<h4 id="第一个假设"><a href="#第一个假设" class="headerlink" title="第一个假设"></a>第一个假设</h4><p>是代价函数可以被写成一个在每个训练样本x上的代价函数$C_x$的均值$C=\frac{1}{n} \sum_x C_x$</p>
+<h4 id="第二个假设"><a href="#第二个假设" class="headerlink" title="第二个假设"></a>第二个假设</h4><p>代价可以写成神经网络输出的函数。</p>
+<h2 id="2-3Hadmard乘积"><a href="#2-3Hadmard乘积" class="headerlink" title="2.3Hadmard乘积"></a>2.3Hadmard乘积</h2><p>假设$s$和$t$是两个同样维度的向量，Hadmard乘积表示按对应位置元素乘积。</p>
+<h2 id="2-4反向传播的四个基本方程"><a href="#2-4反向传播的四个基本方程" class="headerlink" title="2.4反向传播的四个基本方程"></a>2.4反向传播的四个基本方程</h2><p>定义l层的第$j^{th}$个神经元上的误差$\delta_j^l$</p>
+<p>$\delta_j^l=\frac{\delta C}{\delta z_j^l}$</p>
+<p>BP1:输出层误差的方程<br>$$<br>\delta_j^L=\frac{\part C}{\part a_j^L}\sigma’(z_j^L);<br>$$</p>
+<p>$$<br>\delta^L=\nabla_a C\sdot \sigma’(z^L);<br>$$</p>
+<p>BP2:使用下一层的误差表示当前层的误差：<br>$$<br>\delta^l((w^{l+1})^T\delta^{l+1}\sdot \sigma’(z^l))<br>$$</p>
+<p>BP3:代价函数关于网络中任意偏置的改变率：<br>$$<br>\frac{\part C}{\part b_j^l}=\delta_j^l<br>$$</p>
+<p>BP4:代价函数关于任何一个权重的改变率：<br>$$<br>\frac{\part C}{\part w_{jk}^l}=a_k^{l-1}\delta_j^l<br>$$</p>
+<h2 id="2-6-反向传播算法"><a href="#2-6-反向传播算法" class="headerlink" title="2.6 反向传播算法"></a>2.6 反向传播算法</h2><ol>
+<li>输入x</li>
+<li>前向传播</li>
+<li>输出层误差计算</li>
+<li>反向传播误差计算</li>
+<li>输出，代价函数的梯度由BP3和BP4给出。</li>
 </ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfbjk9zsn3j31560fo78g.jpg" alt=""></p>
+<h2 id="Conclusion-反向传播算法的直观理解"><a href="#Conclusion-反向传播算法的直观理解" class="headerlink" title="Conclusion:反向传播算法的直观理解"></a>Conclusion:反向传播算法的直观理解</h2><ol>
+<li>反向传播算法确保我们可以同时计算 <strong>所有的</strong>偏导数$\frac{\part C}{\part w_j}$;仅仅使用一次前向传播，外加一次后向传播。</li>
+<li>反向传播的计算代价：比起直接计算导数，反向传播会有更大的优势。</li>
+<li>一种可能的计算代价函数的梯度$\frac{\part C}{\part w_{jk}^l}\Delta w_{jk}^l$的方法是细致地追踪一个$w_{jk}^l$的微小变化如何导致C中的变化值。</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfbk3kha60j30yk0lcq8t.jpg" alt=""></p>
 <blockquote>
-<p>队列排序</p>
+<p>所以你可以将反向传播想象成⼀种计算所有可能的路径变化率的求和的⽅式。或者，换句话说，反向传播就是⼀种巧妙地追踪权重（和偏置）微⼩变化的传播，抵达输出层影响代价函数的技术。</p>
 </blockquote>
-<h5 id="How-much-buffering"><a href="#How-much-buffering" class="headerlink" title="How much buffering?"></a>How much buffering?</h5><p>RTT </p>
-<p>$\frac{RTT.c}{\sqrt{N}}$</p>
-<h5 id="Scheduling-policies-priority"><a href="#Scheduling-policies-priority" class="headerlink" title="Scheduling policies:priority"></a>Scheduling policies:priority</h5><p>维护优先级队列</p>
-<h5 id="Round-Robin-RR-scheduling"><a href="#Round-Robin-RR-scheduling" class="headerlink" title="Round Robin(RR) scheduling"></a>Round Robin(RR) scheduling</h5><h5 id="WFQ"><a href="#WFQ" class="headerlink" title="WFQ"></a>WFQ</h5><p>类比选课的意愿值</p>
-<h2 id="Internet-Protocol"><a href="#Internet-Protocol" class="headerlink" title="Internet Protocol"></a>Internet Protocol</h2><p>路由器的转发表是由路由算法算出来的.</p>
-<p>网络层的协议:routing protocols/IP protocols/ICMP protocols.</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9aaz564lj30v40nak6x.jpg" alt=""></p>
-<p>IPV4:版本:32位4字节的地址</p>
-<p>fragment:分片</p>
-<p>IP层下的链路层已经跟链路层相关了.</p>
-<p>用offset将这些片拼起来.</p>
-<p>Flgs:来标示这一片是最后一片.</p>
-<h3 id="MTU"><a href="#MTU" class="headerlink" title="MTU"></a>MTU</h3><p>mtu:最大传输单元</p>
-<p>链路层:相邻的路由器之间的通讯,每个链路的MTU可能会不同.</p>
-<p>IP是两台主机之间的通讯.</p>
-<p>“片”的组装是位于端系统的组装.</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9aiji5l7j30v40nawqi.jpg" alt=""></p>
-<p>一个IP的报文被链路层切成了3块.因为MTU是1500,而头部也占了20字节</p>
-<h3 id="IP寻址"><a href="#IP寻址" class="headerlink" title="IP寻址"></a>IP寻址</h3><p>无线网卡等借口的地址</p>
-<p>有线的地址</p>
-<p>点分十进制</p>
-<h4 id="子网-subnets"><a href="#子网-subnets" class="headerlink" title="子网(subnets)"></a>子网(subnets)</h4><p>前边的位是一样的.</p>
-<p>高位相同/低位区分</p>
-<p>将路由器去掉,去看有几个各自连接的孤岛.</p>
-<p>子网掩码:前多少位是一样的.</p>
-<p>如何理解子网掩码中的“子网”？ - Dion的回答 - 知乎 <a href="https://www.zhihu.com/question/21064101/answer/17056026" target="_blank" rel="noopener">https://www.zhihu.com/question/21064101/answer/17056026</a></p>
-<h4 id="内部地址"><a href="#内部地址" class="headerlink" title="内部地址"></a>内部地址</h4><p>不经过路由器(HUB)</p>
-<h3 id="CIDR"><a href="#CIDR" class="headerlink" title="CIDR"></a>CIDR</h3><p>无类别域间路由选择</p>
-<p>主机是如何得到IP地址的?</p>
-<p>How doesr a host get IP address?</p>
-<p>当前24位,则子网中由多少的IP地址,全0和全1(255.255….)部可以算,故算出来的结果需要-2.即255.255.255.255是一个广播地址.</p>
-<h4 id="硬编码hard-coded"><a href="#硬编码hard-coded" class="headerlink" title="硬编码hard-coded"></a>硬编码hard-coded</h4><h4 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h4><p>有一个租约:3600secs:即到期可以续约.</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9ax1712fj30mw0na7ei.jpg" alt=""></p>
-<p>DHCP不光只能拿到IP地址,它还可以配置很多信息.</p>
-<ul>
-<li><p><strong>网关</strong>:第一跳的路由器.first hop router</p>
-</li>
-<li><p>DNS server</p>
-</li>
-<li><p>network mask(子网掩码)</p>
-</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9b074gnpj30ts0naanm.jpg" alt=""></p>
-<blockquote>
-<p>NAT,内部转换成外部的IP地址.</p>
-</blockquote>
-<blockquote>
-<p>作业:明确自己电脑的IP 地址是什么,再查询本地的子网掩码,默认网关.DNS 服务器</p>
-<p>如果看到的是10.开头的,查询家里是否有一个对外的(ISP分配给我的)</p>
-<p>再查询我的DHCP服务器在哪</p>
-</blockquote>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9b2iiv2cj30fq06c76b.jpg" alt=""></p>
 
       
 
@@ -348,25 +283,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -417,7 +333,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0Chapter2%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -431,18 +347,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%AD%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0Chapter2%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          专业英语读书笔记Chapter2反向传播算法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">英文歌曲文化赏析W12:HIPHOP2</div>
+    <a href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机网络原理与编程W12:IP层</div>
       <i class="icon-circle-right"></i>
     </a>
   

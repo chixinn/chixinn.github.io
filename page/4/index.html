@@ -170,6 +170,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-概率论W10-DataStreams" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/">概率论W10:DataStreams</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/" class="archive-article-date">
+  	<time datetime="2020-05-13T01:02:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="概率论W10-DataStreams"><a href="#概率论W10-DataStreams" class="headerlink" title="概率论W10:DataStreams"></a>概率论W10:DataStreams</h1><ol>
+<li><p>当取样足够好的时候,当Datastream无限时,取样相当于一个物理规律.</p>
+</li>
+<li><p>Tail Inequalities;</p>
+</li>
+<li><p>一个经典的取样方法:Reservoir Sampling[水库抽样]</p>
+<p>Add each element to S with probability M/n;</p>
+</li>
+<li><p>Concise sampling</p>
+<p>以1/T的概率加入到取样之中.</p>
+</li>
+<li><p>如果我们用&lt;value, count&gt;来表示取样的样本，用concise sampling取样，对于什么样的&lt;value, count&gt;能做准确的估计，对于什么样的样本作出的估计是不准确的？</p>
+<p>Effective for answering hot list queries;</p>
+<p>所以,对k most frequent values的情况下的估计比较好;k most frequent 会在sampling中沉淀下来;</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数学基础W10矩阵的SVD分解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -951,147 +1029,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW9%20minix3%E7%B3%BB%E7%BB%9F%E4%BB%BB%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Minix3 源码分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">操作系统 W9 进程概述与进程实现</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2020-04-27T06:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="操作系统-W9-进程概述与进程实现"><a href="#操作系统-W9-进程概述与进程实现" class="headerlink" title="操作系统 W9 进程概述与进程实现"></a>操作系统 W9 进程概述与进程实现</h1><h2 id="main初始化流程-main-c"><a href="#main初始化流程-main-c" class="headerlink" title="main初始化流程(main.c)"></a>main初始化流程(main.c)</h2><blockquote>
-<p>.s文件与.c文件</p>
-</blockquote>
-<ul>
-<li>初始化中断控制器</li>
-<li>初始化进程表与特权控指表</li>
-<li>初始化boot image中的进程</li>
-<li>设置IDLE为第一个运行的进程</li>
-<li>显示欢迎信息</li>
-<li>调用mpx386.s文件中的_restart函数开始进程调度(上下文切换)</li>
-</ul>
-<h2 id="硬件中断处理"><a href="#硬件中断处理" class="headerlink" title="硬件中断处理"></a>硬件中断处理</h2><ul>
-<li>通过CPU INT管脚通知CPU发生了中断</li>
-<li>CPU发出INTA信号</li>
-</ul>
-<blockquote>
-<p>硬件中断</p>
-<p>硬件产生中断信号</p>
-<p>通过中断控制器，决定给CPU发送发送何数值，给CPU发送相应的中断服务历程。</p>
-</blockquote>
-<ul>
-<li>中断控制器将数据放在系统数据总线上并通知处理器应执行哪个服务历程</li>
-</ul>
-<h3 id="软件中断"><a href="#软件中断" class="headerlink" title="软件中断"></a>软件中断</h3><p>执行汇编指令</p>
-<h3 id="中断处理过程"><a href="#中断处理过程" class="headerlink" title="中断处理过程"></a>中断处理过程</h3><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><ol>
-<li>硬件发送中断信号</li>
-<li>中断控制器<ol>
-<li>打断CPU</li>
-<li>send digital identification of the interrupting device</li>
-</ol>
-</li>
-<li>Kernel:<ol>
-<li>保存寄存器</li>
-<li>Send notification message to driver</li>
-<li>Restart a process</li>
-</ol>
-</li>
-</ol>
-<h4 id="系统调用（软件"><a href="#系统调用（软件" class="headerlink" title="系统调用（软件)"></a>系统调用（软件)</h4><ol>
-<li>Caller<ol>
-<li>将相应消息保存到CPU</li>
-<li>execute software interrupt instruction。</li>
-</ol>
-</li>
-<li>Kernel 同</li>
-</ol>
-<h3 id="restart"><a href="#restart" class="headerlink" title="_restart"></a>_restart</h3><p>Cold boot-&gt;restart</p>
-<h2 id="进程间通讯"><a href="#进程间通讯" class="headerlink" title="进程间通讯"></a>进程间通讯</h2><p>拷贝：从内核的物理拷贝(跨逻辑地址空间拷贝)</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B：Send(A,&amp;m);</span><br><span class="line">A:Receive(B,&amp;m);</span><br><span class="line"><span class="comment">//对应两个不同的内核区域，故拷贝只能由内核来做。</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>若目标进程未在等待消息，则发送者被标记为阻塞，并挂入一个等待将消息发送到<strong>接受进程的进程队列</strong>中。</p>
-<p>即在接受进程的进程表里，接收进程维护一个链表，加一个指针指向发送者。</p>
-<p>在当一个进程执行RECEIVE时，内核检查<strong>该队列</strong>中是否存在向他发送消息的进程。如果存在，则消息从被阻塞的发送进程拷贝到接受进程。</p>
-<p>如果不存在这样的进程，则接受进程也会被阻塞。</p>
-</li>
-<li><p>如何将队列挂到连表中?</p>
-<p>Sys_call(proc.c)</p>
-</li>
-</ul>
-<h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">展开全文 >></a>
         </p>
       
 

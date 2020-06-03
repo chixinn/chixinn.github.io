@@ -8,20 +8,29 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ML04 Classification | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
+  <meta name="description" content="Classification基本模型： Input:x Output:Class n Application  Credit Scoring  Medical Diagnosis Handwritten character recognition  如何将我要分类的东西数值化？Example Application还是以宝可梦为例： Total: how strong 整体程度 HP Attack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ML04 Classification">
 <meta property="og:url" content="http://yoursite.com/2020/06/03/ML04-Classification/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="Classification基本模型： Input:x Output:Class n Application  Credit Scoring  Medical Diagnosis Handwritten character recognition  如何将我要分类的东西数值化？Example Application还是以宝可梦为例： Total: how strong 整体程度 HP Attack">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeykir3taj30tk0m6qjg.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeyp9ij1jj30tk0m612x.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeyu9s21mj30tk0m6wmf.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfezskm8dgj30wm0oswxn.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gff0a0frbqj30q80jyn6t.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gff0de85euj30q80jknga.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffeczrl4zj30q80jkwna.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfffdvoij2j30q80jkdmr.jpg">
 <meta property="article:published_time" content="2020-06-03T01:05:35.000Z">
-<meta property="article:modified_time" content="2020-06-03T01:07:56.748Z">
+<meta property="article:modified_time" content="2020-06-03T13:56:00.512Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="李宏毅">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeykir3taj30tk0m6qjg.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -181,7 +190,142 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h1><p>基本模型：</p>
+<p>Input:x</p>
+<p>Output:Class n</p>
+<p>Application</p>
+<ol>
+<li>Credit Scoring </li>
+<li>Medical Diagnosis</li>
+<li>Handwritten character recognition</li>
+</ol>
+<h2 id="如何将我要分类的东西数值化？"><a href="#如何将我要分类的东西数值化？" class="headerlink" title="如何将我要分类的东西数值化？"></a>如何将我要分类的东西数值化？</h2><h3 id="Example-Application"><a href="#Example-Application" class="headerlink" title="Example Application"></a>Example Application</h3><p>还是以宝可梦为例：</p>
+<p>Total: how strong 整体程度</p>
+<p>HP</p>
+<p>Attack</p>
+<p>Defense</p>
+<p>SP Atk</p>
+<p>SP Def</p>
+<p>Speed</p>
+<p>即一只宝可梦，是7个数字组成的<strong>vector.</strong></p>
+<p>每个宝可梦都是用feature来描述。</p>
+<h2 id="How-to-do-Classification？"><a href="#How-to-do-Classification？" class="headerlink" title="How to do Classification？"></a>How to do Classification？</h2><ol>
+<li><p>收集数据 Training data for Classification.</p>
+<p>（皮卡丘，type雷)/（杰尼龟，type水）/妙蛙种子，type木）</p>
+</li>
+</ol>
+<h3 id="Classification-v-s-Regression"><a href="#Classification-v-s-Regression" class="headerlink" title="Classification v.s. Regression"></a>Classification v.s. Regression</h3><blockquote>
+<p>机器学习定理：没有免费的午餐定理。</p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeykir3taj30tk0m6qjg.jpg" alt=""></p>
+<blockquote>
+<p>Regression: Output :realnumber</p>
+<p>Classification:Output:Discrete(Some class)</p>
+</blockquote>
+<ol>
+<li><p>回归方法：对数值型连续随机变量进行预测和建模。</p>
+<p>房价预测、股票预测、成绩预测</p>
+<p>1.1 线性回归：</p>
+<p>拟合，wx+b,值是连续值。</p>
+<p>$b+\sum_iw_ix_i$</p>
+<p>1.2 回归树</p>
+<p>1.3 深度学习</p>
+<p>1.4 最近邻算法</p>
+</li>
+<li><p>分类方法：</p>
+<p>邮件过滤，金融欺诈，预测雇员异动</p>
+<p>2.1 逻辑回归</p>
+<p>将线性回归的wx+b通过sigmoid函数映射到(0,1)，并利用threshold进行划分。</p>
+<blockquote>
+<p>N分类问题：先得到N组w值不同的wx+b,归一化，最后变成N个类上的概率问题。</p>
+</blockquote>
+<p>2.2 分类树（集成方法)CART算法</p>
+<p>2.3 深度学习</p>
+<p>2.4 支持向量机SVM</p>
+<p>2.5 朴素贝叶斯</p>
+</li>
+<li><p>聚类：</p>
+<p>3.1 k-means</p>
+<p>3.2 Affinity Propagation</p>
+<p>3.3 层次聚类</p>
+<p>3.4 DBSCAN</p>
+</li>
+</ol>
+<h3 id="Ideal-Alternatives"><a href="#Ideal-Alternatives" class="headerlink" title="Ideal Alternatives"></a>Ideal Alternatives</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeyp9ij1jj30tk0m612x.jpg" alt=""></p>
+<p>这里的Loss function是无法用Gradient Descent。</p>
+<p>Perceptron/SVM</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeyu9s21mj30tk0m6wmf.jpg" alt=""></p>
+<p>给一个宝可梦x，统计从哪一个class中来的几率最大。</p>
+<p>但是还有一个问题：</p>
+<p>如何estimating the probabilities from training data.</p>
+<h3 id="Generative-model"><a href="#Generative-model" class="headerlink" title="Generative model"></a>Generative model</h3><p>计算x出现的几率，得知x的distribution，然后利用distribution来generate一个x。</p>
+<p>$P(x)=P(X|C_1)P(C_1)+P(X|C_2)P(C_2)$</p>
+<h2 id="Modelling-Process-using-Genreative-model"><a href="#Modelling-Process-using-Genreative-model" class="headerlink" title="Modelling Process using Genreative model"></a>Modelling Process using Genreative model</h2><h3 id="Gaussian-Distribution"><a href="#Gaussian-Distribution" class="headerlink" title="Gaussian Distribution"></a>Gaussian Distribution</h3><p>正态分布的由mean和variance来决定。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfezskm8dgj30wm0oswxn.jpg" alt=""></p>
+<h4 id="如何从sample来推断其背后的分布？"><a href="#如何从sample来推断其背后的分布？" class="headerlink" title="如何从sample来推断其背后的分布？"></a>如何从sample来推断其背后的分布？</h4><p>找$\mu$和$\sigma$</p>
+<h4 id="如何找-mu-和-sigma-极大似然估计Maximum-likelihood"><a href="#如何找-mu-和-sigma-极大似然估计Maximum-likelihood" class="headerlink" title="如何找$\mu$和$\sigma$?极大似然估计Maximum likelihood"></a>如何找$\mu$和$\sigma$?极大似然估计Maximum likelihood</h4><p>其实这堆sample可以是任何一个正态分布都有可能sample出来的。</p>
+<p>但是，每一个高斯分布能sample出这79个点的概率是(likelihood)不一样的。</p>
+<p>即</p>
+<blockquote>
+<p>Likelihood of a Gaussian with mean $\mu$,和协方差矩阵$\Sigma$ </p>
+<p>=</p>
+<p>the probability of the Gaussian samples $x^1,x^2,….,x^{79}$;</p>
+</blockquote>
+<p>$Likelihood(\mu,\Sigma)=\Pi_i f_{\mu,\Sigma}(x_i)$</p>
+<p>即likelihood of distribution是独立sample出这79个点的乘积。</p>
+<p>接下来，要找$Maximum \ likelihood$的那个Guassian</p>
+<p>$\mu^<em>,\Sigma^</em>=arg \space max \space Likelihood(\mu,\Sigma) $</p>
+<p>什么能让它最大呢？</p>
+<blockquote>
+<p>平均值能让它最大：</p>
+<p>$\mu^*=\frac{1}{n}\sum_ix^i$;</p>
+<p>$\Sigma^<em>=\frac{1}{n}\sum(x^i-\mu^</em>)(x^i-\mu^*)^T$;</p>
+</blockquote>
+<h3 id="Now-we-can-do-classification"><a href="#Now-we-can-do-classification" class="headerlink" title="Now we can do classification"></a>Now we can do classification</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gff0a0frbqj30q80jyn6t.jpg" alt=""></p>
+<h3 id="How’s-the-results"><a href="#How’s-the-results" class="headerlink" title="How’s the results?"></a>How’s the results?</h3><p>把分类放到更到的维度上去。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gff0de85euj30q80jknga.jpg" alt=""></p>
+<p>但是放到了更高的维度上，好像也只有54%de accuracy。</p>
+<h3 id="那怎么提高accuracy呢？–Modifying-Model"><a href="#那怎么提高accuracy呢？–Modifying-Model" class="headerlink" title="那怎么提高accuracy呢？–Modifying Model"></a>那怎么提高accuracy呢？–Modifying Model</h3><ol>
+<li>修改coveriance matrix：</li>
+</ol>
+<p>即修改两个class分布的Gaussian，强迫其共用Convariance Matrix。</p>
+<p>如此，如何计算likelihood呢？</p>
+<p>这样就有140个sample point了，即变成了140个的乘积。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffeczrl4zj30q80jkwna.jpg" alt=""></p>
+<p>$\mu_1,\mu_2$的计算方式仍不变。</p>
+<h4 id="如何选择概率几率模型呢？"><a href="#如何选择概率几率模型呢？" class="headerlink" title="如何选择概率几率模型呢？"></a>如何选择概率几率模型呢？</h4><ul>
+<li><p>You can always use the distribution you like</p>
+</li>
+<li><p>这里$p(x|C_1)$的x可以是一个vector,所以$p(x|C_1)=p(x_1|C_1)p(x_2|C_2)…p(x_k|C_1)$</p>
+<p>拆解了以后，就变成了一维度的Gaussian了，此时可以更好的减少次数，但模型的正确率。即需要model 不同feature之间的covariance.</p>
+</li>
+<li><p>对于binary feature:是或不是，可以是Bernoulli distributions.</p>
+</li>
+</ul>
+<blockquote>
+<p>当你把这些维度拆开的时候，你就在假设各个维度之间<strong>没有相关性</strong>了。</p>
+<p><strong>当independent的时候，是Naive Bayes Classifier.</strong></p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfffdvoij2j30q80jkdmr.jpg" alt=""></p>
+<p>这也解释了为啥两个$\Sigma$相等的时候是linear的boundary</p>
+<h3 id="如何理解先验概率和后验概率"><a href="#如何理解先验概率和后验概率" class="headerlink" title="如何理解先验概率和后验概率"></a>如何理解先验概率和后验概率</h3><p>设玩lol的是60%,不玩的是40%.</p>
+<p>P(X=1)=0.6;P(X=0)=0.4;</p>
+<p>玩lol中，0.8男性，0.2女性。</p>
+<p>则不玩lol中，0.2男性，0.8女性。</p>
+<p>P(Y=1|X=1)=0.8;</p>
+<p>P(Y=0|X=1)=0.2;</p>
+<p>P(Y=1|X=0)=0.2;</p>
+<p>P(Y=0|X=0)=0.8;</p>
+<p><strong>P(X=1)=0.6;P(X=0)=0.4;</strong>这个概率是统计得到的，所以X的概率分布是已知的。</p>
+<p>现在又来了一个样本，x,在他是男性的情况下，这里x取1的概率是多少：</p>
+<p>P(x=1|Y=1)=$\frac{P(x=1\cap Y=1)}{P(Y=1)}$</p>
+<p>$P(x=1\cap Y=1)/P(x=1)=P(Y=1|x=1)$</p>
+<p>P(x=1|Y=1)=$\frac{P(Y=1| x=1)P(x=1)}{P(Y=1)}$</p>
+<p>$P(Y=1)=P（Y=1|X=0)<em>P(X=0)+P(Y=1|X=1)</em>P(X=1)$</p>
+<p>=0.2$\times$0.4+0.8$\times$0.6</p>
+<p>P(x=1|Y=1)=$\frac{0.8*0.6}{0.56}$</p>
+<p><strong>最后算出的P(X=玩lol|Y=男性)称之为X的后验概率，即它获得是在观察到事件Y发生后得到的</strong></p>
+
       
 
       

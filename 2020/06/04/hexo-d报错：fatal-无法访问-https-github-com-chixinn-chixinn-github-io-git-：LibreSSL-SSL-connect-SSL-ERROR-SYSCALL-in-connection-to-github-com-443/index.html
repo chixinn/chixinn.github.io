@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>hexo d报错：fatal: 无法访问 &#39;https://github.com/chixinn/chixinn.github.io.git/&#39;：LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443  | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="先看一下是不是成功，如果成功的话，再回来看解决方法。">
+  <meta name="description" content="先看一下是不是成功，如果成功的话，再回来看解决方法。 目前短暂尝试了一下成功了： 问题的原因其实与hexo 博客本身无关，而是git push方面，这里相当于hexo d方面。 在github项目在本地的根目录下打开git命令行，执行下面的命令： git config --global --unset http.proxy 即可。 所以，如果不论是什么形式的git push，出现如此报错的话，都可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo d报错：fatal: 无法访问 &#39;https:&#x2F;&#x2F;github.com&#x2F;chixinn&#x2F;chixinn.github.io.git&#x2F;&#39;：LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 ">
 <meta property="og:url" content="http://yoursite.com/2020/06/04/hexo-d%E6%8A%A5%E9%94%99%EF%BC%9Afatal-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-https-github-com-chixinn-chixinn-github-io-git-%EF%BC%9ALibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="先看一下是不是成功，如果成功的话，再回来看解决方法。">
+<meta property="og:description" content="先看一下是不是成功，如果成功的话，再回来看解决方法。 目前短暂尝试了一下成功了： 问题的原因其实与hexo 博客本身无关，而是git push方面，这里相当于hexo d方面。 在github项目在本地的根目录下打开git命令行，执行下面的命令： git config --global --unset http.proxy 即可。 所以，如果不论是什么形式的git push，出现如此报错的话，都可">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-04T01:38:46.000Z">
-<meta property="article:modified_time" content="2020-06-04T01:39:30.736Z">
+<meta property="article:modified_time" content="2020-06-04T01:58:28.812Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
@@ -180,6 +180,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>先看一下是不是成功，如果成功的话，再回来看解决方法。</p>
+<p>目前短暂尝试了一下成功了：</p>
+<p>问题的原因其实与hexo 博客本身无关，而是git push方面，这里相当于hexo d方面。</p>
+<p>在github项目在本地的根目录下打开git命令行，<br><strong>执行下面的命令</strong>：</p>
+<p><code>git config --global --unset http.proxy</code></p>
+<p>即可。</p>
+<p>所以，如果不论是什么形式的git push，出现如此报错的话，都可以尝试一下这个方法。</p>
+<p>[^1]:居然IntelliJ IDEA 上也可以push git???,是在查这个解决方法时候找到的。</p>
+<p><a href="https://blog.csdn.net/daerzei/article/details/79528153?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">参考资料</a></p>
 
       
 

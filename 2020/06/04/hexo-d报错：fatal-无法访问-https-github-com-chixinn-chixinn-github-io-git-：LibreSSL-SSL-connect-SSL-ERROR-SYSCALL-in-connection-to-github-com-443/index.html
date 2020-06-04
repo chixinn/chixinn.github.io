@@ -6,28 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Chixinning的博客</title>
+  <title>hexo d报错：fatal: 无法访问 &#39;https://github.com/chixinn/chixinn.github.io.git/&#39;：LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443  | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/page/6/index.html">
+  <meta name="description" content="先看一下是不是成功，如果成功的话，再回来看解决方法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo d报错：fatal: 无法访问 &#39;https:&#x2F;&#x2F;github.com&#x2F;chixinn&#x2F;chixinn.github.io.git&#x2F;&#39;：LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 ">
+<meta property="og:url" content="http://yoursite.com/2020/06/04/hexo-d%E6%8A%A5%E9%94%99%EF%BC%9Afatal-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-https-github-com-chixinn-chixinn-github-io-git-%EF%BC%9ALibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="先看一下是不是成功，如果成功的话，再回来看解决方法。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-06-04T01:38:46.000Z">
+<meta property="article:modified_time" content="2020-06-04T01:39:30.736Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
+<meta property="article:tag" content="随笔">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
@@ -168,237 +159,51 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-操作系统-W8-进程调度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-hexo-d报错：fatal-无法访问-https-github-com-chixinn-chixinn-github-io-git-：LibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/">操作系统 W8 进程调度</a>
+    <h1 class="article-title" itemprop="name">
+      hexo d报错：fatal: 无法访问 &#39;https://github.com/chixinn/chixinn.github.io.git/&#39;：LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 
     </h1>
   
 
         
-        <a href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-04-26T06:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+        <a href="/2020/06/04/hexo-d%E6%8A%A5%E9%94%99%EF%BC%9Afatal-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-https-github-com-chixinn-chixinn-github-io-git-%EF%BC%9ALibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443/" class="archive-article-date">
+  	<time datetime="2020-06-04T01:38:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="2-4进程调度"><a href="#2-4进程调度" class="headerlink" title="2.4进程调度"></a>2.4进程调度</h1><p>第2章课程设计：修改和实现相应功能的调度</p>
-<h2 id="进程行为"><a href="#进程行为" class="headerlink" title="进程行为"></a>进程行为</h2><ul>
-<li>做计算</li>
-<li>做I/O[磁盘/网络读写]</li>
-</ul>
-<p>按CPU计算时间与I/O时间的比例：</p>
-<ul>
-<li>计算密集型</li>
-<li>I/O密集型</li>
-</ul>
-<p>进程的调度一定要 考虑到 <strong>负载的特征workload</strong></p>
-<p>相应的再实行相应的调度算法</p>
-<h2 id="调度时机"><a href="#调度时机" class="headerlink" title="调度时机"></a>调度时机</h2><ul>
-<li>进程退出</li>
-<li>进程在I/O或信号量上阻塞</li>
-<li>创建新进程</li>
-<li>I/O中断发生</li>
-<li>时钟中断发生<ul>
-<li>抢占式：执行时可以被打断</li>
-<li>非抢占式</li>
-</ul>
-</li>
-</ul>
-<h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><ul>
-<li>操作系统决定进程运行的向后顺序</li>
-<li>调度器：执行</li>
-<li>调度算法：如何调度</li>
-</ul>
-<p>不同的应用场景：[很难有普适的适用于任何场景的调度算法]</p>
-<ul>
-<li>批处理系统</li>
-<li>交互式系统</li>
-<li>实时系统</li>
-</ul>
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
-<li>共同的目标：公平策略强平衡</li>
-<li>批处理系统：最大的吞吐量(批处理没有交互，单位时间内能处理更多，即最大化CPU利用率)</li>
-<li>交互式系统：立刻有相应，最小化响应时间，均衡性</li>
-<li>实时系统：截止时间、可预测性(第二次课程设计)</li>
-</ul>
-<h3 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h3><h4 id="面向时间"><a href="#面向时间" class="headerlink" title="面向时间"></a>面向时间</h4><p>吞吐量/CPU利用率/各种设备的均衡利用</p>
-<h4 id="面向系统"><a href="#面向系统" class="headerlink" title="面向系统"></a>面向系统</h4><p>同样的硬件集群好的调度算法可能给10000个用户提供服务</p>
-<h2 id="批处理系统调度"><a href="#批处理系统调度" class="headerlink" title="批处理系统调度"></a>批处理系统调度</h2><h3 id="先来先服务FCFS"><a href="#先来先服务FCFS" class="headerlink" title="先来先服务FCFS"></a>先来先服务FCFS</h3><p>是比较基础的方法</p>
-<h3 id="短作业"><a href="#短作业" class="headerlink" title="短作业"></a>短作业</h3><p>预计执行<strong>时间短</strong>的作业进行CPU的分派。</p>
-<h3 id="SJF的变形"><a href="#SJF的变形" class="headerlink" title="SJF的变形"></a>SJF的变形</h3><p>最短剩余时间优先</p>
-<p>最高响应比优先HRRN</p>
-<p>​    响应比：(等待时间+要求执行时间)/要求执行时间</p>
-<h3 id="多级调度-三个层次上进行调度"><a href="#多级调度-三个层次上进行调度" class="headerlink" title="多级调度(三个层次上进行调度)"></a>多级调度(三个层次上进行调度)</h3><ul>
-<li>准入调度</li>
-<li>内存调度</li>
-<li>CPU调度</li>
-</ul>
-<h2 id="交互式系统调度"><a href="#交互式系统调度" class="headerlink" title="交互式系统调度"></a>交互式系统调度</h2><h3 id="时间片轮转-Round-Robin"><a href="#时间片轮转-Round-Robin" class="headerlink" title="时间片轮转(Round Robin)"></a>时间片轮转(Round Robin)</h3><ul>
-<li>将系统中所有就绪的进程按照FCFS形成队列</li>
-<li>CPU让进程执行时间片</li>
-<li>在时间片结束时，发生时钟中断</li>
-<li>调度程序据此暂停当前进程的执行，将其送到就绪队列的末尾，并通过上下文切换执行当前的队首进程。</li>
-<li>进程可以未使用完一个时间片，就出让CPU(如阻塞)</li>
-</ul>
-<h4 id="时间片长度的确定"><a href="#时间片长度的确定" class="headerlink" title="时间片长度的确定"></a>时间片长度的确定</h4><ul>
-<li><p>时间片长度变化的影响</p>
-<ul>
-<li>过长-&gt;退化为FCFS</li>
-<li>过短-&gt;context switch的开销变大了</li>
-</ul>
-</li>
-<li><p>对响应时间的要求：</p>
-<p>​    响应时间=进程数目$\times$时间片长度</p>
-<blockquote>
-<p>Trade off between those 2.</p>
-</blockquote>
-</li>
-<li><p>影响时间片长度的因素：</p>
-<ul>
-<li>就绪进程的数目</li>
-<li>系统的处理能力</li>
-</ul>
-</li>
-</ul>
-<h3 id="优先级调度"><a href="#优先级调度" class="headerlink" title="优先级调度"></a>优先级调度</h3><p>谁的优先级高，先调度谁</p>
-<ul>
-<li>静态优先级</li>
-<li>动态优先级：在运行时做相应的优先级调整</li>
-</ul>
-<h4 id="多类优先级调度"><a href="#多类优先级调度" class="headerlink" title="多类优先级调度"></a>多类优先级调度</h4><p>在各类之间采用优先级调度，而各类进程内部采用时间片轮转调度。</p>
-<h4 id="多重队列"><a href="#多重队列" class="headerlink" title="多重队列"></a>多重队列</h4><h3 id="彩票调度"><a href="#彩票调度" class="headerlink" title="彩票调度"></a>彩票调度</h3><h3 id="公平分享调度"><a href="#公平分享调度" class="headerlink" title="公平分享调度"></a>公平分享调度</h3><h2 id="实时系统调度"><a href="#实时系统调度" class="headerlink" title="实时系统调度"></a>实时系统调度</h2><ul>
-<li><p>实时调度系统氛围硬实时和软实时</p>
-</li>
-<li><p>可调度的实时系统</p>
-</li>
-<li><p>针对多周期的事件流：</p>
-<p>若有周期性事件m个，事件i的周期为Pi,其中每个事件需要Ci秒的CPU时间，</p>
-<p>$\sum_{i=1}^m\frac{C_i}{P_i}\le1$</p>
-</li>
-</ul>
-<h2 id="调度策略与机制"><a href="#调度策略与机制" class="headerlink" title="调度策略与机制"></a>调度策略与机制</h2><ul>
-<li>将调度问题分解为调度策略与调度机制</li>
-</ul>
-<h2 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h2><ul>
-<li>线程的实现方式决定线程的调度模式：<ul>
-<li>用户</li>
-<li>内核</li>
-</ul>
-</li>
-<li>用户级线程的阻塞会引起整个进程的阻塞</li>
-<li>在用户级线程方式下，可以为应用定制特定的调度器</li>
-</ul>
-<h1 id="2-5-MINIX3进程概述"><a href="#2-5-MINIX3进程概述" class="headerlink" title="2.5 MINIX3进程概述"></a>2.5 MINIX3进程概述</h1><h2 id="minix3系统结构"><a href="#minix3系统结构" class="headerlink" title="minix3系统结构"></a>minix3系统结构</h2><p>minix3微内核结构，是一组进程的集合，内核功能较少，更多的功能由用户进程实现，进程间通过IPC机制进行通信。</p>
-<h3 id="minix3的四层结构"><a href="#minix3的四层结构" class="headerlink" title="minix3的四层结构"></a>minix3的四层结构</h3><ul>
-<li><p>Kernel 层</p>
-</li>
-<li><p>Device drivers</p>
-</li>
-<li><p>Server process</p>
-</li>
-<li><p>User process</p>
-</li>
-</ul>
-<h3 id="内核层"><a href="#内核层" class="headerlink" title="内核层"></a>内核层</h3><ul>
-<li>负责进程的调度</li>
-<li>时钟任务</li>
-<li>系统任务读写I/O，跨地址空间复制数据</li>
-<li>C+汇编</li>
-</ul>
-<h3 id="设备驱动层"><a href="#设备驱动层" class="headerlink" title="设备驱动层"></a>设备驱动层</h3><ul>
-<li>读写I/O端口的数据</li>
-<li>不同类型设备需要相应的设备驱动程序</li>
-<li>也可以调用其他内核调用</li>
-</ul>
-<h3 id="服务器层"><a href="#服务器层" class="headerlink" title="服务器层"></a>服务器层</h3><ul>
-<li>进程服务器<ul>
-<li>创建，终止进程:fork, exec,wait</li>
-<li>信号相关的系统调用:alarm,kill</li>
-<li>管理内存,brk</li>
-</ul>
-</li>
-<li>文件系统服务器<ul>
-<li>执行文件系统的调用,read,mount,chdir</li>
-</ul>
-</li>
-<li>再生服务器<ul>
-<li>启动或重启相关的设备驱动程序</li>
-</ul>
-</li>
-</ul>
-<h3 id="用户进程层"><a href="#用户进程层" class="headerlink" title="用户进程层"></a>用户进程层</h3><ul>
-<li>包含所有的用户进程<ul>
-<li>Shell，编辑器，编译器等工具程序</li>
-<li>用户运行的程序</li>
-<li>守护进程</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>设备驱动层和服务器层的进程称为系统进程，是操作系统的组成</p>
-<p>内核&gt;设备&gt;服务器&gt;用户</p>
-</blockquote>
-<h2 id="Minix系统启动"><a href="#Minix系统启动" class="headerlink" title="Minix系统启动"></a>Minix系统启动</h2><h3 id="启动顺序"><a href="#启动顺序" class="headerlink" title="启动顺序"></a>启动顺序</h3><p>Bootstrap[引导程序]-&gt;boot(boot image)-&gt;Kernel-&gt;系统任务、时钟任务-&gt;系统进程-&gt;Init进程-&gt;其它用户进程及…</p>
-<h3 id="引导映像-boot-image"><a href="#引导映像-boot-image" class="headerlink" title="引导映像(boot image)"></a>引导映像(boot image)</h3><ul>
-<li>由boot装载至内存的适当位置</li>
-<li>包括多个：内核、进程管理器、filesystem</li>
-<li>每个部分都是独立的程序</li>
-</ul>
-<h3 id="进程树初始化"><a href="#进程树初始化" class="headerlink" title="进程树初始化"></a>进程树初始化</h3><ul>
-<li>init进程</li>
-</ul>
-<h2 id="MINIX进程间通讯"><a href="#MINIX进程间通讯" class="headerlink" title="MINIX进程间通讯"></a>MINIX进程间通讯</h2><p>IPC原语</p>
-<ul>
-<li>内核将消息从发送者复制到接受者</li>
-<li>系统进程，时钟任务，系统任务只允许与特定的进程通信</li>
-<li>当一个进程发送消息，而目标进程尚未开始接收消息时，发送进程将阻塞。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">send(dest,&amp;message)</span><br></pre></td></tr></table></figure>
-
-<p>notify原语</p>
-<p>不会阻塞</p>
-<p>对于系统进程，用位图来记录其他系统进程发给它的通知</p>
-<h2 id="MINIX进程调度"><a href="#MINIX进程调度" class="headerlink" title="MINIX进程调度"></a>MINIX进程调度</h2><ul>
-<li><p>minix3采用多级排队系统，定义为16个队列[16个优先级]</p>
-</li>
-<li><p>系统任务和时钟任务最高优先级</p>
-</li>
-<li><p>IDLE最低</p>
-<p>当系统无其余有效或就绪时，会使空闲进程在上面跑。</p>
-</li>
-<li><p>一个进程可以根据不同需要在不同优先级的队列中移动</p>
-</li>
-<li><p>只有高优先级的队列中没有就绪进程时，才运行低优先级的进程队列。</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>不同的优先级的时间片长度不一</p>
-<ul>
-<li>驱动程序进程和服务器进程需要运行其至阻塞</li>
-</ul>
-</li>
-<li><p>使用一个改进的轮转调度算法</p>
-<ul>
-<li>进程转为非就绪时，从队列中取出，当它再变回就绪时，将其放在队首，分配的时间片 <strong>为上次时间片中的剩余时间</strong></li>
-</ul>
-<blockquote>
-<p>实现不同的调度功能</p>
-</blockquote>
-</li>
-</ul>
+        <p>先看一下是不是成功，如果成功的话，再回来看解决方法。</p>
 
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -409,15 +214,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -426,16 +223,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/04/hexo-d%E6%8A%A5%E9%94%99%EF%BC%9Afatal-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-https-github-com-chixinn-chixinn-github-io-git-%EF%BC%9ALibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/04/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W13-%E6%A6%82%E7%8E%87%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数学基础W13:概率基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -455,907 +311,14 @@
 
 
 
-
-  
-    <article id="post-时间序列预测学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/">时间序列预测学习</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-04-24T05:44:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="基于2G，3G，4G的时间序列做5G的预测"><a href="#基于2G，3G，4G的时间序列做5G的预测" class="headerlink" title="基于2G，3G，4G的时间序列做5G的预测"></a>基于2G，3G，4G的时间序列做5G的预测</h1><blockquote>
-<p>华为财务精英挑战赛初赛商赛赛题</p>
-<p>为保密性不提供数据和具体描述</p>
-<p>仅是个人主观答题</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">DaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W7 P2PCDNsocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW7%20P2PCDNsocket/">计算机网络W7:P2P/CDN/socket</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW7%20P2PCDNsocket/" class="archive-article-date">
-  	<time datetime="2020-04-24T05:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="计算机网络W7-P2P-CDN-socket"><a href="#计算机网络W7-P2P-CDN-socket" class="headerlink" title="计算机网络W7:P2P/CDN/socket"></a>计算机网络W7:P2P/CDN/socket</h1><h2 id="P2P-architecture"><a href="#P2P-architecture" class="headerlink" title="P2P architecture"></a>P2P architecture</h2><p>对等：所有的节点既可能是client也可能是server。</p>
-<p>examples:</p>
-<ul>
-<li>file distribution(Bit Torrent)</li>
-<li>server transmission/client/clients【设一共有NF个bits,最终目的是让每一个client都有一个F】</li>
-</ul>
-<p>$\sum u_i$，随着客户端数量的增大，上传负载增大，但是同时server端的服务能力也增大；</p>
-<p>$D_{p2p}\ge max{F/u_s,F/d_{min},NF/(u_s+\sum u_i)}$</p>
-<blockquote>
-<p>注意这里的下界是理论上最小的，但是实质上需要思考的是如何并行，可以做到逼近下界。</p>
-</blockquote>
-<p>v.s. CS 架构【数据来源仅仅是server端】</p>
-<p>随着客户端数量的增大，上传负载增大，但是负载不会被分担。</p>
-<h3 id="P2P-file-distribution-BitTorrent"><a href="#P2P-file-distribution-BitTorrent" class="headerlink" title="P2P file distribution: BitTorrent"></a>P2P file distribution: BitTorrent</h3><p>peer</p>
-<ol>
-<li><p>哪些可以使用？[可供数据交换]</p>
-</li>
-<li><p>一个大的数据包被划分成chunk，但是chunk有可能是被损坏的，如何检查chunk是否是完整的?</p>
-<p>计算块的哈希值【默克尔的】</p>
-<p><a href="https://blog.csdn.net/weixin_37504041/article/details/80474636" target="_blank" rel="noopener">P2P保证块的完整性</a></p>
-</li>
-<li><p>如何拿到完整的以后不再贡献带宽，即如何保证不打边撤就走?</p>
-<p>IPFS：激励机制，使用激励机制来完成，可以避免节点自私的离开。[星际文件]</p>
-<p>结对条件/协议设计条件：索取的时候即一定要付出。</p>
-</li>
-</ol>
-<p>Bit Torrent预防问题3的技术手段：[一报还一报/投桃报李]</p>
-<ul>
-<li>某个peer维护其拿数据最快的4个邻居节点[跟自己的速率匹配，且是最快的4个伴侣top4]，同样，也它的数据也给其邻居节点发送。</li>
-<li>这4个伴侣会与alice相互交换。</li>
-<li>即拿数据时结成对子。</li>
-</ul>
-<p>当节点的速率发生变化时：</p>
-<p>​    以固定的时间间隔检验是否节点速率发生变化；</p>
-<p>​    每固定的时间间隔随机选4个邻居外的另外一个[测别的邻居]，如果好，则进行邻居的迭代与淘汰。</p>
-<blockquote>
-<p>我永远都在寻找与我速率最匹配的4个人。</p>
-</blockquote>
-<h4 id="最稀缺优先"><a href="#最稀缺优先" class="headerlink" title="最稀缺优先"></a>最稀缺优先</h4><p>当一块数据我好几个邻居有，别的一块数据只有一个邻居有，这是我会把只有一个邻居有的拿过来。</p>
-<p>对于整个网络来说，如果存储了相同的副本，实质上是没有较大意义的。</p>
-<h2 id="CDN-视频内容分发网络"><a href="#CDN-视频内容分发网络" class="headerlink" title="CDN 视频内容分发网络"></a>CDN 视频内容分发网络</h2><ul>
-<li>像素：数据阵列</li>
-<li>上下帧之间传输的可能只是差异[增量]</li>
-</ul>
-<h3 id="DASH协议"><a href="#DASH协议" class="headerlink" title="DASH协议"></a>DASH协议</h3><p>Dynamic,Adaptive,Streaming over <strong>HTTP</strong></p>
-<ul>
-<li><p>server:</p>
-<ul>
-<li>divides video file into multiple chunks</li>
-<li>Each Chunk stored, encoded at different rates</li>
-<li>manifest file:</li>
-</ul>
-</li>
-<li><p>client:</p>
-<ul>
-<li>周期性测量带宽</li>
-<li>等</li>
-</ul>
-</li>
-<li><p>what is related to HTTP:</p>
-<p>​        client端</p>
-<ul>
-<li>when to request chunk：缓存机制</li>
-<li>What编码速率(拿什么)</li>
-<li>哪里去拿:看那个清单</li>
-</ul>
-</li>
-</ul>
-<h3 id="内容分发网"><a href="#内容分发网" class="headerlink" title="内容分发网"></a>内容分发网</h3><ul>
-<li>深入：视频服务器深入到各个ISP的网络中</li>
-<li>邀请做客：IXP(internet exchange point)。</li>
-<li>不是单点的，而是部署在离用户较近的点。</li>
-</ul>
-<h3 id="OOT"><a href="#OOT" class="headerlink" title="OOT"></a>OOT</h3><p>CDN遇到的challenge</p>
-<h3 id="内容服务商"><a href="#内容服务商" class="headerlink" title="内容服务商"></a>内容服务商</h3><p>将内容爬下来/建倒排索引(key word)</p>
-<p>搜索引擎/爱奇艺等都是内容提供商</p>
-<h2 id="socket-programming-UDP-TCP"><a href="#socket-programming-UDP-TCP" class="headerlink" title="socket programming /UDP /TCP"></a>socket programming /UDP /TCP</h2><p>应用进程和传输进程交换的门</p>
-<p>传输层的协议:UDP(不可靠的报文:摸着石头过河)/TCP(3次握手，面向连接的可靠的，建桥先)</p>
-<p>Socket 编程：不同机器(终端)上的两个进程间的相互通讯</p>
-<p>CS机构下，两台机器上两个进程</p>
-<ol>
-<li>client端读取数据发给server</li>
-<li>server端转换成大写</li>
-<li>大写发给client</li>
-<li>client展示到屏幕</li>
-</ol>
-<h3 id="UDP-过程"><a href="#UDP-过程" class="headerlink" title="UDP 过程"></a>UDP 过程</h3><ul>
-<li><p>sender直接通过receiver的IP和端口号进行发送</p>
-</li>
-<li><p>接收者收到数据发送回去时，IP和端口从收到的报文(sender发送的)中解析出来。</p>
-<p>没有连接的知道对方的过程</p>
-</li>
-<li><p>Client：主动发起连接</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line">serverName=<span class="string">'hostname'</span></span><br><span class="line">serverPort=<span class="comment">##1024以后的不保留，随便选</span></span><br><span class="line">clientSocket=socket()</span><br><span class="line">message=raw_input()</span><br><span class="line">clientSocket.sendto()</span><br><span class="line"><span class="comment">##发送，是不同进程上交互的过程</span></span><br><span class="line">modifiedMessage,serverAddress=</span><br><span class="line">print()</span><br><span class="line"><span class="comment">##UDP server</span></span><br><span class="line">serverPort=<span class="comment">#注意这里的socket的端口号要约定好</span></span><br><span class="line">serverSocket=</span><br><span class="line">serverSocket.bind()</span><br><span class="line"><span class="comment">#busy loop():</span></span><br><span class="line">	message,clientAddress=<span class="comment">##地址解析出来</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="TCP过程"><a href="#TCP过程" class="headerlink" title="TCP过程"></a>TCP过程</h3><ol>
-<li>建立连接，server端监听</li>
-<li>client 建立TCP连接</li>
-<li>允许server同时与多个client端进行交互</li>
-</ol>
-<blockquote>
-<p>注意TCP和UDP的差别</p>
-</blockquote>
-<ul>
-<li>​    <strong>server先建立连接</strong>，监听<ul>
-<li>server端先运行，一个程序先运行</li>
-</ul>
-</li>
-<li>client发起连接，server accept，相当于socket建立，连接建立完成</li>
-<li>通过连接，在连接的socket上发送消息</li>
-<li>两端都需要关闭。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##TCPClinet</span></span><br><span class="line">SOCK_STREAM</span><br><span class="line">serverName=</span><br><span class="line">ServerPort=</span><br><span class="line">AF_INET<span class="comment">#ipv4</span></span><br><span class="line">connet((serverName,ServerPort))</span><br><span class="line"><span class="comment">#没有servername：IP地址也可以</span></span><br><span class="line"><span class="comment">#建立连接：发送，接受，print，</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##TCPServer</span></span><br><span class="line">serverSocket.listen(<span class="number">1</span>)</span><br><span class="line">循环:</span><br><span class="line">  接受</span><br><span class="line">  拿数据</span><br><span class="line">  大写</span><br><span class="line">  发送回去</span><br><span class="line">关闭</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>一台机器即可以做client也可以做server，利用机器上的网卡交换信息，此时只要约定一个端口号，即在本地完成。</p>
-<p>TCP程序一定要让server先运行起来！</p>
-<p>也可以运行多个client端，但每个client端要注意区分?</p>
-<p>即TCP的一对多。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW7%20P2PCDNsocket/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语W7-functions" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/">专业英语W7:functions</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/" class="archive-article-date">
-  	<time datetime="2020-04-23T05:59:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="专业英语W7-functions"><a href="#专业英语W7-functions" class="headerlink" title="专业英语W7:functions"></a>专业英语W7:functions</h1><p>All of you should have some experience with functions. Tell me about your experience - When do you choose to use functions? When do you choose not to use functions?</p>
-        
-          <a class="article-more-a" href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/23/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW7-functions/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统W7:2.3经典并发问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/">操作系统W7:2.3经典并发问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-04-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="操作系统W7-2-3经典并发问题"><a href="#操作系统W7-2-3经典并发问题" class="headerlink" title="操作系统W7:2.3经典并发问题"></a>操作系统W7:2.3经典并发问题</h1><p>多应用2.2节进程信号量的内容。</p>
-        
-          <a class="article-more-a" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:2.3%E7%BB%8F%E5%85%B8%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统W7: 进程间通信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">操作系统W7: 进程间通信</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/" class="archive-article-date">
-  	<time datetime="2020-04-20T07:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2-2进程间通信"><a href="#2-2进程间通信" class="headerlink" title="2.2进程间通信"></a>2.2进程间通信</h1><p>如何保证多进程程序运行的结果是确定的?</p>
-        
-          <a class="article-more-a" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW7:%20%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-英语歌曲文化赏析R&amp;B blues" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90R&B%20blues/">英语歌曲文化赏析:R&amp;B blues</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90R&B%20blues/" class="archive-article-date">
-  	<time datetime="2020-04-20T02:55:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>非技术类博客，仅做个人备忘使用。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/04/20/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90R&B%20blues/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90R&B%20blues/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-英语歌曲文化赏析Blus&amp;R&amp;B(2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90Blus&R&B(2)/">英语歌曲文化赏析:R&amp;B blues</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90Blus&R&B(2)/" class="archive-article-date">
-  	<time datetime="2020-04-20T02:55:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="英语歌曲文化赏析Blus-amp-R-amp-B-2"><a href="#英语歌曲文化赏析Blus-amp-R-amp-B-2" class="headerlink" title="英语歌曲文化赏析Blus&amp;R&amp;B(2)"></a>英语歌曲文化赏析Blus&amp;R&amp;B(2)</h1><p>R&amp;B is more pure race music ,while jazz belong to the whole world.</p>
-<ul>
-<li>Rock n roll.<ul>
-<li>white version of R&amp;B</li>
-<li>racial segregation 在 音乐欣赏的领域也存在.</li>
-</ul>
-</li>
-<li>请白人歌手翻唱R&amp;B歌曲</li>
-<li>R n roll 是first stage of rock music</li>
-<li>soul为:黑人偷soul,黑人做方向转变,变快的舞曲化的方向:funk-&gt;disco</li>
-<li>Funk:灵魂乐的加快节奏版,funk对旋律和和声弱化而是更强调节奏感,funk的低音伴奏中的低音base是非常明显的.</li>
-<li>Disco: dance-oriented style</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90Blus&R&B(2)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语project1-在线收藏夹" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/">专业英语project1:在线收藏夹</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/" class="archive-article-date">
-  	<time datetime="2020-04-20T01:08:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="在线收藏夹"><a href="#在线收藏夹" class="headerlink" title="在线收藏夹"></a>在线收藏夹</h1><h2 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h2><ul>
-<li>用户登陆注册系统</li>
-<li>收藏功能(存储功能)<ul>
-<li>收藏任意网站链接URL</li>
-<li>浏览URL，点击URL即可前往</li>
-</ul>
-</li>
-<li>注释功能<ul>
-<li>注释</li>
-<li>打标签</li>
-<li>通过标签进行搜索</li>
-</ul>
-</li>
-<li>管理功能<ul>
-<li>存储URL的增删</li>
-<li>修改与删除注释</li>
-<li>修改与删除标签</li>
-</ul>
-</li>
-<li>美化功能(CSS)</li>
-<li>网站部署于ucloud云平台</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语Project1 PHP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject1%20PHP/">专业英语Project1 PHP</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject1%20PHP/" class="archive-article-date">
-  	<time datetime="2020-04-20T01:07:55.538Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="专业英语Project1-PHP"><a href="#专业英语Project1-PHP" class="headerlink" title="专业英语Project1 PHP"></a>专业英语Project1 PHP</h1><p>![截屏2020-04-20上午8.13.57](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-04-20上午8.13.57.png)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject1%20PHP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1378,8 +341,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

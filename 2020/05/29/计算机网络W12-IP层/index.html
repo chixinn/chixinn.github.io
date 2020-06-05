@@ -11,7 +11,7 @@
   <meta name="description" content="IP 层:The Data PlaneSDN: software defined network:软件定义网络和软件定义一切. 本章重点 4.3节  network layer service models forwarding versus routing how a router works Generalized forwarding">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络原理与编程W12:IP层">
-<meta property="og:url" content="http://yoursite.com/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/index.html">
+<meta property="og:url" content="http://yoursite.com/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
 <meta property="og:description" content="IP 层:The Data PlaneSDN: software defined network:软件定义网络和软件定义一切. 本章重点 4.3节  network layer service models forwarding versus routing how a router works Generalized forwarding">
 <meta property="og:locale" content="en_US">
@@ -23,7 +23,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9b074gnpj30ts0naanm.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9b2iiv2cj30fq06c76b.jpg">
 <meta property="article:published_time" content="2020-05-29T05:02:32.000Z">
-<meta property="article:modified_time" content="2020-05-29T06:44:14.250Z">
+<meta property="article:modified_time" content="2020-06-05T06:02:04.799Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="大二下">
@@ -169,7 +169,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-计算机网络原理与编程W12-IP层" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-计算机网络W12-IP层" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -181,7 +181,7 @@
   
 
         
-        <a href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/" class="archive-article-date">
+        <a href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/" class="archive-article-date">
   	<time datetime="2020-05-29T05:02:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
 </a>
         
@@ -291,16 +291,19 @@
 <h4 id="子网-subnets"><a href="#子网-subnets" class="headerlink" title="子网(subnets)"></a>子网(subnets)</h4><p>前边的位是一样的.</p>
 <p>高位相同/低位区分</p>
 <p>将路由器去掉,去看有几个各自连接的孤岛.</p>
-<p>子网掩码:前多少位是一样的.</p>
+<p><strong>子网掩码</strong>:前多少位是一样的.</p>
 <p>如何理解子网掩码中的“子网”？ - Dion的回答 - 知乎 <a href="https://www.zhihu.com/question/21064101/answer/17056026" target="_blank" rel="noopener">https://www.zhihu.com/question/21064101/answer/17056026</a></p>
+<p>网关：第一条的路由器。</p>
 <h4 id="内部地址"><a href="#内部地址" class="headerlink" title="内部地址"></a>内部地址</h4><p>不经过路由器(HUB)</p>
-<h3 id="CIDR"><a href="#CIDR" class="headerlink" title="CIDR"></a>CIDR</h3><p>无类别域间路由选择</p>
+<h3 id="CIDR–IP地址的表达方式"><a href="#CIDR–IP地址的表达方式" class="headerlink" title="CIDR–IP地址的表达方式"></a>CIDR–IP地址的表达方式</h3><p>无类别域间路由选择</p>
 <p>主机是如何得到IP地址的?</p>
 <p>How doesr a host get IP address?</p>
 <p>当前24位,则子网中由多少的IP地址,全0和全1(255.255….)部可以算,故算出来的结果需要-2.即255.255.255.255是一个广播地址.</p>
-<h4 id="硬编码hard-coded"><a href="#硬编码hard-coded" class="headerlink" title="硬编码hard-coded"></a>硬编码hard-coded</h4><h4 id="DHCP"><a href="#DHCP" class="headerlink" title="DHCP"></a>DHCP</h4><p>有一个租约:3600secs:即到期可以续约.</p>
+<h4 id="硬编码hard-coded"><a href="#硬编码hard-coded" class="headerlink" title="硬编码hard-coded"></a>硬编码hard-coded</h4><h4 id="DHCP–动态获取IP地址"><a href="#DHCP–动态获取IP地址" class="headerlink" title="DHCP–动态获取IP地址"></a>DHCP–动态获取IP地址</h4><p>有一个租约:3600secs:即到期可以续约.</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf9ax1712fj30mw0na7ei.jpg" alt=""></p>
 <p>DHCP不光只能拿到IP地址,它还可以配置很多信息.</p>
+<p>没有IP时，全零代表源，全一代表广播，所以计算的时候要去掉这两个不能计算。</p>
+<p>DHCP这些在我们动态获取IP时都给了我们。</p>
 <ul>
 <li><p><strong>网关</strong>:第一跳的路由器.first hop router</p>
 </li>
@@ -417,7 +420,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/" alt="微信分享二维码">
     </div>
 </div>
 

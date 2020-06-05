@@ -170,6 +170,254 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-操作系统Project3-IOPS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject3-IOPS/">操作系统Project3:IOPS</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject3-IOPS/" class="archive-article-date">
+  	<time datetime="2020-06-02T02:09:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="P3-I-O-subsystem"><a href="#P3-I-O-subsystem" class="headerlink" title="P3:I/O subsystem"></a>P3:I/O subsystem</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol>
+<li><p>在MINIX3中安装一块X MB大小的RAM盘，可以挂载并且存取文件操作。</p>
+</li>
+<li><p>测试RAM和DISK盘的文件读写速度</p>
+<p>分析读写速度有差异的原因。</p>
+<h2 id="安装盘–增加RAM盘"><a href="#安装盘–增加RAM盘" class="headerlink" title="安装盘–增加RAM盘"></a>安装盘–增加RAM盘</h2><p>/*<em>todo *</em>/</p>
+<ol>
+<li><p>修改/usr/src/minix/drivers/storage/memory/memory.c</p>
+<p>增加RAM盘数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RAMDISK 7</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新编译内核<code>make build MKUPDATE=yes</code>;重启reboot选择latest kernel</p>
+</li>
+<li><p>创建设备 <code>mknod /dev/myram b 1 13</code>;</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*mknod的使用方式*/</span></span><br><span class="line">mknod DEVNAME&#123;b|c&#125; MAJOR MINOR</span><br></pre></td></tr></table></figure>
+
+<p>DEVNAME创建的设备文件名，这里为/dev/myram</p>
+<p>b:块设备：系统从设备中读取数据的时候，直接从内存的buffer中读取数据，而不经过磁盘。</p>
+<p>这里，我们的RAM盘，就是用内存来虚拟一个硬盘，所以这里选项应该是b。</p>
+<p>MAJOR和MINOR表示主设备号和次设备号。</p>
+</li>
+<li><p>检测设备是否创建成功：<code>ls /dev/ | grep ram</code></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfds7pr6odj30uy090mxe.jpg" alt=""></p>
+</li>
+<li><p>实现buildmyram初始化工具：</p>
+<p>a. 在/usr/src/minix/commands/目录下新建buildmyram文件夹，参照/usr/src/minix/commands/ramdisk文件增加buildmyram也作为minix的内置命令。</p>
+<p>b.编写buildmyram.c文件</p>
+<p>类比ramdisk.c，但要注意但没和修改<code>PATH</code>变量。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;minix/paths.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/ioc_memory.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _PATH_MYRAMDISK <span class="meta-string">"/dev/myram"</span><span class="comment">//注意这里修改了路径</span></span></span><br><span class="line"></span><br><span class="line">main(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">int</span> fd;</span><br><span class="line">	<span class="keyword">signed</span> <span class="keyword">long</span> <span class="built_in">size</span>;</span><br><span class="line">	<span class="keyword">char</span> *d;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(argc &lt; <span class="number">2</span> || argc &gt; <span class="number">3</span>) &#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"usage: %s &lt;size in MB&gt; [device]\n"</span>,</span><br><span class="line">			argv[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	d = argc == <span class="number">2</span> ? _PATH_MYRAMDISK : argv[<span class="number">2</span>];</span><br><span class="line">	<span class="keyword">if</span>((fd=<span class="built_in">open</span>(d, O_RDONLY)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">		perror(d);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">long</span> <span class="keyword">int</span> MFACTOR=<span class="number">1024</span>*<span class="number">1024</span>;<span class="comment">//注意这里的MFACTOR</span></span><br><span class="line"></span><br><span class="line">	<span class="built_in">size</span> = atol(argv[<span class="number">1</span>])*MFACTOR;<span class="comment">//size是我输入的参数成kb,mb 就再乘1024嘛</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">size</span> &lt; <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"size should be non-negative.\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(ioctl(fd, MIOCRAMSIZE, &amp;<span class="built_in">size</span>) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">		perror(<span class="string">"MIOCRAMSIZE"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="built_in">fprintf</span>(<span class="built_in">stderr</span>, <span class="string">"size on %s set to %ldMB\n"</span>, d, <span class="built_in">size</span>/MFACTOR);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    c. 将buildmyram.c修改完毕以后，新建buildmyram文件下的Makefile文件（此新建也同样类比于ramdisk），同时修改commands目录下的Makefile文件（此修改类比于Project2）</p>
+<ol start="6">
+<li><p>在ram盘上创建内存文件系统：</p>
+<p><code>mkfs.mfs /dev/myram</code></p>
+</li>
+<li><p>将ram盘挂载到用户目录下：</p>
+<p><code>mount /dev/myram  /root/myram</code></p>
+</li>
+<li><p>检验挂载是否成功，输入命令<code>df</code>进行检测：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfdtlzlgyrj313q07u753.jpg" alt=""></p>
+<p>可以看出，有了dev/myram即我们挂载成功。</p>
+</li>
+</ol>
+<blockquote>
+<p>重启后用户自定义的ram盘内容会丢失，需要重新设置大小，创建文件系统，并挂载。</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h2><ol>
+<li><p>采用多进程并发的同步读写。</p>
+</li>
+<li><p>concurrency的数目要增加到设备接近<strong>“饱和”</strong>状态。</p>
+</li>
+<li><p>总吞吐量：fileSize(总文件大小)/执行时间(spend time)</p>
+</li>
+<li><p>饱和：吞吐量难以继续提升，同时I/O延时恶化。</p>
+</li>
+</ol>
+<hr>
+<ol>
+<li>性能测试的变量：“block size“和块扫描方式。</li>
+</ol>
+<hr>
+<p>P3-test的编写</p>
+<p>P3-test的框架结构：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_file</span><span class="params">(<span class="keyword">int</span> blocksize,<span class="keyword">int</span> isrand,<span class="keyword">char</span> *filename,<span class="keyword">int</span> fs)</span></span>&#123;</span><br><span class="line">  <span class="comment">//todo</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">write_file</span><span class="params">(<span class="keyword">int</span> blocksize,<span class="keyword">int</span> isrand,<span class="keyword">char</span> *filename,<span class="keyword">int</span> fs)</span></span>&#123;</span><br><span class="line">  <span class="comment">//todo</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">long</span> <span class="title">get_time_left</span><span class="params">(<span class="keyword">long</span> starttime,<span class="keyword">long</span> endtime)</span></span>&#123;</span><br><span class="line">  <span class="comment">//todo</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">  </span><br><span class="line">  <span class="keyword">time_t</span> starttime=time(<span class="literal">NULL</span>);<span class="comment">//开始时间。</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;concurrency;i++)&#123;</span><br><span class="line">    <span class="keyword">while</span>(iter&lt;<span class="number">10000</span>)&#123;</span><br><span class="line">      write_file();</span><br><span class="line">      read_file();</span><br><span class="line">    &#125;<span class="comment">//将读/写延续一定的时间。</span></span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line">  wait();</span><br><span class="line">  <span class="keyword">time_t</span> endtime=time(<span class="literal">NULL</span>);</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"throughput:"</span>,throughput);</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfdzp9q922j30u01587wh.jpg" alt=""></p>
+<p>还有什么更好的测试方式嘛….</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject3-IOPS/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ML03-Gradient-Descent(1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/01/ML03-Gradient-Descent(1)/">ML03 Gradient Descent(1)</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/01/ML03-Gradient-Descent(1)/" class="archive-article-date">
+  	<time datetime="2020-06-01T07:50:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h1><p>找一个最好的function，需要解决一个Optimization Problem.</p>
+<ul>
+<li><p>随机地选取一个起始点</p>
+</li>
+<li><p>如何update参数呢？</p>
+<p>$\theta_1=\theta_0-learningRate\nabla\theta_0$;</p>
+<p>此时我们获得了$\theta_1$的位置，这是一个新的位置，此时,我们再获取$\nabla\theta_1$，即获取了我们要走的方向，继续走下去。</p>
+</li>
+<li><p>即梯度是我们要走的方向，走下去。</p>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2020/06/01/ML03-Gradient-Descent(1)/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/01/ML03-Gradient-Descent(1)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ML02-Basic-concept" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -451,19 +699,19 @@
 
 
   
-    <article id="post-计算机网络原理与编程W12-IP层" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-计算机网络W12-IP层" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/">计算机网络原理与编程W12:IP层</a>
+      <a class="article-title" href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/">计算机网络原理与编程W12:IP层</a>
     </h1>
   
 
         
-        <a href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/" class="archive-article-date">
+        <a href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/" class="archive-article-date">
   	<time datetime="2020-05-29T05:02:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
 </a>
         
@@ -480,7 +728,7 @@
 <li>Generalized forwarding</li>
 </ul>
         
-          <a class="article-more-a" href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/#more">more >></a>
+          <a class="article-more-a" href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/#more">more >></a>
         
       
 
@@ -512,7 +760,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8E%9F%E7%90%86%E4%B8%8E%E7%BC%96%E7%A8%8BW12-IP%E5%B1%82/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/">展开全文 >></a>
         </p>
       
 
@@ -1140,159 +1388,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/27/Data-mining-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Components of Data Mining Algorithms" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/27/Components%20of%20Data%20Mining%20Algorithms/">Components of Data Mining Algorithms</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/27/Components%20of%20Data%20Mining%20Algorithms/" class="archive-article-date">
-  	<time datetime="2020-05-27T01:58:20.362Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>- </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/27/Components%20of%20Data%20Mining%20Algorithms/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数学基础W12矩阵计算之特征值问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W12%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97%E4%B9%8B%E7%89%B9%E5%BE%81%E5%80%BC%E9%97%AE%E9%A2%98/">数学基础W12矩阵计算之特征值问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W12%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97%E4%B9%8B%E7%89%B9%E5%BE%81%E5%80%BC%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-05-26T05:54:31.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数学基础W12-矩阵计算之特征值问题"><a href="#数学基础W12-矩阵计算之特征值问题" class="headerlink" title="数学基础W12:矩阵计算之特征值问题"></a>数学基础W12:矩阵计算之特征值问题</h1><blockquote>
-<p>特征值问题本质是什么问题?</p>
-</blockquote>
-<p>多项式求根问题.</p>
-<p>五阶以上的方程很难得到显示的根.</p>
-<p>所以矩阵特征值一般都使用数值计算和迭代法.</p>
-<h2 id="16-1圆盘定理"><a href="#16-1圆盘定理" class="headerlink" title="16.1圆盘定理"></a>16.1圆盘定理</h2><p>本质是给根做估计,即给特征值的界限做一个估计.</p>
-<p>在实际解决问题时,还需要关注特征值特征向量是否时病态的,即是否对扰动很敏感,即一经扰动就变化很大.</p>
-<h3 id="圆盘定理"><a href="#圆盘定理" class="headerlink" title="圆盘定理"></a>圆盘定理</h3><p>描述n阶矩阵的特征值在复平面的分布范围.(盖氏圆盘/盖氏圆)</p>
-<h3 id="定理1"><a href="#定理1" class="headerlink" title="定理1"></a>定理1</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf5s5cicb2j30k007hab3.jpg" alt=""></p>
-<p>对于行盖尔圆而言，我们可以称之为去心绝对行和（去掉对角线 <img src="https://www.zhihu.com/equation?tex=a_%7Bii%7D" alt="[公式]"> 的值），此时 <img src="https://www.zhihu.com/equation?tex=a_%7Bii%7D" alt="[公式]"> 就是圆心。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf5s5wglbzj30k004hgm7.jpg" alt=""></p>
-<p>该定理说的是矩阵A的任意特征值都在行盖尔圆之中。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf5s8ed9z4j30k00cy3zo.jpg" alt=""></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf5s8srpwfj30k00b4dh8.jpg" alt=""></p>
-<blockquote>
-<p>对$A^T$应用圆盘定理可以进一步优化结果.即行盖尔圆与列盖尔圆</p>
-</blockquote>
-<blockquote>
-<p>定理1只说明了矩阵A的特征值均在其全部盖尔圆的并集中，并没有哪个连通部分有几个特征值</p>
-</blockquote>
-<blockquote>
-<p>取A的相似矩阵还可以进一步估计A的特征值的范围.</p>
-<p>因为相似矩阵特征值相等.</p>
-<p>也可以通过圆盘定理估计谱(最大的特征值)的范围.</p>
-</blockquote>
-<p>圆盘定理与实根分离.</p>
-<p>求近似根时的区间逼近.</p>
-<h3 id="搜索引擎与pageRank"><a href="#搜索引擎与pageRank" class="headerlink" title="搜索引擎与pageRank"></a>搜索引擎与pageRank</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/26/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W12%E7%9F%A9%E9%98%B5%E8%AE%A1%E7%AE%97%E4%B9%8B%E7%89%B9%E5%BE%81%E5%80%BC%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 

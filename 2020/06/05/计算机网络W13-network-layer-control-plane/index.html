@@ -6,29 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Chixinning的博客</title>
+  <title>计算机网络W13:network layer control plane | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/4/index.html">
+  <meta name="description" content="本节侧重于宏观上的路由，如最短路径算法(传统路由算法)  traditional routing algorithms(本章重点) SDN controllers(locally centralized control plane) ICMP network mangement.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络W13:network layer control plane">
+<meta property="og:url" content="http://yoursite.com/2020/06/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW13-network-layer-control-plane/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="本节侧重于宏观上的路由，如最短路径算法(传统路由算法)  traditional routing algorithms(本章重点) SDN controllers(locally centralized control plane) ICMP network mangement.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhds71jzrj30um0dugvt.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhea5dim4j307y07uab3.jpg">
+<meta property="article:published_time" content="2020-06-05T06:05:23.000Z">
+<meta property="article:modified_time" content="2020-06-05T06:33:08.433Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="大二下">
+<meta property="article:tag" content="计算机网络">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhds71jzrj30um0dugvt.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -168,198 +164,89 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-计算机网络W13-network-layer-control-plane" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      计算机网络W13:network layer control plane
+    </h1>
+  
+
+        
+        <a href="/2020/06/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW13-network-layer-control-plane/" class="archive-article-date">
+  	<time datetime="2020-06-05T06:05:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本节侧重于宏观上的路由，如最短路径算法(传统路由算法)</p>
+<ul>
+<li><strong>traditional routing algorithms</strong>(本章重点)</li>
+<li>SDN controllers(locally centralized control plane)</li>
+<li>ICMP</li>
+<li>network mangement.</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhds71jzrj30um0dugvt.jpg" alt=""></p>
+<a id="more"></a>
+
+<h2 id="路由协议"><a href="#路由协议" class="headerlink" title="路由协议"></a>路由协议</h2><p>good paths? </p>
+<p>what is good path?</p>
+<h3 id="将路由走的路抽象成图结构。"><a href="#将路由走的路抽象成图结构。" class="headerlink" title="将路由走的路抽象成图结构。"></a>将路由走的路抽象成图结构。</h3><p>无向有权图：增加权重作为代价。</p>
+<p>代价延路径是可累加的。</p>
+<h3 id="路由算法"><a href="#路由算法" class="headerlink" title="路由算法"></a>路由算法</h3><h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><h5 id="是全局的还是去中心化的？"><a href="#是全局的还是去中心化的？" class="headerlink" title="是全局的还是去中心化的？"></a>是全局的还是去中心化的？</h5><p><strong>Global</strong>?每一个路由器都知道路由网络的拓扑结构。</p>
+<p>link state： algorithms/ LS</p>
+<p><strong>Decentralized</strong>?</p>
+<p>每个路由器只知道他的邻居，也只知道到达他邻居的代价，通过迭代的方式求得</p>
+<p>distance vector</p>
+<h4 id="分类2"><a href="#分类2" class="headerlink" title="分类2"></a>分类2</h4><p>Static： 路由图很少变化</p>
+<p>Dynamic：路由间连接是动态变化，是需要周期性响应和更新的。</p>
+<h3 id="LS"><a href="#LS" class="headerlink" title="LS"></a>LS</h3><p>狄杰斯特拉算法。</p>
+<p>维护两个nodesSets: X 与 S-X</p>
+<hr>
+<p>计算机网络课程讨论Dij的重点。</p>
+<p><strong>应用此算法的目的是配置转发表。</strong></p>
+<p><strong>应用此算法的前提是每一个路由器都需要知道全局的拓扑信息。</strong></p>
+<hr>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhea5dim4j307y07uab3.jpg" alt=""></p>
+<p>Dij得到最短路径树，以源节点作为树根。</p>
+<p>Dij的算法负责度比较高 是O(n^2)-&gt;O(nlogn)</p>
+<blockquote>
+<p>Dij算法最大的问题是，双向时会产生震荡。</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2020-05-21T00:09:44.667Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">敏度分析</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/20/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8BData%20Mining/" class="archive-article-date">
-  	<time datetime="2020-05-20T00:58:54.127Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/20/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98%E8%BF%87%E7%A8%8BData%20Mining/">数据挖掘过程Data Mining</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/19/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W11%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E4%B8%8E%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-05-19T08:24:40.542Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/19/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W11%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E4%B8%8E%E4%BC%98%E5%8C%96/">数学基础W11奇异值分解与优化</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/19/Matrix%20Methods%20in%20Data%20Analysis,%20Signal%20Processing,%20and%20Machine%20Learning%20%20Mathematics%20Chapter0Overview/" class="archive-article-date">
-  	<time datetime="2020-05-19T05:03:10.703Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/19/Matrix%20Methods%20in%20Data%20Analysis,%20Signal%20Processing,%20and%20Machine%20Learning%20%20Mathematics%20Chapter0Overview/">Matrix Methods in Data Analysis, Signal Processing, and Machine Learning  Mathematics Chapter0Overview</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/18/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW11Chapter1%20to%20the%20end/" class="archive-article-date">
-  	<time datetime="2020-05-18T01:32:38.077Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/18/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW11Chapter1%20to%20the%20end/">专业英语W11Chapter1 to the end</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/17/Sigmoid%20%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8%20%E5%AF%B9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%9C%89%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2020-05-17T12:02:06.796Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/17/Sigmoid%20%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8%20%E5%AF%B9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%9C%89%E7%94%A8/">Sigmoid 函数的什么性质 对神经网络有用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW103.4%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7/" class="archive-article-date">
-  	<time datetime="2020-05-17T04:58:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW103.4%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7/">计算机网络W10:3.4传输层的可靠性</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -379,126 +266,105 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW13-network-layer-control-plane/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/15/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%9E%84%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2020-05-15T13:17:17.077Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW13-IP%E5%B1%82-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机网络W13:IP层(2)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/15/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%9E%84%E5%BB%BA/">用户画像构建</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-05-15T02:43:08.282Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/">操作系统Project2Chrt系统调用和EDF算法</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/15/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/" class="archive-article-date">
-  	<time datetime="2020-05-15T01:22:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/15/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/">英文歌曲文化赏析W11Hip hop culture</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/11/">11</a><a class="extend next" rel="next" href="/archives/page/5/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -522,8 +388,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

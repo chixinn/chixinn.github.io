@@ -170,6 +170,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-hexo-d报错：fatal-无法访问-https-github-com-chixinn-chixinn-github-io-git-：LibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/hexo-d%E6%8A%A5%E9%94%99%EF%BC%9Afatal-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-https-github-com-chixinn-chixinn-github-io-git-%EF%BC%9ALibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443/">hexo d报错：fatal: 无法访问 &#39;https://github.com/chixinn/chixinn.github.io.git/&#39;：LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 </a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/04/hexo-d%E6%8A%A5%E9%94%99%EF%BC%9Afatal-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-https-github-com-chixinn-chixinn-github-io-git-%EF%BC%9ALibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443/" class="archive-article-date">
+  	<time datetime="2020-06-04T01:38:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先看一下是不是成功，如果成功的话，再回来看解决方法。</p>
+<p>目前短暂尝试了一下成功了：</p>
+<p>问题的原因其实与hexo 博客本身无关，而是git push方面，这里相当于hexo d方面。</p>
+<p>在github项目在本地的根目录下打开git命令行，<br><strong>执行下面的命令</strong>：</p>
+<p><code>git config --global --unset http.proxy</code></p>
+<p>即可。</p>
+<p>所以，如果不论是什么形式的git push，出现如此报错的话，都可以尝试一下这个方法。</p>
+<p>[^1]:居然IntelliJ IDEA 上也可以push git???,是在查这个解决方法时候找到的。</p>
+<p><a href="https://blog.csdn.net/daerzei/article/details/79528153?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">参考资料</a></p>
+<p>网上还有一个借鉴stackoverflow的，我测试了一下，我不行的。</p>
+<p>但是重新一下http代理还是i好用的。</p>
+<p>同时：要注意搜索的时候 ，直接搜索关键词：</p>
+<blockquote>
+<p>LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 </p>
+</blockquote>
+<p><a href="https://blog.csdn.net/wufantastic/article/details/91488651?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">我个人测试不行的参考资料</a></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhelcp8dgj30r40sme0k.jpg" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/04/hexo-d%E6%8A%A5%E9%94%99%EF%BC%9Afatal-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-https-github-com-chixinn-chixinn-github-io-git-%EF%BC%9ALibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-数学基础W13-概率基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1286,71 +1376,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/06/01/ML02-Basic-concept/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语W12反向传播算法可以解决什么问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">专业英语W12反向传播算法可以解决什么问题</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-05-31T13:25:33.297Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="专业英语W12-反向传播算法可以解决什么问题"><a href="#专业英语W12-反向传播算法可以解决什么问题" class="headerlink" title="专业英语W12:反向传播算法可以解决什么问题"></a>专业英语W12:反向传播算法可以解决什么问题</h1><p>What problem does backpropagation solve? Explain it in your own words.</p>
-        
-          <a class="article-more-a" href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">展开全文 >></a>
         </p>
       
 

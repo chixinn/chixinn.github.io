@@ -170,6 +170,237 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Minix3 源码分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">操作系统 W9 进程概述与进程实现</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2020-04-27T06:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id=""><a href="#" class="headerlink" title=""></a></h1><h1 id="操作系统-W9-进程概述与进程实现"><a href="#操作系统-W9-进程概述与进程实现" class="headerlink" title="操作系统 W9 进程概述与进程实现"></a>操作系统 W9 进程概述与进程实现</h1><h2 id="main初始化流程-main-c"><a href="#main初始化流程-main-c" class="headerlink" title="main初始化流程(main.c)"></a>main初始化流程(main.c)</h2><blockquote>
+<p>.s文件与.c文件</p>
+</blockquote>
+<ul>
+<li>初始化中断控制器</li>
+<li>初始化进程表与特权控指表</li>
+<li>初始化boot image中的进程</li>
+<li>设置IDLE为第一个运行的进程</li>
+<li>显示欢迎信息</li>
+<li>调用mpx386.s文件中的_restart函数开始进程调度(上下文切换)</li>
+</ul>
+<h2 id="硬件中断处理"><a href="#硬件中断处理" class="headerlink" title="硬件中断处理"></a>硬件中断处理</h2><ul>
+<li>通过CPU INT管脚通知CPU发生了中断</li>
+<li>CPU发出INTA信号</li>
+</ul>
+<blockquote>
+<p>硬件中断</p>
+<p>硬件产生中断信号</p>
+<p>通过中断控制器，决定给CPU发送发送何数值，给CPU发送相应的中断服务历程。</p>
+</blockquote>
+<ul>
+<li>中断控制器将数据放在系统数据总线上并通知处理器应执行哪个服务历程</li>
+</ul>
+<h3 id="软件中断"><a href="#软件中断" class="headerlink" title="软件中断"></a>软件中断</h3><p>执行汇编指令</p>
+<h3 id="中断处理过程"><a href="#中断处理过程" class="headerlink" title="中断处理过程"></a>中断处理过程</h3><h4 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h4><ol>
+<li>硬件发送中断信号</li>
+<li>中断控制器<ol>
+<li>打断CPU</li>
+<li>send digital identification of the interrupting device</li>
+</ol>
+</li>
+<li>Kernel:<ol>
+<li>保存寄存器</li>
+<li>Send notification message to driver</li>
+<li>Restart a process</li>
+</ol>
+</li>
+</ol>
+<h4 id="系统调用（软件"><a href="#系统调用（软件" class="headerlink" title="系统调用（软件)"></a>系统调用（软件)</h4><ol>
+<li>Caller<ol>
+<li>将相应消息保存到CPU</li>
+<li>execute software interrupt instruction。</li>
+</ol>
+</li>
+<li>Kernel 同</li>
+</ol>
+<h3 id="restart"><a href="#restart" class="headerlink" title="_restart"></a>_restart</h3><p>Cold boot-&gt;restart</p>
+<h2 id="进程间通讯"><a href="#进程间通讯" class="headerlink" title="进程间通讯"></a>进程间通讯</h2><p>拷贝：从内核的物理拷贝(跨逻辑地址空间拷贝)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">B：Send(A,&amp;m);</span><br><span class="line">A:Receive(B,&amp;m);</span><br><span class="line"><span class="comment">//对应两个不同的内核区域，故拷贝只能由内核来做。</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>若目标进程未在等待消息，则发送者被标记为阻塞，并挂入一个等待将消息发送到<strong>接受进程的进程队列</strong>中。</p>
+<p>即在接受进程的进程表里，接收进程维护一个链表，加一个指针指向发送者。</p>
+<p>在当一个进程执行RECEIVE时，内核检查<strong>该队列</strong>中是否存在向他发送消息的进程。如果存在，则消息从被阻塞的发送进程拷贝到接受进程。</p>
+<p>如果不存在这样的进程，则接受进程也会被阻塞。</p>
+</li>
+<li><p>如何将队列挂到连表中?</p>
+<p>Sys_call(proc.c)</p>
+</li>
+</ul>
+<h2 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/27/Minix3%20%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-英文歌曲文化赏析countryMusic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/27/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90countryMusic/">英语歌曲文化赏析 countryMusic</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/27/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90countryMusic/" class="archive-article-date">
+  	<time datetime="2020-04-27T02:55:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>非技术类博客，仅做个人备忘使用。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2020/04/27/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90countryMusic/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/27/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90countryMusic/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-操作系统-W8-进程调度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1184,177 +1415,9 @@
 
 
   
-    <article id="post-专业英语project1-在线收藏夹" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/">专业英语project1:在线收藏夹</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/" class="archive-article-date">
-  	<time datetime="2020-04-20T01:08:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="在线收藏夹"><a href="#在线收藏夹" class="headerlink" title="在线收藏夹"></a>在线收藏夹</h1><h2 id="Outline"><a href="#Outline" class="headerlink" title="Outline"></a>Outline</h2><ul>
-<li>用户登陆注册系统</li>
-<li>收藏功能(存储功能)<ul>
-<li>收藏任意网站链接URL</li>
-<li>浏览URL，点击URL即可前往</li>
-</ul>
-</li>
-<li>注释功能<ul>
-<li>注释</li>
-<li>打标签</li>
-<li>通过标签进行搜索</li>
-</ul>
-</li>
-<li>管理功能<ul>
-<li>存储URL的增删</li>
-<li>修改与删除注释</li>
-<li>修改与删除标签</li>
-</ul>
-</li>
-<li>美化功能(CSS)</li>
-<li>网站部署于ucloud云平台</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADproject1-%E5%9C%A8%E7%BA%BF%E6%94%B6%E8%97%8F%E5%A4%B9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语Project1 PHP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject1%20PHP/">专业英语Project1 PHP</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject1%20PHP/" class="archive-article-date">
-  	<time datetime="2020-04-20T01:07:55.538Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="专业英语Project1-PHP"><a href="#专业英语Project1-PHP" class="headerlink" title="专业英语Project1 PHP"></a>专业英语Project1 PHP</h1><p>![截屏2020-04-20上午8.13.57](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-04-20上午8.13.57.png)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject1%20PHP/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
     </nav>
   
 

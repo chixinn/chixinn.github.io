@@ -16,7 +16,7 @@
 <meta property="og:description" content="Todo:手动实现ANN手动实现ANN对mushroom进行有毒&#x2F;无毒的分类">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-06-15T01:09:57.000Z">
-<meta property="article:modified_time" content="2020-06-15T03:28:09.054Z">
+<meta property="article:modified_time" content="2020-06-16T02:09:13.751Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="大二下">
@@ -185,13 +185,43 @@
 <a id="more"></a>
 
 <h2 id="ANN架构"><a href="#ANN架构" class="headerlink" title="ANN架构"></a>ANN架构</h2><p>Mushroom_loader:trainning_data/testing_data/validation_data</p>
-<h3 id="Step1-读入数据"><a href="#Step1-读入数据" class="headerlink" title="Step1:读入数据"></a>Step1:读入数据</h3><p>要把非数值信息转化为数值信息，将每一个转换成维度进行one-hot变啊吗</p>
+<h3 id="Step1-读入数据"><a href="#Step1-读入数据" class="headerlink" title="Step1:读入数据"></a>Step1:读入数据</h3><p>要把非数值信息转化为数值信息，将每一个转换成维度进行one-hot编码吗？</p>
 <p>keras classification；</p>
 <h3 id="Step2-基本模型建立"><a href="#Step2-基本模型建立" class="headerlink" title="Step2:基本模型建立"></a>Step2:基本模型建立</h3><p>Network课本</p>
 <h3 id="Step3-优化"><a href="#Step3-优化" class="headerlink" title="Step3:优化"></a>Step3:优化</h3><ul>
 <li>计算梯度的方法</li>
 <li>keras</li>
 </ul>
+<p>参数的选择与调整：</p>
+<p>如何选择神经网络中的超参数？</p>
+<ol>
+<li>学习速率$\eta$</li>
+<li>规范化参数$\lambda$</li>
+<li>隐藏层的个数/神经元的个数</li>
+<li>学习的回合epoch</li>
+<li>不同输出的编码方式</li>
+<li>Cost function的形式</li>
+<li>权重初始化方法</li>
+</ol>
+<hr>
+<h2 id="设置超参数的宽泛策略：寻找参数的方法"><a href="#设置超参数的宽泛策略：寻找参数的方法" class="headerlink" title="设置超参数的宽泛策略：寻找参数的方法"></a>设置超参数的宽泛策略：寻找参数的方法</h2><p>超参数设置的推荐：</p>
+<p>Relu神经元/sigmoid神经元/tanh神经元</p>
+<hr>
+<p>交叉验证</p>
+<hr>
+<ol>
+<li><p>如何将原来特征中的非数值信息转化成数值信息，我原来想的是都拆开看。。。</p>
+</li>
+<li><p>将字母标签转换为数值标签。</p>
+</li>
+</ol>
+<p>这里的蘑菇分类源有22个特征，使用sklearn的preprocessing库函数可以将字母标签转换为数值标签。</p>
+<p>sklearn库函数原型的实现可以参照github代码。</p>
+<p>但我感觉这个地方没有必要也写源代码啊.</p>
+<ol start="2">
+<li>拆分tr_d, va_d, te_d：train_test_split?</li>
+<li></li>
+</ol>
 
       
 

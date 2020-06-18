@@ -15,13 +15,18 @@
 <meta property="og:site_name" content="Chixinning的博客">
 <meta property="og:description" content="Todo:手动实现ANN手动实现ANN对mushroom进行有毒&#x2F;无毒的分类">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwekrqk6gj30ky0sohdt.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwela66q3j30ky0sohdt.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfweqdkfnmj30ky0sohdt.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwet91tsqj30ky0sohdt.jpg">
 <meta property="article:published_time" content="2020-06-15T01:09:57.000Z">
-<meta property="article:modified_time" content="2020-06-16T02:09:13.751Z">
+<meta property="article:modified_time" content="2020-06-18T06:19:27.670Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="大二下">
 <meta property="article:tag" content="专业英语">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwekrqk6gj30ky0sohdt.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -220,9 +225,34 @@
 <p>但我感觉这个地方没有必要也写源代码啊.</p>
 <ol start="2">
 <li>拆分tr_d, va_d, te_d：train_test_split?</li>
-<li></li>
 </ol>
-
+<hr>
+<p>第一次构建神经网络，按照书上最简单的代码构建：</p>
+<p>结果:</p>
+<p>实验参数使用课本Network1的神经网络架构：</p>
+<p>net.SGD(train_data, 30, 10, 3.0, test_data=test_data)</p>
+<p>net = Network([22, 30, 2])</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwekrqk6gj30ky0sohdt.jpg" alt=""></p>
+<hr>
+<p>net.SGD(train_data, 30, 10, 3.0, test_data=test_data)</p>
+<p><strong>net = Network([22, 100, 2])</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwela66q3j30ky0sohdt.jpg" alt=""></p>
+<hr>
+<p>net.SGD(train_data, 30, 10, 100.0, test_data=test_data)</p>
+<p><strong>net = Network([22, 100, 2])</strong></p>
+<p>![截屏2020-06-18下午2.02.38](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-06-18下午2.02.38.png)</p>
+<hr>
+<p>net.SGD(train_data, 30, 10, 100.0, test_data=test_data)</p>
+<p><strong>net = Network([22, 30, 2])</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfweqdkfnmj30ky0sohdt.jpg" alt=""></p>
+<hr>
+<p>net = Network([22,30, 2])</p>
+<p>net.SGD(train_data, 30, 10, 1, test_data=test_data)</p>
+<p>我的妈，试了一下就1了…</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwet91tsqj30ky0sohdt.jpg" alt=""></p>
+<p>我又反复测试了几次，发现学习速率为1的时候，确实正确率可以提到很高。</p>
+<hr>
+<h2 id="更改神经网络的架构，使用交叉熵损失函数-Gituhub上的Network2"><a href="#更改神经网络的架构，使用交叉熵损失函数-Gituhub上的Network2" class="headerlink" title="更改神经网络的架构，使用交叉熵损失函数(Gituhub上的Network2)"></a>更改神经网络的架构，使用交叉熵损失函数(Gituhub上的Network2)</h2>
       
 
       

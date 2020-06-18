@@ -15,13 +15,19 @@
 <meta property="og:site_name" content="Chixinning的博客">
 <meta property="og:description" content="BP算法不是跟GD并列，而是GD的一种，即只是用BP可以很快的计算偏微分而已。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwbq7azomj30q80h6467.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwbxho4ccj30q80jkwjl.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwcjrrkk5j30q80jkn5i.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwcq7yt26j30q80jkjzb.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwctq8a1ij30q80jkdor.jpg">
 <meta property="article:published_time" content="2020-06-17T00:00:33.000Z">
-<meta property="article:modified_time" content="2020-06-17T00:08:41.230Z">
+<meta property="article:modified_time" content="2020-06-18T04:59:34.720Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="李宏毅">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwbq7azomj30q80h6467.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -190,6 +196,33 @@
 <p>Case2:</p>
 <p>$x=g(s),y=h(s),z=k(x,y)$</p>
 <p>$\frac{dz}{ds}=\frac{\part z}{\part x}\frac{dx}{ds}+\frac{\part z}{\part y}\frac{dy}{ds}$</p>
+<!--more-->
+
+<p>机器学习的目标一边都是优化问题的求解。</p>
+<p>$L(\theta)=\sum_{n=1}^NC^n(\theta)$</p>
+<p>左右两边同时求偏微分：</p>
+<p>$\frac{\part L(\theta)}{\part w}=\sum_{n=1}^N\frac{\part C^n(\theta)}{\part w}$</p>
+<p>故当我明白了一个data的计算方法时，即可明白时如何求偏微分的了。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwbq7azomj30q80h6467.jpg" alt=""></p>
+<p>$x_1$和$x_2$是第一层的神经元：$x_1w_1+x_2w_2+b=z$p$a=\sigma(z)$;$a=\sigma(z)$</p>
+<p>然后获得了z经过一系列的迭代，获得了一个个输出$y_1$和$y_2$</p>
+<p>$\frac{\part C}{\part w}=\frac{\part z}{\part w}\frac{\part C}{\part z}$</p>
+<p>其中，Forward pass是$\frac{\part z}{\part w}$；Backward pass是$\frac{\part C}{\part z}$</p>
+<p>Forward:计算每一个neuron的Output</p>
+<p>$\frac{\part C}{\part z}=\frac{\part a}{\part z}\frac{\part C}{\part a}$</p>
+<p>这里这个前一个是sigmoid函数的微分；</p>
+<p>那后一个因子该如何计算呢?</p>
+<p>有一个neuron，求$\frac{\part C}{\part a}$的求和就有多少项，如图示例中，只有两个neuron的例子，故有2项。</p>
+<p>$\frac{\part C}{\part a}=\frac{\part C}{\part z’}\frac{\part z’}{\part a}+\frac{\part C}{\part z’’}\frac{\part z’’}{\part a}$(这次我把链式规则调成了我比较顺眼的一个形式。)</p>
+<p>但是，我们还是不会算后面的$\frac{\part C}{\part z’}$啊</p>
+<p>但是，我们先假设我们知道$\frac{\part C}{\part z’}$和$\frac{\part C}{\part z’’}$，那这样，我们就知道了$\frac{\part C}{\part a}$,就知道了$\frac{\part C}{\part z}$</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwbxho4ccj30q80jkwjl.jpg" alt=""></p>
+<p>z是在forward pass下所求得的固定的值，所以 <strong>$\sigma’(z)$</strong>是一个已知的常数，所以！我们在这样的运算过程中，只需要乘一个常数就行了。</p>
+<p>那，我是默认的不知道啊，我怎么算呢？</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwcjrrkk5j30q80jkn5i.jpg" alt=""></p>
+<p>如果不知道呢，所以就从最后一层往前面倒退，因为只有是outputLayer才可以计算。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwcq7yt26j30q80jkjzb.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwctq8a1ij30q80jkdor.jpg" alt=""></p>
 
       
 

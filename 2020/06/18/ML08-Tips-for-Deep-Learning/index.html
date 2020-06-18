@@ -8,20 +8,23 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>ML08 Tips for Deep Learning | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Tips for Deep Learning">
+  <meta name="description" content="Tips for Deep LearningDeepLearning上，Overfitting不是第一个遇到的问题，而是在training Set上根本无法给一个好的正确率 TestingSet上的performance才是真正的performance，此时结果不好以后才是真正的Overfitting. 而如果此时Testing结果不好，要重新返回TrainingSet. 参数update的次数。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ML08 Tips for Deep Learning">
 <meta property="og:url" content="http://yoursite.com/2020/06/18/ML08-Tips-for-Deep-Learning/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="Tips for Deep Learning">
+<meta property="og:description" content="Tips for Deep LearningDeepLearning上，Overfitting不是第一个遇到的问题，而是在training Set上根本无法给一个好的正确率 TestingSet上的performance才是真正的performance，此时结果不好以后才是真正的Overfitting. 而如果此时Testing结果不好，要重新返回TrainingSet. 参数update的次数。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwtr5y1auj30yg0oqqp5.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwu3q3hxkj30yg0oq18t.jpg">
 <meta property="article:published_time" content="2020-06-18T05:03:07.000Z">
-<meta property="article:modified_time" content="2020-06-18T05:04:11.063Z">
+<meta property="article:modified_time" content="2020-06-18T15:07:51.582Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="李宏毅">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwtr5y1auj30yg0oqqp5.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -181,7 +184,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Tips-for-Deep-Learning"><a href="#Tips-for-Deep-Learning" class="headerlink" title="Tips for Deep Learning"></a>Tips for Deep Learning</h1>
+        <h1 id="Tips-for-Deep-Learning"><a href="#Tips-for-Deep-Learning" class="headerlink" title="Tips for Deep Learning"></a>Tips for Deep Learning</h1><p>DeepLearning上，Overfitting不是第一个遇到的问题，而是在training Set上根本无法给一个好的正确率</p>
+<p>TestingSet上的performance才是真正的performance，此时结果不好以后才是真正的Overfitting.</p>
+<p>而如果此时Testing结果不好，要重新返回TrainingSet.</p>
+<p>参数update的次数。</p>
+<p>有很多影响结果的因素：</p>
+<a id="more"></a>
+
+
+
+<hr>
+<h2 id="TrainingSet-performance-与-TestingSet上performance问题"><a href="#TrainingSet-performance-与-TestingSet上performance问题" class="headerlink" title="TrainingSet performance 与 TestingSet上performance问题"></a>TrainingSet performance 与 TestingSet上performance问题</h2><p>###dropout for good results?</p>
+<p>TrainingSet 上的性能不好</p>
+<ol>
+<li><p>Network架构的设计</p>
+<p>New activation function;</p>
+<p>Sigmoid function</p>
+</li>
+</ol>
+<blockquote>
+<p>手写数字辨识上，Deeper usually does not imply better.</p>
+</blockquote>
+<p>Overfitting要看test的结果，而不是trainset.</p>
+<p>深不一定好的原因：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwtr5y1auj30yg0oqqp5.jpg" alt=""></p>
+<p>Sigmoid function的特点。</p>
+<p>Sigmoid Output的衰减</p>
+<p>如何解决Sigmoid function的问题呢？</p>
+<h3 id="变换activation-Function"><a href="#变换activation-Function" class="headerlink" title="变换activation Function"></a>变换activation Function</h3><p>ReLU function:</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwu3q3hxkj30yg0oq18t.jpg" alt=""></p>
+
       
 
       

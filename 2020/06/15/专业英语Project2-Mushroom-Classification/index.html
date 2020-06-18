@@ -19,8 +19,9 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwela66q3j30ky0sohdt.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfweqdkfnmj30ky0sohdt.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwet91tsqj30ky0sohdt.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwtl9nv2hj30wi0g4q4c.jpg">
 <meta property="article:published_time" content="2020-06-15T01:09:57.000Z">
-<meta property="article:modified_time" content="2020-06-18T06:19:27.670Z">
+<meta property="article:modified_time" content="2020-06-18T15:07:53.286Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="大二下">
@@ -252,7 +253,18 @@
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwet91tsqj30ky0sohdt.jpg" alt=""></p>
 <p>我又反复测试了几次，发现学习速率为1的时候，确实正确率可以提到很高。</p>
 <hr>
-<h2 id="更改神经网络的架构，使用交叉熵损失函数-Gituhub上的Network2"><a href="#更改神经网络的架构，使用交叉熵损失函数-Gituhub上的Network2" class="headerlink" title="更改神经网络的架构，使用交叉熵损失函数(Gituhub上的Network2)"></a>更改神经网络的架构，使用交叉熵损失函数(Gituhub上的Network2)</h2>
+<h2 id="更改神经网络的架构，使用交叉熵损失函数-Gituhub上的Network2"><a href="#更改神经网络的架构，使用交叉熵损失函数-Gituhub上的Network2" class="headerlink" title="更改神经网络的架构，使用交叉熵损失函数(Gituhub上的Network2)"></a>更改神经网络的架构，使用交叉熵损失函数(Gituhub上的Network2)</h2><hr>
+<p>疑问：为什么我没有train_test_split我train的性能下降？</p>
+<p>也就是说，我如果选择固定的样本训练，而不是随机的样本训练结果不好。</p>
+<p>在书上代码中什么是train什么是test？</p>
+<p><strong>如果提供“test_data”，则在每个epoch之后，将根据测试数据对网络进行评估，并打印出部分进度。这对跟踪进度很有用，但会大大减慢速度</strong></p>
+<hr>
+<p><strong>论好好看书的重要性!</strong></p>
+<p><strong>Network1 without Validation!</strong></p>
+<p>在之前描述 MNIST 数据时，它分成了 60,000 个训练图像和 10,000 个 测试图像。这是官方的 MNIST 的描述。</p>
+<p>实际上，我们将用稍微不同的方法对数据进行划分。我 们将测试集保持原样，但是将 60,000 个图像的 MNIST 训练集分成两个部分:一部分 50,000 个 图像，我们将用来训练我们的神经网络，和一个单独的 10,000 个图像的验证集。在本章中我们 不使用验证数据，但是在本书的后面我们将会发现它对于解决如何去设置某些神经网络中的超 参数是很有用的 —— 例如学习速率等，这些参数不被我们的学习算法直接选择。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwtl9nv2hj30wi0g4q4c.jpg" alt=""></p>
+
       
 
       

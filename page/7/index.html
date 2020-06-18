@@ -170,6 +170,311 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数学基础W10矩阵的SVD分解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/">数学基础W10矩阵的SVD分解</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2020-05-12T06:44:38.783Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<p>title: 数学基础W10:矩阵的SVD分解<br>date: 2020-05-28 09:39:22<br>tags:</p>
+<ul>
+<li>笔记</li>
+<li>数学基础</li>
+<li>大二下</li>
+</ul>
+<hr>
+<p>#数学基础W10:矩阵的SVD分解</p>
+<hr>
+<h1 id="面对方阵"><a href="#面对方阵" class="headerlink" title="面对方阵:"></a>面对方阵:</h1><ol>
+<li>A=LU</li>
+<li>A=QR</li>
+<li>A=$Q\Lambda Q$</li>
+<li>正定矩阵的cholosky分解</li>
+</ol>
+<p>面对非方阵:</p>
+<p>$A_{m\times n}=SVD$;</p>
+<blockquote>
+<p>数学基础的重点;</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数学基础W10:对称矩阵的谱分解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10:%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E8%B0%B1%E5%88%86%E8%A7%A3/">数学基础W10:对称矩阵的谱分解</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10:%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E8%B0%B1%E5%88%86%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2020-05-12T05:10:30.309Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数学基础对称矩阵的谱分解"><a href="#数学基础对称矩阵的谱分解" class="headerlink" title="数学基础对称矩阵的谱分解"></a>数学基础对称矩阵的谱分解</h1><h2 id="谱分解"><a href="#谱分解" class="headerlink" title="谱分解"></a>谱分解</h2><p>对称矩阵的谱分解,即是对称矩阵的特征分解;</p>
+<p>特征分解:$A=PDP^{-1}$;</p>
+<p>矩阵可特征分解的条件:矩阵A的n个特征向量不同,即P是可逆的,即P的列向量线性无关.</p>
+<blockquote>
+<p>特别的,当A是对称矩阵时,P作为特征向量构成的矩阵为正交矩阵;</p>
+</blockquote>
+<h3 id="谱分解在机器学习的应用"><a href="#谱分解在机器学习的应用" class="headerlink" title="谱分解在机器学习的应用"></a>谱分解在机器学习的应用</h3><ol>
+<li><p>PCA降维</p>
+<p>最大特征值对应特征向量方向上往往含有较多有用信息,故矩阵在进行特征提取时可以放弃一些辅助的无用信息,仅保留较大的特征值.</p>
+</li>
+<li><p>压缩</p>
+</li>
+</ol>
+<h3 id="对称矩阵的好的性质"><a href="#对称矩阵的好的性质" class="headerlink" title="对称矩阵的好的性质"></a>对称矩阵的好的性质</h3><ol>
+<li>A是实对称矩阵,A的特征值是实数;</li>
+<li>A是 n阶矩阵,下面三个命题等价;<ol>
+<li>$A=A^T$</li>
+<li>$A=Q\Lambda Q^T,Q^T\Lambda Q=A$</li>
+<li>A的特征向量$q_1,q_2,…,q_n$是$R^n$的一组<strong>标准</strong>正交基;</li>
+</ol>
+</li>
+</ol>
+<blockquote>
+<p>副对称矩阵也有相应的对角化定理</p>
+</blockquote>
+<h3 id="谱分解定义"><a href="#谱分解定义" class="headerlink" title="谱分解定义"></a>谱分解定义</h3><p>也可以将对称矩阵A,$A=Q\Lambda Q^T=\sum_{i=1}^n\lambda_iq_iq_i^T$,即在这里写成了rank-1矩阵和的形式;</p>
+<h3 id="特征分解的几何意义"><a href="#特征分解的几何意义" class="headerlink" title="特征分解的几何意义"></a>特征分解的几何意义</h3><p>$设A=\lambda_1q_1q_1^T+\lambda_2q_2q_2^T,显然q_1和q_2是两组基;$</p>
+<p>$q_1^Tq_1=1;q_2^Tq_2=1;$</p>
+<p>所以</p>
+<h3 id="谱分解与二次函数的优化"><a href="#谱分解与二次函数的优化" class="headerlink" title="谱分解与二次函数的优化"></a>谱分解与二次函数的优化</h3><p>$Q(x)=x^TAx$,限制$||x||_2=1$;</p>
+<p>$xQ(x)=xx^TAx=Ax$,故当x等于某个特征向量时,$Q(x)$是对应的特征值;</p>
+<p>$Q(x)<em>{MAX}=\lambda</em>{MAX}$;</p>
+<p>$Q(x)<em>{MIN}=\lambda</em>{MIN}$;</p>
+<p>可以跟正半定矩阵特征值的性质相结合;$\lambda_{min}\ge0$;</p>
+<blockquote>
+<p>无向图的拉普拉斯矩阵L=D-A是正半定矩阵,故有</p>
+<p>min$x^TLx=0$;</p>
+</blockquote>
+<p><strong>所以,谱聚类问题转化成了相应的求次小特征值的问题</strong>;</p>
+<h3 id="瑞利商"><a href="#瑞利商" class="headerlink" title="瑞利商"></a>瑞利商</h3><p>$R(x)=\frac{x^TxA}{x^Tx}$</p>
+<p>A是正半定矩阵等价于R(x)$\ge$0;</p>
+<p><img src="https://i.loli.net/2020/05/12/p3wegGKbxdmVOYN.png" alt="截屏2020-05-12下午2.58.36.png"></p>
+<p><img src="https://i.loli.net/2020/05/12/cL3D6TqgBxaIRtN.png" alt="截屏2020-05-12下午2.59.32.png"></p>
+<h3 id="庞加莱不等式"><a href="#庞加莱不等式" class="headerlink" title="庞加莱不等式"></a>庞加莱不等式</h3><p>令$A\in S^n$,V是$R^n$中的任意一个k维自空间;</p>
+<p>存在单位向量x,y;<br>$$<br>x^TAx\le\lambda_k(A),y^TAy\ge\lambda_{n-k+1}(A)<br>$$</p>
+<h3 id="Poincare不等式的应用-极小极大准则"><a href="#Poincare不等式的应用-极小极大准则" class="headerlink" title="Poincare不等式的应用:极小极大准则"></a>Poincare不等式的应用:极小极大准则</h3><p><img src="https://i.loli.net/2020/05/12/VkwgrHauQ63bFdJ.png" alt="截屏2020-05-12下午3.04.54.png"></p>
+<blockquote>
+<p>极大极小准则可以用于比较两个对称矩阵和的特征值和原矩阵特征值的大小关系:</p>
+</blockquote>
+<p><img src="https://i.loli.net/2020/05/12/Ngn8BJTGeft4ir6.png" alt="截屏2020-05-12下午3.06.08.png"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10:%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E8%B0%B1%E5%88%86%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-计算机网络W8-UDP" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW8-UDP/">计算机网络W8 传输层 TransportLayer</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW8-UDP/" class="archive-article-date">
+  	<time datetime="2020-05-08T04:58:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="计算机网络W8-传输层TransportLayer"><a href="#计算机网络W8-传输层TransportLayer" class="headerlink" title="计算机网络W8:传输层TransportLayer"></a>计算机网络W8:传输层TransportLayer</h1><h2 id="大作业"><a href="#大作业" class="headerlink" title="大作业"></a>大作业</h2><p>P119</p>
+<p>要求 完成书上的4个作业中的作业1和作业4.</p>
+<p>最好的是作业1和作业4都完成并串起来.</p>
+<p>基本要求:作业1 要完成,作业1完成才是project完成的底线.</p>
+<p>作业1要考虑大的负载和多线程.</p>
+<p>写正确v.s.写的<strong>性能</strong>提高.</p>
+<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><ul>
+<li><p>UDP与TCP的工作原理;</p>
+</li>
+<li><p>多路分解</p>
+</li>
+<li><p>TCP:可靠的数据传输,网络层的服务模式却是尽力而为,当IP层/链路无法保证可靠性时,TCP如何做到它是一种可靠的数据传输呢?</p>
+<p>在搭载了可靠上,又希望它能做到流量控制和拥塞控制;</p>
+<p>[难点]</p>
+</li>
+<li><p>UDP没有流量控制和拥塞控制;</p>
+</li>
+<li><p>多路复用</p>
+</li>
+<li><p>多路分解</p>
+</li>
+</ul>
+<p>传输层是端系统进程到端系统进程的,</p>
+<p>发送:多个application传入到一个网络;</p>
+<p>接收:网络/传输层如何将数据报文分解到多个应用层去.</p>
+        
+          <a class="article-more-a" href="/2020/05/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW8-UDP/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW8-UDP/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-fucking-2020" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -816,470 +1121,9 @@
 
 
   
-    <article id="post-英文歌曲文化赏析countryMusic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/27/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90countryMusic/">英语歌曲文化赏析 countryMusic</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/27/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90countryMusic/" class="archive-article-date">
-  	<time datetime="2020-04-27T02:55:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>非技术类博客，仅做个人备忘使用。</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/04/27/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90countryMusic/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/27/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90countryMusic/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统-W8-进程调度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/">操作系统 W8 进程调度</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-04-26T06:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="2-4进程调度"><a href="#2-4进程调度" class="headerlink" title="2.4进程调度"></a>2.4进程调度</h1><p>第2章课程设计：修改和实现相应功能的调度</p>
-<h2 id="进程行为"><a href="#进程行为" class="headerlink" title="进程行为"></a>进程行为</h2><ul>
-<li>做计算</li>
-<li>做I/O[磁盘/网络读写]</li>
-</ul>
-<p>按CPU计算时间与I/O时间的比例：</p>
-<ul>
-<li>计算密集型</li>
-<li>I/O密集型</li>
-</ul>
-<p>进程的调度一定要 考虑到 <strong>负载的特征workload</strong></p>
-<p>相应的再实行相应的调度算法</p>
-<h2 id="调度时机"><a href="#调度时机" class="headerlink" title="调度时机"></a>调度时机</h2><ul>
-<li>进程退出</li>
-<li>进程在I/O或信号量上阻塞</li>
-<li>创建新进程</li>
-<li>I/O中断发生</li>
-<li>时钟中断发生<ul>
-<li>抢占式：执行时可以被打断</li>
-<li>非抢占式</li>
-</ul>
-</li>
-</ul>
-<h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><ul>
-<li>操作系统决定进程运行的向后顺序</li>
-<li>调度器：执行</li>
-<li>调度算法：如何调度</li>
-</ul>
-<p>不同的应用场景：[很难有普适的适用于任何场景的调度算法]</p>
-<ul>
-<li>批处理系统</li>
-<li>交互式系统</li>
-<li>实时系统</li>
-</ul>
-<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
-<li>共同的目标：公平策略强平衡</li>
-<li>批处理系统：最大的吞吐量(批处理没有交互，单位时间内能处理更多，即最大化CPU利用率)</li>
-<li>交互式系统：立刻有相应，最小化响应时间，均衡性</li>
-<li>实时系统：截止时间、可预测性(第二次课程设计)</li>
-</ul>
-<h3 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h3><h4 id="面向时间"><a href="#面向时间" class="headerlink" title="面向时间"></a>面向时间</h4><p>吞吐量/CPU利用率/各种设备的均衡利用</p>
-<h4 id="面向系统"><a href="#面向系统" class="headerlink" title="面向系统"></a>面向系统</h4><p>同样的硬件集群好的调度算法可能给10000个用户提供服务</p>
-<h2 id="批处理系统调度"><a href="#批处理系统调度" class="headerlink" title="批处理系统调度"></a>批处理系统调度</h2><h3 id="先来先服务FCFS"><a href="#先来先服务FCFS" class="headerlink" title="先来先服务FCFS"></a>先来先服务FCFS</h3><p>是比较基础的方法</p>
-<h3 id="短作业"><a href="#短作业" class="headerlink" title="短作业"></a>短作业</h3><p>预计执行<strong>时间短</strong>的作业进行CPU的分派。</p>
-<h3 id="SJF的变形"><a href="#SJF的变形" class="headerlink" title="SJF的变形"></a>SJF的变形</h3><p>最短剩余时间优先</p>
-<p>最高响应比优先HRRN</p>
-<p>​    响应比：(等待时间+要求执行时间)/要求执行时间</p>
-<h3 id="多级调度-三个层次上进行调度"><a href="#多级调度-三个层次上进行调度" class="headerlink" title="多级调度(三个层次上进行调度)"></a>多级调度(三个层次上进行调度)</h3><ul>
-<li>准入调度</li>
-<li>内存调度</li>
-<li>CPU调度</li>
-</ul>
-<h2 id="交互式系统调度"><a href="#交互式系统调度" class="headerlink" title="交互式系统调度"></a>交互式系统调度</h2><h3 id="时间片轮转-Round-Robin"><a href="#时间片轮转-Round-Robin" class="headerlink" title="时间片轮转(Round Robin)"></a>时间片轮转(Round Robin)</h3><ul>
-<li>将系统中所有就绪的进程按照FCFS形成队列</li>
-<li>CPU让进程执行时间片</li>
-<li>在时间片结束时，发生时钟中断</li>
-<li>调度程序据此暂停当前进程的执行，将其送到就绪队列的末尾，并通过上下文切换执行当前的队首进程。</li>
-<li>进程可以未使用完一个时间片，就出让CPU(如阻塞)</li>
-</ul>
-<h4 id="时间片长度的确定"><a href="#时间片长度的确定" class="headerlink" title="时间片长度的确定"></a>时间片长度的确定</h4><ul>
-<li><p>时间片长度变化的影响</p>
-<ul>
-<li>过长-&gt;退化为FCFS</li>
-<li>过短-&gt;context switch的开销变大了</li>
-</ul>
-</li>
-<li><p>对响应时间的要求：</p>
-<p>​    响应时间=进程数目$\times$时间片长度</p>
-<blockquote>
-<p>Trade off between those 2.</p>
-</blockquote>
-</li>
-<li><p>影响时间片长度的因素：</p>
-<ul>
-<li>就绪进程的数目</li>
-<li>系统的处理能力</li>
-</ul>
-</li>
-</ul>
-<h3 id="优先级调度"><a href="#优先级调度" class="headerlink" title="优先级调度"></a>优先级调度</h3><p>谁的优先级高，先调度谁</p>
-<ul>
-<li>静态优先级</li>
-<li>动态优先级：在运行时做相应的优先级调整</li>
-</ul>
-<h4 id="多类优先级调度"><a href="#多类优先级调度" class="headerlink" title="多类优先级调度"></a>多类优先级调度</h4><p>在各类之间采用优先级调度，而各类进程内部采用时间片轮转调度。</p>
-<h4 id="多重队列"><a href="#多重队列" class="headerlink" title="多重队列"></a>多重队列</h4><h3 id="彩票调度"><a href="#彩票调度" class="headerlink" title="彩票调度"></a>彩票调度</h3><h3 id="公平分享调度"><a href="#公平分享调度" class="headerlink" title="公平分享调度"></a>公平分享调度</h3><h2 id="实时系统调度"><a href="#实时系统调度" class="headerlink" title="实时系统调度"></a>实时系统调度</h2><ul>
-<li><p>实时调度系统氛围硬实时和软实时</p>
-</li>
-<li><p>可调度的实时系统</p>
-</li>
-<li><p>针对多周期的事件流：</p>
-<p>若有周期性事件m个，事件i的周期为Pi,其中每个事件需要Ci秒的CPU时间，</p>
-<p>$\sum_{i=1}^m\frac{C_i}{P_i}\le1$</p>
-</li>
-</ul>
-<h2 id="调度策略与机制"><a href="#调度策略与机制" class="headerlink" title="调度策略与机制"></a>调度策略与机制</h2><ul>
-<li>将调度问题分解为调度策略与调度机制</li>
-</ul>
-<h2 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h2><ul>
-<li>线程的实现方式决定线程的调度模式：<ul>
-<li>用户</li>
-<li>内核</li>
-</ul>
-</li>
-<li>用户级线程的阻塞会引起整个进程的阻塞</li>
-<li>在用户级线程方式下，可以为应用定制特定的调度器</li>
-</ul>
-<h1 id="2-5-MINIX3进程概述"><a href="#2-5-MINIX3进程概述" class="headerlink" title="2.5 MINIX3进程概述"></a>2.5 MINIX3进程概述</h1><h2 id="minix3系统结构"><a href="#minix3系统结构" class="headerlink" title="minix3系统结构"></a>minix3系统结构</h2><p>minix3微内核结构，是一组进程的集合，内核功能较少，更多的功能由用户进程实现，进程间通过IPC机制进行通信。</p>
-<h3 id="minix3的四层结构"><a href="#minix3的四层结构" class="headerlink" title="minix3的四层结构"></a>minix3的四层结构</h3><ul>
-<li><p>Kernel 层</p>
-</li>
-<li><p>Device drivers</p>
-</li>
-<li><p>Server process</p>
-</li>
-<li><p>User process</p>
-</li>
-</ul>
-<h3 id="内核层"><a href="#内核层" class="headerlink" title="内核层"></a>内核层</h3><ul>
-<li>负责进程的调度</li>
-<li>时钟任务</li>
-<li>系统任务读写I/O，跨地址空间复制数据</li>
-<li>C+汇编</li>
-</ul>
-<h3 id="设备驱动层"><a href="#设备驱动层" class="headerlink" title="设备驱动层"></a>设备驱动层</h3><ul>
-<li>读写I/O端口的数据</li>
-<li>不同类型设备需要相应的设备驱动程序</li>
-<li>也可以调用其他内核调用</li>
-</ul>
-<h3 id="服务器层"><a href="#服务器层" class="headerlink" title="服务器层"></a>服务器层</h3><ul>
-<li>进程服务器<ul>
-<li>创建，终止进程:fork, exec,wait</li>
-<li>信号相关的系统调用:alarm,kill</li>
-<li>管理内存,brk</li>
-</ul>
-</li>
-<li>文件系统服务器<ul>
-<li>执行文件系统的调用,read,mount,chdir</li>
-</ul>
-</li>
-<li>再生服务器<ul>
-<li>启动或重启相关的设备驱动程序</li>
-</ul>
-</li>
-</ul>
-<h3 id="用户进程层"><a href="#用户进程层" class="headerlink" title="用户进程层"></a>用户进程层</h3><ul>
-<li>包含所有的用户进程<ul>
-<li>Shell，编辑器，编译器等工具程序</li>
-<li>用户运行的程序</li>
-<li>守护进程</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>设备驱动层和服务器层的进程称为系统进程，是操作系统的组成</p>
-<p>内核&gt;设备&gt;服务器&gt;用户</p>
-</blockquote>
-<h2 id="Minix系统启动"><a href="#Minix系统启动" class="headerlink" title="Minix系统启动"></a>Minix系统启动</h2><h3 id="启动顺序"><a href="#启动顺序" class="headerlink" title="启动顺序"></a>启动顺序</h3><p>Bootstrap[引导程序]-&gt;boot(boot image)-&gt;Kernel-&gt;系统任务、时钟任务-&gt;系统进程-&gt;Init进程-&gt;其它用户进程及…</p>
-<h3 id="引导映像-boot-image"><a href="#引导映像-boot-image" class="headerlink" title="引导映像(boot image)"></a>引导映像(boot image)</h3><ul>
-<li>由boot装载至内存的适当位置</li>
-<li>包括多个：内核、进程管理器、filesystem</li>
-<li>每个部分都是独立的程序</li>
-</ul>
-<h3 id="进程树初始化"><a href="#进程树初始化" class="headerlink" title="进程树初始化"></a>进程树初始化</h3><ul>
-<li>init进程</li>
-</ul>
-<h2 id="MINIX进程间通讯"><a href="#MINIX进程间通讯" class="headerlink" title="MINIX进程间通讯"></a>MINIX进程间通讯</h2><p>IPC原语</p>
-<ul>
-<li>内核将消息从发送者复制到接受者</li>
-<li>系统进程，时钟任务，系统任务只允许与特定的进程通信</li>
-<li>当一个进程发送消息，而目标进程尚未开始接收消息时，发送进程将阻塞。</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">send(dest,&amp;message)</span><br></pre></td></tr></table></figure>
-
-<p>notify原语</p>
-<p>不会阻塞</p>
-<p>对于系统进程，用位图来记录其他系统进程发给它的通知</p>
-<h2 id="MINIX进程调度"><a href="#MINIX进程调度" class="headerlink" title="MINIX进程调度"></a>MINIX进程调度</h2><ul>
-<li><p>minix3采用多级排队系统，定义为16个队列[16个优先级]</p>
-</li>
-<li><p>系统任务和时钟任务最高优先级</p>
-</li>
-<li><p>IDLE最低</p>
-<p>当系统无其余有效或就绪时，会使空闲进程在上面跑。</p>
-</li>
-<li><p>一个进程可以根据不同需要在不同优先级的队列中移动</p>
-</li>
-<li><p>只有高优先级的队列中没有就绪进程时，才运行低优先级的进程队列。</p>
-</li>
-</ul>
-<hr>
-<ul>
-<li><p>不同的优先级的时间片长度不一</p>
-<ul>
-<li>驱动程序进程和服务器进程需要运行其至阻塞</li>
-</ul>
-</li>
-<li><p>使用一个改进的轮转调度算法</p>
-<ul>
-<li>进程转为非就绪时，从队列中取出，当它再变回就绪时，将其放在队首，分配的时间片 <strong>为上次时间片中的剩余时间</strong></li>
-</ul>
-<blockquote>
-<p>实现不同的调度功能</p>
-</blockquote>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-时间序列预测学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/">时间序列预测学习</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-  	<time datetime="2020-04-24T05:44:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="基于2G，3G，4G的时间序列做5G的预测"><a href="#基于2G，3G，4G的时间序列做5G的预测" class="headerlink" title="基于2G，3G，4G的时间序列做5G的预测"></a>基于2G，3G，4G的时间序列做5G的预测</h1><blockquote>
-<p>华为财务精英挑战赛初赛商赛赛题</p>
-<p>为保密性不提供数据和具体描述</p>
-<p>仅是个人主观答题</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">DaSE</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/24/%E6%97%B6%E9%97%B4%E5%BA%8F%E5%88%97%E9%A2%84%E6%B5%8B%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
     </nav>
   
 

@@ -6,29 +6,41 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Chixinning的博客</title>
+  <title>操作系统W16 w文件系统 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="learn from scratch">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="文件系统(FS) 数据以文件的方式存储在磁盘或其他外部设备上 Chapter4: 内存管理 page function(DRAM) 易失性 memory 外存：长期存储，非易失 硬盘DISK SSD  操作系统中处理文件的部分称为文件系统(file system)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统W16 w文件系统">
+<meta property="og:url" content="http://yoursite.com/2020/06/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW16-w%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="learn from scratch">
+<meta property="og:description" content="文件系统(FS) 数据以文件的方式存储在磁盘或其他外部设备上 Chapter4: 内存管理 page function(DRAM) 易失性 memory 外存：长期存储，非易失 硬盘DISK SSD  操作系统中处理文件的部分称为文件系统(file system)">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg0zs7esbbj30qg0bogor.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg102bwb0fj30ci0e640w.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg102lb2ifj30ci0e6did.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg10d6s4kdj30oe05cac1.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg10kdvac2j30qi0c0dij.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg10wi0xrvj30qi08wac2.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg10prvcgmj30qi04aq4n.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg111c1k5qj30qi09ajte.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg113wbr0rj30qi0b6q6t.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg115tklvzj30qi0e0djz.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg119dsp4fj30ro0e0dk3.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg11jwl0o1j30ro0c277y.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg11mh9ztjj30ro0eqgp2.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg11yfhjwpj30vq0iwwnd.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg12r9cb7pj30om042jsk.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg12xx6c0yj30ri0bujxz.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg136imlszj30ri0cin07.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg139ufrqhj30ri0h6n1r.jpg">
+<meta property="article:published_time" content="2020-06-22T04:43:53.000Z">
+<meta property="article:modified_time" content="2020-06-22T07:22:07.968Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="大二下">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg0zs7esbbj30qg0bogor.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -168,16 +180,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-操作系统W16-w文件系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-操作系统W16-w文件系统" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW16-w%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">操作系统W16 w文件系统</a>
+    <h1 class="article-title" itemprop="name">
+      操作系统W16 w文件系统
     </h1>
   
 
@@ -196,11 +206,193 @@
 <li>外存：长期存储，非易失 硬盘DISK SSD </li>
 <li>操作系统中处理文件的部分称为文件系统(file system)</li>
 </ul>
-        
-          <a class="article-more-a" href="/2020/06/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW16-w%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/#more">more >></a>
-        
+<a id="more"></a>
+
+<hr>
+<h2 id="5-1-文件-文件使用的角度的看待"><a href="#5-1-文件-文件使用的角度的看待" class="headerlink" title="5.1 文件(文件使用的角度的看待)"></a>5.1 文件(文件使用的角度的看待)</h2><h3 id="文件命名"><a href="#文件命名" class="headerlink" title="文件命名"></a>文件命名</h3><p>文件是一种抽象机制，提供了一种把信息保存在磁盘上而且便于以后读取的方法。</p>
+<p>扩展名表示文件的类型，给出了与文件类型有关的一些信息。</p>
+<h3 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h3><ul>
+<li>无结构字节序列</li>
+<li>固定长度记录的序列，每条记录都有内部结构</li>
+<li>文件由一棵记录树构成</li>
+</ul>
+<h3 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h3><ul>
+<li>常规文件</li>
+<li>目录：管理文件系统结构的系统文件</li>
+<li>字符设备文件和I/O有关，将底层的设备都抽象成文件。</li>
+<li>块设备文件：处理磁盘</li>
+</ul>
+<h4 id="常规文件"><a href="#常规文件" class="headerlink" title="常规文件"></a>常规文件</h4><p>ASCII文件或二进制文件</p>
+<p>二进制文件读取的效率较高，但无法直接查看</p>
+<h3 id="文件访问"><a href="#文件访问" class="headerlink" title="文件访问"></a>文件访问</h3><ul>
+<li>顺序访问：磁带</li>
+<li>随机访问：磁盘、SSD都是支持随机访问的</li>
+</ul>
+<hr>
+<p>顺序访问和随机访问的性能是有显著不同的。</p>
+<p>以针对磁盘而言：</p>
+<p>磁盘顺序/随机访问的差异比较大，但SSD的差异会小一些。</p>
+<blockquote>
+<p>优化 将随机访问按照某种方式转化为顺序的访问。</p>
+</blockquote>
+<h3 id="文件属性"><a href="#文件属性" class="headerlink" title="文件属性"></a>文件属性</h3><p>文件：文件名+数据</p>
+<p>创建日期、文件长度等等</p>
+<p>将文件属性看作meta-data元数组</p>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><ul>
+<li><p>CREATE</p>
+</li>
+<li><p>DELETE</p>
+</li>
+<li><p>OPEN：将文件属性和磁盘地址表载入内存之中，以便于以后系统调用的快速存取。</p>
+<p>所以这就是每次文件读写时都要打开的原因。(load_memory)</p>
+</li>
+<li><p>CLOSE</p>
+</li>
+<li><p>READ</p>
+</li>
+<li><p>WRITE</p>
+</li>
+</ul>
+<h2 id="5-2-目录"><a href="#5-2-目录" class="headerlink" title="5.2 目录"></a>5.2 目录</h2><p>利用目录记录文件，但是目录本身也是文件</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg0zs7esbbj30qg0bogor.jpg" alt=""></p>
+<h4 id="简单目录系统"><a href="#简单目录系统" class="headerlink" title="简单目录系统"></a>简单目录系统</h4><p>构造目录树</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg102bwb0fj30ci0e640w.jpg" alt=""></p>
+<h4 id="层状目录系统"><a href="#层状目录系统" class="headerlink" title="层状目录系统"></a>层状目录系统</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg102lb2ifj30ci0e6did.jpg" alt=""></p>
+<h4 id="路径名"><a href="#路径名" class="headerlink" title="路径名"></a>路径名</h4><p>在类Unix系统下：</p>
+<ul>
+<li>绝对路径名：从根目录开始，唯一的</li>
+<li>相对路径名</li>
+<li>工作目录 working directory</li>
+</ul>
+<p>每个目录都有两个特殊的目录项<code>.</code>和<code>..</code></p>
+<h4 id="目录的操作"><a href="#目录的操作" class="headerlink" title="目录的操作"></a>目录的操作</h4><blockquote>
+<p>LINK /UNLINK</p>
+</blockquote>
+<p>通过LINK给一个文件，允许在目录的其他位置上再出现一次</p>
+<p>允许文件出现在多个目录中，制定一个存在的文件和一个路径名。</p>
+<p><strong>LINK</strong> :硬连接，文件增加一个链接数。</p>
+<p><strong>UNLINK:</strong></p>
+<ul>
+<li>如果只出现在一个目录中，在文件系统中被删除。</li>
+<li>多个目录中，只删除指定的路径名。</li>
+</ul>
+<p>硬连接，联结技术是在linux或类linux下的，与windows的那种快捷键是不一样的。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg10d6s4kdj30oe05cac1.jpg" alt=""></p>
+<h2 id="5-3文件系统的实现"><a href="#5-3文件系统的实现" class="headerlink" title="5.3文件系统的实现"></a>5.3文件系统的实现</h2><p>文件系统的实现者关心的是文件和目录是如何存储的、磁盘空间如何管理以及文件系统是如何有效而可靠的工作的等。</p>
+<h3 id="文件系统的布局"><a href="#文件系统的布局" class="headerlink" title="文件系统的布局"></a>文件系统的布局</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg10kdvac2j30qi0c0dij.jpg" alt=""></p>
+<ul>
+<li>MBR：主引导记录：在系统启动的时候急性记录，记录了分区的起始地址和结束地址。</li>
+<li>Boot block:引导块</li>
+<li>Superblock：分区上整体文件系统的信息</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg10wi0xrvj30qi08wac2.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg10prvcgmj30qi04aq4n.jpg" alt=""></p>
+<ul>
+<li>i-node索引节点，读写操作的时候，路径名定位到文件，文件都有对应的i-node，读写当前的位置计算磁盘块再对应磁盘进行读写。</li>
+<li>一个目录下的文件名，对应一个i-node号和i-node区。读i-node号，即知道了在磁盘上的位置。</li>
+</ul>
+<h3 id="文件的实现"><a href="#文件的实现" class="headerlink" title="文件的实现"></a>文件的实现</h3><p>每个文件，通常是分布在多个磁盘块之上，如何分布及记录文件才磁盘上的分布情况?</p>
+<h4 id="连续分配法-物理连续"><a href="#连续分配法-物理连续" class="headerlink" title="连续分配法(物理连续)"></a>连续分配法(物理连续)</h4><p>把文件作为连续数据块存储在磁盘上。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg111c1k5qj30qi09ajte.jpg" alt=""></p>
+<h4 id="链表分配法-物理上可以不用连续-："><a href="#链表分配法-物理上可以不用连续-：" class="headerlink" title="链表分配法(物理上可以不用连续)："></a>链表分配法(物理上可以不用连续)：</h4><p>为每个文件构造磁盘块的链接表，每个块的第一个字用于指向下一块的指针。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg113wbr0rj30qi0b6q6t.jpg" alt=""></p>
+<h4 id="文件分配表法"><a href="#文件分配表法" class="headerlink" title="文件分配表法"></a>文件分配表法</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg115tklvzj30qi0e0djz.jpg" alt=""></p>
+<p>表置于内存之中，当这个表很大的时候，会占用很多的存储空间。</p>
+<h4 id="索引节点法-类Unix"><a href="#索引节点法-类Unix" class="headerlink" title="索引节点法(类Unix)"></a>索引节点法(类Unix)</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg119dsp4fj30ro0e0dk3.jpg" alt=""></p>
+<h3 id="目录实现"><a href="#目录实现" class="headerlink" title="目录实现"></a>目录实现</h3><p>目录系统：map(文件名)to (查找文件数据所需要的信息)</p>
+<h4 id="共享文件："><a href="#共享文件：" class="headerlink" title="共享文件："></a>共享文件：</h4><p>多个目录中不同文件名来描述同一个共享文件。</p>
+<h4 id="文件别名："><a href="#文件别名：" class="headerlink" title="文件别名："></a>文件别名：</h4><ul>
+<li>索引节点</li>
+<li>符号链接</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg11jwl0o1j30ro0c277y.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg11mh9ztjj30ro0eqgp2.jpg" alt=""></p>
+<p>内容是另一个目录或文件的路径名。而目录结构基本上维护的是一个树状的结构。</p>
+<h4 id="类UNIX-UNIX目录"><a href="#类UNIX-UNIX目录" class="headerlink" title="类UNIX/UNIX目录"></a>类UNIX/UNIX目录</h4><ul>
+<li>每个目录项只包含一个文件名及其i-节点号。</li>
+<li>有关文件类 型、长度、时间、拥有者和磁盘块等所有信息都放在i-节 点中。(索引节点法)</li>
+</ul>
+<p>例：</p>
+<ul>
+<li>根目录在文件分区里是专门有一块的</li>
+<li><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg11yfhjwpj30vq0iwwnd.jpg" alt=""></li>
+</ul>
+<h3 id="磁盘空间管理"><a href="#磁盘空间管理" class="headerlink" title="磁盘空间管理"></a>磁盘空间管理</h3><h4 id="管理策略"><a href="#管理策略" class="headerlink" title="管理策略"></a>管理策略</h4><p>几乎所有的文件系统都把文件分割成<strong>固定大小的块</strong>来存储，各块不必相邻。</p>
+<h4 id="块大小"><a href="#块大小" class="headerlink" title="块大小"></a>块大小</h4><ul>
+<li>块大，所需磁盘块少，访问速度就快</li>
+<li>块小，所需磁盘块多，访问速度慢</li>
+</ul>
+<blockquote>
+<p>性能和空间利用率是相互冲突的，需要平衡。</p>
+</blockquote>
+<p>文件系统既需要记录哪个磁盘块被使用了，也需要记录哪个磁盘块是空闲的。</p>
+<h4 id="空闲块管理-Bitmap管理空闲空间-空闲块链接表"><a href="#空闲块管理-Bitmap管理空闲空间-空闲块链接表" class="headerlink" title="空闲块管理(Bitmap管理空闲空间/空闲块链接表)"></a>空闲块管理(Bitmap管理空闲空间/空闲块链接表)</h4><ul>
+<li>使用磁盘块的链接表。1KB/4Byte=256=255+1需要一项存放指向下一块的指针</li>
+<li>使用位图：<ul>
+<li>n个块的磁盘需要n位位图</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件系统的可靠性-重要：持久化保存的要求"><a href="#文件系统的可靠性-重要：持久化保存的要求" class="headerlink" title="文件系统的可靠性(重要：持久化保存的要求)"></a>文件系统的可靠性(重要：持久化保存的要求)</h3><h4 id="备份与备份策略"><a href="#备份与备份策略" class="headerlink" title="备份与备份策略"></a>备份与备份策略</h4><ul>
+<li><p>物理转储</p>
+<p>景象一样的物理考呗，直接拷贝无论信息是否无用，不支持增量备份，不能根据需要恢复特定的数据。</p>
+</li>
+<li><p>逻辑转储</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg12r9cb7pj30om042jsk.jpg" alt=""></p>
+<p>增量备份：避免备份无效的数据：GIT</p>
+</li>
+</ul>
+<h4 id="文件系统的一致性"><a href="#文件系统的一致性" class="headerlink" title="文件系统的一致性"></a>文件系统的一致性</h4><ul>
+<li><p>许多文件系统读取磁盘块，进行修改后，再写回磁盘。如 果在修改过的磁盘块全部写回之前，系统崩溃，那么文件 系统可能出现不一致。如果一些未被写回的块是i节点块、 目录块或者包含空闲表的磁盘块时，这个问题尤为严重。</p>
+<blockquote>
+<p>读写过程中的突然断电</p>
+</blockquote>
+</li>
+<li><p>相应地，出现了检验文件系统一致性的工具</p>
+<ul>
+<li>UNIX — fsck</li>
+<li>Windows – chkdsk</li>
+</ul>
+</li>
+</ul>
+<h4 id="检验文件系统一致性的工具"><a href="#检验文件系统一致性的工具" class="headerlink" title="检验文件系统一致性的工具"></a>检验文件系统一致性的工具</h4><p>一致性检查包括：数据块检查与文件检查</p>
+<h4 id="数据块的一致性检查-重要"><a href="#数据块的一致性检查-重要" class="headerlink" title="数据块的一致性检查(重要)"></a>数据块的一致性检查(重要)</h4><p>数据块要么空闲 要么未使用(只要文件系统一致，要么在第一张表中位1，要么在第二张表中为1)</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg12xx6c0yj30ri0bujxz.jpg" alt=""></p>
+<h4 id="文件的一致性检查-重要"><a href="#文件的一致性检查-重要" class="headerlink" title="文件的一致性检查(重要)"></a>文件的一致性检查(重要)</h4><p>i-node与文件名要有正确的对应关系</p>
+<p>建立两张计数器表：</p>
+<ol>
+<li>扫描文件</li>
+<li>指向这个i节点号的目录项数目</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg136imlszj30ri0cin07.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gg139ufrqhj30ri0h6n1r.jpg" alt=""></p>
+<p>系统是否释放，是根据i节点的链接数来的。</p>
+<h4 id="误操作的防止"><a href="#误操作的防止" class="headerlink" title="误操作的防止"></a>误操作的防止</h4><p>垃圾箱。</p>
+<p>备份时的压缩技术。     </p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -228,16 +420,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW16-w%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/22/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW16-w%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW15-%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">专业英语W15 总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -257,895 +508,14 @@
 
 
 
-
-  
-    <article id="post-专业英语W15-总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW15-%E6%80%BB%E7%BB%93/">专业英语W15 总结</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW15-%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2020-06-20T15:00:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>我从专业英语的课程中学到了很多有用的英语写作技巧，尤其是专业性的英语写作。</p>
-<p>I have learned several useful English writing skills from this course, especially professional English writing.</p>
-<ol>
-<li><p>英语写作要注意避免一些迂回，阅读了老师分享的有关避免写作迂回的一些技巧，对于一些造句，尤其是形容词的造句和一些定义从句的使用都给了我很大的帮助和改进。要更多的注意英语写作的思维方式 尽量避免中文翻译，直接用英文写进行训练。</p>
-<ol>
-<li><p>In English writing, attention should be paid to avoid some redundancy.  After reading some skills shared by the teacher about how to be precise and concise, I have learned a lot  in sentence making, especially in the use of adjectives and definition clauses.</p>
-</li>
-<li><p>More attention should be paid to the way of thinking in English an English wa while writing and to avoid direct Chinese translation as much as possible. Before Mid-term, I often wrote the answers directly in Chinese, which often led to some logic and grammar mistakes ,for I had to think about the content and the grammar altogether.In the Neural Network courses, I tried to write the answer in Chinese first and then translated them into English. Such writing process produced fewer mistakes but this didn’t help me improve the real English writing skills much.</p>
-</li>
-<li><p>My  basic English grammar and professional use of some proper nouns is not good enough and I should read more and practice more.</p>
-</li>
-<li><p>The difference between professional English writing and traditional English essay writing is quiet dominant. Traditional English essays require more attention paid toparagraph logic and sentence making but professional English writing lay more emphasis on the precision of expression.</p>
-</li>
-<li><p>However, having learned about the course for one term, I am still not clear about the structure of the English writing and the relationship between paragraphs. Further study and more frequent training are much needed.</p>
-</li>
-</ol>
-</li>
-<li></li>
-<li><p>很多英语写作用词要注意一些专业性的语法和一些专有名词的专业使用。 </p>
-</li>
-</ol>
-<ol start="4">
-<li>专业性的英语写作与传统英语写作的不同。传统英语写作更注重段落逻辑和用词造句。</li>
-</ol>
-<ol start="5">
-<li><p>但是，对于文章回答的结构把握还不是很清楚，还需要进一步学习与训练。</p>
-<p> However, having learned about the course for one term, I am still not clear about the structure of the English writing and the relationship between paragraphs. Further study and more frequent training are much needed.</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/20/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW15-%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W15-Chapter5toEnd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW15-Chapter5toEnd/">计算机网络W15:Chapter5toEnd</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW15-Chapter5toEnd/" class="archive-article-date">
-  	<time datetime="2020-06-19T05:19:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们所学习的LS和DV算法是否适合于我们在真实网络中的路由的应用。</p>
-<h1 id="intra-AS-routing-amp-amp-inter-AS-routing"><a href="#intra-AS-routing-amp-amp-inter-AS-routing" class="headerlink" title="intra-AS routing &amp;&amp; inter-AS routing"></a>intra-AS routing &amp;&amp; inter-AS routing</h1><ul>
-<li>AS内部的协议OSPF协议</li>
-</ul>
-<h2 id="OSPF开放最短路径优先"><a href="#OSPF开放最短路径优先" class="headerlink" title="OSPF开放最短路径优先"></a>OSPF开放最短路径优先</h2><p>泛洪攻击</p>
-<p>##密码学(Chapter)</p>
-<p>区块链和密码学</p>
-<h2 id="密码学哈希Hash"><a href="#密码学哈希Hash" class="headerlink" title="密码学哈希Hash"></a>密码学哈希Hash</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxjcs0w88j30z007odpg.jpg" alt=""></p>
-<p>与HashTable是不同的。</p>
-<p>不能产生哈希碰撞，即不同输入不能产生相同输出，毕竟一旦碰撞以后算法就不安全了嘛。</p>
-<h3 id="SHA-256"><a href="#SHA-256" class="headerlink" title="SHA-256"></a>SHA-256</h3><p>密码学哈希：sha256</p>
-<p>可以把任何大小的输入，进过哈希以后，生成了一个256位的串。</p>
-<p>哈希值在应用中被称为摘要(digest)或指纹(fingerprint)</p>
-<h4 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h4><ul>
-<li><strong>逆向难解</strong>，即很难在有限的计算资源和时间内推出原文。</li>
-<li><strong>强抗碰撞性</strong></li>
-<li><strong>雪崩效应</strong>：细微原文，输出却相差很大。</li>
-</ul>
-<h3 id="哈希在区块链中的应用"><a href="#哈希在区块链中的应用" class="headerlink" title="哈希在区块链中的应用"></a>哈希在区块链中的应用</h3><h4 id="哈希签名"><a href="#哈希签名" class="headerlink" title="哈希签名"></a>哈希签名</h4><p>非对称加密：私钥加密公钥解密</p>
-<p>对称加密</p>
-<p>c.f.CrashCourse密码学</p>
-<p>CSDN库的被泄露。</p>
-<p>撞库和密码的重用性</p>
-<h3 id="密码学安全的原因"><a href="#密码学安全的原因" class="headerlink" title="密码学安全的原因"></a>密码学安全的原因</h3><p>所有加密的算法都是公开的，都有一个数学难题作为背景，是数学难题难解，而不是加密算法很难。</p>
-<p>密码学与量子计算机的突破</p>
-<hr>
-<ul>
-<li>OSPF协议使用了算法，提供了安全性</li>
-<li>多条相同开销的路径(可以分流)</li>
-<li>单播和多播</li>
-</ul>
-<h3 id="Hierarchical-OSPF：OSPF的层次结构"><a href="#Hierarchical-OSPF：OSPF的层次结构" class="headerlink" title="Hierarchical OSPF：OSPF的层次结构"></a>Hierarchical OSPF：OSPF的层次结构</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxk5epl5pj30ro0ju7g5.jpg" alt=""></p>
-<ul>
-<li>2-level hierarchy</li>
-</ul>
-<hr>
-<h2 id="BGP-AS之间的边界网关协议"><a href="#BGP-AS之间的边界网关协议" class="headerlink" title="BGP:AS之间的边界网关协议"></a>BGP:AS之间的边界网关协议</h2><ul>
-<li>eBGP connectivity</li>
-<li>iBGP connectivity</li>
-</ul>
-<p>BGP既运行外部也运行内部协议</p>
-<hr>
-<h3 id="热土豆协议"><a href="#热土豆协议" class="headerlink" title="热土豆协议"></a>热土豆协议</h3><h3 id="SDN协议"><a href="#SDN协议" class="headerlink" title="SDN协议"></a>SDN协议</h3><p>各种厂商的路由器的集合</p>
-<p>垂直扩展与水皮扩展</p>
-<p>上机很多多线程就不笔试了</p>
-<p>下周划重点！有问题可以问助教！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/19/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW15-Chapter5toEnd/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ML08-Tips-for-Deep-Learning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/ML08-Tips-for-Deep-Learning/">ML08 Tips for Deep Learning</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/ML08-Tips-for-Deep-Learning/" class="archive-article-date">
-  	<time datetime="2020-06-18T05:03:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Tips-for-Deep-Learning"><a href="#Tips-for-Deep-Learning" class="headerlink" title="Tips for Deep Learning"></a>Tips for Deep Learning</h1><p>DeepLearning上，Overfitting不是第一个遇到的问题，而是在training Set上根本无法给一个好的正确率</p>
-<p>TestingSet上的performance才是真正的performance，此时结果不好以后才是真正的Overfitting.</p>
-<p>而如果此时Testing结果不好，要重新返回TrainingSet.</p>
-<p>参数update的次数。</p>
-<p>有很多影响结果的因素：</p>
-        
-          <a class="article-more-a" href="/2020/06/18/ML08-Tips-for-Deep-Learning/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/ML08-Tips-for-Deep-Learning/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数学基础W15-凸集和凸集的保凸运算" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W15-%E5%87%B8%E9%9B%86%E5%92%8C%E5%87%B8%E9%9B%86%E7%9A%84%E4%BF%9D%E5%87%B8%E8%BF%90%E7%AE%97/">数学基础W15:凸集和凸集的保凸运算和凸函数</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W15-%E5%87%B8%E9%9B%86%E5%92%8C%E5%87%B8%E9%9B%86%E7%9A%84%E4%BF%9D%E5%87%B8%E8%BF%90%E7%AE%97/" class="archive-article-date">
-  	<time datetime="2020-06-18T00:41:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="凸集和凸集的保凸运算"><a href="#凸集和凸集的保凸运算" class="headerlink" title="凸集和凸集的保凸运算"></a>凸集和凸集的保凸运算</h1><h2 id="什么是凸集？"><a href="#什么是凸集？" class="headerlink" title="什么是凸集？"></a>什么是凸集？</h2><h3 id="直线与线段"><a href="#直线与线段" class="headerlink" title="直线与线段"></a>直线与线段</h3><p>设$x_1\neq x_2$是空间中的两个点。</p>
-<p>$y=\theta x_1+(1-\theta)x_2$</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfw5fhmrl4j30z8068ta4.jpg" alt=""></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfw5ft49omj30z80eeq5x.jpg" alt=""></p>
-<h3 id="仿射集合"><a href="#仿射集合" class="headerlink" title="仿射集合"></a>仿射集合</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfw5g6t4v2j30z808an0f.jpg" alt=""></p>
-<p>先两个点，再扩展一个点…？？</p>
-<h3 id="凸集"><a href="#凸集" class="headerlink" title="凸集"></a>凸集</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfw5iszxuvj30z8090gom.jpg" alt=""></p>
-<p><a href="https://zhuanlan.zhihu.com/p/33231654" target="_blank" rel="noopener">【凸优化】凸集 - 忆臻的文章 - 知乎</a></p>
-<hr>
-<h2 id="1-仿射"><a href="#1-仿射" class="headerlink" title="1. 仿射"></a>1. 仿射</h2><h3 id="仿射集"><a href="#仿射集" class="headerlink" title="仿射集"></a>仿射集</h3><p>$x_1,x_2\in C,\theta\in R,有\theta_1+(1-\theta)x_2\in C$</p>
-<h2 id="2-凸集"><a href="#2-凸集" class="headerlink" title="2. 凸集"></a>2. 凸集</h2><h3 id="凸集-1"><a href="#凸集-1" class="headerlink" title="凸集"></a>凸集</h3><p>一个集合 <img src="https://www.zhihu.com/equation?tex=C" alt="[公式]"> 是凸的，若 <img src="https://www.zhihu.com/equation?tex=C" alt="[公式]"> 中任意两点之间的线段都在<img src="https://www.zhihu.com/equation?tex=C" alt="[公式]">中，即对 <img src="https://www.zhihu.com/equation?tex=%5Cforall+x_1%2Cx_2%5Cin+C" alt="[公式]">),<img src="https://www.zhihu.com/equation?tex=%5Cforall+%5Ctheta+%5Cin+%5B0%2C1%5D" alt="[公式]"> 都有 <img src="https://www.zhihu.com/equation?tex=%5Ctheta+x_1%2B%281-%5Ctheta%29x_2%5Cin+C" alt="[公式]">。</p>
-<h2 id="3-锥"><a href="#3-锥" class="headerlink" title="3. 锥"></a>3. 锥</h2><p>如果对<img src="https://www.zhihu.com/equation?tex=%5Cforall+x%5Cin+C" alt="[公式]"> , <img src="https://www.zhihu.com/equation?tex=%5Ctheta+%5Cgeq+0" alt="[公式]"> 都有 <img src="https://www.zhihu.com/equation?tex=%5Ctheta+x%5Cin+C" alt="[公式]">，则称集合 <img src="https://www.zhihu.com/equation?tex=C" alt="[公式]"> 是锥。</p>
-<h2 id="4-超平面与半平面"><a href="#4-超平面与半平面" class="headerlink" title="4. 超平面与半平面"></a>4. 超平面与半平面</h2><p>超平面是具有以下形式的集合：</p>
-<p>$(x|a^Tx=b)$</p>
-<p>解析的：超平面是关于x的非平凡线性方成的解空间(仿射集合)</p>
-<p>几何的：与给定向量a的内积为常数的点的集合；法线方向为a的超平面，b是偏移</p>
-<p>【凸优化笔记1】-仿射集、凸集和锥 - Lauer的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/101948518" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/101948518</a></p>
-<p>超平面把空间划分为两个半空间</p>
-<p>支撑超平面c.f.切平面。</p>
-<hr>
-<h1 id="凸函数"><a href="#凸函数" class="headerlink" title="凸函数"></a>凸函数</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>函数是凸的：定义域是凸集，且对于x,y和任意$\theta \in[0,1]$</p>
-<p>$f(\theta x+(1-\theta)y)\le\theta f(x)+(1-\theta)f(y)$</p>
-<p>限制在直线上判断是否是凸函数</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfw6s0n1e9j30z8090whk.jpg" alt=""></p>
-<h2 id="保凸运算"><a href="#保凸运算" class="headerlink" title="保凸运算"></a>保凸运算</h2><h2 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfw6z8edbwj30z80bcjut.jpg" alt=""></p>
-<p>对数函数代负号是为了保证他是凸的。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W15-%E5%87%B8%E9%9B%86%E5%92%8C%E5%87%B8%E9%9B%86%E7%9A%84%E4%BF%9D%E5%87%B8%E8%BF%90%E7%AE%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数学基础W15-优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/18/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W15-%E4%BC%98%E5%8C%96/">数学基础W15:优化</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/18/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W15-%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-06-18T00:07:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="优化基础"><a href="#优化基础" class="headerlink" title="优化基础"></a>优化基础</h1><h2 id="优化问题"><a href="#优化问题" class="headerlink" title="优化问题"></a>优化问题</h2><p>Minimize $f_0(x)$使$f_i(x)\le b_i,i=1,2,…,m$</p>
-<p>带不等式约束的优化问题；</p>
-<p>大部分机器学习的训练参数的过程都可以用一个优化问题来描述。</p>
-<p>$x=(x_1,x_2,…,x_n)$为优化变量</p>
-<p>$f_0:R^n-&gt;R$目标函数</p>
-        
-          <a class="article-more-a" href="/2020/06/18/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W15-%E4%BC%98%E5%8C%96/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/18/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W15-%E4%BC%98%E5%8C%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-谷歌Adsense竞价排名。" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/17/%E8%B0%B7%E6%AD%8CAdsense%E7%AB%9E%E4%BB%B7%E6%8E%92%E5%90%8D%E3%80%82/">谷歌Adsense竞价排名。</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/17/%E8%B0%B7%E6%AD%8CAdsense%E7%AB%9E%E4%BB%B7%E6%8E%92%E5%90%8D%E3%80%82/" class="archive-article-date">
-  	<time datetime="2020-06-17T14:33:10.458Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>谷歌Adsense竞价排名。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/17/%E8%B0%B7%E6%AD%8CAdsense%E7%AB%9E%E4%BB%B7%E6%8E%92%E5%90%8D%E3%80%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据与数据分析与寿险行业" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/17/%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%AF%BF%E9%99%A9%E8%A1%8C%E4%B8%9A/">数据与数据分析与寿险行业</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/17/%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%AF%BF%E9%99%A9%E8%A1%8C%E4%B8%9A/" class="archive-article-date">
-  	<time datetime="2020-06-17T11:12:21.660Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#数字化技术，尤其是数据与数据分析将如何影响和改变未来的寿险行业</p>
-<ul>
-<li>方案创新</li>
-<li>方案完整</li>
-<li>原创性</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfvhvxsejmj30u0190k0q.jpg" alt=""></p>
-<ul>
-<li><p><a href="[https://www.zhihu.com/search?type=content&q=%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B8%8E%E5%AF%BF%E9%99%A9%E8%A1%8C%E4%B8%9A](https://www.zhihu.com/search?type=content&q=大数据与寿险行业)">大数据与寿险行业–知乎</a></p>
-</li>
-<li><p>2020-2026全球及中国补充健康保险行业发展现状调研及投资前景分析报告</p>
-</li>
-<li><p>尤忠彬</p>
-</li>
-<li><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxiw9fayjj313k0a0dgt.jpg" alt=""></p>
-</li>
-<li><p><a href="https://blog.csdn.net/zhaoyang17/article/details/128298" target="_blank" rel="noopener">数据挖掘的价值：寿险行业数据挖掘应用分析</a></p>
-</li>
-<li><p>德勤的视频</p>
-</li>
-<li><p>百度网盘资料：互联网+保险</p>
-</li>
-<li><p>商赛模版</p>
-</li>
-<li><p><a href="http://www.beeui.com/p/3690.html" target="_blank" rel="noopener"><strong>互联网+保险：20个大数据应用案例</strong></a></p>
-</li>
-<li><p><a href="[https://www.baidu.com/s?wd=%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B0%86%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8D%E5%92%8C%E6%94%B9%E5%8F%98%E6%9C%AA%E6%9D%A5%E7%9A%84%E5%AF%BF%E9%99%A9%E8%A1%8C%E4%B8%9A&rsv_spt=1&rsv_iqid=0xf5e0a0620001c0f7&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_enter=1&rsv_dl=tb&oq=%25E6%2596%25B0%25E6%25B5%25AA%25E5%25BE%25AE%25E5%258D%259A&rsv_btype=t&inputT=16732&rsv_t=28e6pwl%2F8sD5CZQGa1DEOSx3nsRe3vCQLryj1kIufgLJWewp%2BfTRaUwYbzgeFtPTRgRR&rsv_sug3=100&rsv_sug1=14&rsv_sug7=101&rsv_pq=b668f48600003da5&rsv_sug2=0&rsv_sug4=17415](https://www.baidu.com/s?wd=数据与数据分析将如何影响和改变未来的寿险行业&rsv_spt=1&rsv_iqid=0xf5e0a0620001c0f7&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_enter=1&rsv_dl=tb&oq=%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A&rsv_btype=t&inputT=16732&rsv_t=28e6pwl%2F8sD5CZQGa1DEOSx3nsRe3vCQLryj1kIufgLJWewp%2BfTRaUwYbzgeFtPTRgRR&rsv_sug3=100&rsv_sug1=14&rsv_sug7=101&rsv_pq=b668f48600003da5&rsv_sug2=0&rsv_sug4=17415)">百度搜索：数据与数据分析将如何影响和改变未来的寿险行业</a></p>
-</li>
-<li></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/17/%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%AF%BF%E9%99%A9%E8%A1%8C%E4%B8%9A/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-概率论W15-马尔可夫过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/17/%E6%A6%82%E7%8E%87%E8%AE%BAW15-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B/">概率论W15:马尔可夫过程与应用</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/17/%E6%A6%82%E7%8E%87%E8%AE%BAW15-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2020-06-17T00:12:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="马尔可夫链"><a href="#马尔可夫链" class="headerlink" title="马尔可夫链"></a>马尔可夫链</h1><p>马尔可夫链/过程最核心的性质:</p>
-<p>马尔可夫过程描述的是将来和过去的关系，在第(n+1)时刻的状态只跟第n刻的状态有关。</p>
-<p>c.f. 到达过程：当前时间点与过去任何时间点是无关的。</p>
-<ol>
-<li>能不能举一个真实、准确的马尔可夫事例，是马尔可夫过程。</li>
-<li>也与过去</li>
-</ol>
-<p>时间同质的马尔可夫过程。</p>
-<blockquote>
-<p>我们可以把计算概率/可能性的问题，转化为矩阵计算的问题。</p>
-</blockquote>
-<hr>
-<h1 id="PageRank算法"><a href="#PageRank算法" class="headerlink" title="PageRank算法"></a>PageRank算法</h1><ul>
-<li>PageRank是…. 2. 它具有…性质 3. 它通过…求… （过程） 4. 它最早被用来…，一般被用来做… 5. 它对…产生了…影响。</li>
-</ul>
-<hr>
-<p>使用连接关系对网页重要性排名，它具有与查询无关的性质，通过大规模矩阵反复的迭代来计算每一个页面的rank的值(收敛)它最早被用来Google对搜索引擎的排序，但现在Google不再被使用。它对大规模网络结构上的节点的排序产生的影响，网页搜索与社交网络的分析，整个互联网分析都产生了很大的影响</p>
-<h2 id="Term-Document-Matrices"><a href="#Term-Document-Matrices" class="headerlink" title="Term-Document Matrices"></a>Term-Document Matrices</h2><p>文档本身是由关键词构成的。</p>
-<p>关键词与利用关键词简历索引。</p>
-<p>将文档和查询都映射到高维空间向量：向量空间模型</p>
-<h2 id="传统IR–Pros-and-cons"><a href="#传统IR–Pros-and-cons" class="headerlink" title="传统IR–Pros and cons"></a>传统IR–Pros and cons</h2><p>排序与搜索的次数相关的。</p>
-<p>与内容匹配就很高的优先级</p>
-<h2 id="PageRank的核心思想"><a href="#PageRank的核心思想" class="headerlink" title="PageRank的核心思想"></a>PageRank的核心思想</h2><p>Landmark Result Paper:总在别人的文章里被提到的文章。【原创的特殊观点和结论】authority</p>
-<p>Survey Paper:将相关文章都整理出来的文章。【综述】</p>
-<p>Hub与权威</p>
-<p>每一步的计算值只跟上一步有关。$a_{k}=Aa_{k-1}$</p>
-<p>所以当查询来的时候，先用关键词保留连接关系，在此基础保留authority和hub的值。</p>
-<h2 id="Google’s-PageRank"><a href="#Google’s-PageRank" class="headerlink" title="Google’s PageRank"></a>Google’s PageRank</h2><ul>
-<li>将互联网构建成图</li>
-<li>每个页面都是一票，每一票都要做归一化，防止大数乘法的一处。</li>
-<li>rank值，每一个页面可能被揍到的次数。</li>
-<li>Dangling node：走进去走不出来，跳到任何一个页面的概率都是一样的。</li>
-<li>可归约的，不可归约的。pageRank值是否有被收敛到一个点。</li>
-</ul>
-<hr>
-<h2 id="Link-Farms"><a href="#Link-Farms" class="headerlink" title="Link Farms"></a>Link Farms</h2><p>广告位的价值意味着在搜索引擎上的排序。</p>
-<p>SEO client</p>
-<p>做一堆<strong>假的页面</strong>，使这一堆页面相互的指来指去，c.f.Hub的投票。</p>
-<p>linkfarm c.f. 水军</p>
-<p>Miserable failure -&gt;Bush</p>
-<h3 id="假的页面与舆情"><a href="#假的页面与舆情" class="headerlink" title="假的页面与舆情"></a>假的页面与舆情</h3><p>collective intelligence集群智慧：每个人都贡献自己的一点点的连接，聚合在一起变成了某一个连接是否重要。</p>
-<p>TrustRank</p>
-<p>pageRank为互联网的大量数据如何分析产生了很重要的影响。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">概率论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/17/%E6%A6%82%E7%8E%87%E8%AE%BAW15-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ML07-BP原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/17/ML07-BP%E5%8E%9F%E7%90%86/">ML07 BP原理</a>
-    </h1>
-  
-
-        
-        <a href="/2020/06/17/ML07-BP%E5%8E%9F%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-06-17T00:00:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>BP算法不是跟GD并列，而是GD的一种，即只是用BP可以很快的计算偏微分而已。</p>
-        
-          <a class="article-more-a" href="/2020/06/17/ML07-BP%E5%8E%9F%E7%90%86/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/17/ML07-BP%E5%8E%9F%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -1168,8 +538,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

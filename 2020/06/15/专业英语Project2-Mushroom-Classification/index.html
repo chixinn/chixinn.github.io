@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxnnes11qj313g0ao76q.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxno58cz9j30y70u0dpf.jpg">
 <meta property="article:published_time" content="2020-06-15T01:09:57.000Z">
-<meta property="article:modified_time" content="2020-06-19T08:08:31.463Z">
+<meta property="article:modified_time" content="2020-06-22T04:42:08.690Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="大二下">
@@ -228,7 +228,9 @@
 <p>sklearn库函数原型的实现可以参照github代码。</p>
 <p>但我感觉这个地方没有必要也写源代码啊.</p>
 <ol start="2">
-<li>拆分tr_d, va_d, te_d：train_test_split?</li>
+<li><p>拆分tr_d, va_d, te_d：train_test_split：</p>
+<p>采用基于train_data/valid_data/test_data的基本Hold_Out方法</p>
+</li>
 </ol>
 <hr>
 <p>第一次构建神经网络，按照书上最简单的代码构建：</p>
@@ -264,6 +266,9 @@
 <hr>
 <p><strong>论好好看书的重要性!</strong></p>
 <p><strong>Network1 without Validation!</strong></p>
+<blockquote>
+<p>用Valid_data衡量超参数的选择效果。为了防止我们过度拟合于test_data!</p>
+</blockquote>
 <p>在之前描述 MNIST 数据时，它分成了 60,000 个训练图像和 10,000 个 测试图像。这是官方的 MNIST 的描述。</p>
 <p>实际上，我们将用稍微不同的方法对数据进行划分。我 们将测试集保持原样，但是将 60,000 个图像的 MNIST 训练集分成两个部分:一部分 50,000 个 图像，我们将用来训练我们的神经网络，和一个单独的 10,000 个图像的验证集。在本章中我们 不使用验证数据，但是在本书的后面我们将会发现它对于解决如何去设置某些神经网络中的超 参数是很有用的 —— 例如学习速率等，这些参数不被我们的学习算法直接选择。</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwtl9nv2hj30wi0g4q4c.jpg" alt=""></p>
@@ -276,6 +281,7 @@
 </ol>
 <h3 id="Same-problem-again"><a href="#Same-problem-again" class="headerlink" title="Same problem again"></a>Same problem again</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxfwix13jj313k04q3yx.jpg" alt=""></p>
 <p>这个evaluate函数的具体语法形式每次都会很出问题，啊。</p>
+<p>下面这个参数是目前最好的训练参数</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxnnes11qj313g0ao76q.jpg" alt=""></p>
 <p>我还优化啥？这不就测试完了吗。。。</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxno58cz9j30y70u0dpf.jpg" alt=""></p>
@@ -283,6 +289,56 @@
 <p>看看能不能编，编的我调了很多参的样子…</p>
 <hr>
 <p>感觉对于源代码具体逻辑和epoch还不是很理解。</p>
+<hr>
+<h2 id="Network2"><a href="#Network2" class="headerlink" title="Network2"></a>Network2</h2><p>第三章的代码中使用的为</p>
+<ol>
+<li>sigmoid函数和交叉熵损失函数的组合。</li>
+<li>sigmoid函数和传统的loss函数（2-范数距离，平方损失函数)</li>
+<li>Softmax输出函数和对数似然函数(不重叠饭勒问题)</li>
+<li>Softmax函数的反向传播</li>
+</ol>
+<hr>
+<p>规范化与过拟合</p>
+<p>epoch比较多，容易Overfitting</p>
+<p>分类准确率在测试集上的可视化表现：</p>
+<hr>
+<p>在Network1上感受一下过拟合的问题：</p>
+<h2 id="过拟合"><a href="#过拟合" class="headerlink" title="过拟合"></a>过拟合</h2><h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><p><strong>检测过度</strong>拟合的明显方法是：跟踪测试数据集合上的准确率随训练变化的情况。</p>
+<p>valid_data的作用： <strong>提前停止的策略：</strong></p>
+<p>在每个epoch的最后都计算在valid_data上的分类准确率，一旦分类准确率已经饱和就停止训练</p>
+<blockquote>
+<p>提前停止的更多或更少的激进策略。</p>
+</blockquote>
+<h3 id="防止过拟合"><a href="#防止过拟合" class="headerlink" title="防止过拟合"></a>防止过拟合</h3><ol>
+<li><p>增加训练样本的数量</p>
+</li>
+<li><p>降低网络规模</p>
+</li>
+<li><p>Regularization：</p>
+</li>
+</ol>
+<h4 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization:"></a>Regularization:</h4><ul>
+<li><p>权重衰减：$L_2$规范化</p>
+<p>增加一个额外的项(规范化项)到代价函数上。</p>
+</li>
+<li><p>$L_2$正则化的形式：</p>
+<p>$\frac{\lambda}{2n}\sum_ww^2$</p>
+</li>
+<li><p>带正则化项修正后的函数：</p>
+<p>​    $C=C_0+L_2$</p>
+</li>
+</ul>
+<blockquote>
+<p>正则化项参数$\lambda$的选择：不包含偏置。</p>
+</blockquote>
+<blockquote>
+<p>规范化当作一种寻找小的权重和最小化原始代价的函数之间的折中。</p>
+</blockquote>
+<blockquote>
+<p>小的权重和原始化代价之间的折中由超参数$\lambda$来控制。</p>
+<p>$\lambda$越小，就偏向于最小化原始代价函数</p>
+<p>$\lambda$越大，就偏向于小的权重</p>
+</blockquote>
 
       
 

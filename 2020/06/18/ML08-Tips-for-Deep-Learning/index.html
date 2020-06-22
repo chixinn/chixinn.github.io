@@ -18,7 +18,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwtr5y1auj30yg0oqqp5.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwu3q3hxkj30yg0oq18t.jpg">
 <meta property="article:published_time" content="2020-06-18T05:03:07.000Z">
-<meta property="article:modified_time" content="2020-06-18T15:07:51.582Z">
+<meta property="article:modified_time" content="2020-06-22T04:42:11.236Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
@@ -208,12 +208,16 @@
 <p>Overfitting要看test的结果，而不是trainset.</p>
 <p>深不一定好的原因：</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwtr5y1auj30yg0oqqp5.jpg" alt=""></p>
+<p>Vanishing Gradient 与Learning Slowdown Problem</p>
 <p>Sigmoid function的特点。</p>
 <p>Sigmoid Output的衰减</p>
-<p>如何解决Sigmoid function的问题呢？</p>
+<p><strong>如何解决Sigmoid function的Learning Slowdown问题呢？</strong></p>
 <h3 id="变换activation-Function"><a href="#变换activation-Function" class="headerlink" title="变换activation Function"></a>变换activation Function</h3><p>ReLU function:</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfwu3q3hxkj30yg0oq18t.jpg" alt=""></p>
-
+<p>对于Output是0，对于整个Network都没有影响。</p>
+<p>故将Output是0去掉时，整个Network是一个瘦长的的Linear Network.</p>
+<h4 id="但我们不希望我们的function是Linear的呀？"><a href="#但我们不希望我们的function是Linear的呀？" class="headerlink" title="但我们不希望我们的function是Linear的呀？"></a><strong>但我们不希望我们的function是Linear的呀？</strong></h4><p>改变小linear,改变大非linear</p>
+<h4 id="但neural-network的Loss要可微呀？"><a href="#但neural-network的Loss要可微呀？" class="headerlink" title="但neural network的Loss要可微呀？"></a>但neural network的Loss要可微呀？</h4>
       
 
       

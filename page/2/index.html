@@ -375,8 +375,8 @@
 </li>
 </ol>
 <p>MINIX3 独立ID空间，共享相同的代码段。</p>
-<p>Safety:使进程正常执行一小段时间，使其在执行这段时间的过程中，打印出此时“我出错了”(因为我本身不应该运行到safety内存中)和正常结束。</p>
-<p>当空间小号殆尽时，要增加空间，此时会有更大的空间来执行，使之继续地正常执行下去。</p>
+<p>Safety:使进程正常执行一小段时间，使其在执行这段时间的过程中，打印出此时“我出错了ENOMEM”(因为我本身不应该运行到safety内存中)和正常结束。</p>
+<p>当空间消耗殆尽时，要增加空间，此时会有更大的空间来执行，使之继续地正常执行下去。</p>
 <h2 id="实验说明"><a href="#实验说明" class="headerlink" title="实验说明"></a>实验说明</h2><ol>
 <li><p>修改/usr/src/servers/pm/break.c中的adjust函数。</p>
 </li>
@@ -405,8 +405,33 @@
 <h2 id="Project4也是又又又又需要配环境的一次haha"><a href="#Project4也是又又又又需要配环境的一次haha" class="headerlink" title="Project4也是又又又又需要配环境的一次haha!"></a>Project4也是又又又又需要配环境的一次haha!</h2><ol>
 <li>下载Minix3.1.2镜像文件</li>
 <li>在VMware中新建虚拟机，按照P1过程进行虚拟机的配置。</li>
-<li></li>
+<li>然后就不能传文件啦！</li>
+<li>然后我把NAT的网络连接模式换了一种以后，就又可以传文件了~终于啊QAQ 我古董的windows重装都配好环境惹…</li>
 </ol>
+<hr>
+<blockquote>
+<p>另记：传文件是玄学，编译时玄学，内核是玄学，cc是玄学，计算机是玄学。</p>
+</blockquote>
+<hr>
+<p>主体思路就是对于allocate_new_mem函数进行调整。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Memory map for local text, stack, data segments. */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mem_map</span> &#123;</span></span><br><span class="line">  vir_clicks mem_vir;		<span class="comment">/* 虚拟地址 */</span></span><br><span class="line">  phys_clicks mem_phys;		<span class="comment">/*物理地址 */</span></span><br><span class="line">  vir_clicks mem_len;		<span class="comment">/* 长度 */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Allocate_new_mem函数的整体内容：</p>
+<ol>
+<li>Alloc_mem分配内存</li>
+<li>Sys_abscopy拷贝内容</li>
+<li>释放</li>
+<li>通知内核相关变动并注册</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">PUBLIC <span class="keyword">int</span> <span class="title">allocate_new_mem</span><span class="params">(rmp,old_memory_clicks)</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<ol>
+<li>通知变化是在if分支里面的，所以不需要sys_newmap</li>
+</ol>
+<p>TNND，终于写完了。</p>
 
       
 

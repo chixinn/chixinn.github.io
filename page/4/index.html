@@ -170,6 +170,139 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-数学基础W13:向量值函数和矩阵值函数的梯度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W13:%E5%90%91%E9%87%8F%E5%80%BC%E5%87%BD%E6%95%B0%E5%92%8C%E7%9F%A9%E9%98%B5%E5%80%BC%E5%87%BD%E6%95%B0%E7%9A%84%E6%A2%AF%E5%BA%A6/">数学基础W13:向量值函数和矩阵值函数的梯度</a>
+    </h1>
+  
+
+        
+        <a href="/2020/06/04/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W13:%E5%90%91%E9%87%8F%E5%80%BC%E5%87%BD%E6%95%B0%E5%92%8C%E7%9F%A9%E9%98%B5%E5%80%BC%E5%87%BD%E6%95%B0%E7%9A%84%E6%A2%AF%E5%BA%A6/" class="archive-article-date">
+  	<time datetime="2020-06-04T00:04:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前面的回顾"><a href="#前面的回顾" class="headerlink" title="前面的回顾"></a>前面的回顾</h2><ol>
+<li>运算法则</li>
+<li>向量函数和矩阵函数的微分</li>
+<li>迹微分的性质。</li>
+</ol>
+<h2 id="向量值函数和矩阵值函数的梯度-R-n-gt-R-m-R-m-times-n-gt-R-n-times-n"><a href="#向量值函数和矩阵值函数的梯度-R-n-gt-R-m-R-m-times-n-gt-R-n-times-n" class="headerlink" title="向量值函数和矩阵值函数的梯度$R^n-&gt;R^m/R^{m\times n}-&gt;R^{n\times n}$"></a>向量值函数和矩阵值函数的梯度$R^n-&gt;R^m/R^{m\times n}-&gt;R^{n\times n}$</h2><p>可以用这些微分来解决什么？</p>
+<p>链式法则：复合函数的梯度和导数。</p>
+<h3 id="定义5"><a href="#定义5" class="headerlink" title="定义5"></a>定义5</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffxy7iqc4j30ty0fo0yl.jpg" alt=""></p>
+<p>Output是一个向量。</p>
+<h3 id="Jacobian矩阵"><a href="#Jacobian矩阵" class="headerlink" title="Jacobian矩阵"></a>Jacobian矩阵</h3><p>梯度在向量与向量之间的变化关系上的推广。</p>
+<p>将矩阵向量化：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffy2ea576j30mi0aotbp.jpg" alt=""></p>
+<h3 id="向量函数微分"><a href="#向量函数微分" class="headerlink" title="向量函数微分"></a>向量函数微分</h3><p>$df=\frac{\part f^T}{\part x}^T dx$</p>
+<p>从分量的角度去考虑。</p>
+<blockquote>
+<p>多远正态分布的推广</p>
+</blockquote>
+<h3 id="定理8"><a href="#定理8" class="headerlink" title="定理8"></a>定理8</h3><p>当f和x是相同大小:</p>
+<p>$\frac{\part f^T}{\part x}^{-1}=\frac{\part x^T}{\part f}$</p>
+<p>这个结论很适用于<strong>变量替换</strong>。</p>
+<h3 id="Hessian矩阵"><a href="#Hessian矩阵" class="headerlink" title="Hessian矩阵"></a>Hessian矩阵</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffycwz7rrj30n00b476q.jpg" alt=""></p>
+<p>当一阶导数求完后，$\frac{\part f}{\part x_1}$</p>
+<p>其还要关于$x^T$进行求。(行向量？)</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffyfgwuoej30r00b4wjj.jpg" alt=""></p>
+<p>Hessian 矩阵在机器学习优雅上有很多应用，</p>
+<p>Hessian是对称矩阵，二阶优化算法：牛顿法。</p>
+<h2 id="18-4链式法则与一些有用的梯度公式"><a href="#18-4链式法则与一些有用的梯度公式" class="headerlink" title="18.4链式法则与一些有用的梯度公式"></a>18.4链式法则与一些有用的梯度公式</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffyjst8v4j30r008a41m.jpg" alt=""></p>
+<h3 id="定理9"><a href="#定理9" class="headerlink" title="定理9"></a>定理9</h3><p>假设我们有n个列向量。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffylie7thj30r005mq5c.jpg" alt=""></p>
+<h3 id="定理10"><a href="#定理10" class="headerlink" title="定理10"></a>定理10</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffynfywm7j30r008swj6.jpg" alt=""></p>
+<h4 id="例16"><a href="#例16" class="headerlink" title="例16"></a>例16</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffyptbju3j30r00e20w1.jpg" alt=""></p>
+<h4 id="例17"><a href="#例17" class="headerlink" title="例17"></a>例17</h4><p>$(x-\mu)^T\Sigma^{-1}(x-\mu)$关于$\mu$求导。</p>
+<h3 id="一些常用的梯度计算公式"><a href="#一些常用的梯度计算公式" class="headerlink" title="一些常用的梯度计算公式"></a>一些常用的梯度计算公式</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffysdofysj30r00e2gnv.jpg" alt=""></p>
+<blockquote>
+<p>18.3/18.4有符号的错误</p>
+</blockquote>
+<h2 id="18-5-反向传播与自动微分"><a href="#18-5-反向传播与自动微分" class="headerlink" title="18.5 反向传播与自动微分"></a>18.5 反向传播与自动微分</h2><p>神经网络中的梯度与链式法则。</p>
+<h3 id="例18"><a href="#例18" class="headerlink" title="例18"></a>例18</h3><p>考虑$f(x)=\sqrt{x^2+exp(x^2)}+cos(x^2+exp(x^2))$</p>
+<p>这样的微分的计算会很冗余</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffz7coq7lj30s80e2acz.jpg" alt=""></p>
+<p>正向传播过程中，我们需要每层的偏导数。</p>
+<p>每层的偏导数计算兜涉及到链式法则。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffzarpumzj30s80e2419.jpg" alt=""></p>
+<p>此部分笔记，在专业英语反向传播的那篇博客中也有涉及。</p>
+<p>$e=(a+b)(b+1)$</p>
+<p>求a=2,b=1时的e 的梯度：</p>
+<p>$\part e/\part a=b+1$</p>
+<p>$\part e/\part b=(b+1)+(b+a)$</p>
+<p>引入中间变量c/d</p>
+<p>c=b+1</p>
+<p>d=b+a</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffzmh4nwkj31310m176n.jpg" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/04/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W13:%E5%90%91%E9%87%8F%E5%80%BC%E5%87%BD%E6%95%B0%E5%92%8C%E7%9F%A9%E9%98%B5%E5%80%BC%E5%87%BD%E6%95%B0%E7%9A%84%E6%A2%AF%E5%BA%A6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ML3-5-Optimization-for-DL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1209,94 +1342,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-英文歌曲文化赏析W12-HIPHOP2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/">英文歌曲文化赏析W12:HIPHOP2</a>
-    </h1>
-  
-
-        
-        <a href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/" class="archive-article-date">
-  	<time datetime="2020-05-29T02:09:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hiphop-culture"><a href="#Hiphop-culture" class="headerlink" title="Hiphop culture"></a>Hiphop culture</h1><p>“The words of the prophets are written on the subway walls and tenement halls”</p>
-        
-          <a class="article-more-a" href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/">展开全文 >></a>
         </p>
       
 

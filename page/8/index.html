@@ -170,6 +170,69 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-fucking-2020" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/06/fucking-2020/">fucking 2020</a>
+    </h1>
+  
+
+        
+        <a href="/2020/05/06/fucking-2020/" class="archive-article-date">
+  	<time datetime="2020-05-06T05:15:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="This-fucking-2020"><a href="#This-fucking-2020" class="headerlink" title="This fucking 2020"></a>This fucking 2020</h1><h1 id="This-fucking-major"><a href="#This-fucking-major" class="headerlink" title="This fucking major"></a>This fucking major</h1><h1 id="This-fucking-life"><a href="#This-fucking-life" class="headerlink" title="This fucking life"></a>This fucking life</h1><p>Life cannot be that rosy ha?</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/06/fucking-2020/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-英语歌曲文化赏析-folk斯卡布罗集市" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1214,209 +1277,6 @@
 
 
   
-    <article id="post-计算机网络W7 P2PCDNsocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW7%20P2PCDNsocket/">计算机网络W7:P2P/CDN/socket</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW7%20P2PCDNsocket/" class="archive-article-date">
-  	<time datetime="2020-04-24T05:06:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="计算机网络W7-P2P-CDN-socket"><a href="#计算机网络W7-P2P-CDN-socket" class="headerlink" title="计算机网络W7:P2P/CDN/socket"></a>计算机网络W7:P2P/CDN/socket</h1><h2 id="P2P-architecture"><a href="#P2P-architecture" class="headerlink" title="P2P architecture"></a>P2P architecture</h2><p>对等：所有的节点既可能是client也可能是server。</p>
-<p>examples:</p>
-<ul>
-<li>file distribution(Bit Torrent)</li>
-<li>server transmission/client/clients【设一共有NF个bits,最终目的是让每一个client都有一个F】</li>
-</ul>
-<p>$\sum u_i$，随着客户端数量的增大，上传负载增大，但是同时server端的服务能力也增大；</p>
-<p>$D_{p2p}\ge max{F/u_s,F/d_{min},NF/(u_s+\sum u_i)}$</p>
-<blockquote>
-<p>注意这里的下界是理论上最小的，但是实质上需要思考的是如何并行，可以做到逼近下界。</p>
-</blockquote>
-<p>v.s. CS 架构【数据来源仅仅是server端】</p>
-<p>随着客户端数量的增大，上传负载增大，但是负载不会被分担。</p>
-<h3 id="P2P-file-distribution-BitTorrent"><a href="#P2P-file-distribution-BitTorrent" class="headerlink" title="P2P file distribution: BitTorrent"></a>P2P file distribution: BitTorrent</h3><p>peer</p>
-<ol>
-<li><p>哪些可以使用？[可供数据交换]</p>
-</li>
-<li><p>一个大的数据包被划分成chunk，但是chunk有可能是被损坏的，如何检查chunk是否是完整的?</p>
-<p>计算块的哈希值【默克尔的】</p>
-<p><a href="https://blog.csdn.net/weixin_37504041/article/details/80474636" target="_blank" rel="noopener">P2P保证块的完整性</a></p>
-</li>
-<li><p>如何拿到完整的以后不再贡献带宽，即如何保证不打边撤就走?</p>
-<p>IPFS：激励机制，使用激励机制来完成，可以避免节点自私的离开。[星际文件]</p>
-<p>结对条件/协议设计条件：索取的时候即一定要付出。</p>
-</li>
-</ol>
-<p>Bit Torrent预防问题3的技术手段：[一报还一报/投桃报李]</p>
-<ul>
-<li>某个peer维护其拿数据最快的4个邻居节点[跟自己的速率匹配，且是最快的4个伴侣top4]，同样，也它的数据也给其邻居节点发送。</li>
-<li>这4个伴侣会与alice相互交换。</li>
-<li>即拿数据时结成对子。</li>
-</ul>
-<p>当节点的速率发生变化时：</p>
-<p>​    以固定的时间间隔检验是否节点速率发生变化；</p>
-<p>​    每固定的时间间隔随机选4个邻居外的另外一个[测别的邻居]，如果好，则进行邻居的迭代与淘汰。</p>
-<blockquote>
-<p>我永远都在寻找与我速率最匹配的4个人。</p>
-</blockquote>
-<h4 id="最稀缺优先"><a href="#最稀缺优先" class="headerlink" title="最稀缺优先"></a>最稀缺优先</h4><p>当一块数据我好几个邻居有，别的一块数据只有一个邻居有，这是我会把只有一个邻居有的拿过来。</p>
-<p>对于整个网络来说，如果存储了相同的副本，实质上是没有较大意义的。</p>
-<h2 id="CDN-视频内容分发网络"><a href="#CDN-视频内容分发网络" class="headerlink" title="CDN 视频内容分发网络"></a>CDN 视频内容分发网络</h2><ul>
-<li>像素：数据阵列</li>
-<li>上下帧之间传输的可能只是差异[增量]</li>
-</ul>
-<h3 id="DASH协议"><a href="#DASH协议" class="headerlink" title="DASH协议"></a>DASH协议</h3><p>Dynamic,Adaptive,Streaming over <strong>HTTP</strong></p>
-<ul>
-<li><p>server:</p>
-<ul>
-<li>divides video file into multiple chunks</li>
-<li>Each Chunk stored, encoded at different rates</li>
-<li>manifest file:</li>
-</ul>
-</li>
-<li><p>client:</p>
-<ul>
-<li>周期性测量带宽</li>
-<li>等</li>
-</ul>
-</li>
-<li><p>what is related to HTTP:</p>
-<p>​        client端</p>
-<ul>
-<li>when to request chunk：缓存机制</li>
-<li>What编码速率(拿什么)</li>
-<li>哪里去拿:看那个清单</li>
-</ul>
-</li>
-</ul>
-<h3 id="内容分发网"><a href="#内容分发网" class="headerlink" title="内容分发网"></a>内容分发网</h3><ul>
-<li>深入：视频服务器深入到各个ISP的网络中</li>
-<li>邀请做客：IXP(internet exchange point)。</li>
-<li>不是单点的，而是部署在离用户较近的点。</li>
-</ul>
-<h3 id="OOT"><a href="#OOT" class="headerlink" title="OOT"></a>OOT</h3><p>CDN遇到的challenge</p>
-<h3 id="内容服务商"><a href="#内容服务商" class="headerlink" title="内容服务商"></a>内容服务商</h3><p>将内容爬下来/建倒排索引(key word)</p>
-<p>搜索引擎/爱奇艺等都是内容提供商</p>
-<h2 id="socket-programming-UDP-TCP"><a href="#socket-programming-UDP-TCP" class="headerlink" title="socket programming /UDP /TCP"></a>socket programming /UDP /TCP</h2><p>应用进程和传输进程交换的门</p>
-<p>传输层的协议:UDP(不可靠的报文:摸着石头过河)/TCP(3次握手，面向连接的可靠的，建桥先)</p>
-<p>Socket 编程：不同机器(终端)上的两个进程间的相互通讯</p>
-<p>CS机构下，两台机器上两个进程</p>
-<ol>
-<li>client端读取数据发给server</li>
-<li>server端转换成大写</li>
-<li>大写发给client</li>
-<li>client展示到屏幕</li>
-</ol>
-<h3 id="UDP-过程"><a href="#UDP-过程" class="headerlink" title="UDP 过程"></a>UDP 过程</h3><ul>
-<li><p>sender直接通过receiver的IP和端口号进行发送</p>
-</li>
-<li><p>接收者收到数据发送回去时，IP和端口从收到的报文(sender发送的)中解析出来。</p>
-<p>没有连接的知道对方的过程</p>
-</li>
-<li><p>Client：主动发起连接</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> socket <span class="keyword">import</span> *</span><br><span class="line">serverName=<span class="string">'hostname'</span></span><br><span class="line">serverPort=<span class="comment">##1024以后的不保留，随便选</span></span><br><span class="line">clientSocket=socket()</span><br><span class="line">message=raw_input()</span><br><span class="line">clientSocket.sendto()</span><br><span class="line"><span class="comment">##发送，是不同进程上交互的过程</span></span><br><span class="line">modifiedMessage,serverAddress=</span><br><span class="line">print()</span><br><span class="line"><span class="comment">##UDP server</span></span><br><span class="line">serverPort=<span class="comment">#注意这里的socket的端口号要约定好</span></span><br><span class="line">serverSocket=</span><br><span class="line">serverSocket.bind()</span><br><span class="line"><span class="comment">#busy loop():</span></span><br><span class="line">	message,clientAddress=<span class="comment">##地址解析出来</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="TCP过程"><a href="#TCP过程" class="headerlink" title="TCP过程"></a>TCP过程</h3><ol>
-<li>建立连接，server端监听</li>
-<li>client 建立TCP连接</li>
-<li>允许server同时与多个client端进行交互</li>
-</ol>
-<blockquote>
-<p>注意TCP和UDP的差别</p>
-</blockquote>
-<ul>
-<li>​    <strong>server先建立连接</strong>，监听<ul>
-<li>server端先运行，一个程序先运行</li>
-</ul>
-</li>
-<li>client发起连接，server accept，相当于socket建立，连接建立完成</li>
-<li>通过连接，在连接的socket上发送消息</li>
-<li>两端都需要关闭。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##TCPClinet</span></span><br><span class="line">SOCK_STREAM</span><br><span class="line">serverName=</span><br><span class="line">ServerPort=</span><br><span class="line">AF_INET<span class="comment">#ipv4</span></span><br><span class="line">connet((serverName,ServerPort))</span><br><span class="line"><span class="comment">#没有servername：IP地址也可以</span></span><br><span class="line"><span class="comment">#建立连接：发送，接受，print，</span></span><br><span class="line"></span><br><span class="line"><span class="comment">##TCPServer</span></span><br><span class="line">serverSocket.listen(<span class="number">1</span>)</span><br><span class="line">循环:</span><br><span class="line">  接受</span><br><span class="line">  拿数据</span><br><span class="line">  大写</span><br><span class="line">  发送回去</span><br><span class="line">关闭</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>一台机器即可以做client也可以做server，利用机器上的网卡交换信息，此时只要约定一个端口号，即在本地完成。</p>
-<p>TCP程序一定要让server先运行起来！</p>
-<p>也可以运行多个client端，但每个client端要注意区分?</p>
-<p>即TCP的一对多。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW7%20P2PCDNsocket/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
@@ -1575,6 +1435,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">李宏毅</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计思维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">暑期</a>
               </li>
             
             <div class="clearfix"></div>

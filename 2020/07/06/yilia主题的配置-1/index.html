@@ -16,8 +16,9 @@
 <meta property="og:description" content="yilia主题的配置拖拖欠欠这么久了，一个学期了也没有进行相关的blog的优化【根本拿不上台面x】  SEO(搜索引擎的优化)  网站访问速度的优化  图床(目前个人使用的是iPic)不知道是不是稳定…感觉可以Github图床?PicGo+Github iPiC好像使用的是微博图床。  然后一些图片、美观的优化逻辑，比如标签、分类、打赏  最重要的是，阅读博客的人跟我互动交流的方式。  不蒜子记录">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggh9vqck1dj31e008oaaz.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggiiqaly46j31500je1kx.jpg">
 <meta property="article:published_time" content="2020-07-06T05:57:12.000Z">
-<meta property="article:modified_time" content="2020-07-07T05:50:24.641Z">
+<meta property="article:modified_time" content="2020-07-07T09:06:37.633Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="随笔">
 <meta property="article:tag" content="笔记">
@@ -174,6 +175,7 @@
   </span>
   </a>
 
+
 <!--显示阅读次数完毕-->
         
         <a href="/2020/07/06/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE-1/" class="archive-article-date">
@@ -206,7 +208,7 @@
 
 <h2 id="SEO优化"><a href="#SEO优化" class="headerlink" title="SEO优化"></a>SEO优化</h2><p>emmm自己其实对爬虫没有什么真实的兴趣，但看到SEO优化中，需要用到robots.txt，但我zqsg的不知道rebots.txt在哪里…</p>
 <p>哦，经过多次试验robots.txt在/hexoblog/public/robot.txt里面，借鉴这篇<a href="https://lete114.now.sh/article/b6c07012.html" target="_blank" rel="noopener">博主的文章</a>,就检测到robot.txt文件惹，耶~!!</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggh9vqck1dj31e008oaaz.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggh9vqck1dj31e008oaaz.jpg" alt></p>
 <p>我试用了<a href="http://seo.cjzzc.com/domain/chixinn.github.io#overview" target="_blank" rel="noopener">SEO优化诊断网址想优化来着</a>，但好像核心效果不是很好。而且搜索自己的域名是搜索不到自己的github博客的，只能搜索到最原始的chixinn.github.io,啊，计算机网络可能还是没学好吧x</p>
 <hr>
 <h3 id="什么是SEO"><a href="#什么是SEO" class="headerlink" title="什么是SEO"></a>什么是SEO</h3><p>我感觉就是让别人记住你.</p>
@@ -224,6 +226,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sitemap:</span><br><span class="line">    path: sitemap.xml</span><br><span class="line">baidusitemap:</span><br><span class="line">    path: baidusitemap.xml</span><br></pre></td></tr></table></figure>
 
 <p>然后就没有相应的报错啦~</p>
+<h2 id="关于图片的设置！"><a href="#关于图片的设置！" class="headerlink" title="关于图片的设置！"></a>关于图片的设置！</h2><p>图片的assets文件要放在我主题下面的/source文件哦！</p>
+<p>/yilia/sources/assets/image/file.jpg</p>
+<p>同时注意，有图片的时候要注意安装相应的图片插件：<code>npm install https://github.com/CodeFalling/hexo-asset-image --save</code>命令是这个~</p>
+<p>我可算是拥有图像的人了Orz。</p>
+<h2 id="评论系统"><a href="#评论系统" class="headerlink" title="评论系统"></a>评论系统</h2><p>看了一圈，还是用Gittalk吧，总感觉还是搭载在github上比较放心</p>
+<p>啊啊啊啊啊又来FATAL ERROR 鲨了我吧</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggiiqaly46j31500je1kx.jpg" alt></p>
+<h2 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h2><p>利用github 和hexo搭建图床。</p>
 
       
 

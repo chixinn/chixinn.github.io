@@ -6,22 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>计算机网络W3 TCP/IP 协议栈 | Chixinning的博客</title>
+  <title>设计思维02 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="计算机网络W3 TCP&#x2F;IP 协议栈 分组交换&#x2F;电路交换都是一种物理的交换方式。 实际万维网使用分组交换 逻辑距离&#x2F;物理距离。 POP:入网点  1.4&#x2F;1.5是重点 丢包和延时 延时：传输延时&#x2F;排队延时 丢包是不可避免的，缓冲区满时必然会丢包。 延时 节点处理$d_{proc}$ Check errors&#x2F; determine output link&#x2F; typically &lt; msec">
+  <meta name="description" content="正式进入课程，昨天找了不认识的同学一起组队，开心心~">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机网络W3 TCP&#x2F;IP 协议栈">
-<meta property="og:url" content="http://yoursite.com/2020/03/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW3%20TCP:IP%20%E5%8D%8F%E8%AE%AE%E6%A0%88/index.html">
+<meta property="og:title" content="设计思维02">
+<meta property="og:url" content="http://yoursite.com/2020/07/07/%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B402/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="计算机网络W3 TCP&#x2F;IP 协议栈 分组交换&#x2F;电路交换都是一种物理的交换方式。 实际万维网使用分组交换 逻辑距离&#x2F;物理距离。 POP:入网点  1.4&#x2F;1.5是重点 丢包和延时 延时：传输延时&#x2F;排队延时 丢包是不可避免的，缓冲区满时必然会丢包。 延时 节点处理$d_{proc}$ Check errors&#x2F; determine output link&#x2F; typically &lt; msec">
+<meta property="og:description" content="正式进入课程，昨天找了不认识的同学一起组队，开心心~">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-03-27T06:32:06.000Z">
-<meta property="article:modified_time" content="2020-04-03T06:29:03.607Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggi3rmst2mj31160lu19d.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggi3xnnqhjj31340lu7kx.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggi43hp1cfj31cg0lu4bz.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggi48awsxwj31cg0tetoa.jpg">
+<meta property="article:published_time" content="2020-07-07T00:06:34.000Z">
+<meta property="article:modified_time" content="2020-07-07T01:23:36.377Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="大二下">
-<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="设计思维">
+<meta property="article:tag" content="暑期">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggi3rmst2mj31160lu19d.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -160,14 +165,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-计算机网络W3 TCP:IP 协议栈" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-设计思维02" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      计算机网络W3 TCP/IP 协议栈
+      设计思维02
     </h1>
   
 
@@ -183,94 +188,65 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2020/03/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW3%20TCP:IP%20%E5%8D%8F%E8%AE%AE%E6%A0%88/" class="archive-article-date">
-  	<time datetime="2020-03-27T06:32:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-27</time>
+        <a href="/2020/07/07/%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B402/" class="archive-article-date">
+  	<time datetime="2020-07-07T00:06:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="计算机网络W3-TCP-IP-协议栈"><a href="#计算机网络W3-TCP-IP-协议栈" class="headerlink" title="计算机网络W3 TCP/IP 协议栈"></a>计算机网络W3 TCP/IP 协议栈</h1><ul>
-<li>分组交换/电路交换都是一种物理的交换方式。</li>
-<li>实际万维网使用分组交换</li>
-<li>逻辑距离/物理距离。</li>
-<li>POP:入网点</li>
+        <p>正式进入课程，昨天找了不认识的同学一起组队，开心心<del>~</del></p>
+<a id="more"></a>
+
+<h2 id="设计思维过程"><a href="#设计思维过程" class="headerlink" title="设计思维过程"></a>设计思维过程</h2><p>定义问题与解决问题</p>
+<h2 id="1-1设计思维的第一个关键点"><a href="#1-1设计思维的第一个关键点" class="headerlink" title="1.1设计思维的第一个关键点"></a>1.1设计思维的第一个关键点</h2><ul>
+<li>如何从潜在用户上学到更多，挖掘他们真实的隐形需求?</li>
 </ul>
-<p>1.4/1.5是重点</p>
-<p>丢包和延时</p>
-<p>延时：传输延时/排队延时</p>
-<p>丢包是不可避免的，缓冲区满时必然会丢包。</p>
-<h2 id="延时"><a href="#延时" class="headerlink" title="延时"></a>延时</h2><ol>
-<li><p>节点处理$d_{proc}$</p>
-<p>Check errors/</p>
-<p>determine output link/ typically &lt; msec</p>
-</li>
-<li><p>排队延时</p>
-</li>
-<li><p>传输延时$d_{trans}$</p>
-<p>虽然排队排到了</p>
-</li>
-<li><p>传播延时$d_{prop}$</p>
-<pre><code>3和4概念辨析：
-
-   3：将包从门里塞出去：与packet长度和带宽R(把带宽理解成门的大小)
-
-   4：赛出门以后，到达另一个节点的时间，与具体的路径长度有关(传输媒介的物理介质)
-
-   长度/传播塑料</code></pre></li>
+<p>一个虚拟的示例：Peter/Lilly/Marc三个人物角色。</p>
+<p>挑战任务：如何设计一门满足用户需求的设计思维课程</p>
+<h2 id="可视化"><a href="#可视化" class="headerlink" title="可视化"></a>可视化</h2><h3 id="人物角色可视化"><a href="#人物角色可视化" class="headerlink" title="人物角色可视化"></a>人物角色可视化</h3><p>将idea/调研/需求可视化，较专业会更为宽泛。</p>
+<p> 思维可视化-&gt;设计过程可视化。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggi3rmst2mj31160lu19d.jpg" alt></p>
+<p>可视化也是拥有模版的。</p>
+<ol>
+<li>背景？</li>
+<li>诉求？希望成为设计思维专家/开发数字化商业模式并运用数字化策略。</li>
 </ol>
-<p>即propagation和transmission的区别</p>
-<h2 id="流量强度"><a href="#流量强度" class="headerlink" title="流量强度"></a>流量强度</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>La/R</p>
-<p>L是packet比特数</p>
-<p>La/R要小于1</p>
-<h2 id="晕塞控制"><a href="#晕塞控制" class="headerlink" title="晕塞控制"></a>晕塞控制</h2><p>接收方和发送方的速率的匹配</p>
-<p>一般不会有无限长队列，超过某一时常一般会丢包。</p>
-<h3 id="吞吐"><a href="#吞吐" class="headerlink" title="吞吐"></a>吞吐</h3><p>理论：<strong>接受者</strong>每秒能收到的比特数量，接受者真正能体验到的每秒钟能接收到的比特数，分瞬时和平均。管子跟流水一样，保证通畅是最小值。</p>
-<p>吞吐是带宽的最小值</p>
-<p>吞吐更强调<strong>端</strong>系统，取决于整个链路的<strong>瓶颈</strong>带宽。</p>
-<p>带宽是一段更取决于物理介质，点名哪里到哪里，这里的哪里不一定是端了。</p>
-<h2 id="邮寄"><a href="#邮寄" class="headerlink" title="邮寄"></a>邮寄</h2><p>收发是<strong>对等</strong>的。</p>
-<p>发：分发</p>
-<p>收：收起来</p>
-<hr>
-<h2 id="1-6-协议的层次结构"><a href="#1-6-协议的层次结构" class="headerlink" title="1.6 协议的层次结构"></a>1.6 协议的层次结构</h2><blockquote>
-<p>重点强调 <strong>对等的概念</strong></p>
-</blockquote>
-<p>层层之间功能服务的提供；</p>
-<p>分层协议栈（对等）</p>
-<p>向上提供</p>
-<p>向下使用</p>
-<p>有时相邻，很少跨层</p>
-<blockquote>
-<p>公共基础设施<strong>模块化</strong></p>
-</blockquote>
-<p>透明：不关心细节</p>
-<p>好处：服务无变化时，上层不关心。</p>
-<hr>
-<p>http协议是被实现在哪里的？</p>
-<p>​    被实现在http客户端和服务器.</p>
-<p>我们所写的网站是运行在<strong>服务器</strong>的，写的是服务器端的网站。浏览器的作用仅仅是前端显示。</p>
-<p>把浏览器端的文件下载过来在客户端显示。</p>
-<h2 id="TCP-IP协议栈"><a href="#TCP-IP协议栈" class="headerlink" title="TCP/IP协议栈"></a>TCP/IP协议栈</h2><p>appliction：支持各种应用</p>
-<p><strong>端口：标示运行在机器上的进程HTTP/FTP/SMTP</strong></p>
-<p><strong>transport：运行在两个主机上的一对进程之间的通讯TCP/UDP</strong></p>
-<p><strong>Network:一对端系统（主机）源到目的主机 Port/IP</strong> </p>
-<hr>
-<p>Link:相邻节点：网络层传输时会经过很多不同的介质，介质是透明MAC</p>
-<p>Physical：如何将比特从一个穿到另一个（比特流）</p>
-<hr>
-<p>进程间通讯：</p>
-<p><strong>同一</strong>台主机上进程的通讯：管道、信号｜ (共享内存)</p>
-<p><strong>不同</strong>主机上：在网络上一堆进程如何通讯，就利用端口。</p>
-<h2 id="ISO-OSI-refence-model"><a href="#ISO-OSI-refence-model" class="headerlink" title="ISO/OSI refence model"></a>ISO/OSI refence model</h2><h2 id="Encapsulation"><a href="#Encapsulation" class="headerlink" title="Encapsulation"></a>Encapsulation</h2><p>交换机两层</p>
-<p>router三层</p>
-<blockquote>
-<p>Crash 好乱啊Orz</p>
-</blockquote>
-<blockquote>
-<p>栈的理解：协议一个个向下遵守，再从下向上遵守。</p>
-</blockquote>
+<p>可视化不是目的，而是为了更好的痛点的产出。UserCase。</p>
+<p>c.f.软件工程需求与用例。</p>
+<p>设计思维的大部分工作是梳理用户需求。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggi3xnnqhjj31340lu7kx.jpg" alt></p>
+<p>双创的操作思路。</p>
+<h2 id="如何创建一个人物角色？"><a href="#如何创建一个人物角色？" class="headerlink" title="如何创建一个人物角色？"></a>如何创建一个人物角色？</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggi43hp1cfj31cg0lu4bz.jpg" alt></p>
+<p>更深入的洞见会让那个一切更具吸引力。</p>
+<p>“人物角色双胞胎”</p>
+<h2 id="人物角色画布"><a href="#人物角色画布" class="headerlink" title="人物角色画布"></a>人物角色画布</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggi48awsxwj31cg0tetoa.jpg" alt></p>
+<h2 id="同理心地图：如何与潜在用户建立同理心？"><a href="#同理心地图：如何与潜在用户建立同理心？" class="headerlink" title="同理心地图：如何与潜在用户建立同理心？"></a>同理心地图：如何与潜在用户建立同理心？</h2><p>“设身处地”</p>
+<p>数字产品也是如此，都是从用户的角度去想去做。</p>
+<h2 id="AEIOU工具"><a href="#AEIOU工具" class="headerlink" title="AEIOU工具"></a>AEIOU工具</h2><p>考虑用户在真实世界和数字世界中的行为方式。</p>
+<p>Activities/Environment/Interaction/Objects/User</p>
+<h2 id="上瘾框架：借助用户习惯来获得市场成功"><a href="#上瘾框架：借助用户习惯来获得市场成功" class="headerlink" title="上瘾框架：借助用户习惯来获得市场成功"></a>上瘾框架：借助用户习惯来获得市场成功</h2><p>hook Framework：数字服务或产品成为用户的习惯，做产品。</p>
+<p>上瘾画布：行动的触发/行动/奖励和投资。(4 quardratic)</p>
+<p>腾讯的产品做的很漂亮</p>
+<p>百度是技术</p>
+<p>阿里是运营。</p>
+<h2 id="待完成框架（Jobs-to-be-done"><a href="#待完成框架（Jobs-to-be-done" class="headerlink" title="待完成框架（Jobs-to-be-done)"></a>待完成框架（Jobs-to-be-done)</h2><p>核心问题：顾客为什么购买该产品？</p>
+<p>待完成框架会更加聚焦在行为改变或顾客需求上。</p>
+<p><strong>原则上，对于任何产品来说，都可以询问？顾客为什么购买我的产品或服务?</strong></p>
+<h2 id="待完成软件"><a href="#待完成软件" class="headerlink" title="待完成软件"></a>待完成软件</h2><p>Adobe Photoshop和Instagram/Weibo/wechat的创新设计是待完成的典范。</p>
+<h2 id="总结：创建一个人物角色"><a href="#总结：创建一个人物角色" class="headerlink" title="总结：创建一个人物角色"></a>总结：创建一个人物角色</h2><ol>
+<li>FIND the User</li>
+<li>Building up a hypothesis(一堆用户假设聚类)</li>
+<li>COnfirmation(确认假设)</li>
+<li>finding patterns(对用户建立一些模式)</li>
+<li>Creating personas</li>
+<li>Define situations</li>
+<li>validation</li>
+<li>dissemination of knowledge</li>
+<li>创建场景</li>
+<li>回头反复迭代。</li>
+</ol>
 
       
 
@@ -314,11 +290,11 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计思维</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">暑期</a>
         		</li>
       		
 		</ul>
@@ -374,7 +350,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/03/27/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW3%20TCP:IP%20%E5%8D%8F%E8%AE%AE%E6%A0%88/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/07/%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B402/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -388,18 +364,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/03/31/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW4-project1-shell/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          操作系统W4 project1 shell
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/03/26/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW3-java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计算机网络W3:java多线程编程基础</div>
+    <a href="/2020/07/06/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">yilia主题的配置</div>
       <i class="icon-circle-right"></i>
     </a>
   

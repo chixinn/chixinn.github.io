@@ -6,28 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>ML07 BP原理 | Chixinning的博客</title>
+  <title>数学建模讲座04:概率统计方法的应用 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="BP算法不是跟GD并列，而是GD的一种，即只是用BP可以很快的计算偏微分而已。">
+  <meta name="description" content="概率统计单个或多个总体均值的统计推断例：2012国赛A题葡萄酒问题1:以葡萄酒样品为例，两组品酒员评价的结果是否有显著差异? $(X_i,Y_i):i&#x3D;1,…,27;$ $X_i&#x3D;(X_{i,jk}),j&#x3D;1,…,9;k&#x3D;1,…,10$; 均值的显著差异？ 在此问题中$X_i$和$Y_i$都是矩阵。 角度1:2个矩阵匹配数据总体均值的差异性的检验? Asides:好难，我菜，听不懂。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ML07 BP原理">
-<meta property="og:url" content="http://yoursite.com/2020/06/17/ML07-BP%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:title" content="数学建模讲座04:概率统计方法的应用">
+<meta property="og:url" content="http://yoursite.com/2020/07/09/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E8%AE%B2%E5%BA%A704-%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95%E5%BA%94%E7%94%A8/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="BP算法不是跟GD并列，而是GD的一种，即只是用BP可以很快的计算偏微分而已。">
+<meta property="og:description" content="概率统计单个或多个总体均值的统计推断例：2012国赛A题葡萄酒问题1:以葡萄酒样品为例，两组品酒员评价的结果是否有显著差异? $(X_i,Y_i):i&#x3D;1,…,27;$ $X_i&#x3D;(X_{i,jk}),j&#x3D;1,…,9;k&#x3D;1,…,10$; 均值的显著差异？ 在此问题中$X_i$和$Y_i$都是矩阵。 角度1:2个矩阵匹配数据总体均值的差异性的检验? Asides:好难，我菜，听不懂。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwbq7azomj30q80h6467.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwbxho4ccj30q80jkwjl.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwcjrrkk5j30q80jkn5i.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwcq7yt26j30q80jkjzb.jpg">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwctq8a1ij30q80jkdor.jpg">
-<meta property="article:published_time" content="2020-06-17T00:00:33.000Z">
-<meta property="article:modified_time" content="2020-06-18T04:59:34.720Z">
+<meta property="article:published_time" content="2020-07-09T06:02:44.000Z">
+<meta property="article:modified_time" content="2020-07-09T08:30:44.253Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="Machine Learning">
-<meta property="article:tag" content="李宏毅">
+<meta property="article:tag" content="数学建模">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwbq7azomj30q80h6467.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -158,14 +151,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ML07-BP原理" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-数学建模讲座04-概率统计方法应用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      ML07 BP原理
+      数学建模讲座04:概率统计方法的应用
     </h1>
   
 
@@ -182,50 +175,129 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2020/06/17/ML07-BP%E5%8E%9F%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-06-17T00:00:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-17</time>
+        <a href="/2020/07/09/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E8%AE%B2%E5%BA%A704-%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95%E5%BA%94%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-07-09T06:02:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>BP算法不是跟GD并列，而是GD的一种，即只是用BP可以很快的计算偏微分而已。</p>
+        <h1 id="概率统计"><a href="#概率统计" class="headerlink" title="概率统计"></a>概率统计</h1><h2 id="单个或多个总体均值的统计推断"><a href="#单个或多个总体均值的统计推断" class="headerlink" title="单个或多个总体均值的统计推断"></a>单个或多个总体均值的统计推断</h2><h3 id="例：2012国赛A题葡萄酒"><a href="#例：2012国赛A题葡萄酒" class="headerlink" title="例：2012国赛A题葡萄酒"></a>例：2012国赛A题葡萄酒</h3><p>问题1:以葡萄酒样品为例，两组品酒员评价的结果是否有显著差异?</p>
+<p>$(X_i,Y_i):i=1,…,27;$</p>
+<p>$X_i=(X_{i,jk}),j=1,…,9;k=1,…,10$;</p>
+<p>均值的显著差异？</p>
+<p>在此问题中$X_i$和$Y_i$都是矩阵。</p>
+<p>角度1:2个矩阵匹配数据总体均值的差异性的检验?</p>
+<p>Asides:好难，我菜，听不懂。</p>
 <a id="more"></a>
 
-<h1 id="Back-Propagaiton"><a href="#Back-Propagaiton" class="headerlink" title="Back Propagaiton"></a>Back Propagaiton</h1><p>Case1:</p>
-<p>$y=g(x),z=h(y);$</p>
-<p>$\frac{dz}{dx}=\frac{dz}{dy}\frac{dy}{dx}$</p>
-<p>Case2:</p>
-<p>$x=g(s),y=h(s),z=k(x,y)$</p>
-<p>$\frac{dz}{ds}=\frac{\part z}{\part x}\frac{dx}{ds}+\frac{\part z}{\part y}\frac{dy}{ds}$</p>
-<!--more-->
-
-<p>机器学习的目标一边都是优化问题的求解。</p>
-<p>$L(\theta)=\sum_{n=1}^NC^n(\theta)$</p>
-<p>左右两边同时求偏微分：</p>
-<p>$\frac{\part L(\theta)}{\part w}=\sum_{n=1}^N\frac{\part C^n(\theta)}{\part w}$</p>
-<p>故当我明白了一个data的计算方法时，即可明白时如何求偏微分的了。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwbq7azomj30q80h6467.jpg" alt=""></p>
-<p>$x_1$和$x_2$是第一层的神经元：$x_1w_1+x_2w_2+b=z$p$a=\sigma(z)$;$a=\sigma(z)$</p>
-<p>然后获得了z经过一系列的迭代，获得了一个个输出$y_1$和$y_2$</p>
-<p>$\frac{\part C}{\part w}=\frac{\part z}{\part w}\frac{\part C}{\part z}$</p>
-<p>其中，Forward pass是$\frac{\part z}{\part w}$；Backward pass是$\frac{\part C}{\part z}$</p>
-<p>Forward:计算每一个neuron的Output</p>
-<p>$\frac{\part C}{\part z}=\frac{\part a}{\part z}\frac{\part C}{\part a}$</p>
-<p>这里这个前一个是sigmoid函数的微分；</p>
-<p>那后一个因子该如何计算呢?</p>
-<p>有一个neuron，求$\frac{\part C}{\part a}$的求和就有多少项，如图示例中，只有两个neuron的例子，故有2项。</p>
-<p>$\frac{\part C}{\part a}=\frac{\part C}{\part z’}\frac{\part z’}{\part a}+\frac{\part C}{\part z’’}\frac{\part z’’}{\part a}$(这次我把链式规则调成了我比较顺眼的一个形式。)</p>
-<p>但是，我们还是不会算后面的$\frac{\part C}{\part z’}$啊</p>
-<p>但是，我们先假设我们知道$\frac{\part C}{\part z’}$和$\frac{\part C}{\part z’’}$，那这样，我们就知道了$\frac{\part C}{\part a}$,就知道了$\frac{\part C}{\part z}$</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwbxho4ccj30q80jkwjl.jpg" alt=""></p>
-<p>z是在forward pass下所求得的固定的值，所以 <strong>$\sigma’(z)$</strong>是一个已知的常数，所以！我们在这样的运算过程中，只需要乘一个常数就行了。</p>
-<p>那，我是默认的不知道啊，我怎么算呢？</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwcjrrkk5j30q80jkn5i.jpg" alt=""></p>
-<p>如果不知道呢，所以就从最后一层往前面倒退，因为只有是outputLayer才可以计算。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwcq7yt26j30q80jkjzb.jpg" alt=""></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfwctq8a1ij30q80jkdor.jpg" alt=""></p>
+<h2 id="分布检验常用方法"><a href="#分布检验常用方法" class="headerlink" title="分布检验常用方法"></a>分布检验常用方法</h2><p>对于一元总体：</p>
+<p>第一步：是否与正态分布相近似？是否拒绝正太分布的检验?</p>
+<p>第二部：如果不能正太-》非参数/如果可以正态：参数</p>
+<ul>
+<li><p>Neyman-pearson 拟合优度检验。</p>
+<p>分布检验，既可以用于检验数据的分布特性，又可以检验不同组之间的分布关系。</p>
+</li>
+<li><p>K-S检验</p>
+</li>
+<li><p>WILCOXON</p>
+</li>
+<li><p>SHAPIRO-WILK</p>
+</li>
+</ul>
+<p>对于多元总体：常见的是检验是否服从多元正态分布。如果不是多元正态分布，可能会对整体进行调整。</p>
+<h2 id="单个正态总体均值"><a href="#单个正态总体均值" class="headerlink" title="单个正态总体均值"></a>单个正态总体均值</h2><p>1.t-统计/z-统计。</p>
+<h2 id="K个总体的假设检验："><a href="#K个总体的假设检验：" class="headerlink" title="K个总体的假设检验："></a>K个总体的假设检验：</h2><ol>
+<li>K=2：<ol>
+<li>正态总体<ol>
+<li>方差已知</li>
+<li>方差未知</li>
+</ol>
+</li>
+<li>非正态总体</li>
+</ol>
+</li>
+<li>K$\ge3$：方差分析。</li>
+</ol>
+<p>在以往赛题中，还未看到k特别大的情况。</p>
+<p>选择检验方式的时候：核心之处是去关注它是正态分布还是非正态分布。</p>
+<p><strong>真正的难点不在于如何去写function，而是难在如何把问题具体的与function联系起来。</strong>很多具体方法的实现都无需写具体程序的，真正做test的程序，很多都是已经集成的。</p>
+<ul>
+<li>原始数据格式的清洗工作等。</li>
+<li>正式比赛中，可以专门有同学整理和处理数据。</li>
+</ul>
+<h2 id="葡萄酒的评价问题2-多元统计分析"><a href="#葡萄酒的评价问题2-多元统计分析" class="headerlink" title="葡萄酒的评价问题2:多元统计分析"></a>葡萄酒的评价问题2:多元统计分析</h2><p>同时考虑多个指标-&gt;多元统计。</p>
+<p>根据酿酒葡萄的<strong>理化指标</strong>和葡萄酒的<strong>质量</strong>对酿酒葡萄进行分级。</p>
+<p>如果一下子将所有指标同时考虑的话，则指标的维数则会过高，</p>
+<p>故多元统计分析中一个比较重要的问题是：</p>
+<h2 id="主成分定义"><a href="#主成分定义" class="headerlink" title="主成分定义"></a>主成分定义</h2><ul>
+<li>思想：把高维空间的数据投影到低维空间，使问题得到简化而损失的信息又不太多</li>
+<li>主成分分析：用可观的随机变量的线性组合。</li>
+</ul>
+<p>因子载荷量，贡献率和得分矩阵。</p>
+<p>协方差阵的特征根的从大到小的排列？$\lambda_1\ge\lambda_2$</p>
+<p>正成分$Z_k$与原始变量$X_i$的相关称为因子负荷量。</p>
+<p>$\lambda_k/\sum_{i=1}^p\lambda_i$称为累计贡献率。</p>
+<p>主成分的选择方法？如果单个主成分贡献率都比较小，可以给出一个threshold，也可以关注累计累计贡献率，当我的累计贡献率到达某个threshold,也可以就此停止主成分的选择。</p>
+<p>当自变量的个数大于样本数时？稀疏的主成分分析?</p>
+<p>稀疏的主成分分析自动的设为0.</p>
+<h2 id="问题3-相关关系分析-典型相关分析"><a href="#问题3-相关关系分析-典型相关分析" class="headerlink" title="问题3:相关关系分析-典型相关分析"></a>问题3:相关关系分析-典型相关分析</h2><p>分析酿酒葡萄与葡萄酒的理化指标之间的联系。</p>
+<p>两组随机变量之间的关系：相关性于独立性，在实际中应用的比较多的是相关性。</p>
+<p><strong>典型相关分析用来分析：两个随机向量之间的线性相关程度。</strong></p>
+<p>第一对典型相关变量/典型相关系数。</p>
+<h2 id="依赖关系分析-回归分析"><a href="#依赖关系分析-回归分析" class="headerlink" title="依赖关系分析-回归分析"></a>依赖关系分析-回归分析</h2><p>问题4:分析酿酒葡萄和葡萄酒的理化指标对葡萄酒质量的影响：</p>
+<h3 id="多元线性回归模型"><a href="#多元线性回归模型" class="headerlink" title="多元线性回归模型"></a>多元线性回归模型</h3><p>假定因变量$Y$ ：</p>
+<ul>
+<li>参数估计方法：</li>
+<li>回归方程的显著性检验：</li>
+<li>回归系数的显著性检验：即检验以下的假设：<ul>
+<li>建立“最优”回归方程</li>
+<li>预报于控制</li>
+</ul>
+</li>
+</ul>
+<p>为什么要对均值进行估计检验呢？假设检验于置信区间。</p>
+<p>建立最有回归过程的标准：检验/模型选择的结合。</p>
+<p>正态分布适合多元线性回归。</p>
+<p>高维多元线性回归已经被研究的很透彻了。</p>
+<h2 id="问题5-回归分析：广义线性回归2012C"><a href="#问题5-回归分析：广义线性回归2012C" class="headerlink" title="问题5:回归分析：广义线性回归2012C"></a>问题5:回归分析：广义线性回归2012C</h2><p>回归解决的就是依赖关系的问题。</p>
+<p>建立数学统计模型研究脑卒中发病率与气温、气压、相对湿度间的关系。</p>
+<p>这种问题就是典型的依赖关系分析。</p>
+<p>病人发病时间的重复？-&gt;转变思路：4年的每一天里面有多少病人是发病了？</p>
+<p>广义线性回归模型：</p>
+<p>共同点：因变量/协变量。</p>
+<p>假设随机变量来自于指数分布族。</p>
+<p>连接函数：广义线性回归模型。</p>
+<p>logistic回归-&gt;广义线性回归模型。</p>
+<ol>
+<li>依赖关系，因变量1个，有多个自变量，</li>
+<li>如果y是连续的，通过正态性检验，可以很放心的通过多元正态性回归。</li>
+</ol>
+<p>核心：Y的取值比较奇怪。</p>
+<h2 id="2016-C：电池剩余放电时间预测-依赖关系分析"><a href="#2016-C：电池剩余放电时间预测-依赖关系分析" class="headerlink" title="2016 C：电池剩余放电时间预测(依赖关系分析)"></a>2016 C：电池剩余放电时间预测(依赖关系分析)</h2><ol>
+<li>固定恒定电流，建立放点电流的数学模型</li>
+<li>预测衰减状态3的剩余放电时间。</li>
+</ol>
+<h3 id="变系数回归模型"><a href="#变系数回归模型" class="headerlink" title="变系数回归模型"></a>变系数回归模型</h3><p>Y=$X^T\beta(W)+\epsilon$</p>
+<p>例：2013D 城市公共自行车服务系统</p>
+<p>找出各站点借车和换车的高峰时段，并对共同借车高峰时段和还车高峰时段的站点分别进行归类：</p>
+<p>归类问题-&gt;另一大问题。</p>
+<h2 id="系统聚类法"><a href="#系统聚类法" class="headerlink" title="系统聚类法"></a>系统聚类法</h2><ol>
+<li><p>数据变换</p>
+</li>
+<li><p>计算n个样本的两两间的距离</p>
+</li>
+<li><p>第一步分类</p>
+</li>
+<li><p>新嘞</p>
+</li>
+<li><p>重复</p>
+</li>
+<li><p>…</p>
+</li>
+</ol>
+<p>聚类分析分成几类呢？理论上没有一定要分成几类，而是要跟假设检验相结合，仍是看之间差异性的是否显著。</p>
 
       
 
@@ -269,11 +341,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学建模</a>
         		</li>
       		
 		</ul>
@@ -329,7 +397,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/06/17/ML07-BP%E5%8E%9F%E7%90%86/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/09/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E8%AE%B2%E5%BA%A704-%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95%E5%BA%94%E7%94%A8/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -343,18 +411,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/06/17/%E6%A6%82%E7%8E%87%E8%AE%BAW15-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E8%BF%87%E7%A8%8B/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          概率论W15:马尔可夫过程与应用
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/06/16/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W15-%E6%A6%82%E7%8E%87%E6%A8%A1%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">数学基础W15 概率模型</div>
+    <a href="/2020/07/07/%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E8%AE%B2%E5%BA%A701-%E8%AE%BA%E6%96%87%E9%80%89%E8%AE%B2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数学建模讲座01:论文选讲</div>
       <i class="icon-circle-right"></i>
     </a>
   

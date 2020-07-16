@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 137
+			总文章数 139
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,205 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Error-Permission-denied-apply2files-usr-local-lib-docker-cli-plugins" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/16/Error-Permission-denied-apply2files-usr-local-lib-docker-cli-plugins/">Error: Permission denied @ apply2files - /usr/local/lib/docker/cli-plugins</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/07/16/Error-Permission-denied-apply2files-usr-local-lib-docker-cli-plugins/" class="archive-article-date">
+  	<time datetime="2020-07-16T07:02:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>借鉴csdn<a href="https://blog.csdn.net/Pumpkinman/article/details/105796825" target="_blank" rel="noopener">这篇文章</a></p>
+<p>输入<code>sudo chown -R $(whoami) $(brew --prefix)/*</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">bugs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/16/Error-Permission-denied-apply2files-usr-local-lib-docker-cli-plugins/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-计算机网络final-Project" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9Cfinal-Project/">计算机网络final Project</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/07/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9Cfinal-Project/" class="archive-article-date">
+  	<time datetime="2020-07-16T02:57:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Final-Project-利用java-实现web-Server"><a href="#Final-Project-利用java-实现web-Server" class="headerlink" title="Final Project:利用java 实现web Server"></a>Final Project:利用java 实现web Server</h1><h2 id="题目1-1-开发一个简单的webServer1-0"><a href="#题目1-1-开发一个简单的webServer1-0" class="headerlink" title="题目1.1 开发一个简单的webServer1.0"></a>题目1.1 开发一个简单的webServer1.0</h2><p>HTTP：超文本传输协议描述了程序可以<strong>通过IP交换数据</strong>的一种方式。</p>
+<p>GET：获取信息/POST：提交表单数据或上传文件</p>
+<p>一个标头称为<code>Content-Length</code>，告诉服务器在请求正文中期望读取多少字节。</p>
+<ol>
+<li>当client联系时创建一个连接socket.</li>
+<li>从这个socket作为门接受HTTP请求</li>
+<li><strong>解释该请求</strong>以确定所请求的特定文件</li>
+<li>从Server的FS处获得请求的文件</li>
+<li>创建一个由请求的文件组成的HTTP响应报文</li>
+<li>经过TCP连接向请求的浏览器返回相应。</li>
+</ol>
+<p>参考实验楼的实验，用<a href="https://www.shiyanlou.com/courses/552/learning/" target="_blank" rel="noopener">python实现http Server</a></p>
+<p>实验楼的还不如<a href="http://aosabook.org/en/500L/a-simple-web-server.html" target="_blank" rel="noopener">原文</a>讲的清楚…</p>
+<p>python代码如下:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> http.server <span class="keyword">import</span> BaseHTTPRequestHandler, HTTPServer</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RequestHandler</span><span class="params">(BaseHTTPRequestHandler)</span>:</span></span><br><span class="line">    <span class="string">'''处理请求并返回页面'''</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 页面模板</span></span><br><span class="line">    Page = <span class="string">'''\</span></span><br><span class="line"><span class="string">        &lt;html&gt;</span></span><br><span class="line"><span class="string">        &lt;body&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;Hello, web!&lt;/p&gt;</span></span><br><span class="line"><span class="string">        &lt;/body&gt;</span></span><br><span class="line"><span class="string">        &lt;/html&gt;</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 处理一个GET请求</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_GET</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.send_response(<span class="number">200</span>)<span class="comment">#发送200响应码</span></span><br><span class="line">        self.send_header(<span class="string">"Content-Type"</span>, <span class="string">"text/html"</span>)<span class="comment">#标头告诉客户端将数据解释为HTML</span></span><br><span class="line">        self.send_header(<span class="string">"Content-Length"</span>, str(len(self.Page)))</span><br><span class="line">        self.end_headers()<span class="comment">#用end_headers()方法调用将插入空白行，该行将我们的标题与页面本身分开。</span></span><br><span class="line">        self.wfile.write(self.Page.encode(<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">  <span class="comment">#祝函数来真正启动服务器的运行。</span></span><br><span class="line">    serverAddress = (<span class="string">''</span>, <span class="number">8080</span>)<span class="comment">#空格表示localhost</span></span><br><span class="line">    server = HTTPServer(serverAddress, RequestHandler)</span><br><span class="line">    server.serve_forever()</span><br></pre></td></tr></table></figure>
+
+<p>BaseHTTPRequestHandler类帮我们处理对请求的解析，通过请求的方法来调用其对应的函数。</p>
+<p>​    如方法是<code>GET</code>,    该类会调用名为do_GET方法。</p>
+<p>我们所重写的RequestHandler重写此方法以动态生成一个简单的页面：文本存储在类级别的变量中Page,</p>
+<p>使用<code>httpie</code>代替浏览器发送请求并在终端打印相应信息。</p>
+<p>?postman？</p>
+<p><strong>要显示的页面模版只是一个字符串而已，包含html</strong></p>
+<hr>
+<h2 id="进阶-使其显示值"><a href="#进阶-使其显示值" class="headerlink" title="进阶 使其显示值"></a>进阶 使其显示值</h2><p>修改Web服务器以显示HTTP请求中包含的某些值以用于调试</p>
+<p>代码框架如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RequestHandler</span><span class="params">(BaseHTTPServer.BaseHTTPRequestHandler)</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">do_GET</span><span class="params">(self)</span>:</span></span><br><span class="line">    page=self.create_page()<span class="comment">#创建页面</span></span><br><span class="line">    self.send_page(page)<span class="comment">#发送页面</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">create_page</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="comment">#todo </span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">send_page</span><span class="params">(self,page)</span>:</span></span><br><span class="line">    self.send_response()</span><br><span class="line">    self.send_header()</span><br><span class="line">    self.end_headers()</span><br><span class="line">    self.wfile.write(page)</span><br></pre></td></tr></table></figure>
+
+<p>在地址栏输入地址一般就是GET</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggstmxc75pj30xy0h0q5e.jpg" alt></p>
+<p>注意此时即使页面上并没有我们要寻找的something.html我们也不会收到404NotFound：</p>
+<p>web服务器只是一个程序!</p>
+<h2 id="从FS（磁盘）提供页面"><a href="#从FS（磁盘）提供页面" class="headerlink" title="从FS（磁盘）提供页面"></a>从FS（磁盘）提供页面</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9Cfinal-Project/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-设计思维09" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -863,195 +1062,6 @@
 
 
   
-    <article id="post-yilia主题的配置-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE-1/">yilia主题的配置</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/07/06/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE-1/" class="archive-article-date">
-  	<time datetime="2020-07-06T05:57:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="yilia主题的配置"><a href="#yilia主题的配置" class="headerlink" title="yilia主题的配置"></a>yilia主题的配置</h1><p>拖拖欠欠这么久了，一个学期了也没有进行相关的blog的优化【根本拿不上台面x】</p>
-<ol>
-<li><p>SEO(搜索引擎的优化)</p>
-</li>
-<li><p>网站访问速度的优化</p>
-</li>
-<li><p>图床(目前个人使用的是iPic)不知道是不是稳定…感觉可以Github图床?PicGo+Github</p>
-<p>iPiC好像使用的是微博图床。</p>
-</li>
-<li><p>然后一些图片、美观的优化逻辑，比如标签、分类、打赏</p>
-</li>
-<li><p>最重要的是，阅读博客的人跟我互动交流的方式。</p>
-</li>
-<li><p>不蒜子记录</p>
-</li>
-<li><p>Live2d不知道还需不需要?</p>
-</li>
-</ol>
-        
-          <a class="article-more-a" href="/2020/07/06/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE-1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/06/yilia%E4%B8%BB%E9%A2%98%E7%9A%84%E9%85%8D%E7%BD%AE-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-设计思维01" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/06/%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B401/">设计思维01</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/07/06/%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B401/" class="archive-article-date">
-  	<time datetime="2020-07-06T00:04:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>以团队为合作</p>
-        
-          <a class="article-more-a" href="/2020/07/06/%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B401/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计思维</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">暑期</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/06/%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B401/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1239,6 +1249,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数学建模</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">bugs</a>
               </li>
             
             <div class="clearfix"></div>

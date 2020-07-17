@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 139
+			总文章数 140
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,297 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-操作系统-W8-进程调度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/">操作系统 W8 进程调度</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/" class="archive-article-date">
+  	<time datetime="2020-04-26T06:11:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="2-4进程调度"><a href="#2-4进程调度" class="headerlink" title="2.4进程调度"></a>2.4进程调度</h1><p>第2章课程设计：修改和实现相应功能的调度</p>
+<h2 id="进程行为"><a href="#进程行为" class="headerlink" title="进程行为"></a>进程行为</h2><ul>
+<li>做计算</li>
+<li>做I/O[磁盘/网络读写]</li>
+</ul>
+<p>按CPU计算时间与I/O时间的比例：</p>
+<ul>
+<li>计算密集型</li>
+<li>I/O密集型</li>
+</ul>
+<p>进程的调度一定要 考虑到 <strong>负载的特征workload</strong></p>
+<p>相应的再实行相应的调度算法</p>
+<h2 id="调度时机"><a href="#调度时机" class="headerlink" title="调度时机"></a>调度时机</h2><ul>
+<li>进程退出</li>
+<li>进程在I/O或信号量上阻塞</li>
+<li>创建新进程</li>
+<li>I/O中断发生</li>
+<li>时钟中断发生<ul>
+<li>抢占式：执行时可以被打断</li>
+<li>非抢占式</li>
+</ul>
+</li>
+</ul>
+<h2 id="调度算法"><a href="#调度算法" class="headerlink" title="调度算法"></a>调度算法</h2><ul>
+<li>操作系统决定进程运行的向后顺序</li>
+<li>调度器：执行</li>
+<li>调度算法：如何调度</li>
+</ul>
+<p>不同的应用场景：[很难有普适的适用于任何场景的调度算法]</p>
+<ul>
+<li>批处理系统</li>
+<li>交互式系统</li>
+<li>实时系统</li>
+</ul>
+<h3 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h3><ul>
+<li>共同的目标：公平策略强平衡</li>
+<li>批处理系统：最大的吞吐量(批处理没有交互，单位时间内能处理更多，即最大化CPU利用率)</li>
+<li>交互式系统：立刻有相应，最小化响应时间，均衡性</li>
+<li>实时系统：截止时间、可预测性(第二次课程设计)</li>
+</ul>
+<h3 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h3><h4 id="面向时间"><a href="#面向时间" class="headerlink" title="面向时间"></a>面向时间</h4><p>吞吐量/CPU利用率/各种设备的均衡利用</p>
+<h4 id="面向系统"><a href="#面向系统" class="headerlink" title="面向系统"></a>面向系统</h4><p>同样的硬件集群好的调度算法可能给10000个用户提供服务</p>
+<h2 id="批处理系统调度"><a href="#批处理系统调度" class="headerlink" title="批处理系统调度"></a>批处理系统调度</h2><h3 id="先来先服务FCFS"><a href="#先来先服务FCFS" class="headerlink" title="先来先服务FCFS"></a>先来先服务FCFS</h3><p>是比较基础的方法</p>
+<h3 id="短作业"><a href="#短作业" class="headerlink" title="短作业"></a>短作业</h3><p>预计执行<strong>时间短</strong>的作业进行CPU的分派。</p>
+<h3 id="SJF的变形"><a href="#SJF的变形" class="headerlink" title="SJF的变形"></a>SJF的变形</h3><p>最短剩余时间优先</p>
+<p>最高响应比优先HRRN</p>
+<p>​    响应比：(等待时间+要求执行时间)/要求执行时间</p>
+<h3 id="多级调度-三个层次上进行调度"><a href="#多级调度-三个层次上进行调度" class="headerlink" title="多级调度(三个层次上进行调度)"></a>多级调度(三个层次上进行调度)</h3><ul>
+<li>准入调度</li>
+<li>内存调度</li>
+<li>CPU调度</li>
+</ul>
+<h2 id="交互式系统调度"><a href="#交互式系统调度" class="headerlink" title="交互式系统调度"></a>交互式系统调度</h2><h3 id="时间片轮转-Round-Robin"><a href="#时间片轮转-Round-Robin" class="headerlink" title="时间片轮转(Round Robin)"></a>时间片轮转(Round Robin)</h3><ul>
+<li>将系统中所有就绪的进程按照FCFS形成队列</li>
+<li>CPU让进程执行时间片</li>
+<li>在时间片结束时，发生时钟中断</li>
+<li>调度程序据此暂停当前进程的执行，将其送到就绪队列的末尾，并通过上下文切换执行当前的队首进程。</li>
+<li>进程可以未使用完一个时间片，就出让CPU(如阻塞)</li>
+</ul>
+<h4 id="时间片长度的确定"><a href="#时间片长度的确定" class="headerlink" title="时间片长度的确定"></a>时间片长度的确定</h4><ul>
+<li><p>时间片长度变化的影响</p>
+<ul>
+<li>过长-&gt;退化为FCFS</li>
+<li>过短-&gt;context switch的开销变大了</li>
+</ul>
+</li>
+<li><p>对响应时间的要求：</p>
+<p>​    响应时间=进程数目$\times$时间片长度</p>
+<blockquote>
+<p>Trade off between those 2.</p>
+</blockquote>
+</li>
+<li><p>影响时间片长度的因素：</p>
+<ul>
+<li>就绪进程的数目</li>
+<li>系统的处理能力</li>
+</ul>
+</li>
+</ul>
+<h3 id="优先级调度"><a href="#优先级调度" class="headerlink" title="优先级调度"></a>优先级调度</h3><p>谁的优先级高，先调度谁</p>
+<ul>
+<li>静态优先级</li>
+<li>动态优先级：在运行时做相应的优先级调整</li>
+</ul>
+<h4 id="多类优先级调度"><a href="#多类优先级调度" class="headerlink" title="多类优先级调度"></a>多类优先级调度</h4><p>在各类之间采用优先级调度，而各类进程内部采用时间片轮转调度。</p>
+<h4 id="多重队列"><a href="#多重队列" class="headerlink" title="多重队列"></a>多重队列</h4><h3 id="彩票调度"><a href="#彩票调度" class="headerlink" title="彩票调度"></a>彩票调度</h3><h3 id="公平分享调度"><a href="#公平分享调度" class="headerlink" title="公平分享调度"></a>公平分享调度</h3><h2 id="实时系统调度"><a href="#实时系统调度" class="headerlink" title="实时系统调度"></a>实时系统调度</h2><ul>
+<li><p>实时调度系统氛围硬实时和软实时</p>
+</li>
+<li><p>可调度的实时系统</p>
+</li>
+<li><p>针对多周期的事件流：</p>
+<p>若有周期性事件m个，事件i的周期为Pi,其中每个事件需要Ci秒的CPU时间，</p>
+<p>$\sum_{i=1}^m\frac{C_i}{P_i}\le1$</p>
+</li>
+</ul>
+<h2 id="调度策略与机制"><a href="#调度策略与机制" class="headerlink" title="调度策略与机制"></a>调度策略与机制</h2><ul>
+<li>将调度问题分解为调度策略与调度机制</li>
+</ul>
+<h2 id="线程调度"><a href="#线程调度" class="headerlink" title="线程调度"></a>线程调度</h2><ul>
+<li>线程的实现方式决定线程的调度模式：<ul>
+<li>用户</li>
+<li>内核</li>
+</ul>
+</li>
+<li>用户级线程的阻塞会引起整个进程的阻塞</li>
+<li>在用户级线程方式下，可以为应用定制特定的调度器</li>
+</ul>
+<h1 id="2-5-MINIX3进程概述"><a href="#2-5-MINIX3进程概述" class="headerlink" title="2.5 MINIX3进程概述"></a>2.5 MINIX3进程概述</h1><h2 id="minix3系统结构"><a href="#minix3系统结构" class="headerlink" title="minix3系统结构"></a>minix3系统结构</h2><p>minix3微内核结构，是一组进程的集合，内核功能较少，更多的功能由用户进程实现，进程间通过IPC机制进行通信。</p>
+<h3 id="minix3的四层结构"><a href="#minix3的四层结构" class="headerlink" title="minix3的四层结构"></a>minix3的四层结构</h3><ul>
+<li><p>Kernel 层</p>
+</li>
+<li><p>Device drivers</p>
+</li>
+<li><p>Server process</p>
+</li>
+<li><p>User process</p>
+</li>
+</ul>
+<h3 id="内核层"><a href="#内核层" class="headerlink" title="内核层"></a>内核层</h3><ul>
+<li>负责进程的调度</li>
+<li>时钟任务</li>
+<li>系统任务读写I/O，跨地址空间复制数据</li>
+<li>C+汇编</li>
+</ul>
+<h3 id="设备驱动层"><a href="#设备驱动层" class="headerlink" title="设备驱动层"></a>设备驱动层</h3><ul>
+<li>读写I/O端口的数据</li>
+<li>不同类型设备需要相应的设备驱动程序</li>
+<li>也可以调用其他内核调用</li>
+</ul>
+<h3 id="服务器层"><a href="#服务器层" class="headerlink" title="服务器层"></a>服务器层</h3><ul>
+<li>进程服务器<ul>
+<li>创建，终止进程:fork, exec,wait</li>
+<li>信号相关的系统调用:alarm,kill</li>
+<li>管理内存,brk</li>
+</ul>
+</li>
+<li>文件系统服务器<ul>
+<li>执行文件系统的调用,read,mount,chdir</li>
+</ul>
+</li>
+<li>再生服务器<ul>
+<li>启动或重启相关的设备驱动程序</li>
+</ul>
+</li>
+</ul>
+<h3 id="用户进程层"><a href="#用户进程层" class="headerlink" title="用户进程层"></a>用户进程层</h3><ul>
+<li>包含所有的用户进程<ul>
+<li>Shell，编辑器，编译器等工具程序</li>
+<li>用户运行的程序</li>
+<li>守护进程</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>设备驱动层和服务器层的进程称为系统进程，是操作系统的组成</p>
+<p>内核&gt;设备&gt;服务器&gt;用户</p>
+</blockquote>
+<h2 id="Minix系统启动"><a href="#Minix系统启动" class="headerlink" title="Minix系统启动"></a>Minix系统启动</h2><h3 id="启动顺序"><a href="#启动顺序" class="headerlink" title="启动顺序"></a>启动顺序</h3><p>Bootstrap[引导程序]-&gt;boot(boot image)-&gt;Kernel-&gt;系统任务、时钟任务-&gt;系统进程-&gt;Init进程-&gt;其它用户进程及…</p>
+<h3 id="引导映像-boot-image"><a href="#引导映像-boot-image" class="headerlink" title="引导映像(boot image)"></a>引导映像(boot image)</h3><ul>
+<li>由boot装载至内存的适当位置</li>
+<li>包括多个：内核、进程管理器、filesystem</li>
+<li>每个部分都是独立的程序</li>
+</ul>
+<h3 id="进程树初始化"><a href="#进程树初始化" class="headerlink" title="进程树初始化"></a>进程树初始化</h3><ul>
+<li>init进程</li>
+</ul>
+<h2 id="MINIX进程间通讯"><a href="#MINIX进程间通讯" class="headerlink" title="MINIX进程间通讯"></a>MINIX进程间通讯</h2><p>IPC原语</p>
+<ul>
+<li>内核将消息从发送者复制到接受者</li>
+<li>系统进程，时钟任务，系统任务只允许与特定的进程通信</li>
+<li>当一个进程发送消息，而目标进程尚未开始接收消息时，发送进程将阻塞。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">send(dest,&amp;message)</span><br></pre></td></tr></table></figure>
+
+<p>notify原语</p>
+<p>不会阻塞</p>
+<p>对于系统进程，用位图来记录其他系统进程发给它的通知</p>
+<h2 id="MINIX进程调度"><a href="#MINIX进程调度" class="headerlink" title="MINIX进程调度"></a>MINIX进程调度</h2><ul>
+<li><p>minix3采用多级排队系统，定义为16个队列[16个优先级]</p>
+</li>
+<li><p>系统任务和时钟任务最高优先级</p>
+</li>
+<li><p>IDLE最低</p>
+<p>当系统无其余有效或就绪时，会使空闲进程在上面跑。</p>
+</li>
+<li><p>一个进程可以根据不同需要在不同优先级的队列中移动</p>
+</li>
+<li><p>只有高优先级的队列中没有就绪进程时，才运行低优先级的进程队列。</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>不同的优先级的时间片长度不一</p>
+<ul>
+<li>驱动程序进程和服务器进程需要运行其至阻塞</li>
+</ul>
+</li>
+<li><p>使用一个改进的轮转调度算法</p>
+<ul>
+<li>进程转为非就绪时，从队列中取出，当它再变回就绪时，将其放在队首，分配的时间片 <strong>为上次时间片中的剩余时间</strong></li>
+</ul>
+<blockquote>
+<p>实现不同的调度功能</p>
+</blockquote>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/26/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-W8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-时间序列预测学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1092,74 +1383,6 @@
 
 
   
-    <article id="post-EDF近似实时调度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/19/EDF%E8%BF%91%E4%BC%BC%E5%AE%9E%E6%97%B6%E8%B0%83%E5%BA%A6/">EDF近似实时调度</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/04/19/EDF%E8%BF%91%E4%BC%BC%E5%AE%9E%E6%97%B6%E8%B0%83%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-04-19T08:02:36.245Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="EDF近似实时调度"><a href="#EDF近似实时调度" class="headerlink" title="EDF近似实时调度"></a>EDF近似实时调度</h1><p>1-增加系统调用chrt</p>
-<p>2-修改代码scheduler</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/19/EDF%E8%BF%91%E4%BC%BC%E5%AE%9E%E6%97%B6%E8%B0%83%E5%BA%A6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
@@ -1351,6 +1574,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">bugs</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">姜启源</a>
               </li>
             
             <div class="clearfix"></div>

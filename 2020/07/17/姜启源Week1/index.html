@@ -16,7 +16,7 @@
 <meta property="og:description" content="多步决策过程(商人过河)  预测人口：  马尔萨斯指数增长模型 阻止增长模型Logistic模型   数学模型的分类：    应用领域 数学方法 表现特性 建模目的 了解程度    人口 初等数学 确定和随机 描述 白箱   交通 微分方程 静态和动态 优化 灰箱   经济 规划 离散和连续 预测 黑箱   生态 统计 线性与非线 决策       分类">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-17T08:01:57.000Z">
-<meta property="article:modified_time" content="2020-07-17T09:27:04.699Z">
+<meta property="article:modified_time" content="2020-07-18T04:01:14.361Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数学建模">
@@ -251,11 +251,18 @@
 <li>数学工具(变量、常数、函数)的表示</li>
 </ol>
 <h3 id="优化模型的分类"><a href="#优化模型的分类" class="headerlink" title="优化模型的分类"></a>优化模型的分类</h3><ol>
-<li><p>函数极值问题-&gt;微分</p>
+<li><p>静态优化模型：函数极值问题-&gt;微分</p>
 <p>3.1/3.2优化模型的真正效果</p>
 <ol>
-<li>敏感性分析，研究主要参数的微小变化对模型的影响</li>
-<li>强健性分析</li>
+<li><p>敏感性分析，研究主要参数的微小变化对模型的影响</p>
+<p>很多线性规划系数是易变的，故会出现：</p>
+<ul>
+<li>当系数变化时，最优解会有什么变化</li>
+<li>或系数在什么范围变化，对最优解的影响基本不变。</li>
+</ul>
+</li>
+<li><p>强健性分析</p>
+</li>
 </ol>
 </li>
 </ol>
@@ -267,13 +274,34 @@
 <p>经济学定律：最大利润在边际产值等于边际成本时达到。</p>
 <p>产值最大与费用最小的对偶关系。</p>
 <hr>
-<h2 id="Chapter4-数学规划模型"><a href="#Chapter4-数学规划模型" class="headerlink" title="Chapter4 数学规划模型"></a>Chapter4 数学规划模型</h2><p>$min_z z=f(x)\s.t.g_i(x)\le0,i=1,2,…,m$</p>
-<p>多元函数的条件极值问题。</p>
+<h2 id="Chapter4-数学规划模型"><a href="#Chapter4-数学规划模型" class="headerlink" title="Chapter4 数学规划模型"></a>Chapter4 数学规划模型</h2><p>$min_z z=f(x)，x=(x_1,…,x_n)^T\s.t.g_i(x)\le0,i=1,2,…,m$</p>
+<p>其中，$x$为决策变量$f(x)$为目标函数，$g(x)\le0$为约束条件。</p>
+<h3 id="分类："><a href="#分类：" class="headerlink" title="分类："></a>分类：</h3><ol>
+<li><p>多元函数条件极值问题：</p>
+<p>决策变量个数n和约束条件个数m较大</p>
+<p>最优解在可行域的边界上取得</p>
+</li>
+<li><p>数学规划：</p>
 <ol>
-<li>线形规划</li>
-<li></li>
+<li><p>线形规划：在一组线性约束的限制下，求一线性目标函数最大或最小的问题。</p>
+</li>
+<li><p>非线性规划$NLP$</p>
+<p>Matlab。司守奎Chapter3</p>
+</li>
+<li><p>整数规划</p>
+<p>i.变量全是整数</p>
+<p>ii.变量部分是整数</p>
+<p>1.3 求解方法分类: (i)分枝定界法—可求纯或混合整数线性规划。 (ii)割平面法—可求纯或混合整数线性规划。 (iii)隐枚举法—求解“0-1”整数规划:</p>
+<p>1过滤隐枚举法;</p>
+<p>2分枝隐枚举法。 (iv)匈牙利法—解决指派问题(“0-1”规划特殊情形)。 (v)蒙特卡洛法—求解各种类型规划。</p>
+<p>整数解一般可以采用美剧，但是不好穷举的时候，可以应用概率理论证明求得满意解。</p>
+<p>整数规划采用模型软件LINGO</p>
+</li>
 </ol>
-
+</li>
+</ol>
+<hr>
+<h2 id="Chapter5微分方程模型"><a href="#Chapter5微分方程模型" class="headerlink" title="Chapter5微分方程模型"></a>Chapter5微分方程模型</h2>
       
 
       

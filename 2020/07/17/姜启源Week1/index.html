@@ -6,22 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>姜启源Week1 | Chixinning的博客</title>
+  <title>姜启源/司守奎Week1 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="多步决策过程(商人过河)  预测人口：  马尔萨斯指数增长模型 阻止增长模型Logistic模型   数学模型的分类：    应用领域 数学方法 表现特性 建模目的 了解程度    人口 初等数学 确定和随机 描述 白箱   交通 微分方程 静态和动态 优化 灰箱   经济 规划 离散和连续 预测 黑箱   生态 统计 线性与非线 决策       分类">
 <meta property="og:type" content="article">
-<meta property="og:title" content="姜启源Week1">
+<meta property="og:title" content="姜启源&#x2F;司守奎Week1">
 <meta property="og:url" content="http://yoursite.com/2020/07/17/%E5%A7%9C%E5%90%AF%E6%BA%90Week1/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
 <meta property="og:description" content="多步决策过程(商人过河)  预测人口：  马尔萨斯指数增长模型 阻止增长模型Logistic模型   数学模型的分类：    应用领域 数学方法 表现特性 建模目的 了解程度    人口 初等数学 确定和随机 描述 白箱   交通 微分方程 静态和动态 优化 灰箱   经济 规划 离散和连续 预测 黑箱   生态 统计 线性与非线 决策       分类">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxgprk9g0j30mu07g74x.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxhppv5w0j30ug0aomyz.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxhskb1ehj309g04qwem.jpg">
 <meta property="article:published_time" content="2020-07-17T08:01:57.000Z">
-<meta property="article:modified_time" content="2020-07-18T04:01:14.361Z">
+<meta property="article:modified_time" content="2020-07-20T08:03:10.791Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数学建模">
 <meta property="article:tag" content="姜启源">
+<meta property="article:tag" content="matlab">
+<meta property="article:tag" content="司守奎">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxgprk9g0j30mu07g74x.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -159,7 +165,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      姜启源Week1
+      姜启源/司守奎Week1
     </h1>
   
 
@@ -285,7 +291,7 @@
 <ol>
 <li><p>线形规划：在一组线性约束的限制下，求一线性目标函数最大或最小的问题。</p>
 </li>
-<li><p>非线性规划$NLP$</p>
+<li><p>非线性规划$NLP$(non-linear Programming)</p>
 <p>Matlab。司守奎Chapter3</p>
 </li>
 <li><p>整数规划</p>
@@ -301,7 +307,61 @@
 </li>
 </ol>
 <hr>
-<h2 id="Chapter5微分方程模型"><a href="#Chapter5微分方程模型" class="headerlink" title="Chapter5微分方程模型"></a>Chapter5微分方程模型</h2>
+<h2 id="Chapter5微分方程模型"><a href="#Chapter5微分方程模型" class="headerlink" title="Chapter5微分方程模型"></a>Chapter5微分方程模型</h2><hr>
+<h2 id="matlab中的各种类型Chapter2-Chapter4规划"><a href="#matlab中的各种类型Chapter2-Chapter4规划" class="headerlink" title="matlab中的各种类型Chapter2-Chapter4规划"></a>matlab中的各种类型Chapter2-Chapter4规划</h2><h3 id="线性规划的Matlab解法"><a href="#线性规划的Matlab解法" class="headerlink" title="线性规划的Matlab解法"></a>线性规划的Matlab解法</h3><p>Matlab中线性规划的标准型为：</p>
+<p>min$C^Tx$</p>
+<p><code>help linprog</code></p>
+<h4 id="利用matlab求解线性规划的简单例子1（ssk-P4"><a href="#利用matlab求解线性规划的简单例子1（ssk-P4" class="headerlink" title="利用matlab求解线性规划的简单例子1（ssk P4):"></a>利用matlab求解线性规划的简单例子1（ssk P4):</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxgprk9g0j30mu07g74x.jpg" alt></p>
+<p>Todo:</p>
+<p>$max z=2x_1+3x_2-5x_3$,</p>
+<p>s.t. $x_1+x_2+x_3=7\2x_1-5x_2+x_3\ge10\x_1+3x_2+x_3\le12\x_1,x_2,x_3\ge0$</p>
+<p>这里，先相应地化为标准式，寻找对应参数：</p>
+<p>$Tod0:$</p>
+<p>$min z=-2x_1-3x_2+5x_3$,</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x是列向量，这里c也是列向量</span><br><span class="line">Aeq=[<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>];</span><br><span class="line">beq=<span class="number">7</span>;</span><br><span class="line">A=[<span class="number">-2</span>,<span class="number">5</span>,<span class="number">-1</span>;<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>];</span><br><span class="line">b=[<span class="number">-10</span>;<span class="number">12</span>];</span><br><span class="line">lb=<span class="built_in">zeros</span>(<span class="number">3</span>,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="线性规划Outline"><a href="#线性规划Outline" class="headerlink" title="线性规划Outline"></a>线性规划Outline</h3><ol>
+<li>基本matlab线性规划</li>
+<li>运输问题-&gt;产销平衡：康-希表上作业法</li>
+<li>指派问题-&gt;特殊的0-1规划，求解指派问题的匈牙利算法</li>
+<li>对偶理论与灵敏度分析/参数线性规划</li>
+<li>投资的收益和风险：</li>
+</ol>
+<h3 id="投资的收益和风险："><a href="#投资的收益和风险：" class="headerlink" title="投资的收益和风险："></a>投资的收益和风险：</h3><p>这是一个多目标线性规划模型：使净收益尽可能大，总体风险尽可能小。</p>
+<h4 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h4><p>$\begin{cases}max净收益\min总体风险\end{cases}$</p>
+<h4 id="模型简化"><a href="#模型简化" class="headerlink" title="模型简化"></a>模型简化</h4><ol>
+<li>投资者承受风险无法无限大，给定风险界限$a$</li>
+<li>投资者总盈利至少到达水平$k$之上</li>
+<li>结合两者：投资者在权衡投资风险和预期收益两方面，对风险和收益赋予s和（1-S)的投资偏好系数。</li>
+</ol>
+<h4 id="模型简化后1-的线性规划求解："><a href="#模型简化后1-的线性规划求解：" class="headerlink" title="模型简化后1 的线性规划求解："></a>模型简化后1 的线性规划求解：</h4><p>$min f=(−0.05,−0.27,−0.19,−0.185,−0.185)(x_0,x_1,x_2,x_3,x_4)^T$</p>
+<p>s.t. $\begin{cases}x_0+1.01x_1+1.02x_2+1.045x_3+1.065x_4=1\0.025x_1\le a\0.015x_2\le a\0.055x_3\le a\0.026x_4\le a\x_i\ge 0(i=0,1,…,4)\end{cases}$</p>
+<p>因为这里a是任意给定的风险度，即threshold是如何的本在一开始没有一个准则， 故 *<em>需要从a=0开始，以步长$\Delta a=0.001$ *</em>进行循环搜索，编写matlab程序：</p>
+<p>Step1:注意要将模型转换成matlab的linprog的形式：</p>
+<p><code>X=linprog(f,A,b,Aeq,beq,LB,UB)</code></p>
+<p>注意这里$LB$、$UB$是lower bound/upper bound.</p>
+<p>故这题的标准形式。注意那个对角阵拼接的形式。</p>
+<hr>
+<h2 id="Chapter2-整数规划"><a href="#Chapter2-整数规划" class="headerlink" title="Chapter2 整数规划"></a>Chapter2 整数规划</h2><p>LINGO软件</p>
+<hr>
+<h2 id="Chapter3非线性规划"><a href="#Chapter3非线性规划" class="headerlink" title="Chapter3非线性规划"></a>Chapter3非线性规划</h2><h3 id="名词与具体形式："><a href="#名词与具体形式：" class="headerlink" title="名词与具体形式："></a>名词与具体形式：</h3><p>$min f(x)$s.t.$h_j(x)\le0,j=1,…,q\g_i(x)=0,i=1,..,p$</p>
+<p>其中$x=[x_1,…,x_n]^T$为模型NLP的决策变量。</p>
+<p>$f$为目标函数</p>
+<p>$h_j(j=1,…,q)$称为约束函数，约束函数分为等式约束与不等式约束。</p>
+<h3 id="实际中的NLP问题"><a href="#实际中的NLP问题" class="headerlink" title="实际中的NLP问题"></a>实际中的NLP问题</h3><ol>
+<li>确定提供方案</li>
+<li>提出追求目标</li>
+<li>给出价值标准</li>
+<li>寻求限制条件</li>
+</ol>
+<h3 id="线性规划和非线性规划的区别"><a href="#线性规划和非线性规划的区别" class="headerlink" title="线性规划和非线性规划的区别"></a>线性规划和非线性规划的区别</h3><p>如果线性规划的最优解存在，那么最优解只能在可行域的边界上达到。</p>
+<p>而非线性规划的最优解如果存在 <strong>是在可行域的任意一点达到。</strong></p>
+<h3 id="非线性规划的Matlab解法"><a href="#非线性规划的Matlab解法" class="headerlink" title="非线性规划的Matlab解法"></a>非线性规划的Matlab解法</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxhppv5w0j30ug0aomyz.jpg" alt></p>
+<p>这里，$AX\le B,AeqX=Beq$是线性约束</p>
+<p><code>NONLCON</code>是用M文件定义的非线性向量函数$C(x).Ceq(x)$。</p>
+<h4 id="利用matlab求解非线性规划的简单例子1（ssk-P33"><a href="#利用matlab求解非线性规划的简单例子1（ssk-P33" class="headerlink" title="利用matlab求解非线性规划的简单例子1（ssk P33):"></a>利用matlab求解非线性规划的简单例子1（ssk P33):</h4><p>$minf(x)=x_1^2+x_2^2+x_3^2+8$</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxhskb1ehj309g04qwem.jpg" alt></p>
+
       
 
       
@@ -349,6 +409,14 @@
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">姜启源</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">matlab</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">司守奎</a>
         		</li>
       		
 		</ul>
@@ -644,6 +712,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">姜启源</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">matlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">司守奎</a>
               </li>
             
             <div class="clearfix"></div>

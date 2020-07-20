@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 140
+			总文章数 141
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,94 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-专业英语Project2-Mushroom-Classification" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject2-Mushroom-Classification/">专业英语Project2:Mushroom Classification</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/15/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject2-Mushroom-Classification/" class="archive-article-date">
+  	<time datetime="2020-06-15T01:09:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Todo-手动实现ANN"><a href="#Todo-手动实现ANN" class="headerlink" title="Todo:手动实现ANN"></a>Todo:手动实现ANN</h1><p>手动实现ANN对mushroom进行有毒/无毒的分类</p>
+        
+          <a class="article-more-a" href="/2020/06/15/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject2-Mushroom-Classification/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/15/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADProject2-Mushroom-Classification/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-专业英语W14Overfitting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1148,112 +1236,9 @@
 
 
   
-    <article id="post-ML05-Logistic-Regression" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/04/ML05-Logistic-Regression/">ML05 Logistic Regression</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/06/04/ML05-Logistic-Regression/" class="archive-article-date">
-  	<time datetime="2020-06-04T04:44:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="logistic-Regression"><a href="#logistic-Regression" class="headerlink" title="logistic Regression"></a>logistic Regression</h1><h2 id="什么是Logisitic-Regression"><a href="#什么是Logisitic-Regression" class="headerlink" title="什么是Logisitic Regression"></a>什么是Logisitic Regression</h2><ol>
-<li><p>$\sum_iw_ix_i+b$</p>
-<p>将每一个feature乘以一个weight，加上偏置，再通过一个Sigmoid function.</p>
-<p>Sigmoid function将其映射到(0,1)之间。</p>
-</li>
-<li><p>ML04所讲的generative model 和logistic regression有什么联系呢？</p>
-<p>上节课所要得的后验概率：</p>
-<p>$P(C_1|x)=\frac{p(x|C_1)P(C_1)}{p(x|C_1)P(C_1)+p(x|C_2)P(C_2)}$</p>
-<p>对于这种贝叶斯所得的后验概率，将分子和分母同时除以$P(x|C_1)P(C_1)$即可得，</p>
-<p>$P(C_1|x)=\frac{1}{1+\frac{P(x|C_1)P(C_1)}{P(x|C_2)P(C_2)}}$</p>
-<p>这里，令$z=ln(\frac{P(x|C_1)P(C_1)}{P(x|C_2)P(C_2)})$</p>
-<p>这个时候，$\sigma(z)=\frac{1}{1+exp(-z)}$</p>
-<p>是一个Sigmoid function.</p>
-<p>这里，将我们之前所得的先验概率带入，$P(x|C_1)$,$P(x|C_2)$</p>
-<p>就可以发现$z=w^Tx+b$</p>
-<h3 id="linear-v-s-Logistic"><a href="#linear-v-s-Logistic" class="headerlink" title="linear v.s.Logistic"></a>linear v.s.Logistic</h3></li>
-</ol>
-<p>Linear:$f_{w,b}=\sum_iw_ix_i+b$</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/04/ML05-Logistic-Regression/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
     </nav>
   
 

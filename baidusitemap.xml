@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2020/07/17/%E5%A7%9C%E5%90%AF%E6%BA%90Week1/</loc>
+    <lastmod>2020-07-21</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2020/07/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9Cfinal-Project/</loc>
     <lastmod>2020-07-21</lastmod>
   </url>  <url>
@@ -11,9 +14,6 @@
     <lastmod>2020-07-20</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/07/20/ML09%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C-VideoBeforeTips4DL/</loc>
-    <lastmod>2020-07-20</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2020/07/17/%E5%A7%9C%E5%90%AF%E6%BA%90Week1/</loc>
     <lastmod>2020-07-20</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/07/16/Error-Permission-denied-apply2files-usr-local-lib-docker-cli-plugins/</loc>

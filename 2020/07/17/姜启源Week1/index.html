@@ -18,8 +18,9 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxgprk9g0j30mu07g74x.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxhppv5w0j30ug0aomyz.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxhskb1ehj309g04qwem.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggyer0oqsnj30ro0x6q9f.jpg">
 <meta property="article:published_time" content="2020-07-17T08:01:57.000Z">
-<meta property="article:modified_time" content="2020-07-20T08:03:10.791Z">
+<meta property="article:modified_time" content="2020-07-21T12:12:13.066Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数学建模">
@@ -361,6 +362,33 @@
 <p><code>NONLCON</code>是用M文件定义的非线性向量函数$C(x).Ceq(x)$。</p>
 <h4 id="利用matlab求解非线性规划的简单例子1（ssk-P33"><a href="#利用matlab求解非线性规划的简单例子1（ssk-P33" class="headerlink" title="利用matlab求解非线性规划的简单例子1（ssk P33):"></a>利用matlab求解非线性规划的简单例子1（ssk P33):</h4><p>$minf(x)=x_1^2+x_2^2+x_3^2+8$</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxhskb1ehj309g04qwem.jpg" alt></p>
+<blockquote>
+<p>matlab程序未复现。</p>
+</blockquote>
+<h2 id="无约束问题"><a href="#无约束问题" class="headerlink" title="无约束问题"></a>无约束问题</h2><h3 id="一维搜索方法"><a href="#一维搜索方法" class="headerlink" title="一维搜索方法"></a>一维搜索方法</h3><p>当用迭代法求函数的极小点时，常常用到一维搜索，即沿某一已知方向求目标函数的极小点</p>
+<p>一维极小化问题的形式如下：</p>
+<p>$min_{a&lt;=t&lt;=b} f(t)$,即通过不断地缩短变量区间[a,b]的长度。</p>
+<blockquote>
+<p><strong>应该按照怎样的规则来选取探索点，使给定的单峰区间的长度能尽快的缩短？</strong></p>
+</blockquote>
+<h4 id="Fibonacci法"><a href="#Fibonacci法" class="headerlink" title="Fibonacci法"></a>Fibonacci法</h4><p>Step1.确定单峰区间，给出搜索京都，确定搜索次数。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggyer0oqsnj30ro0x6q9f.jpg" alt></p>
+<p>例子：试用fibonacci求f(t)=$t^2-t+2$的近似极小点。</p>
+<h4 id="0-618法"><a href="#0-618法" class="headerlink" title="0.618法"></a>0.618法</h4><h4 id="二次插值法"><a href="#二次插值法" class="headerlink" title="二次插值法"></a>二次插值法</h4><p>对于之前所示的极小化问题，当$f(t)$在[a,b]上连续时，可以考虑用多项式插值来进行一维搜索。</p>
+<p>在搜索区间中，不断用低次(不超过3次)多项式来近似目标函数，用插值多项式的极小点来逼近。</p>
+<h3 id="无约束极值"><a href="#无约束极值" class="headerlink" title="无约束极值"></a>无约束极值</h3><h4 id="解析法"><a href="#解析法" class="headerlink" title="解析法"></a>解析法</h4><h4 id="梯度下降Gradient-Descent"><a href="#梯度下降Gradient-Descent" class="headerlink" title="梯度下降Gradient Descent"></a>梯度下降Gradient Descent</h4><p><strong>按照基本迭代格式，每一轮从点$x^k$出发沿最速下降方向-$\nabla f(x^k)$作一维搜索</strong>。</p>
+<p>例：用最速下降法求解无约束非线性规划问题</p>
+<p>$min f(x)=x_1^2+25x_2^2$</p>
+<p>$x=(x_1,x_2)^T,x^0=(2,2)^T$</p>
+<p>详见代码detaf.m和zuisu.m</p>
+<p>原来matlab是写代码然后在命令行运行的呀！</p>
+<h4 id="Newton法"><a href="#Newton法" class="headerlink" title="Newton法"></a>Newton法</h4><p><strong>按照基本迭代格式，每一轮从点$x^k$出发沿Newton方向作一维搜索</strong>。</p>
+<p>例，用Newton法求解</p>
+<p>min f(x)=$x_1^4+25x_2^4+x_1^2x_2^2$</p>
+<p>$x^0=(2,2)^T$</p>
+<blockquote>
+<p>如果目标函数是非二次函数，一般地说，用Newton法通过有限轮迭代不一定能得到最优解。</p>
+</blockquote>
 
       
 

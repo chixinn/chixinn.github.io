@@ -20,8 +20,10 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxkcc3udkj30m60a6dom.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxkepiqxlj30hu084q71.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxkmms7hjj30u0140hdu.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggzoqjn6t5j30na0h0n4g.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggzov1a389j30600d2gp4.jpg">
 <meta property="article:published_time" content="2020-07-20T08:49:20.000Z">
-<meta property="article:modified_time" content="2020-07-20T09:37:58.325Z">
+<meta property="article:modified_time" content="2020-07-22T13:51:48.849Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
@@ -207,7 +209,7 @@
 <p>Some patterns are much smaller than the whole image.</p>
 <p>所以每一个neuron只需要连接到一个小块的区域。</p>
 <p>当same pattern 在不同区域，如何dectect到我所需要的区域呢？</p>
-<p>不需要两个neuron做detector,可以要求“左上”和“中间”鸟嘴detector share parameter。</p>
+<p>不需要两个neuron做detector,可以要求“左上”和“中间”鸟嘴detector share parameter(i.e. share parameter)</p>
 <ul>
 <li>Subsampling</li>
 </ul>
@@ -245,6 +247,37 @@
 <p>怎么理解就是把一些weight拿掉呢?</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ggxkmms7hjj30u0140hdu.jpg" alt></p>
 <p>这样就是把一些weight拿掉啦！</p>
+<p>Only connect to 9 input,not fully connected.</p>
+<p>那怎么样理解shared weights呢-&gt;less parameters</p>
+<p><strong>Even less parameters!</strong></p>
+<h2 id="CNN-Max-Pooling"><a href="#CNN-Max-Pooling" class="headerlink" title="CNN-Max Pooling"></a>CNN-Max Pooling</h2><p>pooling池化，是为了提取一定区域的主要特征，并减少参数数量，防止模型过拟合。</p>
+<p>MaxPooling/Average Pooling</p>
+<p>根据Filter1/Filter2得到$4\times4$的matrix两个。</p>
+<p>在这两个小matrix中进行分类。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggzoqjn6t5j30na0h0n4g.jpg" alt></p>
+<p>然后在这小的matrix里面进行分类，得到的是两个2$\times$2的matrix，得到的标准是找2$\times$2小方块中的最大值。</p>
+<p>所以就相当于把原来6$\times$6的image，变成了2$\times$2的image。</p>
+<p>对于这个2$\times$2image每一个pixel的深度，就相当于每一个pixel有多少个filter，因为原来两个2$\times$2是叠着放在一起的嘛。</p>
+<p>可以如这个图进行理解。</p>
+<p> <img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ggzov1a389j30600d2gp4.jpg" alt></p>
+<p>Convolution+MaxPooling的过程可以重复很多次。</p>
+<p>这是比较小的image.</p>
+<p><strong>The number of the channel is the number of filters.</strong></p>
+<p>Filter是将一个channel看成一个整体一起考虑的。【对多通道图片的卷积】。</p>
+<p>每个filter是一个cubic.</p>
+<h2 id="Flatten"><a href="#Flatten" class="headerlink" title="Flatten"></a>Flatten</h2><p>Flatten的意思是将feature map(可能是cubic形式的featuremap)拉直，它拉直以后把它丢到fully connected network之中。</p>
+<h2 id="CNN-in-keras"><a href="#CNN-in-keras" class="headerlink" title="CNN in keras"></a>CNN in keras</h2><blockquote>
+<p>Only modified the <strong>network structure</strong> and <strong>input format</strong></p>
+<p>Vector-3-D tensor(RGB要求的是三维)</p>
+</blockquote>
+<p>keras是什么，Pytorch是什么？</p>
+<p>暂时停留在视频30min处。</p>
+<hr>
+<h2 id="如何通俗的理解CNN？"><a href="#如何通俗的理解CNN？" class="headerlink" title="如何通俗的理解CNN？"></a>如何通俗的理解CNN？</h2><p>滤波/filter是干啥的，filter是去跟特定的图像矩阵进行卷积，从而可以很性明显的看出图片中的某些特征。如最简单的边缘检测</p>
+<p>而CNN就是通过一个个的filter,不断地提取特征，从局部的特征到总体的特征，从而进行图像识别等功能。</p>
+<p>所以，CNN就是去 <strong>学习这些filter</strong>的参数是如何设置的！【搜噶！】</p>
+<p>filter的工作就是detect某一种pattern</p>
+<h2 id="What-does-CNN-learn"><a href="#What-does-CNN-learn" class="headerlink" title="What does CNN learn?"></a>What does CNN learn?</h2><p>《没太听懂》</p>
 
       
 

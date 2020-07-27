@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 145
+			总文章数 146
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,95 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-利用IDEA-Maven项目搭建Netty开发环境" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/27/%E5%88%A9%E7%94%A8IDEA-Maven%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BANetty%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">利用IDEA Maven项目搭建Netty开发环境</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/07/27/%E5%88%A9%E7%94%A8IDEA-Maven%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BANetty%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" class="archive-article-date">
+  	<time datetime="2020-07-27T03:06:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在网上看了一圈，都好复杂，记得我在java GRPC 那也搞得特别复杂。原来框架就是在Maven项目的<code>pom.xml</code>下面导入<code>&lt;dependency&gt;&lt;/dependency&gt;</code>依赖。</p>
+<p>其实是很简单的，网上好多博客写的也很复杂.</p>
+        
+          <a class="article-more-a" href="/2020/07/27/%E5%88%A9%E7%94%A8IDEA-Maven%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BANetty%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">bugs</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/07/27/%E5%88%A9%E7%94%A8IDEA-Maven%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BANetty%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-HTTP下午茶" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1037,6 +1126,9 @@
 <li>BIO中的stream是<strong>单向</strong>的，例如FileInputStream对象只能进行读取数据的操作，而<strong>NIO中的通道（Channel）是双向的</strong>，既可以用来进行读操作，也可以用来进行写操作。</li>
 </ul>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4oa5ezn6j30vc0a0ab2.jpg" alt></p>
+<p><strong>NIO 使用一个线程处理大量的客户端连接。</strong></p>
+<h3 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h3><p>检测多个注册的Channel上是否有时间发生，然后针对每个事件进行相应的响应处理。</p>
+<p>这样使得只用在连接真正有读写时，才会调用函数来进行读写，大大地减少了系统开销。</p>
 <h3 id="NIO与Netty？"><a href="#NIO与Netty？" class="headerlink" title="NIO与Netty？"></a>NIO与Netty？</h3><p>Netty是基于NIO的网络编程框架，使用Netty相当于简化和流程化了NIO的开发过程。</p>
 <p>tdl1:<a href="https://zhuanlan.zhihu.com/p/78665014" target="_blank" rel="noopener">NIO与Netty基础</a></p>
 <p>Tdl2:<a href="阻塞/非阻塞与同步异步">https://www.zhihu.com/question/19732473/answer/241673170</a></p>
@@ -1169,83 +1261,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/07/16/%E8%AE%BE%E8%AE%A1%E6%80%9D%E7%BB%B409/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-小项目2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/07/15/%E5%B0%8F%E9%A1%B9%E7%9B%AE2/">小项目2</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/07/15/%E5%B0%8F%E9%A1%B9%E7%9B%AE2/" class="archive-article-date">
-  	<time datetime="2020-07-15T00:46:43.754Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="小项目2"><a href="#小项目2" class="headerlink" title="小项目2"></a>小项目2</h1><ol>
-<li>实验室网站</li>
-<li>github上搭建个人网站(参照x-lab)实验室相关即可。</li>
-<li><a href="https://github.com/X-lab2017/xlab-website" target="_blank" rel="noopener">https://github.com/X-lab2017/xlab-website</a></li>
-<li>通过小项目体会代码协作方式</li>
-<li>CMS系统。</li>
-</ol>
-<p>Github与网盘的区别是github具有协作。</p>
-<h2 id="Github开放式协作流程"><a href="#Github开放式协作流程" class="headerlink" title="Github开放式协作流程"></a>Github开放式协作流程</h2>
-        
-          <a class="article-more-a" href="/2020/07/15/%E5%B0%8F%E9%A1%B9%E7%9B%AE2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/07/15/%E5%B0%8F%E9%A1%B9%E7%9B%AE2/">展开全文 >></a>
         </p>
       
 
@@ -1478,6 +1493,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">司守奎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>

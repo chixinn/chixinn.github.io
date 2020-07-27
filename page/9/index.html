@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 145
+			总文章数 146
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,128 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-用户画像构建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/15/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%9E%84%E5%BB%BA/">用户画像构建</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/05/15/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%9E%84%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2020-05-15T13:17:17.077Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="用户画像构建"><a href="#用户画像构建" class="headerlink" title="用户画像构建"></a>用户画像构建</h1><p>在初赛的基础上,对用户画像的构建进行了完善.</p>
+<h2 id="Login"><a href="#Login" class="headerlink" title="Login"></a>Login</h2><p>用户在登录第三方平台时,可以选择使用支付宝账号登录.</p>
+<blockquote>
+<p>用户授权使用支付宝登录.</p>
+</blockquote>
+<h3 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h3><h4 id="数据来源1-支付宝-用户消费意愿获取"><a href="#数据来源1-支付宝-用户消费意愿获取" class="headerlink" title="数据来源1:支付宝(用户消费意愿获取)"></a>数据来源1:支付宝(用户消费意愿获取)</h4><p>平台可以从支付宝获得用户使用支付宝的交易记录:</p>
+<p>下面将支付宝的消费记录划分如下:</p>
+<ol>
+<li>用户账单</li>
+<li>使用支付宝相关服务的情况:<ol>
+<li>总资产</li>
+<li>余额</li>
+<li>余额宝(支付宝相关理财产品)</li>
+<li>花呗/借呗(支付宝相关类似借记卡信息)</li>
+<li>支付宝绑定的银行卡信息</li>
+<li>芝麻信用</li>
+<li>用户真实地理位置</li>
+</ol>
+</li>
+</ol>
+<h4 id="数据来源2-在金融、证券机构等的交易记录"><a href="#数据来源2-在金融、证券机构等的交易记录" class="headerlink" title="数据来源2:在金融、证券机构等的交易记录"></a>数据来源2:在金融、证券机构等的交易记录</h4><p>利用改进的Brinson用户业绩归因模型对用户的真实的投资决策能力进行评估.</p>
+<h4 id="数据来源3-用户填写的个人真实基本信息-心理学问卷"><a href="#数据来源3-用户填写的个人真实基本信息-心理学问卷" class="headerlink" title="数据来源3:用户填写的个人真实基本信息+心理学问卷"></a>数据来源3:用户填写的个人真实基本信息+心理学问卷</h4><p>信息收集有以下方向:</p>
+<ol>
+<li>用户个人基本信息:<ol>
+<li>姓名/性别/年龄/职业/家庭收入情况(均保留用户意愿进行可选择的披露)</li>
+</ol>
+</li>
+<li>用户个人消费意愿/投资偏好:<ol>
+<li>用户主观填写</li>
+<li>邀请用户使用心理学类情景问卷使用户更好的认清自己真实的消费意愿;</li>
+</ol>
+</li>
+<li>用户风险偏好</li>
+</ol>
+<h3 id="用户画像的特征提取-input"><a href="#用户画像的特征提取-input" class="headerlink" title="用户画像的特征提取(input)"></a>用户画像的特征提取(input)</h3><ol>
+<li><p>盈利能力 (实际收入能力)yes</p>
+</li>
+<li><p>总体决策(择时 Timing) yes</p>
+</li>
+<li><p>群体判断(行业 Other) yes</p>
+</li>
+<li><p>个体选择(择股 Seletion) </p>
+</li>
+<li><p>风险控制(用户个人风控能力) </p>
+</li>
+<li><p>流动性 (资金流动性)</p>
+</li>
+<li><p>用户偏好:</p>
+<ol>
+<li>消费(投资)意愿</li>
+<li>风险偏好</li>
+</ol>
+</li>
+</ol>
+<p><a href="https://www.wenjuan.com/lib_detail_full/549bb0dcf7405b0c9b1c3b7b" target="_blank" rel="noopener">消费意愿</a></p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><h2 id="用户偏好模型构建"><a href="#用户偏好模型构建" class="headerlink" title="用户偏好模型构建"></a>用户偏好模型构建</h2><p>用户基本信息/用户消费记录/账单/</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/15/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%9E%84%E5%BB%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-操作系统Project2Chrt系统调用和EDF算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1000,141 +1122,6 @@
 
 
   
-    <article id="post-操作系统第二次作业" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/">操作系统第二次作业</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/" class="archive-article-date">
-  	<time datetime="2020-05-02T15:07:43.555Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="操作系统第二次作业"><a href="#操作系统第二次作业" class="headerlink" title="操作系统第二次作业"></a>操作系统第二次作业</h1><ol start="2">
-<li><p>进程的三种状态:</p>
-<ol>
-<li>运行态(running,在该时刻实际占用处理机 )</li>
-<li>就绪态(Ready,可运行,因为其他进程正在进行而暂时被挂起)</li>
-<li>阻塞态(Blocked,除非某种外部事件发生,否则不能运行)</li>
-</ol>
-</li>
-<li><p>目前计算机上,中断处理程序使用汇编语言编写的原因:中断处理程序,以操作系统最底层的调度器为例,需要使用汇编语言程序存储寄存器值,设置新的栈等,即汇编语言代码要为新的当前进程进行装入寄存器值和内存映射并启动等现场保存工作.</p>
-</li>
-<li><p>进程和线程的本质区别:多个线程的执行流组成进程,进程是用来集合资源的,而线程是CPU调度中的实体.</p>
-</li>
-<li><p>在使用线程的系统中,每个线程都有一个堆栈,它存储着执行的历史.</p>
-</li>
-<li><p>竞争条件:两个多个进程读写某些共享数据,而最后的结果取决于进程运行的精确时序,称为竞争条件.</p>
-</li>
-<li><p>若采用时间片调度而不是优先级调度,是否会H继续陷入死循环:</p>
-<ol>
-<li>采用优先级调度陷入死循环的原因在于低优先级的进程永远处于被调度队列的较后位置,而正好于处于临界区时无法有其他进程再被调度形成死锁,故会陷入死循环;</li>
-<li>采用时间片调度也会发生这种情况,虽然时间片调度作为一种非抢占式进程,在时间片到、进程运行完毕或者进程执行原语操作时都会面临进程切换的问题,而当进程切换发生时,死锁也就会相应发生了.但是时间片调度仍然很大的避免了优先级高的无法离开临界区的问题.</li>
-</ol>
-</li>
-<li><p>读者-写者问题的3种形式化:</p>
-<ol>
-<li>读者优先: 当读者在读时,写者不能进行写,当有新的读者到来时,如果没有写,那么就可以立刻开始读.当写完成时,如果有一些读者和写者都在等待队列中时,读者的启动的优先级高,这些读者都可以同时启动.</li>
-<li>读者和写者具有公平的情况:读读共享,写写互斥,写读互斥.当我们开始进行读的时候我们需要一次性将读者队列读完.当我们进行写时,也要一次一次将写者等待队列写完.</li>
-<li>写者优先:当等待队列中有写者时,读者不可以被启动.即当有任何进程完成时,有写者在等待,读者都不可以被启动.</li>
-</ol>
-</li>
-<li><p>以下各种情况下的CPU运行公式:</p>
-<ol>
-<li><p>$\frac{T}{S+T}$</p>
-</li>
-<li><p>$\frac{T}{S+T}$</p>
-</li>
-<li><p>考虑context switch的次数:</p>
-<p>Context switch的次数为:$\frac{T}{ST/Q+T}$</p>
-</li>
-<li><p>当Q=S时,考虑$T&lt;Q时$,CPU利用率为:$\frac{T}{S+T}$当$T\ge Q$时,CPU 利用率为50$.</p>
-</li>
-<li><p>随着时间片越来越小,上下文切换花销所占的比重会越来越大,CPU会趋近于0.</p>
-</li>
-</ol>
-</li>
-</ol>
-<ol start="27">
-<li><p>平均响应时间最短,最短作业优先在批处理系统中常常伴随着最短平均响应时间.</p>
-<p>所以调度的顺序在于x的值,x的大小在不同的位置有不同的调度顺序.</p>
-</li>
-<li><p>对于每种不同的调度算法计算不同的平均进程周转时间.</p>
-<ol>
-<li><p>时间片轮转: 程序具有多道处理能力,作业均获得公平的CPU份额.所以每个进程都占用$\frac{1}{5},\frac{1}{4},\frac{1}{3},\frac{1}{2},1$的CPU. 完成的时间为:10,8,6,4,2;故完成的时间为10,18,24,28,30.</p>
-<p>平均时间为110/5=22</p>
-</li>
-<li><p>优先级调度,按照:优先级54321的顺序,即6,8,10,2,4的顺序,故相应的完成时间为6,14,24,26,30,平均时间为:20</p>
-</li>
-<li><p>相应的完成时间为:10,16,18,22,30,平均时间为19.2</p>
-</li>
-<li><p>按照:2,4,6,8,10,相应的完成时间为:2,6,12,20,30,平均时间为 14</p>
-</li>
-</ol>
-</li>
-<li><p>$\frac{35}{50}+\frac{20}{100}+\frac{10}{200}+\frac{x}{250}\le1$</p>
-<p>故$x\le12.5$</p>
-</li>
-<li><p>优先级调度算法会引起饥饿问题.所以minix3的优先级调度(多级排队系统)会产生饥饿.</p>
-<p>对于某个低优先级而无穷等待的CPU,和超载的计算机系统,稳定的更高优先级的进程流会组织低优先级的进程获得CPU,此时对于低优先级的进程而言,就有饥饿的可能.</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%BA%8C%E6%AC%A1%E4%BD%9C%E4%B8%9A/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
@@ -1338,6 +1325,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">司守奎</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>

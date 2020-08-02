@@ -24,8 +24,9 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh1tnmya32j30ya0qsap9.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4o94eju7j30w207qt9i.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4oa5ezn6j30vc0a0ab2.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh9u0hc5jdj30yg0lddiu.jpg">
 <meta property="article:published_time" content="2020-07-16T02:57:33.000Z">
-<meta property="article:modified_time" content="2020-07-27T02:53:29.328Z">
+<meta property="article:modified_time" content="2020-08-02T01:32:19.010Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="大二下">
@@ -79,7 +80,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 146
+			总文章数 148
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -208,6 +209,10 @@
 </ol>
 <p>参考实验楼的实验，用<a href="https://www.shiyanlou.com/courses/552/learning/" target="_blank" rel="noopener">python实现http Server</a></p>
 <p>实验楼的还不如<a href="http://aosabook.org/en/500L/a-simple-web-server.html" target="_blank" rel="noopener">原文</a>讲的清楚…</p>
+<a id="more"></a>
+
+
+
 <p>python代码如下:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#-*- coding:utf-8 -*-</span></span><br><span class="line"><span class="keyword">from</span> http.server <span class="keyword">import</span> BaseHTTPRequestHandler, HTTPServer</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RequestHandler</span><span class="params">(BaseHTTPRequestHandler)</span>:</span></span><br><span class="line">    <span class="string">'''处理请求并返回页面'''</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 页面模板</span></span><br><span class="line">    Page = <span class="string">'''\</span></span><br><span class="line"><span class="string">        &lt;html&gt;</span></span><br><span class="line"><span class="string">        &lt;body&gt;</span></span><br><span class="line"><span class="string">        &lt;p&gt;Hello, web!&lt;/p&gt;</span></span><br><span class="line"><span class="string">        &lt;/body&gt;</span></span><br><span class="line"><span class="string">        &lt;/html&gt;</span></span><br><span class="line"><span class="string">    '''</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 处理一个GET请求</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">do_GET</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.send_response(<span class="number">200</span>)<span class="comment">#发送200响应码</span></span><br><span class="line">        self.send_header(<span class="string">"Content-Type"</span>, <span class="string">"text/html"</span>)<span class="comment">#标头告诉客户端将数据解释为HTML</span></span><br><span class="line">        self.send_header(<span class="string">"Content-Length"</span>, str(len(self.Page)))</span><br><span class="line">        self.end_headers()<span class="comment">#用end_headers()方法调用将插入空白行，该行将我们的标题与页面本身分开。</span></span><br><span class="line">        self.wfile.write(self.Page.encode(<span class="string">'utf-8'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">  <span class="comment">#祝函数来真正启动服务器的运行。</span></span><br><span class="line">    serverAddress = (<span class="string">''</span>, <span class="number">8080</span>)<span class="comment">#空格表示localhost</span></span><br><span class="line">    server = HTTPServer(serverAddress, RequestHandler)</span><br><span class="line">    server.serve_forever()</span><br></pre></td></tr></table></figure>
 
@@ -343,6 +348,13 @@
 </ul>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4oa5ezn6j30vc0a0ab2.jpg" alt></p>
 <p><strong>NIO 使用一个线程处理大量的客户端连接。</strong></p>
+<h3 id="NIO核心API"><a href="#NIO核心API" class="headerlink" title="NIO核心API"></a>NIO核心API</h3><h4 id="EventLoopGroup和其实现类NioEventLoopGroup"><a href="#EventLoopGroup和其实现类NioEventLoopGroup" class="headerlink" title="EventLoopGroup和其实现类NioEventLoopGroup"></a>EventLoopGroup和其实现类NioEventLoopGroup</h4><p>EventLoopGroup是一组EventLoop的抽象，Netty为了更好的利用多核CPU资源，一般会有多个EventLoop同时工作，每个EventLoop维护着一个Selector实例。</p>
+<p>在Netty服务器端编程中，我们一般都需要提供两个EventLoopGroup，例如：BossEventLoopGroup和WorkderEventLoopGroup。</p>
+<p>通常一个服务端口即一个ServerSocketChannel对应一个Selector和一个EventLoop线程。BossEventLoop负责接收客户端的连接并将SocketChannel交给WorkerEventLoopGroup来进行IO处理，</p>
+<h5 id="常用方法："><a href="#常用方法：" class="headerlink" title="常用方法："></a>常用方法：</h5><p><strong>构造方法：</strong>NioEventLoopGroup()</p>
+<h4 id="ServerBootstrap和Bootstrap"><a href="#ServerBootstrap和Bootstrap" class="headerlink" title="ServerBootstrap和Bootstrap"></a>ServerBootstrap和Bootstrap</h4><p>ServerBootStrap是Netty中的服务端启动助手</p>
+<p>BootStrap是Netty中的客户端启动助手</p>
+<p>利用这两个API完成各种配置。</p>
 <h3 id="Selector"><a href="#Selector" class="headerlink" title="Selector"></a>Selector</h3><p>检测多个注册的Channel上是否有时间发生，然后针对每个事件进行相应的响应处理。</p>
 <p>这样使得只用在连接真正有读写时，才会调用函数来进行读写，大大地减少了系统开销。</p>
 <h3 id="NIO与Netty？"><a href="#NIO与Netty？" class="headerlink" title="NIO与Netty？"></a>NIO与Netty？</h3><p>Netty是基于NIO的网络编程框架，使用Netty相当于简化和流程化了NIO的开发过程。</p>
@@ -357,6 +369,25 @@
 <h2 id="http-Server-代码逻辑–伪代码"><a href="#http-Server-代码逻辑–伪代码" class="headerlink" title="http Server 代码逻辑–伪代码"></a>http Server 代码逻辑–伪代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> ExecutorService executor = Excutors.newFixedThreadPollExecutor(<span class="number">100</span>);<span class="comment">//线程池</span></span><br><span class="line"></span><br><span class="line"> ServerSocket serverSocket = <span class="keyword">new</span> ServerSocket();</span><br><span class="line"> serverSocket.bind(<span class="number">8088</span>);</span><br><span class="line"> <span class="keyword">while</span>(!Thread.currentThread.isInturrupted())&#123;<span class="comment">//主线程死循环等待新连接到来</span></span><br><span class="line"> Socket socket = serverSocket.accept();</span><br><span class="line"> executor.submit(<span class="keyword">new</span> ConnectIOnHandler(socket));<span class="comment">//为新的连接创建新的线程</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConnectIOnHandler</span> <span class="keyword">extends</span> <span class="title">Thread</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Socket socket;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ConnectIOnHandler</span><span class="params">(Socket socket)</span></span>&#123;</span><br><span class="line">       <span class="keyword">this</span>.socket = socket;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">while</span>(!Thread.currentThread.isInturrupted()&amp;&amp;!socket.isClosed())&#123;死循环处理读写事件</span><br><span class="line">          String someThing = socket.read()....<span class="comment">//读取数据</span></span><br><span class="line">          <span class="keyword">if</span>(someThing!=<span class="keyword">null</span>)&#123;</span><br><span class="line">             ......<span class="comment">//处理数据</span></span><br><span class="line">             socket.write()....<span class="comment">//写数据</span></span><br><span class="line">          &#125;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">作者：美团技术团队</span><br><span class="line">链接：https:<span class="comment">//zhuanlan.zhihu.com/p/23488863</span></span><br><span class="line">来源：知乎</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure>
 
 <h3 id="性能层面"><a href="#性能层面" class="headerlink" title="性能层面"></a>性能层面</h3><p>经典的每连接没线程的模型(BIO)模型性能较低的本质在于严重依赖线程。</p>
+<hr>
+<p>使用Netty对Http服务器的简单优化</p>
+<p><a href="https://blog.csdn.net/qq_21260033/article/details/80118349" target="_blank" rel="noopener">https://blog.csdn.net/qq_21260033/article/details/80118349</a></p>
+<hr>
+<p>Postman也有软件诶</p>
+<h2 id="使用PostMan进行压力-性能测试"><a href="#使用PostMan进行压力-性能测试" class="headerlink" title="使用PostMan进行压力/性能测试"></a>使用PostMan进行压力/性能测试</h2><hr>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh9u0hc5jdj30yg0lddiu.jpg" alt></p>
+<hr>
+<p>http服务器</p>
+<p>V1.0 BIO(Done)</p>
+<p>V1.1加入线程池(Done)</p>
+<p>V2.0采用Netty框架。(Done)</p>
+<hr>
+<p>http代理服务器</p>
+<p>代理服务器的基本逻辑：</p>
+<ol>
+<li>等待来自客户端(web browser)的请求</li>
+<li>启动新线程处理客户端请求。</li>
+</ol>
 
       
 

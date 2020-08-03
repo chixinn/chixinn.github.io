@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>http://yoursite.com/2020/08/03/%E6%88%BF%E5%9C%B0%E4%BA%A7%E4%BF%A1%E6%89%98%E4%B8%9A%E5%8A%A1/</loc>
+    <loc>http://yoursite.com/2020/08/03/MIT-ML00-ML01/</loc>
+    <lastmod>2020-08-03</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/08/03/%E5%A7%9C%E5%90%AF%E6%BA%90:%E5%8F%B8%E5%AE%88%E5%A5%8EWeek3:%E5%B7%AE%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2020-08-03</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/07/29/%E5%A7%9C%E5%90%AF%E6%BA%90-%E5%8F%B8%E5%AE%88%E5%A5%8EWeek2-%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/</loc>
-    <lastmod>2020-08-02</lastmod>
+    <lastmod>2020-08-03</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/08/03/%E6%88%BF%E5%9C%B0%E4%BA%A7%E4%BF%A1%E6%89%98%E4%B8%9A%E5%8A%A1/</loc>
+    <lastmod>2020-08-03</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/08/02/MATLAB%E5%9F%BA%E7%A1%80W1:%E5%8F%98%E9%87%8F%E4%B8%8E%E7%9F%A9%E9%98%B5%E8%BF%90%E7%AE%97/</loc>
     <lastmod>2020-08-02</lastmod>

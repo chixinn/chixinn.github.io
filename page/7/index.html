@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 149
+			总文章数 151
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,228 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-ML02-Basic-concept" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/01/ML02-Basic-concept/">ML01-Regression-2</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/01/ML02-Basic-concept/" class="archive-article-date">
+  	<time datetime="2020-06-01T00:19:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Basic-concept"><a href="#Basic-concept" class="headerlink" title="Basic concept"></a>Basic concept</h1><h2 id="Error从何而来？"><a href="#Error从何而来？" class="headerlink" title="Error从何而来？"></a>Error从何而来？</h2><p>来自于 bias and variance of estimator.</p>
+<h3 id="如何估算？"><a href="#如何估算？" class="headerlink" title="如何估算？"></a>如何估算？</h3><ul>
+<li><p>估算随机变量X的平均值：</p>
+<ul>
+<li>假设x的均值是$\mu$</li>
+<li>假设x的方差是$\sigma^2$</li>
+</ul>
+</li>
+<li><p>Estimator of mean $\mu$</p>
+<ul>
+<li><p>Sample N points : {$x^1,x^2,…,x^N$}</p>
+<p>用抽样的平均去估计/逼近真实的平均值：</p>
+<p>$m=\frac{1}{N}\sum_nx^n\neq\mu$</p>
+<p>$E[m]=\frac{1}{N}\sum_nE[x^n]=\mu$</p>
+</li>
+<li><p>可以类比打靶,靶心是真实值。</p>
+</li>
+<li><p>Var[m]=$\frac{\sigma^2}{N}$，</p>
+</li>
+<li><p>$s^2=\frac{1}{N}=\sum_n(x^n-m)^2$,用$s^2$来估计。</p>
+</li>
+<li><p>$E[s^2]=\frac{N-1}{N}\sigma^2\neq\sigma^2$;</p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfci1sa4oij30sg0pgtta.jpg" alt=""></p>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>不考虑方差：瞄的时候就没有瞄准/即使我瞄准了但仍是有偏离了。</p>
+</blockquote>
+<p><strong>综上：错误来自bias有多大(你瞄准的位置)，variance有多大(你的水平有多稳定)</strong> </p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfcibu3se2j30y80pge5l.jpg" alt=""></p>
+<p>简单的model受data影响会变小。</p>
+<blockquote>
+<p>Consider the extreme case f(x)=c</p>
+</blockquote>
+<h3 id="Bias"><a href="#Bias" class="headerlink" title="Bias"></a>Bias</h3><p>bias=$E[f^*]=\overline{y}$</p>
+<p>靶心:$\hat{f}$；</p>
+<p>根据测试，可以intuitively地直观感觉到，模型越复杂，bias越小，模型越简单，bias越大？</p>
+<p>那如何直观的理解这一现象呢？</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfcimq4e2hj313i0s84qp.jpg" alt=""></p>
+<p>可以很直观的从图中看到，当模型简单的时候，即我打飞镖时点落的范围，因为它简单，所以他的表示的范围有限，范围集中在那个蓝框框里，所以有可能 <strong>它甚至自己本身就不包含那个target</strong>($\hat{f}$)，而当我的模型复杂的时候，我复杂，可表示的范围就变大了，bias就可能包含我的$\hat{f}$了。</p>
+<h3 id="Bias与variance"><a href="#Bias与variance" class="headerlink" title="Bias与variance"></a>Bias与variance</h3><p>当然，简单模型，方差小，bias大，可表示的涵盖的范围小。</p>
+<p>当然，复杂模型，方差大，bias小，可表示的涵盖的范围大。</p>
+<p>这些都可以intuitively的去理解。</p>
+<h3 id="Overfitting-与-underfitting"><a href="#Overfitting-与-underfitting" class="headerlink" title="Overfitting 与 underfitting"></a>Overfitting 与 underfitting</h3><p>那过拟合和欠拟合都来自于什么情况呢？</p>
+<p>如果你的误差来自于bias，那就可能是欠拟合，类比于直线本身涵盖不到target靶心，甚至无法拟合完整的一个模型。</p>
+<p>如果你的误差来自于variance，那就可能是过拟合，因为复杂模型离靶心bia很少，那就肯定拟合了，但复杂的方差大，可能拟合的太好了，那就是过拟合了。</p>
+<h2 id="Bias-大"><a href="#Bias-大" class="headerlink" title="Bias 大"></a>Bias 大</h2><p>redesign your model</p>
+<h2 id="Variance大"><a href="#Variance大" class="headerlink" title="Variance大"></a>Variance大</h2><p>More data</p>
+<p>Very effective, but not always practical.</p>
+<p>Regularization</p>
+<h2 id="Model-Selection"><a href="#Model-Selection" class="headerlink" title="Model Selection"></a>Model Selection</h2><ul>
+<li><p>There is usually a trade-off between bias and variance</p>
+</li>
+<li><p>Select a model that balances two kinds of error to minimize the total error</p>
+</li>
+<li><p>What you should Not do:</p>
+<p>不要认为，自己手上的testing set就一定是最好，即你本身挑model的时候就考虑了自己手上的testing set，此时，在真正的testing set上不一定是最好的error.</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfcj7j3u79j313i0g2qeg.jpg" alt=""></p>
+</li>
+</ul>
+<p>但如何避免在testing set 上也以某种意义过拟合呢？</p>
+<h2 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross validation"></a>Cross validation</h2><p>$Traing Set = \begin{cases}Training Set\ValidationSet\end{cases}$</p>
+<p>$Testing Set=\begin{cases}Testing SetPublic\TestingSetPrivate\end{cases}$</p>
+<p>就不要用在public testing set 作为选择模型的标准。</p>
+<h2 id="N-fold-CrossValidation"><a href="#N-fold-CrossValidation" class="headerlink" title="N-fold CrossValidation"></a>N-fold CrossValidation</h2><p>即 ，当你不相信一次分割做validation的结果的时候时候，可以分很多次。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/01/ML02-Basic-concept/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-专业英语W12反向传播算法可以解决什么问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">专业英语W12反向传播算法可以解决什么问题</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-05-31T13:25:33.297Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="专业英语W12-反向传播算法可以解决什么问题"><a href="#专业英语W12-反向传播算法可以解决什么问题" class="headerlink" title="专业英语W12:反向传播算法可以解决什么问题"></a>专业英语W12:反向传播算法可以解决什么问题</h1><p>What problem does backpropagation solve? Explain it in your own words.</p>
+        
+          <a class="article-more-a" href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-专业英语读书笔记Chapter2反向传播算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1131,300 +1353,9 @@
 
 
   
-    <article id="post-ML01-Regression-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/25/ML01-Regression-1/">ML01:Regression(1)</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/25/ML01-Regression-1/" class="archive-article-date">
-  	<time datetime="2020-05-25T01:47:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h1><p>常见regression 样例:</p>
-<ol>
-<li><p>Stock Market Forecast</p>
-<p>f(股票)=Dow Jones Industrial Average at tomorrow</p>
-</li>
-<li><p>Self-driving Car</p>
-<p>f(路况)=方向盘角度</p>
-</li>
-<li><p>Recommendation</p>
-<p>f(使用者A在浏览商品B的相关)=购买的可能性</p>
-</li>
-</ol>
-<h2 id="Example-Application"><a href="#Example-Application" class="headerlink" title="Example Application"></a>Example Application</h2><p>Estimating the Combat Power(CP) of a pokemon after evolution</p>
-<p>f(Pokeman基本值)=CP evolution</p>
-<p>用下标表示一个完整的东西的某一个component.</p>
-<p>用上标表示一个完整的object的编号.</p>
-<p>$X{cp}$/$X_{hp}/X_w/X_h$</p>
-<p>output是进化后的CP.</p>
-<h3 id="Process-of-ML"><a href="#Process-of-ML" class="headerlink" title="Process of ML"></a>Process of ML</h3><ol>
-<li><p>找model</p>
-</li>
-<li><p>定义model(func set)的好坏/合理</p>
-</li>
-<li><p>在funcset找最好的那个,</p>
-</li>
-</ol>
-<blockquote>
-<p>那么应该选择什么funcset对这个宝可梦呢?</p>
-</blockquote>
-<h3 id="Model"><a href="#Model" class="headerlink" title="Model"></a>Model</h3><h4 id="Linear-Model-y-b-sum-w-ix-i"><a href="#Linear-Model-y-b-sum-w-ix-i" class="headerlink" title="Linear Model:y=b+$\sum w_ix_i$;"></a>Linear Model:y=b+$\sum w_ix_i$;</h4><p>$X_i$是input x的feature.</p>
-<p>$W_i$weight;</p>
-<p>$b$为bias.</p>
-<p>用$\hat{y}$表示一个正确的结果.</p>
-<blockquote>
-<p>定义了function后需要我们去判断funciton的好坏.那么我们该如何做去定义function的好坏呢?</p>
-</blockquote>
-<h3 id="Loss-function-L-function的function"><a href="#Loss-function-L-function的function" class="headerlink" title="Loss function L:(function的function)"></a>Loss function L:(function的function)</h3><p>Input: a function </p>
-<p>Output: how bad it is.</p>
-<p>在这里,如果我们还是线性的model的话,那么$f=f(w,b)=b+w.x_{cp}$</p>
-<p>则,$L(f)=L(w,b)$;</p>
-<p>$L(f)=\sum_{datasets}(\hat{y}-y_{estimation})^2$;</p>
-<p>估测误差越大,function越不好.</p>
-<h3 id="Step3-Best-Function"><a href="#Step3-Best-Function" class="headerlink" title="Step3:Best Function"></a>Step3:Best Function</h3><p>How to pick the “Best” Function?</p>
-<p>$f^*=arg min_fL(f)$;</p>
-<p>让$L(f)$最小的function.</p>
-<p>事实上在线性代数中,可以通过线性代数的方法找到让$L(f)$最小的function.</p>
-<h2 id="假设线代已经忘记了-Gradient-Descent"><a href="#假设线代已经忘记了-Gradient-Descent" class="headerlink" title="假设线代已经忘记了:Gradient Descent"></a>假设线代已经忘记了:Gradient Descent</h2><p>Consider loss function $L(w)$ with one parameter w;</p>
-<p>现在我们要找一个$w$,使$L(w)$最小.</p>
-<p>最暴力:穷举所有$w$可能的数值.</p>
-<p>想想在微积分中,<strong>导数小于0</strong>,表示<strong>函数</strong>的一个<strong>递减</strong>的趋势.</p>
-<p>“踏一步的stepsize”=$\begin{cases}现在的微分值\常数项learningRate(事先定好的一个scaler)\end{cases}$</p>
-<blockquote>
-<p>如果learning rate,在事先定好时较大,那么你在移动改变位置的时候,你的移动对你整体的那个loss的影响就比较大.</p>
-<p>learning rate up,学习效率 up.</p>
-</blockquote>
-<p>Initial position:$w^0$;</p>
-<p>$w^1$ $\leftarrow \eta\frac{dL}{dw}|_{w=w^0}$;</p>
-<p>$w^2$ $\leftarrow \eta\frac{dL}{dw}|_{w=w^2}$;</p>
-<p>在经过很多次迭代以后.会进入一个 <strong>Local Minimal a.k.a Local optimal</strong></p>
-<blockquote>
-<p>Local minimal  v.s. Global minimal</p>
-</blockquote>
-<p>但是在linear model 中,却不存在local minimal的问题.</p>
-<h3 id="How-about-2-paras"><a href="#How-about-2-paras" class="headerlink" title="How about 2 paras?"></a>How about 2 paras?</h3><p>那就原则两个位置,在两个位置上计算 <strong>偏</strong>微分就好了呀.</p>
-<blockquote>
-<p>所以说,偏微分是有关<strong>维度</strong>的理解.</p>
-</blockquote>
-<h3 id="梯度下降法名字里为什么要有”Gradient”"><a href="#梯度下降法名字里为什么要有”Gradient”" class="headerlink" title="梯度下降法名字里为什么要有”Gradient”?"></a>梯度下降法名字里为什么要有”Gradient”?</h3><p>$\nabla L=\begin{matrix}偏微分_w\偏微分_b\end{matrix}$</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/25/ML01-Regression-1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-英文歌曲文化赏析W11Hip-hop-culture" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/25/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W11Hip-hop-culture/">英文歌曲文化赏析W11Hip hop culture</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/25/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W11Hip-hop-culture/" class="archive-article-date">
-  	<time datetime="2020-05-25T01:22:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hip-hop-culture"><a href="#Hip-hop-culture" class="headerlink" title="Hip hop culture"></a>Hip hop culture</h1><p>*<em>not just music but also hip hop *</em>culture.</p>
-<p><strong>A type of music culture</strong></p>
-<p>不光包含音乐的部分,但音乐term可以指代所有的hiphop.</p>
-<p>文化/亚文化现象.</p>
-<p>Hip hop和rap的混用</p>
-<h2 id="Where-is-hiphop-born"><a href="#Where-is-hiphop-born" class="headerlink" title="Where is hiphop born?"></a>Where is hiphop born?</h2><p>关键词1: Birth place:bronx( 一个区7New York State)</p>
-<p>黑人音乐文化与美国饮食文化.</p>
-<p>美国整体本身没有很多饮食文化.</p>
-<p>NewYork State在美国历史上的位置:</p>
-<blockquote>
-<p>纽约州概览</p>
-</blockquote>
-<p>仍然是美国最大的州.</p>
-<p>纽约州的政治和经济中心是分开的.</p>
-<p><strong>荷兰</strong>人对纽约市的残存的影响.</p>
-<p>纽约的5个“区”:</p>
-<ol>
-<li>曼哈顿州</li>
-<li>Queen</li>
-<li>布鲁克林</li>
-<li>Staten island</li>
-<li>Bronx(African American 和南美/拉丁美洲的移民)</li>
-</ol>
-<blockquote>
-<p>又up-to-date</p>
-<p>又很多阴暗的没有管</p>
-</blockquote>
-<hr>
-<p>关键词2:Idol</p>
-<ol>
-<li><p>Musician</p>
-</li>
-<li><p>Sportsman</p>
-<p>白人精英好好学习的American Dream</p>
-<p>Hiphop文化最大的展示的就是NBA</p>
-</li>
-<li><p>BRUCE LEE</p>
-<p>香蕉人“ABC”</p>
-<p>将香港电影功夫片塞到好莱坞电影.</p>
-<p>MartialArt“表演套路”</p>
-</li>
-</ol>
-<hr>
-<p>关键词3:money worship</p>
-<p>对于很多资质平庸的黑人青年来说,金钱的崇拜illegal ways of earning money as quickly as possible</p>
-<p>组织卖淫/销售毒品</p>
-<hr>
-<p>GANG culture</p>
-<p>帮派文化</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/25/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W11Hip-hop-culture/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/6/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/8/">Next &amp;raquo;</a>
     </nav>
   
 

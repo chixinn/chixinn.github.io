@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 149
+			总文章数 151
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,203 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-ML05-Logistic-Regression" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/ML05-Logistic-Regression/">ML05 Logistic Regression</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/04/ML05-Logistic-Regression/" class="archive-article-date">
+  	<time datetime="2020-06-04T04:44:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="logistic-Regression"><a href="#logistic-Regression" class="headerlink" title="logistic Regression"></a>logistic Regression</h1><h2 id="什么是Logisitic-Regression"><a href="#什么是Logisitic-Regression" class="headerlink" title="什么是Logisitic Regression"></a>什么是Logisitic Regression</h2><ol>
+<li><p>$\sum_iw_ix_i+b$</p>
+<p>将每一个feature乘以一个weight，加上偏置，再通过一个Sigmoid function.</p>
+<p>Sigmoid function将其映射到(0,1)之间。</p>
+</li>
+<li><p>ML04所讲的generative model 和logistic regression有什么联系呢？</p>
+<p>上节课所要得的后验概率：</p>
+<p>$P(C_1|x)=\frac{p(x|C_1)P(C_1)}{p(x|C_1)P(C_1)+p(x|C_2)P(C_2)}$</p>
+<p>对于这种贝叶斯所得的后验概率，将分子和分母同时除以$P(x|C_1)P(C_1)$即可得，</p>
+<p>$P(C_1|x)=\frac{1}{1+\frac{P(x|C_1)P(C_1)}{P(x|C_2)P(C_2)}}$</p>
+<p>这里，令$z=ln(\frac{P(x|C_1)P(C_1)}{P(x|C_2)P(C_2)})$</p>
+<p>这个时候，$\sigma(z)=\frac{1}{1+exp(-z)}$</p>
+<p>是一个Sigmoid function.</p>
+<p>这里，将我们之前所得的先验概率带入，$P(x|C_1)$,$P(x|C_2)$</p>
+<p>就可以发现$z=w^Tx+b$</p>
+<h3 id="linear-v-s-Logistic"><a href="#linear-v-s-Logistic" class="headerlink" title="linear v.s.Logistic"></a>linear v.s.Logistic</h3></li>
+</ol>
+<p>Linear:$f_{w,b}=\sum_iw_ix_i+b$</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/04/ML05-Logistic-Regression/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hexo-d报错：fatal-无法访问-https-github-com-chixinn-chixinn-github-io-git-：LibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/hexo-d%E6%8A%A5%E9%94%99%EF%BC%9Afatal-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-https-github-com-chixinn-chixinn-github-io-git-%EF%BC%9ALibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443/">hexo d报错：fatal: 无法访问 &#39;https://github.com/chixinn/chixinn.github.io.git/&#39;：LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 </a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/04/hexo-d%E6%8A%A5%E9%94%99%EF%BC%9Afatal-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-https-github-com-chixinn-chixinn-github-io-git-%EF%BC%9ALibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443/" class="archive-article-date">
+  	<time datetime="2020-06-04T01:38:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先看一下是不是成功，如果成功的话，再回来看解决方法。</p>
+<p>目前短暂尝试了一下成功了：</p>
+<p>问题的原因其实与hexo 博客本身无关，而是git push方面，这里相当于hexo d方面。</p>
+<p>在github项目在本地的根目录下打开git命令行，<br><strong>执行下面的命令</strong>：</p>
+<p><code>git config --global --unset http.proxy</code></p>
+<p>即可。</p>
+<p>所以，如果不论是什么形式的git push，出现如此报错的话，都可以尝试一下这个方法。</p>
+<p>[^1]:居然IntelliJ IDEA 上也可以push git???,是在查这个解决方法时候找到的。</p>
+<p><a href="https://blog.csdn.net/daerzei/article/details/79528153?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">参考资料</a></p>
+<p>网上还有一个借鉴stackoverflow的，我测试了一下，我不行的。</p>
+<p>但是重新一下http代理还是i好用的。</p>
+<p>同时：要注意搜索的时候 ，直接搜索关键词：</p>
+<blockquote>
+<p>LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to github.com:443 </p>
+</blockquote>
+<p><a href="https://blog.csdn.net/wufantastic/article/details/91488651?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">我个人测试不行的参考资料</a></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhelcp8dgj30r40sme0k.jpg" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/04/hexo-d%E6%8A%A5%E9%94%99%EF%BC%9Afatal-%E6%97%A0%E6%B3%95%E8%AE%BF%E9%97%AE-https-github-com-chixinn-chixinn-github-io-git-%EF%BC%9ALibreSSL-SSL-connect-SSL-ERROR-SYSCALL-in-connection-to-github-com-443/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-数学基础W13-概率基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1189,231 +1386,9 @@
 
 
   
-    <article id="post-ML02-Basic-concept" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/01/ML02-Basic-concept/">ML01-Regression-2</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/06/01/ML02-Basic-concept/" class="archive-article-date">
-  	<time datetime="2020-06-01T00:19:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Basic-concept"><a href="#Basic-concept" class="headerlink" title="Basic concept"></a>Basic concept</h1><h2 id="Error从何而来？"><a href="#Error从何而来？" class="headerlink" title="Error从何而来？"></a>Error从何而来？</h2><p>来自于 bias and variance of estimator.</p>
-<h3 id="如何估算？"><a href="#如何估算？" class="headerlink" title="如何估算？"></a>如何估算？</h3><ul>
-<li><p>估算随机变量X的平均值：</p>
-<ul>
-<li>假设x的均值是$\mu$</li>
-<li>假设x的方差是$\sigma^2$</li>
-</ul>
-</li>
-<li><p>Estimator of mean $\mu$</p>
-<ul>
-<li><p>Sample N points : {$x^1,x^2,…,x^N$}</p>
-<p>用抽样的平均去估计/逼近真实的平均值：</p>
-<p>$m=\frac{1}{N}\sum_nx^n\neq\mu$</p>
-<p>$E[m]=\frac{1}{N}\sum_nE[x^n]=\mu$</p>
-</li>
-<li><p>可以类比打靶,靶心是真实值。</p>
-</li>
-<li><p>Var[m]=$\frac{\sigma^2}{N}$，</p>
-</li>
-<li><p>$s^2=\frac{1}{N}=\sum_n(x^n-m)^2$,用$s^2$来估计。</p>
-</li>
-<li><p>$E[s^2]=\frac{N-1}{N}\sigma^2\neq\sigma^2$;</p>
-</li>
-<li><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfci1sa4oij30sg0pgtta.jpg" alt=""></p>
-</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>不考虑方差：瞄的时候就没有瞄准/即使我瞄准了但仍是有偏离了。</p>
-</blockquote>
-<p><strong>综上：错误来自bias有多大(你瞄准的位置)，variance有多大(你的水平有多稳定)</strong> </p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfcibu3se2j30y80pge5l.jpg" alt=""></p>
-<p>简单的model受data影响会变小。</p>
-<blockquote>
-<p>Consider the extreme case f(x)=c</p>
-</blockquote>
-<h3 id="Bias"><a href="#Bias" class="headerlink" title="Bias"></a>Bias</h3><p>bias=$E[f^*]=\overline{y}$</p>
-<p>靶心:$\hat{f}$；</p>
-<p>根据测试，可以intuitively地直观感觉到，模型越复杂，bias越小，模型越简单，bias越大？</p>
-<p>那如何直观的理解这一现象呢？</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfcimq4e2hj313i0s84qp.jpg" alt=""></p>
-<p>可以很直观的从图中看到，当模型简单的时候，即我打飞镖时点落的范围，因为它简单，所以他的表示的范围有限，范围集中在那个蓝框框里，所以有可能 <strong>它甚至自己本身就不包含那个target</strong>($\hat{f}$)，而当我的模型复杂的时候，我复杂，可表示的范围就变大了，bias就可能包含我的$\hat{f}$了。</p>
-<h3 id="Bias与variance"><a href="#Bias与variance" class="headerlink" title="Bias与variance"></a>Bias与variance</h3><p>当然，简单模型，方差小，bias大，可表示的涵盖的范围小。</p>
-<p>当然，复杂模型，方差大，bias小，可表示的涵盖的范围大。</p>
-<p>这些都可以intuitively的去理解。</p>
-<h3 id="Overfitting-与-underfitting"><a href="#Overfitting-与-underfitting" class="headerlink" title="Overfitting 与 underfitting"></a>Overfitting 与 underfitting</h3><p>那过拟合和欠拟合都来自于什么情况呢？</p>
-<p>如果你的误差来自于bias，那就可能是欠拟合，类比于直线本身涵盖不到target靶心，甚至无法拟合完整的一个模型。</p>
-<p>如果你的误差来自于variance，那就可能是过拟合，因为复杂模型离靶心bia很少，那就肯定拟合了，但复杂的方差大，可能拟合的太好了，那就是过拟合了。</p>
-<h2 id="Bias-大"><a href="#Bias-大" class="headerlink" title="Bias 大"></a>Bias 大</h2><p>redesign your model</p>
-<h2 id="Variance大"><a href="#Variance大" class="headerlink" title="Variance大"></a>Variance大</h2><p>More data</p>
-<p>Very effective, but not always practical.</p>
-<p>Regularization</p>
-<h2 id="Model-Selection"><a href="#Model-Selection" class="headerlink" title="Model Selection"></a>Model Selection</h2><ul>
-<li><p>There is usually a trade-off between bias and variance</p>
-</li>
-<li><p>Select a model that balances two kinds of error to minimize the total error</p>
-</li>
-<li><p>What you should Not do:</p>
-<p>不要认为，自己手上的testing set就一定是最好，即你本身挑model的时候就考虑了自己手上的testing set，此时，在真正的testing set上不一定是最好的error.</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfcj7j3u79j313i0g2qeg.jpg" alt=""></p>
-</li>
-</ul>
-<p>但如何避免在testing set 上也以某种意义过拟合呢？</p>
-<h2 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross validation"></a>Cross validation</h2><p>$Traing Set = \begin{cases}Training Set\ValidationSet\end{cases}$</p>
-<p>$Testing Set=\begin{cases}Testing SetPublic\TestingSetPrivate\end{cases}$</p>
-<p>就不要用在public testing set 作为选择模型的标准。</p>
-<h2 id="N-fold-CrossValidation"><a href="#N-fold-CrossValidation" class="headerlink" title="N-fold CrossValidation"></a>N-fold CrossValidation</h2><p>即 ，当你不相信一次分割做validation的结果的时候时候，可以分很多次。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/01/ML02-Basic-concept/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语W12反向传播算法可以解决什么问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">专业英语W12反向传播算法可以解决什么问题</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-05-31T13:25:33.297Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="专业英语W12-反向传播算法可以解决什么问题"><a href="#专业英语W12-反向传播算法可以解决什么问题" class="headerlink" title="专业英语W12:反向传播算法可以解决什么问题"></a>专业英语W12:反向传播算法可以解决什么问题</h1><p>What problem does backpropagation solve? Explain it in your own words.</p>
-        
-          <a class="article-more-a" href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/31/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW12%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E7%AE%97%E6%B3%95%E5%8F%AF%E4%BB%A5%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/15/">15</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
     </nav>
   
 

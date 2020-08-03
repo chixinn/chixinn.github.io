@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>姜启源/司守奎Week2:方程模型 | Chixinning的博客</title>
+  <title>姜启源/司守奎Week2:微分方程模型 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="方程模型微分方程建模微分方程建模将实际问题的数学描述转化为微分方程的求解问题。 方法步骤 建系 找基本规律 列方程和定解条件。  列方程的常见方法 按规律直接列方程 微元分析法与任意区域上取积分法 模拟近似法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="姜启源&#x2F;司守奎Week2:方程模型">
+<meta property="og:title" content="姜启源&#x2F;司守奎Week2:微分方程模型">
 <meta property="og:url" content="http://yoursite.com/2020/07/29/%E5%A7%9C%E5%90%AF%E6%BA%90-%E5%8F%B8%E5%AE%88%E5%A5%8EWeek2-%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
 <meta property="og:description" content="方程模型微分方程建模微分方程建模将实际问题的数学描述转化为微分方程的求解问题。 方法步骤 建系 找基本规律 列方程和定解条件。  列方程的常见方法 按规律直接列方程 微元分析法与任意区域上取积分法 模拟近似法">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-07-29T07:26:39.000Z">
-<meta property="article:modified_time" content="2020-08-02T07:30:52.853Z">
+<meta property="article:modified_time" content="2020-08-03T08:44:47.016Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数学建模">
@@ -71,7 +71,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 149
+			总文章数 151
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -161,7 +161,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      姜启源/司守奎Week2:方程模型
+      姜启源/司守奎Week2:微分方程模型
     </h1>
   
 
@@ -262,7 +262,27 @@
 <h4 id="Ode23-ode45-ode113的使用"><a href="#Ode23-ode45-ode113的使用" class="headerlink" title="Ode23,ode45,ode113的使用"></a>Ode23,ode45,ode113的使用</h4><p><code>[t,y]=solver(&#39;F&#39;,tspan,y0)</code></p>
 <p>这里solver为ode45，ode23，ode113，输入参数 F 是用M文件定义的微分方程 <em>y</em>‘= <em>f</em> (<em>x</em>, <em>y</em>)右端的函数。tspan=[t0,tfinal]是求解区间（自变量x的值)，y0是初值列向量。</p>
 <h4 id="刚性常微分方程解法"><a href="#刚性常微分方程解法" class="headerlink" title="刚性常微分方程解法"></a>刚性常微分方程解法</h4><p>Matlab的工具箱提供了几个解刚性常微分方程的功能函数，如ode15s，ode23s， ode23t，ode23tb，这些函数的使用同上述非刚性微分方程的功能函数。</p>
-<h4 id="高阶微分方程-y-n-f-t-y-y’-…-y-n-1-的解法"><a href="#高阶微分方程-y-n-f-t-y-y’-…-y-n-1-的解法" class="headerlink" title="高阶微分方程$y^(n)=f(t,y,y’,…,y^(n-1))$的解法"></a>高阶微分方程$y^(n)=f(t,y,y’,…,y^(n-1))$的解法</h4><p>例子：考虑初值问题</p>
+<h4 id="高阶微分方程-y-n-f-t-y-y’-…-y-n-1-的解法"><a href="#高阶微分方程-y-n-f-t-y-y’-…-y-n-1-的解法" class="headerlink" title="高阶微分方程$y^(n)=f(t,y,y’,…,y^(n-1))$的解法"></a>高阶微分方程$y^(n)=f(t,y,y’,…,y^(n-1))$的解法</h4><p>例子：考虑初值问题<br>$$<br>y’’’-2y’’-y’y=0\<br>y(0)=0 y’(0)=1 y’’(0)=-1<br>$$<br>要现将初值问题改写成$Y’=F(t,Y),Y(0)=Y_0$，其中$Y_0$是初值。</p>
+<p>例子：求解<code>van der Pol</code>方程</p>
+<p>先编写待解决的function，再套用matlab的模型。</p>
+<hr>
+<h3 id="常微分方程的解析解"><a href="#常微分方程的解析解" class="headerlink" title="常微分方程的解析解"></a>常微分方程的解析解</h3><p><strong>Matlab提供了强大的求解常微分方程的符号运算<code>dsolve</code></strong></p>
+<p>符号D表示对变量的求导，Dy表示对y的一阶导数，当需要求变量的n阶导数时，用Dn表示，D4y表示对变量y求4阶导数。</p>
+<ol>
+<li>常微分方程的通解</li>
+<li>常微分方程的初边值问题</li>
+<li>求解常微分方程组</li>
+<li>求解线性常微分方程组<ol>
+<li>一阶齐次线性微分方程组。</li>
+</ol>
+</li>
+</ol>
+<p><strong>【Attention!】注意区分边值问题和初值问题的区别！</strong></p>
+<p><strong>初值问题可以看成运动轨迹的起点，边值问题可以看成运动轨迹的边界。</strong></p>
+<hr>
+<h3 id="边值问题的matlab解法"><a href="#边值问题的matlab解法" class="headerlink" title="边值问题的matlab解法"></a>边值问题的matlab解法</h3><p><code>#todo</code></p>
+<p>代码待跑。</p>
+<hr>
 
       
 

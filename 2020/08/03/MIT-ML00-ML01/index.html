@@ -8,29 +8,22 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MIT+ ML00+ML01 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的个人技术博客，由2020年寒假，其中以我的笔记为主，同时又有很多心得和不足，主要是一个人碎碎念的地方；个人利益相关，2018级ECNU DaSE在读～希望能收获成长吧，当然也可以联系我！">
+  <meta name="description" content="Take vague input data. lay good fundation. Talk is cheap, show me the code. Background:  Make decsion&#x2F;prediction based on Data. data visualization and representation.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MIT+ ML00+ML01">
 <meta property="og:url" content="http://yoursite.com/2020/08/03/MIT-ML00-ML01/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="这是我的个人技术博客，由2020年寒假，其中以我的笔记为主，同时又有很多心得和不足，主要是一个人碎碎念的地方；个人利益相关，2018级ECNU DaSE在读～希望能收获成长吧，当然也可以联系我！">
+<meta property="og:description" content="Take vague input data. lay good fundation. Talk is cheap, show me the code. Background:  Make decsion&#x2F;prediction based on Data. data visualization and representation.">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ghdyc5s3w4j30zm0jw0zv.jpg">
 <meta property="article:published_time" content="2020-08-03T11:47:10.000Z">
-<meta property="article:modified_time" content="2020-08-03T11:47:10.971Z">
+<meta property="article:modified_time" content="2020-08-03T13:51:06.190Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Thought Bridge">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ghdyc5s3w4j30zm0jw0zv.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -193,7 +186,70 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>Take vague input data.</p>
+<p>lay good fundation.</p>
+<p>Talk is cheap, show me the code.</p>
+<p>Background:</p>
+<ol>
+<li>Make decsion/prediction based on Data.</li>
+<li>data visualization and representation.</li>
+</ol>
+<a id="more"></a>
+
+<p><strong>Build models work for unseen data</strong>对尚未观测到的数据进行预测。</p>
+<h2 id="Terminology："><a href="#Terminology：" class="headerlink" title="Terminology："></a>Terminology：</h2><h3 id="Types"><a href="#Types" class="headerlink" title="Types:"></a>Types:</h3><p><strong>Supervised Learning:</strong> learn from training Data example-&gt;ml model :predict an unseen data.</p>
+<p>data+ label</p>
+<p>Self-supervided/transfer-learning</p>
+<p>Key:supervised learning.</p>
+<!--more-->
+
+<p>Traing example:training data and value.</p>
+<p>目标，找到什么函数可以take x to y.</p>
+<hr>
+<ol>
+<li><p>Are feature informative?</p>
+</li>
+<li><p>Invariances:理解、建模和处理数据不变性是机器学习中非常重要的主题。</p>
+</li>
+<li><p>Error on small groups,label imbalance.</p>
+<p>训练数据的一部分标签是你所不感兴趣的。</p>
+</li>
+<li><p>Outliers：regression</p>
+<p>有的时候outlier也未必是坏事，有的时候离群值可以让模型变得更好。</p>
+</li>
+<li><p>signal/noise</p>
+</li>
+</ol>
+<hr>
+<h2 id="Representation-of-data"><a href="#Representation-of-data" class="headerlink" title="Representation of data"></a>Representation of data</h2><ol>
+<li><p>numerical</p>
+</li>
+<li><p>categorical</p>
+</li>
+<li><p>binary</p>
+</li>
+<li><p>structured</p>
+</li>
+</ol>
+<p>very deserve exercise</p>
+<p>How to represent raw image.</p>
+<ol>
+<li><p>Training Data and test data have same underlying distritutes:这样你的模型就会效果很好。</p>
+<p>也就是说，你想在一堆图片中找到橘子，你的训练和测试都有橘子。</p>
+</li>
+<li><p>data hungry model</p>
+</li>
+<li><p>Overfitting and 鲁棒性</p>
+</li>
+<li><p>决策的波动：讨论分类的鲁棒性</p>
+</li>
+<li><p>优化凸模型</p>
+</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ghdyc5s3w4j30zm0jw0zv.jpg" alt></p>
+<p>How do I know my model makes sense?</p>
+<p>which feature is influential?</p>
+
       
 
       
@@ -227,6 +283,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Thought Bridge</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -541,6 +616,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">房地产信托业务</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Thought Bridge</a>
               </li>
             
             <div class="clearfix"></div>

@@ -8,22 +8,24 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MIT+ ML00+ML01 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Take vague input data. lay good fundation. Talk is cheap, show me the code. Background:  Make decsion&#x2F;prediction based on Data. data visualization and representation.">
+  <meta name="description" content="Take vague input data. lay good fundation. Talk is cheap, show me the code. Background:  Make decsion&#x2F;prediction based on Data. data visualization and representation.  这次机器学习基础课程的重点仍然是有监督与无监督学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MIT+ ML00+ML01">
 <meta property="og:url" content="http://yoursite.com/2020/08/03/MIT-ML00-ML01/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="Take vague input data. lay good fundation. Talk is cheap, show me the code. Background:  Make decsion&#x2F;prediction based on Data. data visualization and representation.">
+<meta property="og:description" content="Take vague input data. lay good fundation. Talk is cheap, show me the code. Background:  Make decsion&#x2F;prediction based on Data. data visualization and representation.  这次机器学习基础课程的重点仍然是有监督与无监督学习">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghepqkypepj30xi05o405.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ghdyc5s3w4j30zm0jw0zv.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghepu9ql1hj30hu04et96.jpg">
 <meta property="article:published_time" content="2020-08-03T11:47:10.000Z">
-<meta property="article:modified_time" content="2020-08-03T13:51:06.190Z">
+<meta property="article:modified_time" content="2020-08-04T05:30:21.336Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Thought Bridge">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ghdyc5s3w4j30zm0jw0zv.jpg">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghepqkypepj30xi05o405.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -71,7 +73,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 151
+			总文章数 152
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -194,6 +196,8 @@
 <li>Make decsion/prediction based on Data.</li>
 <li>data visualization and representation.</li>
 </ol>
+<p>这次机器学习基础课程的重点仍然是有监督与无监督学习</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghepqkypepj30xi05o405.jpg" alt></p>
 <a id="more"></a>
 
 <p><strong>Build models work for unseen data</strong>对尚未观测到的数据进行预测。</p>
@@ -201,12 +205,10 @@
 <p>data+ label</p>
 <p>Self-supervided/transfer-learning</p>
 <p>Key:supervised learning.</p>
-<!--more-->
-
 <p>Traing example:training data and value.</p>
 <p>目标，找到什么函数可以take x to y.</p>
 <hr>
-<ol>
+<h2 id="Training-Data"><a href="#Training-Data" class="headerlink" title="Training Data"></a>Training Data</h2><ol>
 <li><p>Are feature informative?</p>
 </li>
 <li><p>Invariances:理解、建模和处理数据不变性是机器学习中非常重要的主题。</p>
@@ -217,7 +219,7 @@
 <li><p>Outliers：regression</p>
 <p>有的时候outlier也未必是坏事，有的时候离群值可以让模型变得更好。</p>
 </li>
-<li><p>signal/noise</p>
+<li><p>signal or noise?</p>
 </li>
 </ol>
 <hr>
@@ -233,22 +235,30 @@
 </ol>
 <p>very deserve exercise</p>
 <p>How to represent raw image.</p>
+<hr>
 <ol>
-<li><p>Training Data and test data have same underlying distritutes:这样你的模型就会效果很好。</p>
+<li><p>Training Data and test data have same underlying distritutes:这样你的模型就会效果很好(small test error)。</p>
 <p>也就是说，你想在一堆图片中找到橘子，你的训练和测试都有橘子。</p>
 </li>
-<li><p>data hungry model</p>
+<li><p>Zero error? </p>
+</li>
+<li><p>data hungry model:complex model ,memory the train data</p>
 </li>
 <li><p>Overfitting and 鲁棒性</p>
+<p>讨论分类的鲁棒性</p>
 </li>
-<li><p>决策的波动：讨论分类的鲁棒性</p>
-</li>
-<li><p>优化凸模型</p>
+<li><p>优化: minimize loss 凸模型</p>
 </li>
 </ol>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ghdyc5s3w4j30zm0jw0zv.jpg" alt></p>
-<p>How do I know my model makes sense?</p>
+<hr>
+<h2 id="Model-Selection"><a href="#Model-Selection" class="headerlink" title="Model Selection"></a>Model Selection</h2><p>How do I know my model makes sense?</p>
 <p>which feature is influential?</p>
+<ul>
+<li>Simple vs complex :generalization</li>
+<li>Simple vs complex:interpretability</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghepu9ql1hj30hu04et96.jpg" alt></p>
 
       
 
@@ -365,6 +375,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/08/04/MIT-ML02-LinearClassifiersandPerceptrons/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MIT+ML02:LinearClassifiersandPerceptrons
+        
+      </div>
+    </a>
   
   
     <a href="/2020/08/03/%E5%A7%9C%E5%90%AF%E6%BA%90:%E5%8F%B8%E5%AE%88%E5%A5%8EWeek3:%E5%B7%AE%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/" id="article-nav-older" class="article-nav-link-wrap">

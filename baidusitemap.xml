@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2020/08/04/MIT-ML02-LinearClassifiersandPerceptrons/</loc>
+    <lastmod>2020-08-04</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2020/08/03/MIT-ML00-ML01/</loc>
-    <lastmod>2020-08-03</lastmod>
+    <lastmod>2020-08-04</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/08/03/%E5%A7%9C%E5%90%AF%E6%BA%90:%E5%8F%B8%E5%AE%88%E5%A5%8EWeek3:%E5%B7%AE%E6%96%B9%E7%A8%8B%E6%A8%A1%E5%9E%8B/</loc>
     <lastmod>2020-08-03</lastmod>

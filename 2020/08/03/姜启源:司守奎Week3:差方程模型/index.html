@@ -15,8 +15,9 @@
 <meta property="og:site_name" content="Chixinning的博客">
 <meta property="og:description" content="什么是差分方程？  包含未知函数的差分及自变数的方程。在求微分方程的数值解时，常把其中的微分用相应的差分来近似，所导出的方程就是差分方程。通过解差分方程来求微分方程的近似解，是连续问题离散化的一个例子。   差分方程很简单，就是一个递推的关系，序列的某一项定义为前一项的函数，然后一直迭代，就构成了微分方程，当信息符合该特征的时候，我们就可以用差分方程建模，来解出我们想要的答案。     差分方程">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghfylekzg5j30ue0a60u1.jpg">
 <meta property="article:published_time" content="2020-08-03T08:45:09.000Z">
-<meta property="article:modified_time" content="2020-08-03T08:48:55.398Z">
+<meta property="article:modified_time" content="2020-08-05T07:58:23.980Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数学建模">
@@ -24,6 +25,7 @@
 <meta property="article:tag" content="matlab">
 <meta property="article:tag" content="司守奎">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghfylekzg5j30ue0a60u1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -201,6 +203,67 @@
 <p>差分方程建模一般用在数据的预测上</p>
 </li>
 </ol>
+<a id="more"></a>
+
+<h2 id="齐次高阶差分方程的Matlab解法"><a href="#齐次高阶差分方程的Matlab解法" class="headerlink" title="齐次高阶差分方程的Matlab解法"></a>齐次高阶差分方程的Matlab解法</h2><p>我们以二阶齐次差分方程为例，考虑如下差分方程</p>
+<p><em>ax</em>(<em>k</em> + 2) + <em>bx</em>(<em>k</em> + 1) + <em>cx</em>(<em>k</em> ) = 0 ， <em>x</em>(0) = <em>x</em>0 ， <em>x</em>(1) = <em>x</em>1</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghfylekzg5j30ue0a60u1.jpg" alt></p>
+<p>例子：<em>x</em> ( <em>k</em> + 2 ) + 3 <em>x</em> ( <em>k</em> + 1) + 2 <em>x</em> ( <em>k</em> ) = 0 ， <em>x</em> ( 0 ) = 0 ， <em>x</em> (1) = 1</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">clc,clear</span><br><span class="line">syms a k yk</span><br><span class="line">a=[<span class="number">0</span> <span class="number">1</span>;<span class="number">-2</span> <span class="number">-3</span>]; a=sym(a); [vec,val]=eig(a); y0=[<span class="number">0</span>;<span class="number">1</span>]; yk=vec*val.^k*inv(vec)*y0</span><br></pre></td></tr></table></figure>
+
+<h3 id="市场经济中的蛛网模型"><a href="#市场经济中的蛛网模型" class="headerlink" title="市场经济中的蛛网模型"></a>市场经济中的蛛网模型</h3><p>在自由竞争的社会中，很多领域会出现循环波动的现象。在经济领域中，可以从自 由集市上某种商品的价格变化看到如下现象:在某一时期，商品的上市量大于需求，引 起价格下跌，生产者觉得该商品无利可图，转而经营其它商品;一段时间之后，随着产 量的下降，带来的供不应求又会导致价格上升，又有很多生产商会进行该商品的生产; 随之而来的，又会出现商品过剩，价格下降。在没有外界干扰的情况下，这种现象将会 反复出现。</p>
+<h3 id="商品销售量的预测"><a href="#商品销售量的预测" class="headerlink" title="商品销售量的预测"></a>商品销售量的预测</h3><blockquote>
+<p>在利用差分方程建模研究实际问题时，常常需要根据统计数据并用最小二乘法来拟合出差分方程的系数。其系统稳定性讨论要用到代数方程的求根。对问题的进一步研究 又常需考虑到随机因素的影响，从而用到相应的概率统计知识。</p>
+</blockquote>
+<p>简单例子，根据前5年的销量来预测第6年的销量</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>11</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>16</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>25</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>12</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>leave out the form</p>
+<h3 id="遗传模型"><a href="#遗传模型" class="headerlink" title="遗传模型"></a>遗传模型</h3><h3 id="养老保险"><a href="#养老保险" class="headerlink" title="养老保险"></a>养老保险</h3><p>减肥计划：节食与运动</p>
+<p>差分形式的阻滞增长模型</p>
+<p>按年龄分组的种群增长</p>
 
       
 

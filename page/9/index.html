@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 152
+			总文章数 154
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,172 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-最小二乘问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/">最小二乘问题</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2020-05-21T00:40:37.232Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="最小二乘问题"><a href="#最小二乘问题" class="headerlink" title="最小二乘问题"></a>最小二乘问题</h1><p>矩阵分解的应用,与线性回归等问题有着较为密切的联系.</p>
+<p>给出一条直线,使得所有点和直线所预测的点的误差的平方和最小.</p>
+<blockquote>
+<p>误差的平方和与2范数的关系</p>
+</blockquote>
+<p>即$min_{k,b}\sum_{i=1}^n(kx_i+b-y_i)^2$</p>
+<p>问题实质是求解<strong>线性回归</strong>的参数问题.</p>
+<hr>
+<p>给出数据集$x_1,x_2,…,x_n$,和用于预测的函数$y=w^Tx+b$数据的个数为n,数据的维度为m;所以当数据构成组成矩阵$A_{m\times n}$的列.</p>
+<p>即 arg($min_x||Ax-b||_2$)</p>
+<hr>
+        
+          <a class="article-more-a" href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-敏度分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">敏度分析</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2020-05-21T00:09:44.667Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="敏度分析"><a href="#敏度分析" class="headerlink" title="敏度分析"></a>敏度分析</h1><p>在本节中,将分析数据中扰动较小时对非奇异方阵线性方程解的影响.</p>
+<p>$A(X+\Delta x)=y+\Delta y$;</p>
+<blockquote>
+<p>关键问题,$\Delta y$较小时对$\Delta x$的影响</p>
+</blockquote>
+<p>$\frac{||\Delta x||_2{||x||_2}\le||A^{-1}||_2||A||_2\frac{||\Delta y||_2}{||y||_2}$</p>
+<p>注意,上式中,关键部分在于这里矩阵的范数的这个系数.</p>
+<h2 id="定义7"><a href="#定义7" class="headerlink" title="定义7"></a>定义7</h2><p>设,$\sigma_1,\sigma_n$分别是矩阵A的最大奇异值和最小奇异值,那么</p>
+<p>$||A||_2=\sigma1,||A^{-1}||_2=1/\sigma_n$</p>
+<p>因此,矩阵的条件数也可以定义为:</p>
+<p>$条件数(A)=\frac{\sigma_1}{\sigma_n}$;</p>
+<blockquote>
+<p>范数在数值计算中定义条件数的重要行.</p>
+</blockquote>
+<p>当条件数比较大时,y上的扰动可能会导致x上有很大的扰动,即方程对输入数据的变化非常敏感.</p>
+<p>A是奇异时:条件数-&gt;$\infin$</p>
+<h3 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h3><p>对于输入项的敏感性</p>
+<p>即将上式子中的比例替换为条件数</p>
+<h3 id="系数矩阵汇中扰动的敏感性"><a href="#系数矩阵汇中扰动的敏感性" class="headerlink" title="系数矩阵汇中扰动的敏感性"></a>系数矩阵汇中扰动的敏感性</h3><p>\frac{||x||_2}{||x+\Delta x||_2}</p>
+<h4 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h4><p>对A,y联合扰动的敏感型</p>
+<h3 id="引理3"><a href="#引理3" class="headerlink" title="引理3"></a>引理3</h3><p>![截屏2020-05-21上午8.35.33](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-05-21上午8.35.33.png)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/21/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-数据挖掘过程Data Mining" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -912,192 +1078,6 @@
 
 
   
-    <article id="post-英语歌曲文化赏析-乡村音乐3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/">英文歌曲文化赏析W11Hip hop culture</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/15/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/" class="archive-article-date">
-  	<time datetime="2020-05-15T01:22:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="乡村音乐3"><a href="#乡村音乐3" class="headerlink" title="乡村音乐3"></a>乡村音乐3</h1><h2 id="Identification"><a href="#Identification" class="headerlink" title="Identification:"></a>Identification:</h2><blockquote>
-<p>以”Remeber me “歌曲引入</p>
-</blockquote>
-<p>Typical musical instruments: Mendolin(Blur grass曼陀林)/fidle(Violin:不是很排他)/Guita</p>
-<p>Typical voice:声音低沉有磁性鼻音浓重</p>
-<p>Melody:simple,but touching/easy to sing</p>
-<p>Dressing style:carboy-like ;</p>
-<p>Lyric:too straight forward even make people (含蓄)比较直白:</p>
-<pre><code>&gt;“You were the first so was I 
-&gt;
-&gt;We made love and then you cried
-&gt;
-&gt;---《Rememebr when》</code></pre>
-        
-          <a class="article-more-a" href="/2020/05/15/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/15/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据科学的数学基础W10(3)基于奇异值分解的矩阵的性质" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/14/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10(3)%E5%9F%BA%E4%BA%8E%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E7%9A%84%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%A7%E8%B4%A8/">数据科学的数学基础W10(3)基于奇异值分解的矩阵的性质</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/14/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10(3)%E5%9F%BA%E4%BA%8E%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E7%9A%84%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%A7%E8%B4%A8/" class="archive-article-date">
-  	<time datetime="2020-05-14T01:53:46.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据科学的数学基础W10-3-基于奇异值分解的矩阵的性质"><a href="#数据科学的数学基础W10-3-基于奇异值分解的矩阵的性质" class="headerlink" title="数据科学的数学基础W10(3):基于奇异值分解的矩阵的性质"></a>数据科学的数学基础W10(3):基于奇异值分解的矩阵的性质</h1><h2 id="基于奇异值分解的矩阵的性质"><a href="#基于奇异值分解的矩阵的性质" class="headerlink" title="基于奇异值分解的矩阵的性质"></a>基于奇异值分解的矩阵的性质</h2><p>设矩阵$A\in R^{m \times n}$;对角矩阵上非0元素等于矩阵的秩;</p>
-<p>$A=U\Sigma V^T$;</p>
-<p>$U$和$V$给出了四个基本子空间的一组正交基:</p>
-<p>$U$的前r列:A的列空间</p>
-<p>$U$的后m-r列:A的左零空间</p>
-<p>$V$的前r列,A的行空间</p>
-<p>$V$的后n-r列,A的零空间;</p>
-<h2 id="广义逆"><a href="#广义逆" class="headerlink" title="广义逆"></a>广义逆</h2><p>$A_{m\times n}$:</p>
-<p>$(AG)^T=AG$</p>
-<p>$(GA)^T=GA$</p>
-<p>$GAG=G$</p>
-<p>$AGA=A$</p>
-<p>如果G是A的Moore-Penrose逆,则G是A唯一的广义逆(以Moore-Penrose逆)的定义;</p>
-<blockquote>
-<p>当A为列满rank,A=($A^TA)^{-1}A^T$</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/14/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10(3)%E5%9F%BA%E4%BA%8E%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E7%9A%84%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%A7%E8%B4%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/10/">Next &amp;raquo;</a>
@@ -1321,6 +1301,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Thought Bridge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">雅思</a>
               </li>
             
             <div class="clearfix"></div>

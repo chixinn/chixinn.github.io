@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 152
+			总文章数 154
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,260 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-操作系统Project4-内存管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject4-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">操作系统Project4 内存管理</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject4-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-06-16T02:16:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="P4-内存管理"><a href="#P4-内存管理" class="headerlink" title="P4:内存管理"></a>P4:内存管理</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol>
+<li>熟悉MINIX操作系统的进程管理</li>
+<li>学习Unix风格的内存管理</li>
+</ol>
+<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><p>修改MINIX3.1.2a的进程管理器，改进brk系统调用的实现。</p>
+<p>使得分配给进程的数据段+栈段空间耗尽时，该brk系统调用会</p>
+<ol>
+<li><p>给该进程一个更大的内存空间，</p>
+</li>
+<li><p>并将原来空间中的数据复制到新分配的内存空间。</p>
+</li>
+<li><p>释放原来的内存空间</p>
+</li>
+<li><p>通知内核映射新分配的内存段。</p>
+</li>
+</ol>
+<p>MINIX3 独立ID空间，共享相同的代码段。</p>
+<p>Safety:使进程正常执行一小段时间，使其在执行这段时间的过程中，打印出此时“我出错了ENOMEM”(因为我本身不应该运行到safety内存中)和正常结束。</p>
+<p>当空间消耗殆尽时，要增加空间，此时会有更大的空间来执行，使之继续地正常执行下去。</p>
+<h2 id="实验说明"><a href="#实验说明" class="headerlink" title="实验说明"></a>实验说明</h2><ol>
+<li><p>修改/usr/src/servers/pm/break.c中的adjust函数。</p>
+</li>
+<li><p>在adjust函数中增加allocate_new_mem局部函数。</p>
+</li>
+<li><p>brk系统调用本身：</p>
+<ol>
+<li><p>Do_brk函数计算数据段新的边界</p>
+</li>
+<li><p>然后调用adjust函数，使用adjust函数来计算当前程序的空闲空间是否足够分配。</p>
+</li>
+<li><p>足够分配：</p>
+</li>
+<li><p>不够分配：调用allocate_new_mem函数申请新的<strong>足够大的内存空间</strong>。</p>
+<p>足够大的内存空间的申请和寻找是first-fit -&gt; best-fit.</p>
+<p>将数据段和栈段拷贝：数据段底部，栈段顶部</p>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p>编译MINIX</p>
+<p>编译kernel后要把kernel的编号进行记住</p>
+<p>5是选项，save是进行保存。</p>
+<p>新生成的kernel是会变化的。</p>
+<h2 id="Project4也是又又又又需要配环境的一次haha"><a href="#Project4也是又又又又需要配环境的一次haha" class="headerlink" title="Project4也是又又又又需要配环境的一次haha!"></a>Project4也是又又又又需要配环境的一次haha!</h2><ol>
+<li>下载Minix3.1.2镜像文件</li>
+<li>在VMware中新建虚拟机，按照P1过程进行虚拟机的配置。</li>
+<li>然后就不能传文件啦！</li>
+<li>然后我把NAT的网络连接模式换了一种以后，就又可以传文件了~终于啊QAQ 我古董的windows重装都配好环境惹…</li>
+</ol>
+<hr>
+<blockquote>
+<p>另记：传文件是玄学，编译时玄学，内核是玄学，cc是玄学，计算机是玄学。</p>
+</blockquote>
+<hr>
+<p>主体思路就是对于allocate_new_mem函数进行调整。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Memory map for local text, stack, data segments. */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mem_map</span> &#123;</span></span><br><span class="line">  vir_clicks mem_vir;		<span class="comment">/* 虚拟地址 */</span></span><br><span class="line">  phys_clicks mem_phys;		<span class="comment">/*物理地址 */</span></span><br><span class="line">  vir_clicks mem_len;		<span class="comment">/* 长度 */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Allocate_new_mem函数的整体内容：</p>
+<ol>
+<li>Alloc_mem分配内存</li>
+<li>Sys_abscopy拷贝内容</li>
+<li>释放</li>
+<li>通知内核相关变动并注册</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">PUBLIC <span class="keyword">int</span> <span class="title">allocate_new_mem</span><span class="params">(rmp,old_memory_clicks)</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<ol>
+<li>通知变化是在if分支里面的，所以不需要sys_newmap</li>
+</ol>
+<p>TNND，终于写完了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject4-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ML06-DeepLearning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/ML06-DeepLearning/">ML06 DeepLearning</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/15/ML06-DeepLearning/" class="archive-article-date">
+  	<time datetime="2020-06-15T13:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Deep-Learning"><a href="#Deep-Learning" class="headerlink" title="Deep Learning"></a>Deep Learning</h1><p>Step1: define a set of function </p>
+<p>Step2: goodness of function</p>
+<p>Step3:pick the best function</p>
+<blockquote>
+<p>DL v.s.ML</p>
+</blockquote>
+<p>这里的function是一个Neurual Network</p>
+<p>可以用不同的方法链接不同的Neurual Network</p>
+        
+          <a class="article-more-a" href="/2020/06/15/ML06-DeepLearning/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/15/ML06-DeepLearning/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-操作系统W15MINIX3进程管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -997,245 +1251,6 @@
 
 
   
-    <article id="post-专业英语chapter3读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/06/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADchapter3%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">专业英语W13：learningSlow问题的解决</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/06/06/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADchapter3%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-06-06T03:42:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="专业英语chapter3"><a href="#专业英语chapter3" class="headerlink" title="专业英语chapter3"></a>专业英语chapter3</h1><h2 id="本章概览"><a href="#本章概览" class="headerlink" title="本章概览"></a>本章概览</h2><p>the cross-entropy cost function(交叉熵损失函数).Four so called regulariation methods (四个正则化项方法)</p>
-<h2 id="Cross-entropy"><a href="#Cross-entropy" class="headerlink" title="Cross-entropy"></a>Cross-entropy</h2><p>It will pick the initial weight to be (some value)and the initial bias to be  (some value) .</p>
-<p>These are generic choices used as a place to </p>
-<p>begin learning.</p>
-<p>也就是说这些初始化方法是随机选取的。</p>
-<hr>
-<p>It wasn t picking them to be special in any way.</p>
-<p>This behaviour is strange when contrasted to human learning. </p>
-<p>在人类学习过程中，对于错误比较大的地方往往会学的比较快，错误小的地方会学的比较慢。</p>
-<p>可是在神经元学习过程中，对于错误比较大的地方往往会学的比较慢。</p>
-<p>It was said at the beginning of this section, we often learn fastest when we are badly wrong about something. </p>
-<p>But we ve just seen that our artificial neuron has a lot of difficulty learning when it s badly wrong - far more difficulty than when it s just a little wrong.</p>
-<p>解决slow learning 方法的目标</p>
-<p><strong>The larger the error, the faster the neuron will learn.</strong></p>
-<h3 id="What-is-the-learning-slowdown-problem"><a href="#What-is-the-learning-slowdown-problem" class="headerlink" title="What is the learning slowdown problem?"></a>What is the learning slowdown problem?</h3><p>What general idea can we learn from cross-entropy and softmax to solve the learning slowdown problem?</p>
-<p>1.学的慢/对于出错很大的case并没有很好的学习，</p>
-<p>开始学习速度慢。</p>
-<p>梯度偏导数很小</p>
-<p>Slowdown problem：learning rate变化很小，学习的效果慢。</p>
-<h3 id="为什么交叉熵损失函数可以作为代价函数？"><a href="#为什么交叉熵损失函数可以作为代价函数？" class="headerlink" title="为什么交叉熵损失函数可以作为代价函数？"></a>为什么交叉熵损失函数可以作为代价函数？</h3><p>可以作为代价函数的原因：</p>
-<p>The cross-entropy is positive, and tends toward zero as the neuron gets better at computing the desired output, for all training inputs, </p>
-<p>当模型距离我们先要的真实值越近的时候，我们的函数离0也越近，就可以是一个损失函数模型。</p>
-<p><strong>非负性</strong>(看到的时候没抓住这个重点)。</p>
-<p>交叉熵损失函数的偏导形式告诉我们什么呢？错误越大，印象越深，学的越快。general idea to solve slowdown problem.</p>
-<blockquote>
-<p>神经元的输出就是 <em>a</em> = <em>σ</em>(<em>z</em>)，<strong>Sigmoid Function</strong>是神经元的输出。</p>
-</blockquote>
-<blockquote>
-<p>Epoch-Cost 图像上的上凸和下凹</p>
-</blockquote>
-<p>当sigmoid funtion作为输出的时候，交叉熵损失函数来表达Loss function是个很好的选择。</p>
-<p>在对单个神经元讨论中，我们指出如果对所有的训练数据有 <em>σ</em>(<em>z</em>) ≈ <em>y</em>，交叉熵会很⼩。这个论断其实是和 <em>y</em> 只是等于 1 或者 0 有关。这在分类问题⼀般是可⾏的，但是对其他的问题（如回归问题）<em>y</em> 可以取 0 和 1 之间的中间值的。</p>
-<p>证明，交叉熵对所有训练输⼊在<em>σ</em>(<em>z</em>) = <em>y</em> 时仍然是最⼩化的。此神经元的饱和问题。</p>
-<p><strong>学习速度下降是$\sigma’(z)$的问题。</strong></p>
-<h3 id="二次代价损失函数学的慢的原因"><a href="#二次代价损失函数学的慢的原因" class="headerlink" title="二次代价损失函数学的慢的原因"></a>二次代价损失函数学的慢的原因</h3><p>Greater initial error 对学习率的影响。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhsgkh6quj30xc04ot90.jpg" alt=""></p>
-<p>Roughly speaking, the idea is that the cross-entropy is a measure of surprise.(即熵是对不确定性的度量。)</p>
-<p>相对熵又称KL散度，用于衡量对于同一个随机变量x的两个分布p(x)和q(x)之间的差异。</p>
-<p>回归问题的值与分类问题的(0,1)。</p>
-<h2 id="Softmax"><a href="#Softmax" class="headerlink" title="Softmax"></a>Softmax</h2><p>同样解决交叉熵损失函数的方法还有softmax方法。</p>
-<p>softmax和sigmoid思想类似，都是改变输出层的输出方式：out put layer.</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhsxm40f8j30d806aq33.jpg" alt=""></p>
-<p>we see that the output from the softmax layer is a set of positive numbers which sum up to 1.</p>
-<p>In other words, the output from the softma[ layer can be thought of as a probability distribution. </p>
-<p> 你可以将其想象成⼀种重新调节 某些参数 的⽅法，然后将这个结果整合起来构成⼀个概率分布。</p>
-<blockquote>
-<p>也就是说调节参数让和变成1.</p>
-</blockquote>
-<h3 id="对数似然损失函数。"><a href="#对数似然损失函数。" class="headerlink" title="对数似然损失函数。"></a>对数似然损失函数。</h3><p>GD方法的实质是偏导数的改变，偏导数的改变影响训练的走的方向，所以改变slowdown问题实质还是改变偏导数的问题。</p>
-<p> In fact, it s useful to think of a Softmax output layer with log-likelihood cost as being quite similar to a sigmoid output layer with cross-entropy cost. </p>
-<p>Softmax输出+对数似然损失函数 与 sigmoid输出+交叉熵损失函数。</p>
-<h4 id="在已知这种相似性的情况下又该做何选择呢？"><a href="#在已知这种相似性的情况下又该做何选择呢？" class="headerlink" title="在已知这种相似性的情况下又该做何选择呢？"></a>在已知这种相似性的情况下又该做何选择呢？</h4><p>In many cases: both work well.softmax plus log-likelihood is worth using whenever you want to interpret the output activations as probabilities. </p>
-<p>multi-Classification : independent的情况适配的很好。</p>
-<p><strong>softmax用于多分类过程中</strong>，它将多个神经元的输出，映射到（0,1）区间内，可以看成概率来理解，从而来进行多分类.</p>
-<blockquote>
-<p>softmax为什么有soft？</p>
-<p>看到了一个很形象的回答，当我把本来的max函数映射到概率以后，变成了不是数值大的一定会取到，而是数值大的有较大概率也会取到，这样就比较好的理解了soft.</p>
-</blockquote>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfif36qmr9j30v40ag75w.jpg" alt=""></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/06/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADchapter3%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-计算机网络W13-network-layer-control-plane" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW13-network-layer-control-plane/">计算机网络W13:network layer control plane</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/06/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW13-network-layer-control-plane/" class="archive-article-date">
-  	<time datetime="2020-06-05T06:05:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>本节侧重于宏观上的路由，如最短路径算法(传统路由算法)</p>
-<ul>
-<li><strong>traditional routing algorithms</strong>(本章重点)</li>
-<li>SDN controllers(locally centralized control plane)</li>
-<li>ICMP</li>
-<li>network mangement.</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhds71jzrj30um0dugvt.jpg" alt=""></p>
-        
-          <a class="article-more-a" href="/2020/06/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW13-network-layer-control-plane/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW13-network-layer-control-plane/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/6/">Next &amp;raquo;</a>
@@ -1459,6 +1474,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Thought Bridge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">雅思</a>
               </li>
             
             <div class="clearfix"></div>

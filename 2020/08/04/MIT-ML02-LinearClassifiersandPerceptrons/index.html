@@ -18,8 +18,9 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljg49v91j30xe0n2djl.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljk158a0j30zw0jsgok.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljktc8a4j30zw0ou79j.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljtalyboj30r80ikk01.jpg">
 <meta property="article:published_time" content="2020-08-04T05:22:07.000Z">
-<meta property="article:modified_time" content="2020-08-10T03:17:21.123Z">
+<meta property="article:modified_time" content="2020-08-10T05:10:55.505Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
@@ -221,7 +222,7 @@
 </li>
 </ul>
 <hr>
-<h2 id="使用超平面概念的linear-classifer"><a href="#使用超平面概念的linear-classifer" class="headerlink" title="使用超平面概念的linear classifer"></a>使用超平面概念的linear classifer</h2><h3 id="超平面相关的数学基础："><a href="#超平面相关的数学基础：" class="headerlink" title="超平面相关的数学基础："></a>超平面相关的数学基础：</h3><ul>
+<h2 id="使用超平面概念的linear二分类classifer"><a href="#使用超平面概念的linear二分类classifer" class="headerlink" title="使用超平面概念的linear二分类classifer"></a>使用超平面概念的linear二分类classifer</h2><h3 id="超平面相关的数学基础："><a href="#超平面相关的数学基础：" class="headerlink" title="超平面相关的数学基础："></a>超平面相关的数学基础：</h3><ul>
 <li><p>定义：$\theta/w(weight)$[vector]，$\theta_0$[offset/bias]</p>
 <p>这个超平面，由所有满足$\theta^T x+\theta_0$=0的向量$x$组成。</p>
 <p>$x=[x_1,x_2,…,x_d]$,$\theta_1x_1+\theta_2x_2+\theta_3x_3+…+\theta_dx_d+\theta_0=0$</p>
@@ -232,8 +233,6 @@
 <li><p>求向量在超平面上的投影：</p>
 <p>设投影是$v_p$,则<br>$$<br>v_p·\theta+\theta_0=0(投影属于该超平面)\<br>v-v_p=v_{perpendicular}=\lambda \theta(与法向量共线)<br>$$</p>
 </li>
-</ul>
-<ul>
 <li><p>如果向量$x_1$,$x_2$都属于该超平面，那么二者的差$x_1-x_2$与法向量$\theta$点乘为0，即与该法向量垂直</p>
 </li>
 <li><p>求向量(point)到超平面的signed distance</p>
@@ -252,7 +251,13 @@
 <blockquote>
 <p>结合二图可以很好的理解perceptron Algorithm</p>
 </blockquote>
-<h2 id="超平面与超平面的linear-separability—Proof-of-convergence"><a href="#超平面与超平面的linear-separability—Proof-of-convergence" class="headerlink" title="超平面与超平面的linear separability—Proof of convergence"></a>超平面与超平面的linear separability—Proof of convergence</h2><h2 id="What-if-the-data-is-not-separable"><a href="#What-if-the-data-is-not-separable" class="headerlink" title="What if the data is not separable?"></a>What if the data is not separable?</h2><h2 id="More-than-one-“correct-hyperplane”–zero-error-Problem"><a href="#More-than-one-“correct-hyperplane”–zero-error-Problem" class="headerlink" title="More than one “correct hyperplane”–zero error Problem."></a>More than one “correct hyperplane”–zero error Problem.</h2>
+<h2 id="超平面与超平面的linear-separability—Proof-of-convergence"><a href="#超平面与超平面的linear-separability—Proof-of-convergence" class="headerlink" title="超平面与超平面的linear separability—Proof of convergence"></a>超平面与超平面的linear separability—Proof of convergence</h2><h2 id="What-if-the-data-is-not-separable"><a href="#What-if-the-data-is-not-separable" class="headerlink" title="What if the data is not separable?"></a>What if the data is not separable?</h2><h2 id="More-than-one-“correct-hyperplane”–zero-error-Problem"><a href="#More-than-one-“correct-hyperplane”–zero-error-Problem" class="headerlink" title="More than one “correct hyperplane”–zero error Problem."></a>More than one “correct hyperplane”–zero error Problem.</h2><hr>
+<h2 id="超平面的另一种形象理解"><a href="#超平面的另一种形象理解" class="headerlink" title="超平面的另一种形象理解"></a>超平面的另一种形象理解</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljtalyboj30r80ikk01.jpg" alt></p>
+<ul>
+<li>对Feature vector赋予不同权重的线性组合。</li>
+</ul>
+<hr>
+<h2 id="超平面py-的implementation"><a href="#超平面py-的implementation" class="headerlink" title="超平面py 的implementation"></a>超平面py 的implementation</h2>
       
 
       

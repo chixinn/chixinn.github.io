@@ -15,13 +15,17 @@
 <meta property="og:site_name" content="Chixinning的博客">
 <meta property="og:description" content="Outline Linear model for classification  Perceptrons:感知器是人们成功使用的最简单的神经网络模型: 单个神经元的神经网络">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljg49v91j30xe0n2djl.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljk158a0j30zw0jsgok.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljktc8a4j30zw0ou79j.jpg">
 <meta property="article:published_time" content="2020-08-04T05:22:07.000Z">
-<meta property="article:modified_time" content="2020-08-06T01:43:13.685Z">
+<meta property="article:modified_time" content="2020-08-10T03:17:21.123Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Thought Bridge">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljg49v91j30xe0n2djl.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -202,9 +206,53 @@
 <h3 id="二分问题encode"><a href="#二分问题encode" class="headerlink" title="二分问题encode"></a>二分问题encode</h3><ul>
 <li>可以使用+1/-1</li>
 </ul>
-<p>exercise inductive bias.</p>
+<p>exercise inductive bias. </p>
 <hr>
-<h2 id="Learning-Perceptron–find-the-hyperplane"><a href="#Learning-Perceptron–find-the-hyperplane" class="headerlink" title="Learning:Perceptron–find the hyperplane"></a>Learning:Perceptron–find the hyperplane</h2>
+<h2 id="Learning-Perceptron–find-the-hyperplane"><a href="#Learning-Perceptron–find-the-hyperplane" class="headerlink" title="Learning:Perceptron–find the hyperplane"></a>Learning:Perceptron–find the hyperplane</h2><ul>
+<li><p>超平面的应用：</p>
+<ul>
+<li>halfspaces</li>
+<li>logistic regression classifier</li>
+</ul>
+<blockquote>
+<p>These are instances of a linear hypothesis class composed with a suitable scalar function</p>
+<p>这里scalar function是什么呢？是Sgn/sigmoid</p>
+</blockquote>
+</li>
+</ul>
+<hr>
+<h2 id="使用超平面概念的linear-classifer"><a href="#使用超平面概念的linear-classifer" class="headerlink" title="使用超平面概念的linear classifer"></a>使用超平面概念的linear classifer</h2><h3 id="超平面相关的数学基础："><a href="#超平面相关的数学基础：" class="headerlink" title="超平面相关的数学基础："></a>超平面相关的数学基础：</h3><ul>
+<li><p>定义：$\theta/w(weight)$[vector]，$\theta_0$[offset/bias]</p>
+<p>这个超平面，由所有满足$\theta^T x+\theta_0$=0的向量$x$组成。</p>
+<p>$x=[x_1,x_2,…,x_d]$,$\theta_1x_1+\theta_2x_2+\theta_3x_3+…+\theta_dx_d+\theta_0=0$</p>
+<p>这里，向量$\theta$是该超平面的法向量，也即normal vector.</p>
+</li>
+<li><p>判定给定一个向量$v=[v_1,v_2,…,v_d]$是否垂直于超平面：即判断该向量是否与该超平面的法向量平行或共线。</p>
+</li>
+<li><p>求向量在超平面上的投影：</p>
+<p>设投影是$v_p$,则<br>$$<br>v_p·\theta+\theta_0=0(投影属于该超平面)\<br>v-v_p=v_{perpendicular}=\lambda \theta(与法向量共线)<br>$$</p>
+</li>
+</ul>
+<ul>
+<li><p>如果向量$x_1$,$x_2$都属于该超平面，那么二者的差$x_1-x_2$与法向量$\theta$点乘为0，即与该法向量垂直</p>
+</li>
+<li><p>求向量(point)到超平面的signed distance</p>
+<p>规定：</p>
+<p>向量x与$\theta$同方向，则sign=+1;</p>
+<p>向量x与$\theta$反方向，则sign=-1;</p>
+<p>signed distance=$\frac{｜\theta x+\theta_0｜}{||\theta||}$</p>
+</li>
+</ul>
+<h3 id="Linear-hypothesis-class"><a href="#Linear-hypothesis-class" class="headerlink" title="Linear hypothesis class"></a>Linear hypothesis class</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljg49v91j30xe0n2djl.jpg" alt></p>
+<p>这里，我们把超平面分类器的$\theta$看成我们在ML中普适性的weight$w$</p>
+<h3 id="Decision-boundary"><a href="#Decision-boundary" class="headerlink" title="Decision boundary"></a>Decision boundary</h3><p>$\theta·x+\theta_0=0$</p>
+<h2 id="ML：perceptron-自动学习如何寻找correct差平面的机器学习模型"><a href="#ML：perceptron-自动学习如何寻找correct差平面的机器学习模型" class="headerlink" title="ML：perceptron:自动学习如何寻找correct差平面的机器学习模型"></a>ML：perceptron:自动学习如何寻找correct差平面的机器学习模型</h2><p>核心是错了就correct，不断调参。</p>
+<h3 id="How-to-adjust-the-hyperplane"><a href="#How-to-adjust-the-hyperplane" class="headerlink" title="How to adjust the hyperplane?"></a>How to adjust the hyperplane?</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljk158a0j30zw0jsgok.jpg" alt></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljktc8a4j30zw0ou79j.jpg" alt></p>
+<blockquote>
+<p>结合二图可以很好的理解perceptron Algorithm</p>
+</blockquote>
+<h2 id="超平面与超平面的linear-separability—Proof-of-convergence"><a href="#超平面与超平面的linear-separability—Proof-of-convergence" class="headerlink" title="超平面与超平面的linear separability—Proof of convergence"></a>超平面与超平面的linear separability—Proof of convergence</h2><h2 id="What-if-the-data-is-not-separable"><a href="#What-if-the-data-is-not-separable" class="headerlink" title="What if the data is not separable?"></a>What if the data is not separable?</h2><h2 id="More-than-one-“correct-hyperplane”–zero-error-Problem"><a href="#More-than-one-“correct-hyperplane”–zero-error-Problem" class="headerlink" title="More than one “correct hyperplane”–zero error Problem."></a>More than one “correct hyperplane”–zero error Problem.</h2>
       
 
       

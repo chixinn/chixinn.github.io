@@ -18,9 +18,10 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljg49v91j30xe0n2djl.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljk158a0j30zw0jsgok.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljktc8a4j30zw0ou79j.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmnssypcoj318a0u0dtp.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljtalyboj30r80ikk01.jpg">
 <meta property="article:published_time" content="2020-08-04T05:22:07.000Z">
-<meta property="article:modified_time" content="2020-08-10T05:10:55.505Z">
+<meta property="article:modified_time" content="2020-08-11T02:24:28.028Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
@@ -251,7 +252,25 @@
 <blockquote>
 <p>结合二图可以很好的理解perceptron Algorithm</p>
 </blockquote>
-<h2 id="超平面与超平面的linear-separability—Proof-of-convergence"><a href="#超平面与超平面的linear-separability—Proof-of-convergence" class="headerlink" title="超平面与超平面的linear separability—Proof of convergence"></a>超平面与超平面的linear separability—Proof of convergence</h2><h2 id="What-if-the-data-is-not-separable"><a href="#What-if-the-data-is-not-separable" class="headerlink" title="What if the data is not separable?"></a>What if the data is not separable?</h2><h2 id="More-than-one-“correct-hyperplane”–zero-error-Problem"><a href="#More-than-one-“correct-hyperplane”–zero-error-Problem" class="headerlink" title="More than one “correct hyperplane”–zero error Problem."></a>More than one “correct hyperplane”–zero error Problem.</h2><hr>
+<h2 id="超平面与超平面的linear-separability—Proof-of-convergence"><a href="#超平面与超平面的linear-separability—Proof-of-convergence" class="headerlink" title="超平面与超平面的linear separability—Proof of convergence"></a>超平面与超平面的linear separability—Proof of convergence</h2><p>讨论perceptron正确学习所有训练数据所花费的步骤：</p>
+<p>Assume:$||x^{(i)}||\le R,1\le i \le n$，Augment data as (x,1) to absorb the $w_0$ term，即不考虑offset?即$w^Tx/\theta^Tx$表示了hyperplane.同时，假设存在单位向量$u$,使得$y_{true}(u^Tx^{(i)})\ge \gamma$,满足对于所有训练样本都同时满足该条件。</p>
+<p>Observe: <strong>linear separability assumption</strong> gives us such <code>u</code>and $\gamma$</p>
+<blockquote>
+<p>是linear separable 的性质保证我们可以找到u和$\gamma$</p>
+</blockquote>
+<p>我们将证明，在这种情况下，我们的perceptron模型只需要$(R/\gamma)^2$步来正确学习所有训练数据。这里$\gamma$表示训练样本vector到达超平面的signed distance.</p>
+<p>Convergence i.e. it is gonna be bounded</p>
+<h2 id="Convergence-theorem"><a href="#Convergence-theorem" class="headerlink" title="Convergence theorem:"></a>Convergence theorem:</h2><ul>
+<li>无论训练的次序如何，最终会有convergence的这一天，且在$(R/\gamma)^2$步以内</li>
+<li>the bound is independent of dimensionality of the feature space.</li>
+</ul>
+<h2 id="What-if-the-data-is-not-separable"><a href="#What-if-the-data-is-not-separable" class="headerlink" title="What if the data is not separable?"></a>What if the data is not separable?</h2><p>this method never stop.</p>
+<p>converge to some suboptimal.</p>
+<h2 id="More-than-one-“correct-hyperplane”–zero-error-Problem"><a href="#More-than-one-“correct-hyperplane”–zero-error-Problem" class="headerlink" title="More than one “correct hyperplane”–zero error Problem."></a>More than one “correct hyperplane”–zero error Problem.</h2><h2 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise:"></a>Exercise:</h2><blockquote>
+<p>The order in which the data and the labels are presented impacts the number of updates it takes for the percptron algorithm to converge.</p>
+</blockquote>
+<h3 id="How-we-can-do-to-make-the-perceptron-go-through-every-training-data-point-and-make-an-update-in-other-words-maximize-the-error-the-perceptron-makes"><a href="#How-we-can-do-to-make-the-perceptron-go-through-every-training-data-point-and-make-an-update-in-other-words-maximize-the-error-the-perceptron-makes" class="headerlink" title="How we can do to make the perceptron go through every training data point and make an update?(in other words: maximize the error the perceptron makes?)"></a><strong>How we can do to make the perceptron go through every training data point and make an update?(in other words: maximize the error the perceptron makes?)</strong></h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmnssypcoj318a0u0dtp.jpg" alt></p>
+<hr>
 <h2 id="超平面的另一种形象理解"><a href="#超平面的另一种形象理解" class="headerlink" title="超平面的另一种形象理解"></a>超平面的另一种形象理解</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghljtalyboj30r80ikk01.jpg" alt></p>
 <ul>
 <li>对Feature vector赋予不同权重的线性组合。</li>

@@ -6,31 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>数据科学的数学基础L10A=LU | Chixinning的博客</title>
+  <title>MIT+ML03:ERM and Logistic Regression | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="数据科学的数学基础L10:A&#x3D;LUA&#x3D;LU分解的核心目的，利用三角矩阵易于求解的特点求解线性方程组Ax&#x3D;b;">
+  <meta name="description" content="Goal of supervised learning Minimize “risk “ of error on unseen data.  generalization error: ​    $p(h(x)\neq Y)$  我们监督学习的目标是最小化generalization error.   empirical proxy:use training error as an “empiri">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据科学的数学基础L10A&#x3D;LU">
-<meta property="og:url" content="http://yoursite.com/2020/04/30/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80L10A=LU/index.html">
+<meta property="og:title" content="MIT+ML03:ERM and Logistic Regression">
+<meta property="og:url" content="http://yoursite.com/2020/08/11/MIT-ML03-ERM-and-Logistic-Regression/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="数据科学的数学基础L10:A&#x3D;LUA&#x3D;LU分解的核心目的，利用三角矩阵易于求解的特点求解线性方程组Ax&#x3D;b;">
+<meta property="og:description" content="Goal of supervised learning Minimize “risk “ of error on unseen data.  generalization error: ​    $p(h(x)\neq Y)$  我们监督学习的目标是最小化generalization error.   empirical proxy:use training error as an “empiri">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-04-30T04:05:14.657Z">
-<meta property="article:modified_time" content="2020-04-30T04:05:14.657Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmoxu4mhqj30sq0j27a0.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp2mnvmcj30v80g0n10.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp942juaj30tm0ksdnx.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp9azy4cj30uo0iwn6d.jpg">
+<meta property="article:published_time" content="2020-08-11T02:29:51.000Z">
+<meta property="article:modified_time" content="2020-08-11T03:14:56.689Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="Thought Bridge">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmoxu4mhqj30sq0j27a0.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -161,14 +157,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-数据科学的数学基础L10A=LU" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-MIT-ML03-ERM-and-Logistic-Regression" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      数据科学的数学基础L10A=LU
+      MIT+ML03:ERM and Logistic Regression
     </h1>
   
 
@@ -185,56 +181,45 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2020/04/30/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80L10A=LU/" class="archive-article-date">
-  	<time datetime="2020-04-30T04:05:14.657Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-30</time>
+        <a href="/2020/08/11/MIT-ML03-ERM-and-Logistic-Regression/" class="archive-article-date">
+  	<time datetime="2020-08-11T02:29:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="数据科学的数学基础L10-A-LU"><a href="#数据科学的数学基础L10-A-LU" class="headerlink" title="数据科学的数学基础L10:A=LU"></a>数据科学的数学基础L10:A=LU</h1><p>A=LU分解的核心目的，利用三角矩阵易于求解的特点求解线性方程组Ax=b;</p>
+        <h2 id="Goal-of-supervised-learning"><a href="#Goal-of-supervised-learning" class="headerlink" title="Goal of supervised learning"></a>Goal of supervised learning</h2><ul>
+<li><p>Minimize “risk “ of error on unseen data.</p>
+</li>
+<li><p>generalization error:</p>
+<p>​    $p(h(x)\neq Y)$</p>
+</li>
+<li><p>我们监督学习的目标是最小化generalization error.</p>
+</li>
+</ul>
+<h3 id="empirical-proxy"><a href="#empirical-proxy" class="headerlink" title="empirical proxy:"></a>empirical proxy:</h3><p>use training error as an “empirical proxy”</p>
+<p>*<em>ML as an optimization problem:ERM *</em></p>
+<p>i.e. Minimize the number of classification errors:</p>
+<p>$\frac{1}{n}\sum_{i=1}^n[h(x^{(i)}\neq y^{(i)}]$</p>
+<p>机器学习的本质大多都是一个优化问题</p>
 <a id="more"></a>
 
-<p>总体思路：</p>
-<p>​    <strong>就是线性方程组的求解过程</strong></p>
-<p>对矩阵A进行<strong>初等变换</strong>，这里的<strong>初等变换</strong>是<strong>某一行</strong>的常数倍加到<strong>某一行</strong>身上。</p>
-<p>等A进行完初等变换后，如果是情况比较好的情况则得到了U矩阵。</p>
-<p>即$L_1L_2L_3…L_nA=U,A=(L_n^{-1}…L_1^{-1})U$,U在这里是上三角矩阵。</p>
-<p>$L_1L_2L_3…L_n$是因为只是处等矩阵的行变换的组合。</p>
-<p>此时，回顾线性方程组的求解过程，需要一个一个<strong>回带</strong>才能求出答案，故此时回代的过程，undo/cancellation的过程，就可以得到L矩阵。</p>
-<p>那么这里我将回代的矩阵过程，其实也就是上面求逆的过程。</p>
-<p>Algorithm如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">L&#x3D;I,U&#x3D;O;</span><br><span class="line">for k&#x3D;1 to n-1 do</span><br><span class="line">	for i&#x3D;k+1 to n do</span><br><span class="line">		l_ik&#x3D;a_ik&#x2F;akk %更新L的第k列</span><br><span class="line">	end for</span><br><span class="line">	for j &#x3D; k to n do</span><br><span class="line">		u_kj &#x3D; a_kj %更新U的第k行</span><br><span class="line">	end for</span><br><span class="line">	for i&#x3D;k+1 to n do</span><br><span class="line">		for j&#x3D;k+1 to n do</span><br><span class="line">			a_ij &#x3D;a_ij -l_ij u_ij %更新矩阵A(k+1:n,k+1:n)</span><br><span class="line">			end for</span><br><span class="line">		end for</span><br><span class="line">	end for</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>通过以上的算法，我们会得到唯一形式的LU分解</p>
-<p>同样的，如果A是非奇异矩阵，且LU分解存在，A的LU分解是唯一存在的。</p>
-</blockquote>
-<p>但是，注意到上述算法有一个隐藏的问题，即作为分母的$a_{kk}$元素，也就是主元有为0的可能。</p>
-<p>什么时候主元为0？主元为0的时候又应该如何处理呢？</p>
-<p>所以当主元为0时该如何进行A的LU分解呢?</p>
-<blockquote>
-<p>设矩阵A，假设通过上述LU分解算法可以得到A^(k-1),则主元a_{kk}不为0的充要条件时A的k阶顺序主子式子｜A_k｜不为零。</p>
-</blockquote>
-<p>因为在上述LU分解算法中，我们只讲矩阵的第i行的若干倍加到第k行，这个变换并不改变矩阵的各顺序主子式的值。</p>
-<p>所以，为了解决主元为0时的情况，我们还可以进行行变换，进行行变换的处等矩阵记为P，PA=LU,即为我们需要的分解。</p>
-<p>PA=LU ,可以从这个角度来解释，也就是对矩阵A的各行做重新排列，对于重新排列后的矩阵做LU分解。</p>
-<p>在Algorithem的体现即为：</p>
-<blockquote>
-<p>每对矩阵做初等变换前去判断主元是否为0.</p>
-</blockquote>
-<ul>
-<li>初等矩阵都是可逆的</li>
-<li>注意这里的L是单位下三角矩阵,(保留了L的主对角线上的值都为1)</li>
-</ul>
-<hr>
-<p>矩阵A写成若干个秩1矩阵和的形式：</p>
-<p>A=$l_1u_1^T+l_2u_2^T+…+l_ru_r^T$;</p>
-<p>这里r是矩阵A的rank.</p>
-<blockquote>
-<p>我们进一步假设$l_i$和$u_i$的前i-1个元素均为0，并且$l_i$的第i个元素为1，那么我们实际上就可以得到A的LU分解。</p>
-</blockquote>
+<h2 id="ERM"><a href="#ERM" class="headerlink" title="ERM"></a>ERM</h2><p>ERM本身是一个Np-hard problem,在error外加一个loss function去衡量，即化解这种NP-hard problem。</p>
+<h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><p>$\frac{1}{n}\sum_{i=1}^nLoss(h(x^{(i)},y^{(i)}))$</p>
+<p>这里Loss function =<br>$$<br>l_{log}(y,t)=log(1+e^{-yt}),y: trueLabel;t:predictLabel<br>$$</p>
+<h3 id="为什么要使用logistic-Regression进行分类呢？"><a href="#为什么要使用logistic-Regression进行分类呢？" class="headerlink" title="为什么要使用logistic Regression进行分类呢？"></a>为什么要使用logistic Regression进行分类呢？</h3><p>Aim: predict Probability (label=’cat’,’dog’,)即output以概率的形式出现，而不是单纯的给分类器输出二分的分类结果。</p>
+<p>使用逻辑回归是完成这个目标的简单方式，即threshold P(Y|X) to obtain classification.</p>
+<p>但是呢，我们如果想用概率的形式输出，就得保证它要处于概率的范围内。</p>
+<p>即，$h(x;\theta)=\theta^T+\theta_0$并不能保证我的输出一定是在[0,1]的概率区间内。</p>
+<p>所以我们需要把ouput通过sigmoid函数以获得这种[0,1]的结果区间内。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmoxu4mhqj30sq0j27a0.jpg" alt></p>
+<h4 id="LR-decision-boundary-is-also-a-hyperplane"><a href="#LR-decision-boundary-is-also-a-hyperplane" class="headerlink" title="LR decision boundary is also a hyperplane"></a>LR decision boundary is also a hyperplane</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp2mnvmcj30v80g0n10.jpg" alt></p>
+<h2 id="对逻辑回归的总结理解"><a href="#对逻辑回归的总结理解" class="headerlink" title="对逻辑回归的总结理解"></a>对逻辑回归的总结理解</h2><p>逻辑回归的本质是将线性回归的$\theta^Tx+\theta_0$通过sigmoid函数，得到 [0,1]区间内的概率结果并利用threshold进行划分。</p>
+<h2 id="逻辑回归分类方法的ERM问题"><a href="#逻辑回归分类方法的ERM问题" class="headerlink" title="逻辑回归分类方法的ERM问题"></a>逻辑回归分类方法的ERM问题</h2><p>在逻辑回归中，如果损失函数选择为交叉熵损失函数，即分类的label选择为(-1,1)的；如果损失函数选择为logistic损失函数，即分类的label选择为(0,1)的。</p>
+<h2 id="general-way-to-solve-ERM-SGD"><a href="#general-way-to-solve-ERM-SGD" class="headerlink" title="general way to solve ERM :SGD"></a>general way to solve ERM :SGD</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp942juaj30tm0ksdnx.jpg" alt></p>
+<p>逻辑回归分类方法的正则画像。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp9azy4cj30uo0iwn6d.jpg" alt></p>
 
       
 
@@ -269,6 +254,25 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Thought Bridge</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -319,7 +323,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/30/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80L10A=LU/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/11/MIT-ML03-ERM-and-Logistic-Regression/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -333,18 +337,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/05/02/%E6%99%BA%E8%83%BD%E6%8A%95%E9%A1%BE(Robo-Advisory)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          智能投顾(Robo-Advisory)
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/04/27/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW9%20minix3%E7%B3%BB%E7%BB%9F%E4%BB%BB%E5%8A%A1/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">操作系统 W9 minix3系统任务</div>
+    <a href="/2020/08/10/MIT-ML04-Kernel-Methods-and-Non-linear-classification/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MIT+ML04:Kernel Methods and Non-linear classification</div>
       <i class="icon-circle-right"></i>
     </a>
   

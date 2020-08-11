@@ -76,7 +76,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 155
+			总文章数 156
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -160,6 +160,137 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-ML3-5-Optimization-for-DL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/03/ML3-5-Optimization-for-DL/">ML3.5 Optimization for DL</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/03/ML3-5-Optimization-for-DL/" class="archive-article-date">
+  	<time datetime="2020-06-03T01:06:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>前注：</strong></p>
+<blockquote>
+<p>本讲的内容按照学习路线上Gradient Descent的补充知识</p>
+</blockquote>
+<p><strong>New Optimization</strong></p>
+<h1 id="New-Optimizers-for-Deep-Learning"><a href="#New-Optimizers-for-Deep-Learning" class="headerlink" title="New Optimizers for Deep Learning"></a>New Optimizers for Deep Learning</h1><h2 id="What-you-have-known-before"><a href="#What-you-have-known-before" class="headerlink" title="What  you have known before?"></a>What  you have known before?</h2><p><strong>常见Optimization的方法</strong></p>
+<ul>
+<li>SGD(随机梯度下降)</li>
+<li>SGD with momentum</li>
+<li>Adagrad</li>
+<li>RMSProp</li>
+<li>Adam</li>
+</ul>
+<h2 id="一些Notation"><a href="#一些Notation" class="headerlink" title="一些Notation"></a>一些Notation</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg16wre6ej30s80l0gs5.jpg" alt=""></p>
+<p>Momentum：History</p>
+<p>送进一个$x_t$，送入$\theta_t$得到，$y_t$，会与送入的label比较a.k.a $\hat{y_t}$</p>
+<h2 id="Why-Optimization"><a href="#Why-Optimization" class="headerlink" title="Why Optimization"></a>Why Optimization</h2><p>使损失函数最小(优化问题)</p>
+<p>如何sumover所有的dataset？</p>
+<p><strong>On-line v.s. Off-line</strong></p>
+<p>Off-line : pour all into model at every time step.</p>
+<p>On-line: one pair of $(x_t,\hat{y_t})$ at a time step.</p>
+<h3 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2e9ryv6j30i70cbq3u.jpg" alt=""></p>
+<h3 id="SGDM"><a href="#SGDM" class="headerlink" title="SGDM"></a>SGDM</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2axlwgxj30q20jktjk.jpg" alt=""></p>
+<p>把momentum累计</p>
+<p>时间上的weighted Sum。</p>
+<p>考虑到过去的momentum的影响。</p>
+<h4 id="为啥要SGDM呢？"><a href="#为啥要SGDM呢？" class="headerlink" title="为啥要SGDM呢？"></a>为啥要SGDM呢？</h4><p>当某一个gradientj接近0的时候，或local minimum的时候，有可能有卡住不动的情况出现。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2gr5d09j30q20jkah7.jpg" alt=""></p>
+<p>以为我们前面的移动(左1梯度大)会我们累加过来使我们继续移动，虽然这一点(左2)的gradient很小，</p>
+<h3 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h3><p>实时调整learning rate。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2szfdo8j30ig0dajsl.jpg" alt=""></p>
+<h3 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a>RMSProp</h3><p>与adgrad唯一的差别在于分母的算法。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2pk2m5gj30q20jk0zd.jpg" alt=""></p>
+<p>确保$v_t$不会永无止境的变大，而是在时间上有weighted sum，不会因为前几步的步伐太大而停下来。给之前的vt乘上一个系数 <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="[公式]"> 就不会出现前几步grad太大，造成的分母太大，更新为0。</p>
+<p>因为Adagrad是前面所有的求和，所以$v_t$会永无止境的变大，使步伐越来越小。</p>
+<h3 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h3><p>上两个也很难解决local mimum的问题</p>
+<p>Adam=SGDM+RMSProp的优势结合。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2wma7cbj30ii0cqq3v.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg30pl9y1j30k00argm4.jpg" alt=""></p>
+<p>[参考资料](SGD，SGDM，Adagrad，RMSProp，Adam，AdamW复习笔记 - 木吉子的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/129702058" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/129702058</a>)</p>
+<h2 id="还有没有别的Optimizer？"><a href="#还有没有别的Optimizer？" class="headerlink" title="还有没有别的Optimizer？"></a>还有没有别的Optimizer？</h2><p>事实上，是很少再有了。</p>
+<h2 id="Optimizer的Real-Application"><a href="#Optimizer的Real-Application" class="headerlink" title="Optimizer的Real Application"></a>Optimizer的Real Application</h2><p>2014年以后，很少有可以超越SGDM/Adam的算法。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg5fmehu3j30q20jkjzg.jpg" alt=""></p>
+<blockquote>
+<p>视频没有看完，但现阶段对Adam和SGDM的优化暂且与我无瓜。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/03/ML3-5-Optimization-for-DL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-ML04-Classification" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1197,162 +1328,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ML01-Regression-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/29/ML01-Regression-2/">ML01-Regression-2</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/29/ML01-Regression-2/" class="archive-article-date">
-  	<time datetime="2020-05-29T00:19:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h1><h2 id="Case-Study-gt-Pokemon"><a href="#Case-Study-gt-Pokemon" class="headerlink" title="Case Study -&gt;Pokemon"></a>Case Study -&gt;Pokemon</h2><ol>
-<li><p>Gradient的定义:</p>
-<p>将对参数的偏微分,排列成一个向量.</p>
-</li>
-<li><p>Gradient Descent 的不足:</p>
-<p>对于存在Local optimal的模型的处理不佳.</p>
-<p>但是Linear Regression的模型是convex的,所以不存在local optimal的情况.</p>
-</li>
-</ol>
-<p>##关于模型训练结果的分析</p>
-<h3 id="How’s-the-result"><a href="#How’s-the-result" class="headerlink" title="How’s the result?"></a>How’s the result?</h3><p>因为我们更想得到的是generalization的结果,所以我们最关心的是error on new data(testing data) instead of training data itself.</p>
-<blockquote>
-<p>Training data上看起来更准一点就说明model更准了吗?</p>
-<p>过拟合与交叉验证.</p>
-</blockquote>
-<h3 id="How-can-we-do-better"><a href="#How-can-we-do-better" class="headerlink" title="How can we do better?"></a>How can we do better?</h3><blockquote>
-<p>Selecting another Model</p>
-</blockquote>
-<p>重新设计模型:</p>
-<p>原model:</p>
-<p>$y=b+wx_{cp}$;</p>
-<p>现在的model:</p>
-<p>$y=b+w_1x_{cp}+w_2x_{cp}^2$;</p>
-<p>How can we do more better?</p>
-<p>$y=b+w_1x_{cp}+w_2x_{cp}^2+w_3x_{cp}^3$</p>
-<h4 id="对于三次和二次在pokemon例子上的比较"><a href="#对于三次和二次在pokemon例子上的比较" class="headerlink" title="对于三次和二次在pokemon例子上的比较"></a>对于三次和二次在pokemon例子上的比较</h4><p><strong>Slightly</strong> better.</p>
-<h4 id="什么是“好的”model"><a href="#什么是“好的”model" class="headerlink" title="什么是“好的”model?"></a>什么是“好的”model?</h4><p>对于宝可梦模型,我们先后使用了1次2次…4次进行拟合,我们发现,随着模型的复杂度上升,我们的error on training data确实在下降,但是我们的error on testing da ta 却<strong>反而上升</strong>了.</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf916eob7uj30s20l813e.jpg" alt=""></p>
-<p>显然,当$w_4=0$时,三次模型所涵盖的表达都可以用4次模型的model表达出来.</p>
-<h2 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h2><p>为什么复杂model在training data上得到这么好的结果,而在testing上的error这么可怕呢?</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91eo6kffj30s20l8aj6.jpg" alt=""></p>
-<blockquote>
-<p>比如不是选择复杂的model,而是选择一个合适的model.</p>
-</blockquote>
-<h2 id="Let’s-collect-more-data"><a href="#Let’s-collect-more-data" class="headerlink" title="Let’s collect more data"></a>Let’s collect more data</h2><h3 id="What-are-the-hidden-factors"><a href="#What-are-the-hidden-factors" class="headerlink" title="What are the hidden factors?"></a>What are the hidden factors?</h3><p>进化后物种的影响仍是很大的.</p>
-<p>所以刚才的model本身就不好.</p>
-<blockquote>
-<p>Back to Step1.</p>
-</blockquote>
-<h2 id="Redesign-the-Model"><a href="#Redesign-the-Model" class="headerlink" title="Redesign the Model"></a>Redesign the Model</h2><blockquote>
-<p>不同的物种,不同的linear func</p>
-</blockquote>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91k13gbij30s20l8jyn.jpg" alt=""></p>
-<p>可以用一种更奇妙的函数表示形式,将之前有if的式子表示成带信号处理(i.e.“是”即1,“不是”即0);</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91m87p2ej30s20l8thu.jpg" alt=""></p>
-<p>当我们的输入$x_s=Pidgey$时,其即$y=b_1.1+w_1x_{cp}$</p>
-<h3 id="Are-there-any-other-hidden-factors"><a href="#Are-there-any-other-hidden-factors" class="headerlink" title="Are there any other hidden factors?"></a>Are there any other hidden factors?</h3><p>把我们想到的factor 以后 都back to step 1.</p>
-<h3 id="如何处理overfitting"><a href="#如何处理overfitting" class="headerlink" title="如何处理overfitting?"></a>如何处理overfitting?</h3><h2 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h2><p>重新定义我们的loss function,把knowledge放进去进行Redesign.</p>
-<p>$Loss:y=b+\sum w_ix_i$;</p>
-<p><strong>这里面这个求和是把种类不同考虑进去了。</strong></p>
-<p>$L=\sum_n(\hat{y}^n-(b+\sum w_ix_i))^2+\lambda\sum(w_i)^2$</p>
-<p>对于正则项:我们期待一个越小的$w_i$这个function越好.</p>
-<p>参数接近0时:</p>
-<h3 id="平滑"><a href="#平滑" class="headerlink" title="平滑"></a>平滑</h3><p>平滑是什么意思?</p>
-<p>输入有变化时,整体的变化对输入的变化是 <strong>不敏感</strong>的.</p>
-<p>$y=b+\sum w_ix_i$;</p>
-<p>如果我们的输入变化$\Delta x$,那么相应的,我们的输出变化,$w_i\Delta x_i$.</p>
-<p>$w_i$越接近0,function越平滑</p>
-<h4 id="为什么我们喜欢平滑的function"><a href="#为什么我们喜欢平滑的function" class="headerlink" title="为什么我们喜欢平滑的function?"></a>为什么我们喜欢平滑的function?</h4><p>因为当我们的输入被噪声所干扰时,一个平滑的function会被噪声有很小的影响.</p>
-<p>$\lambda$越大,代表考虑regularization的smooth正则项的影响力越大.</p>
-<blockquote>
-<p>我们喜欢平滑的function,但我们不喜欢太平滑的function.</p>
-<p>最平滑的function是一条水平线.</p>
-</blockquote>
-<h3 id="为什么在正则项中没有加上b"><a href="#为什么在正则项中没有加上b" class="headerlink" title="为什么在正则项中没有加上b?"></a>为什么在正则项中没有加上b?</h3><blockquote>
-<p>在做regularization是不需要考虑bias一项的.</p>
-</blockquote>
-<p>bias是作为常数项只是函数的上下移动而已.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>对于我们没有得到的data,即在testing data中没有包含的测试数据.</p>
-<p>我们的最终建模系统是”Underestimate?””Overestimate”?</p>
-<p><strong>Following lectures :validation</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/29/ML01-Regression-2/">展开全文 >></a>
         </p>
       
 

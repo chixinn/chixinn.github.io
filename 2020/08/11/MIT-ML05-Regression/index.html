@@ -15,13 +15,19 @@
 <meta property="og:site_name" content="Chixinning的博客">
 <meta property="og:description" content="What is the difference between Regression and classification; 在分类中，用数字表示label只是一种encode的方式，而在regression中，数值是有作用的。 而回归是一种 model ，它刻画标签y和feature x之间的一种relation  Aim of regressionlearn a rule $f,h$ that">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghoeim8nzqj30x80k6jux.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ghof4clzm9j30ts08egn8.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ghofcnxdp4j30ts05m3zc.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ghofdhl8ftj30ts0kejvp.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1ghofej9umdj30w60iiafe.jpg">
 <meta property="article:published_time" content="2020-08-11T14:41:14.000Z">
-<meta property="article:modified_time" content="2020-08-11T15:11:33.594Z">
+<meta property="article:modified_time" content="2020-08-12T15:05:20.047Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Thought Bridge">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghoeim8nzqj30x80k6jux.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -191,7 +197,7 @@
 <h2 id="Aim-of-regression"><a href="#Aim-of-regression" class="headerlink" title="Aim of regression"></a>Aim of regression</h2><p>learn a rule $f,h$ that $R^d-&gt;R$, a rule that can predict real values.</p>
 <p>最直观的解释，分类的数值性是不能被比较的。</p>
 <h2 id="实现方法"><a href="#实现方法" class="headerlink" title="实现方法"></a>实现方法</h2><p>最小二乘回归：</p>
-<p>Least-squares regression:square loss ERM formulation.<br>$$<br>min_{h\in H}\frac{1}{n}\sum_{i=1}^n(h(x^{(i)}-y^{(i)}))^2<br>$$<br>注意区分线性最小二乘回归和最小二乘回归</p>
+<p>Least-squares regression:square loss ERM formulation.<br>$$<br>min_{h\in H}\frac{1}{n}\sum_{i=1}^n(h(x^{(i)}-y^{(i)}))^2<br>$$<br><strong>注意区分线性最小二乘回归和最小二乘回归</strong></p>
 <p>注意线性最小二乘和最小二乘回归的区别，在线性最小二乘回归中，</p>
 <p>h(x)=$w_0+w^Tx$,而在最小二乘回归中，这里H是a set of function that is either linear or nonlinear of x.</p>
 <a id="more"></a>
@@ -203,6 +209,48 @@
 <p>协方差：</p>
 <p>Cov(x,y)=$E[XY]-E[X][Y]=E[(X-E[X])(Y-E[Y])]$</p>
 <p>Pearson correlation coefficient:<br>$$<br>r=\frac{1}{N}\sum_{i=1}^N(\frac{x_i-x^-}{\sigma_x})(\frac{y_i-y^-}{\sigma_y})=\frac{cov(x,y)}{\sigma_x\sigma_y}<br>$$</p>
+<p>注意，在相关系数的公式中，如形式$\frac{x_i-x^-}{\sigma_x}$</p>
+<p>z-transform或standard normalization目的是get rid of scaling &amp; shifting.</p>
+<p>注意：如何理解皮尔逊相关系数？</p>
+<ul>
+<li>Q：Why scale by std deviation?</li>
+<li>r~0.5的意义是神恶魔</li>
+<li>correlation与clump around the line的关系 ,clusterness.</li>
+<li>Is r(x,y) a kernel function?</li>
+</ul>
+<h2 id="Modeling-a-linear-relationship-线性回归模型"><a href="#Modeling-a-linear-relationship-线性回归模型" class="headerlink" title="Modeling a linear relationship:线性回归模型"></a>Modeling a linear relationship:线性回归模型</h2><p>说白了，线性回归就是对两个变量之间的线性关系进行建模。</p>
+<h3 id="训练目标："><a href="#训练目标：" class="headerlink" title="训练目标："></a>训练目标：</h3><p>$Min Loss(w_0,w)=\frac{1}{N}\sum_{i=1}^N(y^{(i)}-w_0-x^{(i)})^2$,注意这里N是常数，是可drop的。</p>
+<p>即least square是训练目标，predict  label value到true label value之间的距离最短，也是误差最小，即也是训练目标。</p>
+<h3 id="如何找到合适的参数达到我们想要的训练目标呢？"><a href="#如何找到合适的参数达到我们想要的训练目标呢？" class="headerlink" title="如何找到合适的参数达到我们想要的训练目标呢？"></a>如何找到合适的参数达到我们想要的训练目标呢？</h3><p><strong>$\nabla Loss=0$是寻找到参数的必要条件。(necessary)</strong></p>
+<p>所以我们就去解上面那个式子的方程：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghoeim8nzqj30x80k6jux.jpg" alt></p>
+<h2 id="注意变量相关和相关变量"><a href="#注意变量相关和相关变量" class="headerlink" title="注意变量相关和相关变量"></a>注意变量相关和相关变量</h2><p>在理解时，要注意去观察data之间是否有真正的联系，也即去注意correlation和causation之间的关系。</p>
+<p><strong>What does the data really mean is very important</strong></p>
+<h2 id="求解线性最小二乘"><a href="#求解线性最小二乘" class="headerlink" title="求解线性最小二乘"></a>求解线性最小二乘</h2><p>上面，我们仅仅将数据点看成point的形式，如果将数据看成vector,即$x\in R^d,y\in R$,一共有N个数据点，我们将这N个d维向量，排列成数据矩阵$X_{N\times d}=\begin{pmatrix}x^{(1)}\x^{(2)}\…\x^{(N)}\end{pmatrix}$,所以相应的，这些数据点对应的label也是一个matrix,是$N\times 1$形式的。</p>
+<p>为了使表达简单，我们去推导：$w_0=0$的情况。</p>
+<p>$min Loss(w)=\sum_i(y^{<br>(i)}-w^Tx^{(i)})=｜｜y-Xw｜|^2=(y-Xw)^T(y-Xw)=y^Ty+2w^TX^TXw-2w^TX^Ty$</p>
+<p>然后呢，要求这个矩阵梯度，求矩阵和向量微分呢，我不太会，得到的结果就是$\nabla L(w)=2X^TXw-2X^Ty$</p>
+<p>这个梯度等于0呢，我们就把w这个参数给求出来了!<br>$$<br>w=(X^TX)^{-1}X^Ty,X\in R^{N\times d},y\in R^N,w\in R^d<br>$$<br>那么问题来了！矩阵不可逆怎办呢？Maybe regularization 或伪逆相关。</p>
+<hr>
+<h2 id="非线性最小二乘"><a href="#非线性最小二乘" class="headerlink" title="非线性最小二乘"></a>非线性最小二乘</h2><p>with nonlinear features:$y=w^T\phi(x)+w_0=E[Y=y|X=x]$</p>
+<p>要求：$min_w L(w)=\sum_i(y_i-w^T\phi(x_i))^2$</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ghof4clzm9j30ts08egn8.jpg" alt></p>
+<p>这个地方，说实话，有点没太听懂。</p>
+<h2 id="Kernelized-“ridge”-regression"><a href="#Kernelized-“ridge”-regression" class="headerlink" title="Kernelized “ridge” regression"></a>Kernelized “ridge” regression</h2><p>首先引入<em>penalized cost function</em></p>
+<p>$min_w L(w)=\frac{1}{N}\sum_i(y_i-w^T\phi(x_i))^2+\lambda||w||^2$</p>
+<p>要求这个loss Function的对于parameter $w$的偏导数：</p>
+<p>即$\lambda w-\frac{1}{N}\sum_i(y_i-w^T\phi(x_i))\phi(x_i)=0$</p>
+<p>其中这个$(y_i-w^T\phi(x_i))$不太好求。</p>
+<p>我们将$w$写成线性组合的形式？</p>
+<p>令$(y_i-w^T\phi(x_i))=N\lambda\alpha_i$</p>
+<p>解之，得：$w=\sum_i\alpha_i\phi(x^i)$</p>
+<p><strong>所以：</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ghofcnxdp4j30ts05m3zc.jpg" alt></p>
+<p>此时这个feature到底怎么成功绕到用核函数表示，这个k怎么求呢?</p>
+<p>而在这里key point也有存在于$\alpha$怎么求呢？</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ghofdhl8ftj30ts0kejvp.jpg" alt></p>
+<p>但是在MINIST手写识别中，为啥训练结果最好的时候是在$\lambda=0$得时候呢？</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1ghofej9umdj30w60iiafe.jpg" alt></p>
 
       
 

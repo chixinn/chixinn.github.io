@@ -163,6 +163,213 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-专业英语W11Chapter1 to the end" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/18/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW11Chapter1%20to%20the%20end/">专业英语W11Chapter1 to the end</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/05/18/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW11Chapter1%20to%20the%20end/" class="archive-article-date">
+  	<time datetime="2020-05-18T01:32:38.077Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="专业英语W11-Chapter1-to-the-end"><a href="#专业英语W11-Chapter1-to-the-end" class="headerlink" title="专业英语W11:Chapter1 to the end"></a>专业英语W11:Chapter1 to the end</h1><h2 id="Learnning-with-gradient-descent"><a href="#Learnning-with-gradient-descent" class="headerlink" title="Learnning with gradient descent"></a>Learnning with gradient descent</h2><ol>
+<li><p>训练集和测试机样本与过拟合:This helps give us <strong>confidence</strong> that our system can recognize digits from people whose writing it didn’t see during training.</p>
+</li>
+<li><p>手写识别训练集样本中:每一个训练图片都是一个$28\times28$像素的灰度图片,将其变成一个$784$维的向量,</p>
+<p>$y=y(x)$,y是一个output,10-维的;</p>
+</li>
+<li><p>Cost function:损失函数: mean squared error(MSE:均方误差)</p>
+</li>
+<li><p>Aim of our training algorithm: So the aim of our training algorithm will be to minimize the cost C(w,b)C(w,b) as a function of the weights and biases. </p>
+</li>
+<li><p>Gradient descent:we want to find a set of weights and biases which make the cost as small as possible.</p>
+</li>
+<li><p>Quadratic cost:二次代价函数</p>
+</li>
+<li><p>使用二次代价函数来评估模型的学习效果而不是直接使用成功分类的正确数量来评估模型的原因:</p>
+<p>成功分类的正确数量和weights 和biases不是呈一个线性关系;(Not smooth)这个不是线性关系让我们对weights 和cost的调整很难;</p>
+<p>对比之下:如果使用了smooth cost function ,我们就可以很明显的看出weight和cost变化后对结果的影响,我们也就知道该怎么调整了;</p>
+</li>
+<li><p>First focus on minimizing the quadratic cost ;</p>
+<p>Second examine the classification accuracy;</p>
+</li>
+<li><p>现有学习逻辑是:在已知函数的情况下,minimize the function;</p>
+<p>Use gradient descent to solve minimization problems;</p>
+<p>然后再回去看我们需要求minimization的函数是什么;</p>
+</li>
+<li><p>如何解决多变量函数求最小值的问题?尤其是当函数的自变量很多很多个的时候:</p>
+</li>
+<li><p>Ball rolls down to the bottom of the valley,do this simulation simply by derivatives (perhaps some second derivatives)</p>
+</li>
+<li><p>But what’s really exciting about the equation is that it lets us see <strong>how to choose Δv</strong> so as to make <strong>ΔC negative</strong>.</p>
+<p>Δv=−η∇C,η是<strong>学习率</strong>;</p>
+</li>
+<li><p>学习率参数的选取比较关键,太小会让我们变化下降的速度太慢,而且有时并不是下降;</p>
+</li>
+<li><p>我们⾸先限制步⻓为⼩的固定值，</p>
+<p>即 ∥<em>∆</em>v∥ = <em>ϵ</em>，<em>ϵ &gt;</em> 0。当步⻓固定时，我们要找到使得 <em>C</em> 减⼩最⼤的下降⽅向。</p>
+</li>
+<li><p>An idea called <em>stochastic gradient descent</em>(随机梯度下降)</p>
+<p>can be used to speed up learning. The idea is to estimate the gradient ∇C∇C by computing ∇Cx∇Cx for a small sample of randomly chosen training inputs. By averaging over this small sample it turns out that we can quickly get a good estimate of the true gradient ∇C∇C, and this helps speed up gradient descent, and thus learning.</p>
+</li>
+<li><p>To make these ideas more precise, stochastic gradient descent works by randomly picking out a small number mm of randomly chosen training inputs.</p>
+</li>
+<li><p>We’ll label those random training inputs X1,X2,…,XmX1,X2,…,Xm, and refer to them as a <em>mini-batch</em>.</p>
+</li>
+<li><p>有种叫做随机梯度下降的算法能够加速学习。其思想就是通过随机选取⼩量训练输⼊样本来</p>
+<p>计算 <em>∇</em>C<strong>x*，进⽽估算梯度 *∇</strong>C*。通过计算少量样本的平均值我们可以快速得到⼀个对于实际梯</p>
+<p>度 <em>∇</em>C* 的很好的估算，这有助于加速梯度下降，进⽽加速学习过程。</p>
+<p>更准确地说，随机梯度下降通过随机选取⼩量的 <em>m</em> 个训练输⼊来⼯作。我们将这些随机的</p>
+<p>训练输⼊标记为 <em>X</em>1<em>, X*2</em>, . . . , X*<em>m</em>，并把它们称为⼀个⼩批量数据（mini-batch）。</p>
+</li>
+<li><blockquote>
+<p>我们可以把随机梯度下降想象成⼀次⺠意调查：在⼀个⼩批量数据上采样⽐对⼀个完整数据集进⾏梯度下降分析要容易得多，正如进⾏⼀次⺠意调查⽐举⾏⼀次全⺠选举要更容易。</p>
+</blockquote>
+</li>
+<li><p>！当然，这个估算并不是完美的 —— 存在统计波动 —— 但是没必要完美：我们实际关⼼的是在某个⽅向上移动来减少 <em>C</em>，⽽这意味着我们不需要梯度的精确计算。在实践中，随机梯度下降是在神经⽹络的学习中被⼴泛使⽤、⼗分有效的技术，它也是本书中展开的⼤多数学习技术的基础。</p>
+</li>
+<li><p>梯度下降算法⼀个极端的版本是把⼩批量数据的⼤⼩设为 1.我们按照规则更新我们的权重和偏置.然后我们选取另一个训练输入再一次更新权重和偏置.</p>
+<p>如此重复,这个过程被称为在线、online或者递增学习.</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/18/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW11Chapter1%20to%20the%20end/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Sigmoid 函数的什么性质 对神经网络有用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/17/Sigmoid%20%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8%20%E5%AF%B9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%9C%89%E7%94%A8/">Sigmoid 函数的什么性质 对神经网络有用</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/05/17/Sigmoid%20%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8%20%E5%AF%B9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%9C%89%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-05-17T12:02:06.796Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Sigmoid 函数的什么性质 对神经网络有用?</p>
+<p>1.sigmoid函数可以把实数域光滑的映射到[0,1]空间.</p>
+<p>所以sigmoid函数可以满足认知元对输出进行二分结果表示的要求.</p>
+<ol>
+<li>Sigmoid functions have much of the same qualitative behaviour as  perceptrons. Sigmoid function can  map real number field to [0,1] space smoothly, which can satisfy the requirement of perceptrons to produce binary output.</li>
+<li>The smoothness of sigmoid function is helpful to the adjustments of nerual networks. When we use perceptrons, if we adjust the weight and bias of a certain perceptron, we may make the outputs of the whole network change utterly. By contrast, Sigmoid function will  have little impact on the whole network if small adjustment is made. It is monotonically increasing in shape, continuous derivable and simple in derivative form, which is helpful to  predict the change of the output.</li>
+</ol>
+<p>2.利用sigmoid函数的smoothness的性质</p>
+<p>当我们对某一neuron的weight和bias进行调整的时候,这一调整对最终结果的影响较小. The smoothness of σσ means that small changes ΔwjΔwj in the weights and ΔbΔb in the bias will produce a small change ΔoutputΔoutput in the output from the neuron.So while sigmoid neurons have much of the same qualitative behaviour as perceptrons, they make it much easier to figure out how changing the weights and biases will change the output.</p>
+<p>Sigmoid function is monotonically increasing in shape, continuous derivable and simple in derivative form. It is a more suitable function</p>
+<p>sigmoid函数从形状上来看是单调增的,连续可导,导数形式简单,是一个比较合适的函数.</p>
+<p>神经网络和传统compute的区别在于automatically 调整weight 和bias去获得结果.</p>
+<p>当我们使用perceptrons的时候,如果对某一处的weight和bias 进行了调整,我们有时可能会使整个网络的整体结果进行了我们并不想要出现的变化.</p>
+<p>When we use perceptrons, if we adjust the weight and bias of a certain place, sometimes we may make the overall results of the whole network change which we do not want</p>
+<p>总结:</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/17/Sigmoid%20%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8%20%E5%AF%B9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%9C%89%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-计算机网络W103.4传输层的可靠性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -380,80 +587,6 @@
 
 
   
-    <article id="post-操作系统Project2Chrt系统调用和EDF算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/">操作系统Project2Chrt系统调用和EDF算法</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-05-15T02:43:08.282Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="操作系统Project2-Chrt系统调用和EDF算法"><a href="#操作系统Project2-Chrt系统调用和EDF算法" class="headerlink" title="操作系统Project2:Chrt系统调用和EDF算法"></a>操作系统Project2:Chrt系统调用和EDF算法</h1><h2 id="实验任务"><a href="#实验任务" class="headerlink" title="实验任务"></a>实验任务</h2><p>在MINIX3中实现Earliest-Deadline-First近似实时调度功能</p>
-<p>1.增加系统调用chrt</p>
-<p>2.修改MINIX3.3的调度算法</p>
-<blockquote>
-<p>排版好累!!!!!</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject2Chrt%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%92%8CEDF%E7%AE%97%E6%B3%95/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-英语歌曲文化赏析-乡村音乐3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -558,88 +691,6 @@
 
 
   
-    <article id="post-数据科学的数学基础W10(3)基于奇异值分解的矩阵的性质" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/14/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10(3)%E5%9F%BA%E4%BA%8E%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E7%9A%84%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%A7%E8%B4%A8/">数据科学的数学基础W10(3)基于奇异值分解的矩阵的性质</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/14/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10(3)%E5%9F%BA%E4%BA%8E%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E7%9A%84%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%A7%E8%B4%A8/" class="archive-article-date">
-  	<time datetime="2020-05-14T01:53:46.004Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数据科学的数学基础W10-3-基于奇异值分解的矩阵的性质"><a href="#数据科学的数学基础W10-3-基于奇异值分解的矩阵的性质" class="headerlink" title="数据科学的数学基础W10(3):基于奇异值分解的矩阵的性质"></a>数据科学的数学基础W10(3):基于奇异值分解的矩阵的性质</h1><h2 id="基于奇异值分解的矩阵的性质"><a href="#基于奇异值分解的矩阵的性质" class="headerlink" title="基于奇异值分解的矩阵的性质"></a>基于奇异值分解的矩阵的性质</h2><p>设矩阵$A\in R^{m \times n}$;对角矩阵上非0元素等于矩阵的秩;</p>
-<p>$A=U\Sigma V^T$;</p>
-<p>$U$和$V$给出了四个基本子空间的一组正交基:</p>
-<p>$U$的前r列:A的列空间</p>
-<p>$U$的后m-r列:A的左零空间</p>
-<p>$V$的前r列,A的行空间</p>
-<p>$V$的后n-r列,A的零空间;</p>
-<h2 id="广义逆"><a href="#广义逆" class="headerlink" title="广义逆"></a>广义逆</h2><p>$A_{m\times n}$:</p>
-<p>$(AG)^T=AG$</p>
-<p>$(GA)^T=GA$</p>
-<p>$GAG=G$</p>
-<p>$AGA=A$</p>
-<p>如果G是A的Moore-Penrose逆,则G是A唯一的广义逆(以Moore-Penrose逆)的定义;</p>
-<blockquote>
-<p>当A为列满rank,A=($A^TA)^{-1}A^T$</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/14/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10(3)%E5%9F%BA%E4%BA%8E%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E7%9A%84%E7%9F%A9%E9%98%B5%E7%9A%84%E6%80%A7%E8%B4%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-概率论W10-DataStreams" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -712,95 +763,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数学基础W10矩阵的SVD分解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/">数学基础W10矩阵的SVD分解</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-05-12T06:44:38.783Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<p>title: 数学基础W10:矩阵的SVD分解<br>date: 2020-05-28 09:39:22<br>tags:</p>
-<ul>
-<li>笔记</li>
-<li>数学基础</li>
-<li>大二下</li>
-</ul>
-<hr>
-<p>#数学基础W10:矩阵的SVD分解</p>
-<hr>
-<h1 id="面对方阵"><a href="#面对方阵" class="headerlink" title="面对方阵:"></a>面对方阵:</h1><ol>
-<li>A=LU</li>
-<li>A=QR</li>
-<li>A=$Q\Lambda Q$</li>
-<li>正定矩阵的cholosky分解</li>
-</ol>
-<p>面对非方阵:</p>
-<p>$A_{m\times n}=SVD$;</p>
-<blockquote>
-<p>数学基础的重点;</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/">展开全文 >></a>
         </p>
       
 
@@ -1125,6 +1087,100 @@
 
 
   
+    <article id="post-英语歌曲文化赏析-folk斯卡布罗集市" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/06/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-folk%E6%96%AF%E5%8D%A1%E5%B8%83%E7%BD%97%E9%9B%86%E5%B8%82/">英语歌曲文化赏析-斯卡布罗集市</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/05/06/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-folk%E6%96%AF%E5%8D%A1%E5%B8%83%E7%BD%97%E9%9B%86%E5%B8%82/" class="archive-article-date">
+  	<time datetime="2020-05-06T02:55:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>非技术类博客，仅做个人备忘使用。</p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2020/05/06/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-folk%E6%96%AF%E5%8D%A1%E5%B8%83%E7%BD%97%E9%9B%86%E5%B8%82/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/06/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-folk%E6%96%AF%E5%8D%A1%E5%B8%83%E7%BD%97%E9%9B%86%E5%B8%82/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
@@ -1352,6 +1408,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">雅思</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">待补全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">FinTech</a>
               </li>
             
             <div class="clearfix"></div>

@@ -8,25 +8,26 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MIT+ML03:ERM and Logistic Regression | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Goal of supervised learning Minimize “risk “ of error on unseen data.  generalization error: ​    $p(h(x)\neq Y)$  我们监督学习的目标是最小化generalization error.   empirical proxy:use training error as an “empiri">
+  <meta name="description" content="Goal of supervised learning Minimize “risk “ of error on unseen data.  generalization error: ​    $p(h(x)\neq Y)$  我们监督学习的目标【AIM】是最小化generalization error.   Solution:empirical proxy:use training error">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MIT+ML03:ERM and Logistic Regression">
 <meta property="og:url" content="http://yoursite.com/2020/08/11/MIT-ML03-ERM-and-Logistic-Regression/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="Goal of supervised learning Minimize “risk “ of error on unseen data.  generalization error: ​    $p(h(x)\neq Y)$  我们监督学习的目标是最小化generalization error.   empirical proxy:use training error as an “empiri">
+<meta property="og:description" content="Goal of supervised learning Minimize “risk “ of error on unseen data.  generalization error: ​    $p(h(x)\neq Y)$  我们监督学习的目标【AIM】是最小化generalization error.   Solution:empirical proxy:use training error">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghrb8o5aquj30t809wwgz.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmoxu4mhqj30sq0j27a0.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp2mnvmcj30v80g0n10.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp942juaj30tm0ksdnx.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp9azy4cj30uo0iwn6d.jpg">
 <meta property="article:published_time" content="2020-08-11T02:29:51.000Z">
-<meta property="article:modified_time" content="2020-08-11T03:14:56.689Z">
+<meta property="article:modified_time" content="2020-08-15T06:51:01.137Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="Thought Bridge">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmoxu4mhqj30sq0j27a0.jpg">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghrb8o5aquj30t809wwgz.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -195,17 +196,27 @@
 <li><p>generalization error:</p>
 <p>​    $p(h(x)\neq Y)$</p>
 </li>
-<li><p>我们监督学习的目标是最小化generalization error.</p>
+<li><p>我们监督学习的目标【AIM】是最小化generalization error.</p>
 </li>
 </ul>
-<h3 id="empirical-proxy"><a href="#empirical-proxy" class="headerlink" title="empirical proxy:"></a>empirical proxy:</h3><p>use training error as an “empirical proxy”</p>
+<h3 id="Solution-empirical-proxy"><a href="#Solution-empirical-proxy" class="headerlink" title="Solution:empirical proxy:"></a>Solution:empirical proxy:</h3><p>use training error as an “empirical proxy”</p>
 <p>*<em>ML as an optimization problem:ERM *</em></p>
 <p>i.e. Minimize the number of classification errors:</p>
 <p>$\frac{1}{n}\sum_{i=1}^n[h(x^{(i)}\neq y^{(i)}]$</p>
 <p>机器学习的本质大多都是一个优化问题</p>
 <a id="more"></a>
 
-<h2 id="ERM"><a href="#ERM" class="headerlink" title="ERM"></a>ERM</h2><p>ERM本身是一个Np-hard problem,在error外加一个loss function去衡量，即化解这种NP-hard problem。</p>
+<h2 id="ERM-Empirical-risk-minimization-以经验风险最小化"><a href="#ERM-Empirical-risk-minimization-以经验风险最小化" class="headerlink" title="ERM: Empirical risk minimization 以经验风险最小化"></a>ERM: Empirical risk minimization 以经验风险最小化</h2><p>ERM本身是一个Np-hard problem,在error外加一个loss function去衡量，即化解这种NP-hard problem。</p>
+<p>ERM 是什么呢？</p>
+<p>Wiki上有如下的定义：</p>
+<blockquote>
+<p><strong>Empirical risk minimization</strong> (ERM) is a principle in <a href="https://en.wikipedia.org/wiki/Statistical_learning_theory" target="_blank" rel="noopener">statistical learning theory</a> which defines a family of <a href="https://en.wikipedia.org/wiki/Machine_learning" target="_blank" rel="noopener">learning algorithms</a> and is used to give theoretical bounds on their performance. The core idea is that we cannot know exactly how well an algorithm will work in practice (the true “risk”) because we don’t know the true distribution of data that the algorithm will work on, but we can instead measure its performance on a known set of training data (the “empirical” risk).</p>
+</blockquote>
+<h2 id="如何导入到ERM的逻辑："><a href="#如何导入到ERM的逻辑：" class="headerlink" title="如何导入到ERM的逻辑："></a>如何导入到ERM的逻辑：</h2><p>本来，损失函数的根本逻辑是衡量预测值和真实值之间的误差，即学习的目标是选择期望损失最小的模型，但又因为联合分布未知(我们想预测当然不知道真实值是什么了)，所以监督学习是一个病态问题。</p>
+<p>参照 <strong>大数定律</strong>的理论基础，用经验风险来估计期望风险。</p>
+<h3 id="经验损失：empirical-risk"><a href="#经验损失：empirical-risk" class="headerlink" title="经验损失：empirical risk"></a>经验损失：empirical risk</h3><p>$$<br>DataSet={(x_1,y_1),….,(x_N,y_N)}<br>$$</p>
+<p>模型$f(X)$关于训练数据集的平均损失称为经验风险<br>$$<br>R_{emp}=\frac{1}{N}\sum_i^nLoss(y_i,f(x_i))<br>$$</p>
+<h3 id="经验风险最小化准则，即ERM"><a href="#经验风险最小化准则，即ERM" class="headerlink" title="经验风险最小化准则，即ERM"></a>经验风险最小化准则，即ERM</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghrb8o5aquj30t809wwgz.jpg" alt></p>
 <h2 id="Logistic-Regression"><a href="#Logistic-Regression" class="headerlink" title="Logistic Regression"></a>Logistic Regression</h2><p>$\frac{1}{n}\sum_{i=1}^nLoss(h(x^{(i)},y^{(i)}))$</p>
 <p>这里Loss function =<br>$$<br>l_{log}(y,t)=log(1+e^{-yt}),y: trueLabel;t:predictLabel<br>$$</p>
 <h3 id="为什么要使用logistic-Regression进行分类呢？"><a href="#为什么要使用logistic-Regression进行分类呢？" class="headerlink" title="为什么要使用logistic Regression进行分类呢？"></a>为什么要使用logistic Regression进行分类呢？</h3><p>Aim: predict Probability (label=’cat’,’dog’,)即output以概率的形式出现，而不是单纯的给分类器输出二分的分类结果。</p>
@@ -216,10 +227,19 @@
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmoxu4mhqj30sq0j27a0.jpg" alt></p>
 <h4 id="LR-decision-boundary-is-also-a-hyperplane"><a href="#LR-decision-boundary-is-also-a-hyperplane" class="headerlink" title="LR decision boundary is also a hyperplane"></a>LR decision boundary is also a hyperplane</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp2mnvmcj30v80g0n10.jpg" alt></p>
 <h2 id="对逻辑回归的总结理解"><a href="#对逻辑回归的总结理解" class="headerlink" title="对逻辑回归的总结理解"></a>对逻辑回归的总结理解</h2><p>逻辑回归的本质是将线性回归的$\theta^Tx+\theta_0$通过sigmoid函数，得到 [0,1]区间内的概率结果并利用threshold进行划分。</p>
-<h2 id="逻辑回归分类方法的ERM问题"><a href="#逻辑回归分类方法的ERM问题" class="headerlink" title="逻辑回归分类方法的ERM问题"></a>逻辑回归分类方法的ERM问题</h2><p>在逻辑回归中，如果损失函数选择为交叉熵损失函数，即分类的label选择为(-1,1)的；如果损失函数选择为logistic损失函数，即分类的label选择为(0,1)的。</p>
+<h2 id="逻辑回归分类方法的ERM问题"><a href="#逻辑回归分类方法的ERM问题" class="headerlink" title="逻辑回归分类方法的ERM问题"></a>逻辑回归分类方法的ERM问题</h2><p>在逻辑回归中，如果损失函数选择为交叉熵损失函数，即分类的label选择为(0,1)的；如果损失函数选择为logistic损失函数，即分类的label选择为(-1,1)的。</p>
 <h2 id="general-way-to-solve-ERM-SGD"><a href="#general-way-to-solve-ERM-SGD" class="headerlink" title="general way to solve ERM :SGD"></a>general way to solve ERM :SGD</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp942juaj30tm0ksdnx.jpg" alt></p>
 <p>逻辑回归分类方法的正则画像。</p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghmp9azy4cj30uo0iwn6d.jpg" alt></p>
+<h2 id="用MLE-maximum-likelihood-estimation-来估计逻辑回归的参数-theta-Tx-theta-0"><a href="#用MLE-maximum-likelihood-estimation-来估计逻辑回归的参数-theta-Tx-theta-0" class="headerlink" title="用MLE(maximum likelihood estimation)来估计逻辑回归的参数$\theta^Tx+\theta_0$"></a>用MLE(maximum likelihood estimation)来估计逻辑回归的参数$\theta^Tx+\theta_0$</h2><h3 id="MLE-经典统计推断中的MLE到底是什么"><a href="#MLE-经典统计推断中的MLE到底是什么" class="headerlink" title="MLE:经典统计推断中的MLE到底是什么"></a>MLE:经典统计推断中的MLE到底是什么</h3><p>参照知乎链接</p>
+<p>Aim:某一随机变量的概率分布已知，但其具体的概率分布未知。如，我们知道随机变量$X$为伯努利分布，我们要求其$p$,我们知道随机变量$Y$为指数分布，我么要求$\lambda$。</p>
+<h3 id="似然函数"><a href="#似然函数" class="headerlink" title="似然函数"></a>似然函数</h3><p>$L(x_1,x_2,x_3,…,x_n,\theta)$为似然函数， <strong>注意，似然函数只是一个关于参数$\theta$的函数</strong> 是可以让随机变量$X$渠道一组${x_1,x_2,…,x_n}$的值的概率的大小。</p>
+<p>那当然，如果似然函数的值越大，真实的$\theta$就越有可能被估计出来，那我找出可以让似然最大的参数值$\theta$，这个参数就是我们想要的估计的值。</p>
+<h3 id="对数似然函数"><a href="#对数似然函数" class="headerlink" title="对数似然函数"></a>对数似然函数</h3><p>一般似然函数都是连乘，连乘当然不好算，取个对数，增减性不变，当然就好算好多啦～</p>
+<blockquote>
+<p>Logistic 回归的本质是：假设数据服从这个分布，然后使用极大似然估计做参数的估计。</p>
+</blockquote>
+<h3 id="Problem"><a href="#Problem" class="headerlink" title="Problem:"></a>Problem:</h3><p>Given i.i.d training data ${(x^1,y^1),….,{x^n,y^n}}$, estimate the param vector$\theta$</p>
 
       
 
@@ -604,6 +624,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">雅思</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">待补全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">FinTech</a>
               </li>
             
             <div class="clearfix"></div>

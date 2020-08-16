@@ -163,92 +163,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Crash-Course-CS-E30-万维网" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/03/11/Crash-Course-CS-E30-%E4%B8%87%E7%BB%B4%E7%BD%91/">Crash-Course-CS-E30-万维网</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/03/11/Crash-Course-CS-E30-%E4%B8%87%E7%BB%B4%E7%BD%91/" class="archive-article-date">
-  	<time datetime="2020-03-11T06:47:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Crash-Course-CS-E30-万维网"><a href="#Crash-Course-CS-E30-万维网" class="headerlink" title="Crash-Course-CS-E30-万维网"></a>Crash-Course-CS-E30-万维网</h1><p>The notion of Internet and www seems to be the substitution for each other. However, the www a.k.a world wide web is built on the top of the Internet network.</p>
-<p>如果说互联网(Internet)是数据传输的管道，各个建立在互联网之上的程序(其实这里application 理解成更广义上的程序会更好)都会使用。那么，www is the biggest application built on the Internet, and it is a huge distributed application running on millions of servers worldwide.</p>
-<p>We use <strong>web browser</strong> to get access to the <strong>www</strong>, the <strong>web application</strong>.</p>
-        
-          <a class="article-more-a" href="/2020/03/11/Crash-Course-CS-E30-%E4%B8%87%E7%BB%B4%E7%BD%91/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Crash Course CS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/03/11/Crash-Course-CS-E30-%E4%B8%87%E7%BB%B4%E7%BD%91/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-概率论W1 集合和概率模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -982,6 +896,104 @@
 
 
   
+    <article id="post-敏度分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/03/06/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">灵光一现的备忘</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/03/06/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2020-03-06T03:13:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="敏度分析"><a href="#敏度分析" class="headerlink" title="敏度分析"></a>敏度分析</h1><p>在本节中,将分析数据中扰动较小时对非奇异方阵线性方程解的影响.</p>
+<p>$A(X+\Delta x)=y+\Delta y$;</p>
+<blockquote>
+<p>关键问题,$\Delta y$较小时对$\Delta x$的影响</p>
+</blockquote>
+<p>$\frac{||\Delta x||_2{||x||_2}\le||A^{-1}||_2||A||_2\frac{||\Delta y||_2}{||y||_2}$</p>
+<p>注意,上式中,关键部分在于这里矩阵的范数的这个系数.</p>
+<h2 id="定义7"><a href="#定义7" class="headerlink" title="定义7"></a>定义7</h2><p>设,$\sigma_1,\sigma_n$分别是矩阵A的最大奇异值和最小奇异值,那么</p>
+<p>$||A||_2=\sigma1,||A^{-1}||_2=1/\sigma_n$</p>
+<p>因此,矩阵的条件数也可以定义为:</p>
+<p>$条件数(A)=\frac{\sigma_1}{\sigma_n}$;</p>
+<blockquote>
+<p>范数在数值计算中定义条件数的重要行.</p>
+</blockquote>
+<p>当条件数比较大时,y上的扰动可能会导致x上有很大的扰动,即方程对输入数据的变化非常敏感.</p>
+<p>A是奇异时:条件数-&gt;$\infin$</p>
+<h3 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h3><p>对于输入项的敏感性</p>
+<p>即将上式子中的比例替换为条件数</p>
+<h3 id="系数矩阵汇中扰动的敏感性"><a href="#系数矩阵汇中扰动的敏感性" class="headerlink" title="系数矩阵汇中扰动的敏感性"></a>系数矩阵汇中扰动的敏感性</h3><p>\frac{||x||_2}{||x+\Delta x||_2}</p>
+<h4 id="引理2"><a href="#引理2" class="headerlink" title="引理2"></a>引理2</h4><p>对A,y联合扰动的敏感型</p>
+<h3 id="引理3"><a href="#引理3" class="headerlink" title="引理3"></a>引理3</h3><p>![截屏2020-05-21上午8.35.33](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-05-21上午8.35.33.png)</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/03/06/%E6%95%8F%E5%BA%A6%E5%88%86%E6%9E%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Missing-L1-Shell" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1293,6 +1305,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">雅思</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">待补全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">FinTech</a>
               </li>
             
             <div class="clearfix"></div>

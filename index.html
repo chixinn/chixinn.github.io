@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 157
+			总文章数 158
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,220 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-MIT-Fintech-Use-of-Machine-Learning-Methods-in-Personalization-and-Targeting" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/17/MIT-Fintech-Use-of-Machine-Learning-Methods-in-Personalization-and-Targeting/">MIT+ Fintech Use of Machine Learning Methods in Personalization and Targeting</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/08/17/MIT-Fintech-Use-of-Machine-Learning-Methods-in-Personalization-and-Targeting/" class="archive-article-date">
+  	<time datetime="2020-08-17T05:32:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Use-of-Machine-Learning-Methods-in-Personalization-and-Targeting"><a href="#Use-of-Machine-Learning-Methods-in-Personalization-and-Targeting" class="headerlink" title="Use of Machine Learning Methods in Personalization and Targeting"></a>Use of Machine Learning Methods in Personalization and Targeting</h1><h2 id="Robustness"><a href="#Robustness" class="headerlink" title="Robustness"></a>Robustness</h2><ul>
+<li><p>Rebustness:Data Challenges</p>
+<ul>
+<li><p>Covariate shift(stable)</p>
+</li>
+<li><p>Concept shift（Mapping changes)</p>
+<ul>
+<li>Timechange?customers’ response.</li>
+<li>not well studied</li>
+</ul>
+</li>
+<li><p>Aggregation of targeting variables</p>
+<ul>
+<li><p>what is the aggregation?</p>
+</li>
+<li><p>Use individual level to train the model</p>
+</li>
+<li><p>In practice: data is very <strong>sparse:</strong></p>
+<p> i.e. their purchase behavior is just very occasionally.</p>
+<p>Use sparse data to train the model, performance may not be very well.</p>
+</li>
+<li><p>use data to accomodation</p>
+</li>
+<li><p>这里的Sparse:finite parameters 说明顾客的行为是不太好预测的。</p>
+</li>
+<li><p>在传统机器学习的，pushnishing 或正则化 湿因为becasue of sparsity，来防止过拟合</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>Robustness: Targeting Methods<ul>
+<li>Distance driven methods:<ul>
+<li>kernel regression</li>
+<li>k-NN </li>
+<li>HC Trees</li>
+<li>when predicting ,least distance</li>
+</ul>
+</li>
+<li>model driven methods<ul>
+<li>lasso regression: a very powerful method.</li>
+<li>Finite mixture models:parameter assumptions</li>
+</ul>
+</li>
+<li>classification methods.<ul>
+<li>CHAID</li>
+<li>SVM</li>
+</ul>
+</li>
+<li>why not neuron nets: these methods are easy to express. and neuron nets need good train data. Managers need meaning, they don’t need maths.</li>
+</ul>
+</li>
+<li>Robustness: Data<ul>
+<li>A large retailer in US</li>
+<li>2 types of promotional offers</li>
+<li>Use 2 large-scale field experiments.<ul>
+<li>train data</li>
+<li>use the first 1 and marketing strategy on the second .</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Why model-driven methods are best?</strong></p>
+<p>Cool data-set : distance: don’t have data close to them.</p>
+<p>Model-driven:smooth the data in this dataSet.</p>
+<p><strong>Consider the robustness</strong></p>
+<p>How to adjust the methods to make them stable.</p>
+<p>过拟合问题。</p>
+<p>How to adjust? I don’t know.</p>
+<hr>
+<h2 id="Dynamic-targeting-constructing-Markov-states-for-reinforcement-learning"><a href="#Dynamic-targeting-constructing-Markov-states-for-reinforcement-learning" class="headerlink" title="Dynamic targeting:constructing Markov states for reinforcement learning"></a>Dynamic targeting:constructing Markov states for reinforcement learning</h2><h3 id="BG"><a href="#BG" class="headerlink" title="BG"></a>BG</h3><p><strong><em>Firms want to target their customers with a sequence of marketing actions</em></strong></p>
+<ol>
+<li>Marketing actions focus on *<em>long-term *</em>implications</li>
+<li>Standard targeting models are short-angled.</li>
+</ol>
+<p><strong>Can be modeled as Markov Decision Process</strong></p>
+<ul>
+<li>To be solved by a range of <strong>Reinforcement Learning algorithms</strong></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghtscjz0tdj30si0bewm1.jpg" alt></p>
+<ul>
+<li>State:summarization :classify customers into different groups, customers meet in different space and time.</li>
+<li>mail/not mail: c.f.招商： 实际上有很多的marketing actions</li>
+<li>R：从state 到reward 的映射</li>
+<li>P：转移概率，</li>
+</ul>
+<p>目标当然是 ：maxmize profits in the long run .</p>
+<h3 id="什么是reinforcement-learning"><a href="#什么是reinforcement-learning" class="headerlink" title="什么是reinforcement learning?"></a>什么是reinforcement learning?</h3><h4 id="引例子"><a href="#引例子" class="headerlink" title="引例子"></a>引例子</h4><p>让智能体在环境里学习，每个行动会对应各自的奖励。</p>
+<p>c.f 人类学习中与环境进行交互，</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghtskmjvv9j30u00gcn0d.jpg" alt></p>
+<h3 id="A-Typical-Reinforcement-Learning-Algorithm"><a href="#A-Typical-Reinforcement-Learning-Algorithm" class="headerlink" title="A Typical Reinforcement Learning Algorithm"></a>A Typical Reinforcement Learning Algorithm</h3><ol>
+<li><p>States:  what is your state</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghtssnz4dsj30ro06ctan.jpg" alt></p>
+</li>
+</ol>
+<p>consumers are very hard to study.</p>
+<p>what is your criteria for states?</p>
+<p>implicit assumption</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghtsubjjs5j30tq0b8jwp.jpg" alt></p>
+<h3 id="Proposed-Method"><a href="#Proposed-Method" class="headerlink" title="Proposed Method"></a>Proposed Method</h3><p> a mapping:</p>
+<p>Map(historical transaction space) to (Probability space of future purchasing events)</p>
+<p>This means we do predictions based on your marketing actions.</p>
+<p> If prediction is same , then you are the same type of customers. we care about the future.</p>
+<h3 id="Why-markov"><a href="#Why-markov" class="headerlink" title="Why markov"></a>Why markov</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghtsyew2inj30tq046wgk.jpg" alt></p>
+<p>Non-Markov distortion</p>
+<h3 id="Disadvantages"><a href="#Disadvantages" class="headerlink" title="Disadvantages"></a>Disadvantages</h3><ul>
+<li>too rely on data value.</li>
+<li>dp , not too much on deep  reinforcement learning: it is very unstable.</li>
+<li>Bench reinforcement learning.</li>
+</ul>
+<h2 id="Algorithm-bias：Social-impact"><a href="#Algorithm-bias：Social-impact" class="headerlink" title="Algorithm bias：Social impact"></a>Algorithm bias：Social impact</h2><p>Is women less likely than men to receive STEM ads given gender neutral targeting.</p>
+<p>STEM need be gender-neural </p>
+<p>Estimated: gender’s likelihood receiving STEM ads.</p>
+<ul>
+<li>algorithm doesn’t do gender-neural.</li>
+</ul>
+<h3 id="What-is-the-cause"><a href="#What-is-the-cause" class="headerlink" title="What is the cause?"></a>What is the cause?</h3><p>因为women的点击率高，所以不需要发这么多。</p>
+<p>discrimination v.s. results.</p>
+<p><strong>Key reasons: competitive spillover: Men-impression is cheaper</strong></p>
+<p>Ads的投放是竞价，<strong>need to pay more</strong> in order to win women’s impression.(bid for there impression)</p>
+<p><strong>Don’t focus on algorithms too much .</strong></p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ul>
+<li>When the methods are useful?</li>
+<li>Method adaptations</li>
+<li>Social impact.</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">FinTech</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ThoughtBridge</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/17/MIT-Fintech-Use-of-Machine-Learning-Methods-in-Personalization-and-Targeting/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-理解CNN中的weight-Sharing" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1032,131 +1246,6 @@
 
 
   
-    <article id="post-房地产信托业务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/03/%E6%88%BF%E5%9C%B0%E4%BA%A7%E4%BF%A1%E6%89%98%E4%B8%9A%E5%8A%A1/">房地产信托业务</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/08/03/%E6%88%BF%E5%9C%B0%E4%BA%A7%E4%BF%A1%E6%89%98%E4%B8%9A%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2020-08-03T02:31:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="房地产股权信托业务：营销策略、方案设计、尽调要点"><a href="#房地产股权信托业务：营销策略、方案设计、尽调要点" class="headerlink" title="房地产股权信托业务：营销策略、方案设计、尽调要点"></a>房地产股权信托业务：营销策略、方案设计、尽调要点</h1><h2 id="主流策略："><a href="#主流策略：" class="headerlink" title="主流策略："></a>主流策略：</h2><ol>
-<li><p>高周转住宅，受政策影响较难预测</p>
-<p>v.s .大宗物业：持有商业改造、物流地产</p>
-</li>
-<li><p>股权业务模式：</p>
-<ol>
-<li>平层股权</li>
-<li>优先股权</li>
-</ol>
-</li>
-<li><p>地产股权信托产品v.s.债权类产品</p>
-</li>
-</ol>
-<h2 id="目标客群与客群需求"><a href="#目标客群与客群需求" class="headerlink" title="目标客群与客群需求"></a>目标客群与客群需求</h2><p>目标客群：国企+大型民企：强主体</p>
-<h2 id="股权业务交易结构"><a href="#股权业务交易结构" class="headerlink" title="股权业务交易结构"></a>股权业务交易结构</h2><ul>
-<li>收益指标<ul>
-<li>净利率</li>
-<li>IRR、ROI、Multiple</li>
-</ul>
-</li>
-<li>投资阶段<ul>
-<li>投资规模</li>
-<li>投资方式</li>
-<li>股比</li>
-</ul>
-</li>
-<li>存续阶段<ul>
-<li>现金流</li>
-<li>项目监管</li>
-<li>融资</li>
-<li>进度管理</li>
-<li>章证管理</li>
-</ul>
-</li>
-<li>退出阶段<ul>
-<li>对赌设计</li>
-<li>项目模拟清算</li>
-</ul>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">实习日记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">信托公司</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">房地产信托业务</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/03/%E6%88%BF%E5%9C%B0%E4%BA%A7%E4%BF%A1%E6%89%98%E4%B8%9A%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1392,6 +1481,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">FinTech</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ThoughtBridge</a>
               </li>
             
             <div class="clearfix"></div>

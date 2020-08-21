@@ -6,21 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>理解CNN中的weight Sharing | Chixinning的博客</title>
+  <title>手动计算深度学习模型中的参数数量 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="待补全">
+  <meta name="description" content="手动计算深度学习模型中的参数数量 我们为什么需要计算DL模型中的参数数量？  More deserve to learn about Efficient Methods and Hardware for DL. 本来呢，代码也可以帮你计算你在模型中所使用的这些trainable parameters of DL models.但是在初期知道如何去计算这些参数对于理解非常有用。 关于以下两类神经网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="理解CNN中的weight Sharing">
-<meta property="og:url" content="http://yoursite.com/2020/08/14/%E7%90%86%E8%A7%A3CNN%E4%B8%AD%E7%9A%84weight-Sharing/index.html">
+<meta property="og:title" content="手动计算深度学习模型中的参数数量">
+<meta property="og:url" content="http://yoursite.com/2020/08/14/%E6%89%8B%E5%8A%A8%E8%AE%A1%E7%AE%97%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E6%95%B0%E9%87%8F/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="待补全">
+<meta property="og:description" content="手动计算深度学习模型中的参数数量 我们为什么需要计算DL模型中的参数数量？  More deserve to learn about Efficient Methods and Hardware for DL. 本来呢，代码也可以帮你计算你在模型中所使用的这些trainable parameters of DL models.但是在初期知道如何去计算这些参数对于理解非常有用。 关于以下两类神经网络">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyfvq2g50j30b50acq3m.jpg">
+<meta property="og:image" content="https://miro.medium.com/max/1210/1*FafEaBfSOXVodvdC_l6gXw.png">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghygk4fdvhj30q30lf0u4.jpg">
+<meta property="og:image" content="https://miro.medium.com/max/1858/1*8jp3T7CYyRcRxBDMsATDvg.png">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghygncbt46j30u00yjdix.jpg">
 <meta property="article:published_time" content="2020-08-14T06:10:54.000Z">
-<meta property="article:modified_time" content="2020-08-16T04:00:10.086Z">
+<meta property="article:modified_time" content="2020-08-21T07:25:13.127Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="待补全">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyfvq2g50j30b50acq3m.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -151,14 +157,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-理解CNN中的weight-Sharing" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-手动计算深度学习模型中的参数数量" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      理解CNN中的weight Sharing
+      手动计算深度学习模型中的参数数量
     </h1>
   
 
@@ -175,7 +181,7 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2020/08/14/%E7%90%86%E8%A7%A3CNN%E4%B8%AD%E7%9A%84weight-Sharing/" class="archive-article-date">
+        <a href="/2020/08/14/%E6%89%8B%E5%8A%A8%E8%AE%A1%E7%AE%97%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E6%95%B0%E9%87%8F/" class="archive-article-date">
   	<time datetime="2020-08-14T06:10:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-14</time>
 </a>
         
@@ -183,7 +189,50 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>待补全</p>
+        <h1 id="手动计算深度学习模型中的参数数量"><a href="#手动计算深度学习模型中的参数数量" class="headerlink" title="手动计算深度学习模型中的参数数量"></a>手动计算深度学习模型中的参数数量</h1><p> 我们为什么需要计算DL模型中的参数数量？</p>
+<p> More deserve to learn about Efficient Methods and Hardware for DL.</p>
+<p>本来呢，代码也可以帮你计算你在模型中所使用的这些trainable parameters of DL models.但是在初期知道如何去计算这些参数对于理解非常有用。</p>
+<p>关于以下两类神经网络中的模型参数的计算。</p>
+<ol>
+<li>FFNN</li>
+<li>CNN</li>
+</ol>
+<blockquote>
+<p>Reference:</p>
+<p><a href="https://towardsdatascience.com/counting-no-of-parameters-in-deep-learning-models-by-hand-8f1716241889" target="_blank" rel="noopener">Counting No. of Parameters in Deep Learning Models by Hand</a></p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="Jargons"><a href="#Jargons" class="headerlink" title="Jargons"></a>Jargons</h2><p>假设我们的FFNN(aka FCNN ：fully feedfoward neural network/fully connected neural network).</p>
+<h2 id="FFNN"><a href="#FFNN" class="headerlink" title="FFNN"></a>FFNN</h2><p>可以想象一下，FFNN是怎么计算的？</p>
+<p>对于下面这个简单的有5个units 在1个hidden layer中的模型：</p>
+<p>一个hiddenUnit的输入是什么呢？是来自于3个weight$\times$input的和，再加上一个额外的偏置。</p>
+<p>5个hiddenUnit都收，所以需要5$\times$3+bias(5个)</p>
+<ul>
+<li>由输入层input layer的neuron个数：i</li>
+<li>size of hidden layer：h</li>
+<li>输出层output layer的neuron个数：o</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyfvq2g50j30b50acq3m.jpg" alt></p>
+<p>3$\times$5+5(bias)+5$\times$2+2(bias)</p>
+<p><img src="https://miro.medium.com/max/1210/1*FafEaBfSOXVodvdC_l6gXw.png" alt="Image for post"></p>
+<p>50$\times$100+100$\times$1+100+1+1$\times$100+100+100$\times$50+50</p>
+<h2 id="CNN中的para怎么计算呢？"><a href="#CNN中的para怎么计算呢？" class="headerlink" title="CNN中的para怎么计算呢？"></a>CNN中的para怎么计算呢？</h2><p>CNN 的architecture 是什么样的呢？</p>
+<ul>
+<li>i:输入映射的数量(channel) number of input maps.</li>
+<li>F:filter size(just the length)</li>
+<li>o:how many filters are used.</li>
+</ul>
+<p>One filter is applied to every input maps.</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghygk4fdvhj30q30lf0u4.jpg" alt></p>
+<p>i: 1 feature map</p>
+<p>Filter3: 大小是2$\times$2.一共3个filter.</p>
+<p>由图所示para: 1$\times$2$\times$2$\times$3+bias(3)</p>
+<p><img src="https://miro.medium.com/max/1858/1*8jp3T7CYyRcRxBDMsATDvg.png" alt="Image for post"></p>
+<p>3个feature map:</p>
+<p>3$\times$2$\times$2+1（bias取决于output neuron的个数)</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghygncbt46j30u00yjdix.jpg" alt></p>
+<p>2$\times$2$\times$2$\times$3+3</p>
 
       
 
@@ -283,7 +332,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/14/%E7%90%86%E8%A7%A3CNN%E4%B8%AD%E7%9A%84weight-Sharing/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/14/%E6%89%8B%E5%8A%A8%E8%AE%A1%E7%AE%97%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0%E6%95%B0%E9%87%8F/" alt="微信分享二维码">
     </div>
 </div>
 

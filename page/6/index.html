@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 163
+			总文章数 165
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,430 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-计算机网络第三章课后作业;" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%89%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A;/">计算机网络第三章课后作业</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%89%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A;/" class="archive-article-date">
+  	<time datetime="2020-06-16T02:57:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>01010011+01100110=10111001;</li>
+</ol>
+<p>10111001+01110100=00101110;</p>
+<p>00101110的反码是11010001;</p>
+<p><strong>UDP的checksum的工作原理</strong>是将这些字分别相加,如果有加法溢出,即需要被回卷.如果该分组中没有引入差错,则显然在接收方处该和将是8个1,在16位下将是16个1.如果这些比特之一是0,那么该分组中即有差错.</p>
+<p>校验和使用反码求和的<strong>优点</strong>是：</p>
+<p>(1<strong>)不依赖</strong>系统的字节序是大端小端。即二进制反码和字节序无关.</p>
+<p>(2)求和过程中,先对校验序列求反码序列再循环进位求和,等于先二进制循环进位求和以后再对求和结果求反码,而先二进制循环进位求和以后再对求和结果求反码会大大减少求反码的次数.</p>
+<p>如果这些待校验序列中有1比特的差错,那么在循环进位求和的过程中,无论如何求和进位,这1比特的差错都会对最后的求和结果造成影响;而如果是有2比特位的差错的话,这个2比特的差错有可能检验不出来,因为在循环进位求和阶段该差错可能恰好被掩盖.</p>
+<ol start="11">
+<li><p>如果这个确认报文分组号的ACK发送信息被删除的话,当发送方发送了某一分组0,会进入等待ACK0的状态;此时,接收方的本来需要从一直等待来自下层的0的状态发生的变化,但这个状态变化需要对这个分组0进行ACK码的发送;</p>
+<p>但是,当ACK码发送的步骤被删除时,所以,发送方不会收到接收方任何ACK码的信息,<strong>而发送方仅当接收到ACK并且离开该状态时才能再发生rdt_send事件</strong>.所以不能删除,这样发送方和接收方的状态改变依赖于二者的相互等待.</p>
+</li>
+<li><p>对于发送方偶尔发送数据,在只使用NAK的协议下,发送方确认数据包是否发送成功只可以根据NAK的消息判断,例如当发送方收到了关于packet3的NAK消息时,不外加其他条件,发送方才知道packet3的发送失败,发送方才得以继续发送.</p>
+</li>
+</ol>
+<p>对于很少丢包的发送方发大量数据时,NAK协议会比只使用ACK更好,因为这样会减少<strong>额外确认码的发送</strong>,<strong>一并减少</strong>了<strong>发送开销</strong>.</p>
+<ol start="18">
+<li>设计的该SR协议的FSM</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf8g7tvgfcj30u0140aei.jpg" alt></p>
+<p>说明,因为一次发送一对包,所以00,和10,即一左一右的状态逻辑相同.</p>
+<p>以00和01表示一对分组中第一个包的新旧状态.</p>
+<p>以10和11表示一对分组中第二个包的新旧状态.</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf8g7tkzn8j30u014078y.jpg" alt></p>
+<p>而对于该SR协议的接收方,只需要在发送方的等待ACK功能替换为等待数据的过程.</p>
+<p>下面对该SR协议的接收方和发送方分别描述.</p>
+<p>发送方:</p>
+<ol>
+<li>等待上层数据和上层调用,检查下一个可用于该对分组的序号.如果序号位于发送方的窗口内,则将该对分组打包并发送.</li>
+<li>超时:设置定时器,一对分组中的每个分组必须拥有自己的逻辑定时器.</li>
+<li>收到ACK,一对被发送的分组中,倘若该分组序号在窗口内,则SR发送方进行标记,若一对分组中的两个包都被ACK确认,则SR发送方标记为该对已接收,进行窗口的滑动.</li>
+</ol>
+<p>接收方:</p>
+<ol>
+<li><p>同样维护以对为单位的接收窗口.如果收到的分组属于接收窗口内,则一个ACK进行发送,如果不位于窗口内,则暂时缓存.当接收窗口也进行滑动时,进行一对包的交付.</p>
+</li>
+<li><p>如果收到的分组属于接收窗口内,则必须进行一个ACK进行发送,用来确认该对的上一对分组包.</p>
+</li>
+<li><p>其他情况,进行忽略.</p>
+</li>
+<li><p>设计适合该机制的协议的FSM</p>
+</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf8gyz739bj30u0140u11.jpg" alt></p>
+<ol start="22">
+<li>a.发送窗口内的报文序号可能是多少,一种边界情况是,对k-1号分组及之前的所有分组都进行了确认,即k分组是发送方的窗口的第一个,所以,此时发送窗口的报文序号是k,k+1,k+2,k+3;另一种边界情况是发送方未收到ACK,即k-4,k-3,k-2,k-1;</li>
+</ol>
+<p>b. 因为接受方在等待分组k,那么说明接受方已经接受和确认了k-1及k-1之前的所有分组.如果包含这些分组的窗口大小及4个ACK确认没有到达发送方时,故ACK所有可能的值是k-4,k-3,k-2,k-1;但是因为发送方发送分组k-4,k-3,k-2,k-1的前提是收到了ACK(k-5),由累计确认的原则,ACK字段的所有可能的值是[k-5,k-1];</p>
+<ol start="23">
+<li>对于SR协议而言,为了避免新来的分组和重发的分组无法区分的情况,必须使窗口长度小于或等于序号空间大小的一半.</li>
+</ol>
+<p>因为序号空间是[0,k]/[0,k]重复应用的.设序号空间大小的一半为w,则w=k/2.</p>
+<p>当WinSize&gt;k/2时,</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gf7xavkegnj30i00dkwpb.jpg" alt></p>
+<p>如本图所示,假设发送过程中,分组0,1,..,w都没有被收到ACK确认,此时第一个发送的分组0因超时而需要重传分组,故此时发送方需要发送分组0,而此时接受方因为实质是收到了分组0,1,..,w,只是他们对发送方的ACK码没有被发送方收到而已,故此时的接受方的窗口已经滑动到了w+1,…,w+WinSIze,这个序列的窗口段,这个序列的窗口段的分组序号为,w+1,w+2,…,k,…(如果有了最大的k,则需要从1处进行重置.)</p>
+<p>此时,接受方的窗口和分组序号的对应关系为:</p>
+<table>
+<thead>
+<tr>
+<th>接收方窗口移动</th>
+<th>分组序号</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>w+1</td>
+<td>w+1</td>
+</tr>
+<tr>
+<td>w+2</td>
+<td>w+2</td>
+</tr>
+<tr>
+<td>w+3</td>
+<td>…</td>
+</tr>
+<tr>
+<td>w+w(因为w=k/2)</td>
+<td>k</td>
+</tr>
+<tr>
+<td>w+w+1(假设此时还未到WINSIZE)</td>
+<td>0</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>w+WinSize</td>
+<td>Winsize-w-1</td>
+</tr>
+</tbody></table>
+<p>由这个对照关系所知,当WinSize&gt;k/2时,此时在分组序号和k的交接处,因为w+w+1=k+1&lt;w+WinSIze,即此时接收方的窗口中会同时收到分组序号0的包(仅举例),而对于这个包和从接收方的角度来看,接收方无法分别这个包是新的一个序号0的包,还是一组新的重传.</p>
+<p>所以对于SR协议而言<strong>必须使窗口长度小于或等于序号空间大小的一半.</strong></p>
+<ol start="36">
+<li>对于为什么要3个冗余ACK后启动重传:</li>
+</ol>
+<p>结论:两次duplicated ACK时乱序造成的,而丢包会造成3次冗余的ACK.</p>
+<p>假设AB两个通信双方,A向B发送4个TCP Segment给B;</p>
+<p>发送方A以1,2,3,4的顺序进行发送.</p>
+<p>此时B方到达的顺序是:(仅发生乱序)</p>
+<p>Case1: 1,2,3,4则A收到1个ACK(N);[各一个]</p>
+<p>Case2: 1,2,4,3,则A收到会收到两个ACK(2)’</p>
+<p>Case3: 1,3,2,4,则A会收到两个ACK;</p>
+<p>Case4: 1,3,4,2则A会收到3个ACK(1);</p>
+<p>…</p>
+<p>此时B方到达的顺序是:(仅发生丢包)</p>
+<p>Case1:1,3,4,会收到3个ACK(1)</p>
+<p>Case2:1,4,3,仍是会收到3个ACK(1)</p>
+<p>总结如上,当TCP包乱序时,有概率可以收到3次重复ACK,而当TCP丢包时,则一定会收到ACK,此时如果针对这种情况启动快速重传则会很好的起到快速恢复的效果.</p>
+<ol start="37">
+<li>比较GBN,SR和TCP</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>SR</th>
+<th>TCP</th>
+<th>GBN</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>应答方式</td>
+<td>不累计应答</td>
+<td>累计应答下一个字节的sequence</td>
+<td>累计应答</td>
+</tr>
+<tr>
+<td>缓存机制</td>
+<td>缓存</td>
+<td>缓存</td>
+<td>不缓存,直接扔掉</td>
+</tr>
+<tr>
+<td>0</td>
+<td>ACK0</td>
+<td>ACK1</td>
+<td>ACK0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>发送丢失</td>
+<td>发送丢失</td>
+<td>发送丢失</td>
+</tr>
+<tr>
+<td>2</td>
+<td>ACK2(缓存)</td>
+<td>ACK2(包2缓存)</td>
+<td>ACK0</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ACK3(缓存)</td>
+<td>ACK2(包3缓存)</td>
+<td>ACK0</td>
+</tr>
+<tr>
+<td>4</td>
+<td>ACK4(缓存)</td>
+<td>ACK2(包4缓存)</td>
+<td>ACK0</td>
+</tr>
+<tr>
+<td>1重发</td>
+<td>ACK1</td>
+<td>ACK2,ACK5</td>
+<td>(1-4全重发)ACK1,ACK2,ACK3,ACK4</td>
+</tr>
+<tr>
+<td>总ACK数目</td>
+<td>5</td>
+<td>6</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<p>b .根据题目假设,超时的区间设置的很长,所以由上比较可知,当TCP收到3次duplicated ACK后会进行快速重传和恢复机制,所以TCP事件最短</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%B8%89%E7%AB%A0%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A;/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-操作系统Project4-内存管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject4-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">操作系统Project4 内存管理</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject4-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-06-16T02:16:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="P4-内存管理"><a href="#P4-内存管理" class="headerlink" title="P4:内存管理"></a>P4:内存管理</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol>
+<li>熟悉MINIX操作系统的进程管理</li>
+<li>学习Unix风格的内存管理</li>
+</ol>
+<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><p>修改MINIX3.1.2a的进程管理器，改进brk系统调用的实现。</p>
+<p>使得分配给进程的数据段+栈段空间耗尽时，该brk系统调用会</p>
+<ol>
+<li><p>给该进程一个更大的内存空间，</p>
+</li>
+<li><p>并将原来空间中的数据复制到新分配的内存空间。</p>
+</li>
+<li><p>释放原来的内存空间</p>
+</li>
+<li><p>通知内核映射新分配的内存段。</p>
+</li>
+</ol>
+<p>MINIX3 独立ID空间，共享相同的代码段。</p>
+<p>Safety:使进程正常执行一小段时间，使其在执行这段时间的过程中，打印出此时“我出错了ENOMEM”(因为我本身不应该运行到safety内存中)和正常结束。</p>
+<p>当空间消耗殆尽时，要增加空间，此时会有更大的空间来执行，使之继续地正常执行下去。</p>
+<h2 id="实验说明"><a href="#实验说明" class="headerlink" title="实验说明"></a>实验说明</h2><ol>
+<li><p>修改/usr/src/servers/pm/break.c中的adjust函数。</p>
+</li>
+<li><p>在adjust函数中增加allocate_new_mem局部函数。</p>
+</li>
+<li><p>brk系统调用本身：</p>
+<ol>
+<li><p>Do_brk函数计算数据段新的边界</p>
+</li>
+<li><p>然后调用adjust函数，使用adjust函数来计算当前程序的空闲空间是否足够分配。</p>
+</li>
+<li><p>足够分配：</p>
+</li>
+<li><p>不够分配：调用allocate_new_mem函数申请新的<strong>足够大的内存空间</strong>。</p>
+<p>足够大的内存空间的申请和寻找是first-fit -&gt; best-fit.</p>
+<p>将数据段和栈段拷贝：数据段底部，栈段顶部</p>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p>编译MINIX</p>
+<p>编译kernel后要把kernel的编号进行记住</p>
+<p>5是选项，save是进行保存。</p>
+<p>新生成的kernel是会变化的。</p>
+<h2 id="Project4也是又又又又需要配环境的一次haha"><a href="#Project4也是又又又又需要配环境的一次haha" class="headerlink" title="Project4也是又又又又需要配环境的一次haha!"></a>Project4也是又又又又需要配环境的一次haha!</h2><ol>
+<li>下载Minix3.1.2镜像文件</li>
+<li>在VMware中新建虚拟机，按照P1过程进行虚拟机的配置。</li>
+<li>然后就不能传文件啦！</li>
+<li>然后我把NAT的网络连接模式换了一种以后，就又可以传文件了~终于啊QAQ 我古董的windows重装都配好环境惹…</li>
+</ol>
+<hr>
+<blockquote>
+<p>另记：传文件是玄学，编译时玄学，内核是玄学，cc是玄学，计算机是玄学。</p>
+</blockquote>
+<hr>
+<p>主体思路就是对于allocate_new_mem函数进行调整。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Memory map for local text, stack, data segments. */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mem_map</span> &#123;</span></span><br><span class="line">  vir_clicks mem_vir;		<span class="comment">/* 虚拟地址 */</span></span><br><span class="line">  phys_clicks mem_phys;		<span class="comment">/*物理地址 */</span></span><br><span class="line">  vir_clicks mem_len;		<span class="comment">/* 长度 */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Allocate_new_mem函数的整体内容：</p>
+<ol>
+<li>Alloc_mem分配内存</li>
+<li>Sys_abscopy拷贝内容</li>
+<li>释放</li>
+<li>通知内核相关变动并注册</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">PUBLIC <span class="keyword">int</span> <span class="title">allocate_new_mem</span><span class="params">(rmp,old_memory_clicks)</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<ol>
+<li>通知变化是在if分支里面的，所以不需要sys_newmap</li>
+</ol>
+<p>TNND，终于写完了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject4-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-ML06-DeepLearning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1003,268 +1427,6 @@
 
 
   
-    <article id="post-Hiphop1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/09/Hiphop1/">Hiphop1</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/06/09/Hiphop1/" class="archive-article-date">
-  	<time datetime="2020-06-09T14:44:37.075Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hiphop-Netfilx"><a href="#Hiphop-Netfilx" class="headerlink" title="Hiphop Netfilx"></a>Hiphop Netfilx</h1><ol>
-<li><p>只要拜访纽约，嘻哈丰富的历史。</p>
-</li>
-<li><p>1970s，just before hippop begin.</p>
-</li>
-<li><p>Disk explpsion</p>
-</li>
-<li><p>纽约外面的人都认为纽约是天堂</p>
-</li>
-<li><p>动荡不安的社会</p>
-</li>
-<li><p>lost in disco  v.s. sth different.</p>
-</li>
-<li><p>第一场：不仅是是歌，而是放歌的事件。只有鼓点，即break of music</p>
-</li>
-<li><p>we have everybody in the party:</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfmejxalf9j312s0pg7wh.jpg" alt=""></p>
-</li>
-</ol>
-<p>another job at the party: 卖大麻</p>
-<p>拿着麦克风双唱，使用麦克风说话。</p>
-<ol start="9">
-<li><p>社区文化，街头帮派组织。</p>
-</li>
-<li><p>捍卫社区与破坏社区。</p>
-</li>
-<li><p>Zulu nation</p>
-</li>
-<li><p>不同帮派的大熔炉。音乐是改邪归正的方式。</p>
-</li>
-<li><p>DJ,MC ,霹雳舞者，嘻哈第五元素，知识</p>
-</li>
-<li><p>无论你皮肤的颜色，都该知道自己的祖先是谁。Zulu -African </p>
-</li>
-<li><p>看到非洲的一切都会逃避</p>
-</li>
-<li><p>很多黑人的成长环境都与<strong>根文化</strong>脱离</p>
-<p>闪耀大师。</p>
-<p>Scientific way to 接歌。</p>
-</li>
-<li><p>黑人歌曲：闪耀大师：把唱片变成一种乐器。</p>
-</li>
-<li><p>嘻哈三圣</p>
-</li>
-<li><p>DJ v.s. rappers</p>
-</li>
-<li><p>When did lyrics meat the rhythms.</p>
-</li>
-<li><p>嘻哈-&gt;种族-&gt;非洲-&gt;非洲之根。</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/09/Hiphop1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数学基础W14随机变量特征与大数定理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/09/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W14%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%89%B9%E5%BE%81%E4%B8%8E%E5%A4%A7%E6%95%B0%E5%AE%9A%E7%90%86/">数学基础W14随机变量特征与大数定理与信息论</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/06/09/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W14%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%89%B9%E5%BE%81%E4%B8%8E%E5%A4%A7%E6%95%B0%E5%AE%9A%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-06-09T05:57:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-
-<h2 id="统计特征"><a href="#统计特征" class="headerlink" title="统计特征"></a>统计特征</h2><ul>
-<li><p>期望损失</p>
-<p>衡量模型的泛化性能</p>
-</li>
-</ul>
-<h3 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h3><p>模型性能</p>
-<h3 id="协方差"><a href="#协方差" class="headerlink" title="协方差"></a>协方差</h3><p>整体误差</p>
-<p>相关系数：特征选择的指标</p>
-<ul>
-<li><p>Laplace分布</p>
-</li>
-<li><p>高斯分布</p>
-</li>
-</ul>
-<h2 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm09nzfcjj30og0aejub.jpg" alt=""></p>
-<p><strong>协方差矩阵的展开研究</strong></p>
-<p>协方差矩阵是一个对称的正半定矩阵</p>
-<p>依概率收敛与依分布收敛</p>
-<p>弱大数定律与中心极限定理：大样本统计过滤的理论基础</p>
-<hr>
-<p>经验风险与期望风险</p>
-<p>经验风险根据大数定律收敛到期望风险。</p>
-<h1 id="信息论：熵"><a href="#信息论：熵" class="headerlink" title="信息论：熵"></a>信息论：熵</h1><p>决策树的基础。</p>
-<p>信息论与概率相关。</p>
-<p>如何衡量事件所包含的信息量?</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0p13e3uj30r80ae7a8.jpg" alt=""></p>
-<h3 id="随机事件的自信息量"><a href="#随机事件的自信息量" class="headerlink" title="随机事件的自信息量"></a>随机事件的自信息量</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0q8vhdcj30r80bcqbv.jpg" alt=""></p>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>随机事件的自信息量为该事件发生概率的对数的负值。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0re0mfhj30r80bc42v.jpg" alt=""></p>
-<p>自信息量的单位与对数的底有关</p>
-<h3 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0ta1owdj30r80bc78c.jpg" alt=""></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0trg52gj30r80amgpy.jpg" alt=""></p>
-<p>信息量的可加性是与对数函数的性质相加的。</p>
-<h3 id="互信息："><a href="#互信息：" class="headerlink" title="互信息："></a>互信息：</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0uq6wnlj30r809utdu.jpg" alt=""></p>
-<p>简单例子</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0w4oxr6j30r8052mzj.jpg" alt=""></p>
-<h3 id="平均自信息"><a href="#平均自信息" class="headerlink" title="平均自信息"></a>平均自信息</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0yb0g0lj30r8088444.jpg" alt=""></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0zrmjr6j30r80amjwi.jpg" alt=""></p>
-<p>将统计平均值定义为信息熵。</p>
-<h2 id="熵函数"><a href="#熵函数" class="headerlink" title="熵函数"></a>熵函数</h2><h2 id="确定信源的平均不确定度"><a href="#确定信源的平均不确定度" class="headerlink" title="确定信源的平均不确定度"></a>确定信源的平均不确定度</h2><h2 id="级值性"><a href="#级值性" class="headerlink" title="级值性"></a>级值性</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm17uvqytj30s60du0xf.jpg" alt=""></p>
-<p>Jensen不等式</p>
-<p>熵函数与优化的目标函数：交叉熵损失函数，需要判断熵函数的凸性。</p>
-<hr>
-<h2 id="信息和熵"><a href="#信息和熵" class="headerlink" title="信息和熵"></a>信息和熵</h2><ul>
-<li>信息有重要之分</li>
-<li>信息用以消除不确定性，如果能度量一件事的不确定性，即可以确定一件事情的信息量。</li>
-<li><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm8tt5ds2j310a0660uo.jpg" alt=""></li>
-<li><strong>不确定性的减少量</strong>等于<strong>信息的信息量。</strong></li>
-<li><strong>所以，信息消除对某件事情的不确定性，还要取决于信息的接受者是谁。</strong></li>
-<li><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm8yamaw8j310a092gp9.jpg" alt=""></li>
-</ul>
-<hr>
-<ul>
-<li>熵：是某一事情对某人不确定性的度量。</li>
-<li>在数值上等于消除某件事情不确定性所需要的平均信息量。</li>
-<li>熵是信息量的期望。</li>
-<li><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm9818wu4j310a09wdj7.jpg" alt=""></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/09/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W14%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%89%B9%E5%BE%81%E4%B8%8E%E5%A4%A7%E6%95%B0%E5%AE%9A%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/7/">Next &amp;raquo;</a>
@@ -1508,6 +1670,10 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Amazon</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Fintech</a>
               </li>
             
             <div class="clearfix"></div>

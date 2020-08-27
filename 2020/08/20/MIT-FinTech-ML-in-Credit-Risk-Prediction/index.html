@@ -15,13 +15,19 @@
 <meta property="og:site_name" content="Chixinning的博客">
 <meta property="og:description" content="Neural Network activiation funciton: typically simple non-linear function to do non-linear transformation. SWISH function: is continous compared to ReLu. logistic model 本质是线性的。 Bring in the Economics">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyoeznwyhj30pm0i2ts7.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyooaidb1j30u00oyk4s.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyoso4ltvj31d205sjxb.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyp65wriqj31d207edmw.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghypa1ztdaj31780u0e3l.jpg">
 <meta property="article:published_time" content="2020-08-20T08:04:59.000Z">
-<meta property="article:modified_time" content="2020-08-21T01:02:59.182Z">
+<meta property="article:modified_time" content="2020-08-22T00:51:13.328Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="Machine Learning">
 <meta property="article:tag" content="FinTech">
 <meta property="article:tag" content="ThoughtBridge">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyoeznwyhj30pm0i2ts7.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -69,7 +75,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 166
+			总文章数 167
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -193,7 +199,49 @@
 <a id="more"></a>
 
 <p>像bankrupt一样，你想预测的一些结果，有的时候像noise 一样neligible.</p>
-
+<h3 id="Are-ML-Models-Better"><a href="#Are-ML-Models-Better" class="headerlink" title="Are ML Models Better?"></a>Are ML Models Better?</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyoeznwyhj30pm0i2ts7.jpg" alt></p>
+<p>事实上，如果这些ML模型很好的话，应该呈现一种对角线的visualization的形式，但结果表明，仍有很多error，在左下(false positive)和右上出现。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyooaidb1j30u00oyk4s.jpg" alt></p>
+<p>slip through all the infomation to find a useful ine. Here average seller repsonse time is one typical example.</p>
+<hr>
+<p>Null hypothesis: a good borrower.(state everyone is a good borrower is a null hypothesis.)</p>
+<p>Model c.f. null hypothesis.</p>
+<p>如果从假设推断的角度想：就可以把ML model 和统计假设推断(hypothesis test)结合起来。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyoso4ltvj31d205sjxb.jpg" alt></p>
+<hr>
+<p>Type-I and Type-II errors </p>
+<p>假阳性/假阴性。</p>
+<hr>
+<p>what is the actual person? compared with the hypothesis type.</p>
+<p>type-1 和 type-2 error哪一个更cost?</p>
+<p> <strong>False positive is more costly?</strong></p>
+<p><strong>Drag down false-positive</strong></p>
+<hr>
+<p>Economic Loss Function</p>
+<p>cost associated to these two types of errors.</p>
+<p>the threshold pbar is controlling the desicion of these 2 types of errors.</p>
+<p>That is you need to apply domain knowledge rather than simply cs methods.</p>
+<hr>
+<ul>
+<li>The fragility of ML models.</li>
+</ul>
+<hr>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghyp65wriqj31d207edmw.jpg" alt></p>
+<p> It’s a needle in a haystack: 大海捞针 </p>
+<p>too much information:</p>
+<p>valuable info 比 noise 增长的速度慢。</p>
+<p>Data may be fake.</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghypa1ztdaj31780u0e3l.jpg" alt></p>
+<p>假设保险公司想统计买保险的人的健康情况，以记步为例子，过去人们没有step counter的时候采用真实的几步，现在，当step counter在抖音上火了以后，人们纷纷去买，保险公司再统计到的数据就不再真实。</p>
+<p>所以，跟CV的不变性不同的是，在economic interest主导的市场，模型依据的统计关系不是一成不变的，(c.f. MIT+FinTech Q&amp;A blog)</p>
+<hr>
+<p>Robust  ML model</p>
+<p>variables that are easily manipulated but not easily verified should not be given too much weight.</p>
+<p>The old data.The new data.</p>
+<p>a game between borrower and the lander.</p>
+<p>a little bit smarter algorithm.</p>
+<hr>
+<h1 id="What-is-next-for-credit-Risk-Model"><a href="#What-is-next-for-credit-Risk-Model" class="headerlink" title="What  is next for credit Risk Model?"></a>What  is next for credit Risk Model?</h1>
       
 
       

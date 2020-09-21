@@ -6,30 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Chixinning的博客</title>
+  <title>数据库上机1:MongoDB的安装和使用 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的个人技术博客，由2020年寒假，其中以我的笔记为主，同时又有很多心得和不足，主要是一个人碎碎念的地方；个人利益相关，2018级ECNU DaSE在读～希望能收获成长吧，当然也可以联系我！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/archives/page/11/index.html">
+  <meta name="description" content="Mac平台安装MongoDBhttps:&#x2F;&#x2F;docs.mongodb.com&#x2F;manual&#x2F;tutorial&#x2F;install-mongodb-on-os-x&#x2F; 官方安装tutoral如上">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库上机1:MongoDB的安装和使用">
+<meta property="og:url" content="http://yoursite.com/2020/09/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BA1-MongoDB%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="这是我的个人技术博客，由2020年寒假，其中以我的笔记为主，同时又有很多心得和不足，主要是一个人碎碎念的地方；个人利益相关，2018级ECNU DaSE在读～希望能收获成长吧，当然也可以联系我！">
+<meta property="og:description" content="Mac平台安装MongoDBhttps:&#x2F;&#x2F;docs.mongodb.com&#x2F;manual&#x2F;tutorial&#x2F;install-mongodb-on-os-x&#x2F; 官方安装tutoral如上">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-21T08:16:46.000Z">
+<meta property="article:modified_time" content="2020-09-21T10:00:19.406Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据">
-<meta property="article:tag" content="后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
-<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="数据库">
+<meta property="article:tag" content="大三下">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
@@ -161,63 +152,97 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-数据库上机1-MongoDB的安装和使用" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据库上机1:MongoDB的安装和使用
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+    阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/09/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BA1-MongoDB%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-09-21T08:16:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-21</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Mac平台安装MongoDB"><a href="#Mac平台安装MongoDB" class="headerlink" title="Mac平台安装MongoDB"></a>Mac平台安装MongoDB</h1><p><a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/" target="_blank" rel="noopener">https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/</a></p>
+<p>官方安装tutoral如上</p>
+<a id="more"></a>
+
+<h2 id="使用brew安装"><a href="#使用brew安装" class="headerlink" title="使用brew安装"></a>使用brew安装</h2><p><code>brew tap mongodb/brew</code></p>
+<p><code>brew install mongodb-community@4.4</code></p>
+<blockquote>
+<p>其中@后面的4.4是最新的版本号</p>
+</blockquote>
+<p>安装信息：(what the brew install creates):</p>
+<ol>
+<li>configuration file <code>/usr/local/etc/mongod.conf</code></li>
+<li>log directory path <code>/usr/local/var/log/mongodb</code></li>
+<li>Data directory path <code>/usr/local/var/mongodb</code></li>
+</ol>
+<blockquote>
+<p>It is recommended to run MongoDB as a macOS service, as doing so sets the correct system <code>ulimit</code> values automatically (see <a href="https://docs.mongodb.com/manual/reference/ulimit/#ulimit-settings" target="_blank" rel="noopener">ulimit settings</a> for more information).</p>
+</blockquote>
+<p>用brew命令运行和结束mongod process as a macOS service:</p>
+<p><code>brew services start mongodb-community@4.4</code></p>
+<p><code>brew services stop mongodb-community@4.4</code></p>
+<p>想证明MongoDB在本机上云顶，可以在运行进程中搜索mongod.</p>
+<p><code>ps aux | grep -v grep | grep mongod</code></p>
+<h2 id="Create-and-Use-MongoDB"><a href="#Create-and-Use-MongoDB" class="headerlink" title="Create and Use MongoDB"></a>Create and Use MongoDB</h2><p><code>mongo</code></p>
+<h1 id="MongoDB-CRUD-Operations"><a href="#MongoDB-CRUD-Operations" class="headerlink" title="MongoDB CRUD Operations"></a>MongoDB CRUD Operations</h1><p><em>left to do</em></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果❤️<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADmini-batch%E7%9A%84%E4%BD%9C%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2020-05-24T07:18:10.633Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADmini-batch%E7%9A%84%E4%BD%9C%E7%94%A8/">专业英语mini-batch的作用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/24/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W12%E5%90%91%E9%87%8F%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%9A%84%E5%BE%AE%E5%88%86/" class="archive-article-date">
-  	<time datetime="2020-05-24T01:22:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-24</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/24/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W12%E5%90%91%E9%87%8F%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%9A%84%E5%BE%AE%E5%88%86/">数学基础W12:向量与矩阵的微分</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -227,305 +252,115 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大三下</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BA1-MongoDB%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/" class="archive-article-date">
-  	<time datetime="2020-05-22T04:58:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/09/21/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2W1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"> 信息检索W1 </div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/">计算机网络W11:TCP协议3.5</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/21/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W11%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E4%B8%8E%E4%BC%98%E5%8C%96/" class="archive-article-date">
-  	<time datetime="2020-05-21T01:22:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/21/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W11%E5%A5%87%E5%BC%82%E5%80%BC%E5%88%86%E8%A7%A3%E4%B8%8E%E4%BC%98%E5%8C%96/">数学基础W11:奇异值分解与优化</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2020-05-21T00:40:37.232Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/21/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E9%97%AE%E9%A2%98/">最小二乘问题</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/19/Matrix%20Methods%20in%20Data%20Analysis,%20Signal%20Processing,%20and%20Machine%20Learning%20%20Mathematics%20Chapter0Overview/" class="archive-article-date">
-  	<time datetime="2020-05-19T05:03:10.703Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/19/Matrix%20Methods%20in%20Data%20Analysis,%20Signal%20Processing,%20and%20Machine%20Learning%20%20Mathematics%20Chapter0Overview/">Matrix Methods in Data Analysis, Signal Processing, and Machine Learning  Mathematics Chapter0Overview</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/18/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW11Chapter1%20to%20the%20end/" class="archive-article-date">
-  	<time datetime="2020-05-18T01:32:38.077Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/18/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW11Chapter1%20to%20the%20end/">专业英语W11Chapter1 to the end</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/17/Sigmoid%20%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8%20%E5%AF%B9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%9C%89%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2020-05-17T12:02:06.796Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/17/Sigmoid%20%E5%87%BD%E6%95%B0%E7%9A%84%E4%BB%80%E4%B9%88%E6%80%A7%E8%B4%A8%20%E5%AF%B9%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%9C%89%E7%94%A8/">Sigmoid 函数的什么性质 对神经网络有用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW103.4%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7/" class="archive-article-date">
-  	<time datetime="2020-05-17T04:58:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW103.4%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%80%A7/">计算机网络W10:3.4传输层的可靠性</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/05/15/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%9E%84%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2020-05-15T13:17:17.077Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/05/15/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%9E%84%E5%BB%BA/">用户画像构建</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/10/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="page-number" href="/archives/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/archives/page/12/">12</a><a class="page-number" href="/archives/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/18/">18</a><a class="extend next" rel="next" href="/archives/page/12/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -551,8 +386,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

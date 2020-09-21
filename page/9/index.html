@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 172
+			总文章数 173
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,137 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-ML3-5-Optimization-for-DL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/03/ML3-5-Optimization-for-DL/">ML3.5 Optimization for DL</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/03/ML3-5-Optimization-for-DL/" class="archive-article-date">
+  	<time datetime="2020-06-03T01:06:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>前注：</strong></p>
+<blockquote>
+<p>本讲的内容按照学习路线上Gradient Descent的补充知识</p>
+</blockquote>
+<p><strong>New Optimization</strong></p>
+<h1 id="New-Optimizers-for-Deep-Learning"><a href="#New-Optimizers-for-Deep-Learning" class="headerlink" title="New Optimizers for Deep Learning"></a>New Optimizers for Deep Learning</h1><h2 id="What-you-have-known-before"><a href="#What-you-have-known-before" class="headerlink" title="What  you have known before?"></a>What  you have known before?</h2><p><strong>常见Optimization的方法</strong></p>
+<ul>
+<li>SGD(随机梯度下降)</li>
+<li>SGD with momentum</li>
+<li>Adagrad</li>
+<li>RMSProp</li>
+<li>Adam</li>
+</ul>
+<h2 id="一些Notation"><a href="#一些Notation" class="headerlink" title="一些Notation"></a>一些Notation</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg16wre6ej30s80l0gs5.jpg" alt=""></p>
+<p>Momentum：History</p>
+<p>送进一个$x_t$，送入$\theta_t$得到，$y_t$，会与送入的label比较a.k.a $\hat{y_t}$</p>
+<h2 id="Why-Optimization"><a href="#Why-Optimization" class="headerlink" title="Why Optimization"></a>Why Optimization</h2><p>使损失函数最小(优化问题)</p>
+<p>如何sumover所有的dataset？</p>
+<p><strong>On-line v.s. Off-line</strong></p>
+<p>Off-line : pour all into model at every time step.</p>
+<p>On-line: one pair of $(x_t,\hat{y_t})$ at a time step.</p>
+<h3 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2e9ryv6j30i70cbq3u.jpg" alt=""></p>
+<h3 id="SGDM"><a href="#SGDM" class="headerlink" title="SGDM"></a>SGDM</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2axlwgxj30q20jktjk.jpg" alt=""></p>
+<p>把momentum累计</p>
+<p>时间上的weighted Sum。</p>
+<p>考虑到过去的momentum的影响。</p>
+<h4 id="为啥要SGDM呢？"><a href="#为啥要SGDM呢？" class="headerlink" title="为啥要SGDM呢？"></a>为啥要SGDM呢？</h4><p>当某一个gradientj接近0的时候，或local minimum的时候，有可能有卡住不动的情况出现。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2gr5d09j30q20jkah7.jpg" alt=""></p>
+<p>以为我们前面的移动(左1梯度大)会我们累加过来使我们继续移动，虽然这一点(左2)的gradient很小，</p>
+<h3 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h3><p>实时调整learning rate。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2szfdo8j30ig0dajsl.jpg" alt=""></p>
+<h3 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a>RMSProp</h3><p>与adgrad唯一的差别在于分母的算法。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2pk2m5gj30q20jk0zd.jpg" alt=""></p>
+<p>确保$v_t$不会永无止境的变大，而是在时间上有weighted sum，不会因为前几步的步伐太大而停下来。给之前的vt乘上一个系数 <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="[公式]"> 就不会出现前几步grad太大，造成的分母太大，更新为0。</p>
+<p>因为Adagrad是前面所有的求和，所以$v_t$会永无止境的变大，使步伐越来越小。</p>
+<h3 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h3><p>上两个也很难解决local mimum的问题</p>
+<p>Adam=SGDM+RMSProp的优势结合。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2wma7cbj30ii0cqq3v.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg30pl9y1j30k00argm4.jpg" alt=""></p>
+<p>[参考资料](SGD，SGDM，Adagrad，RMSProp，Adam，AdamW复习笔记 - 木吉子的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/129702058" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/129702058</a>)</p>
+<h2 id="还有没有别的Optimizer？"><a href="#还有没有别的Optimizer？" class="headerlink" title="还有没有别的Optimizer？"></a>还有没有别的Optimizer？</h2><p>事实上，是很少再有了。</p>
+<h2 id="Optimizer的Real-Application"><a href="#Optimizer的Real-Application" class="headerlink" title="Optimizer的Real Application"></a>Optimizer的Real Application</h2><p>2014年以后，很少有可以超越SGDM/Adam的算法。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg5fmehu3j30q20jkjzg.jpg" alt=""></p>
+<blockquote>
+<p>视频没有看完，但现阶段对Adam和SGDM的优化暂且与我无瓜。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/03/ML3-5-Optimization-for-DL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-ML04-Classification" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1200,98 +1331,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-英文歌曲文化赏析W12-HIPHOP2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/">英文歌曲文化赏析W12:HIPHOP2</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/" class="archive-article-date">
-  	<time datetime="2020-05-29T02:09:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hiphop-culture"><a href="#Hiphop-culture" class="headerlink" title="Hiphop culture"></a>Hiphop culture</h1><p>“The words of the prophets are written on the subway walls and tenement halls”</p>
-        
-          <a class="article-more-a" href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/">展开全文 >></a>
         </p>
       
 

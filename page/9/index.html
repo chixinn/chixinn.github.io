@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 171
+			总文章数 172
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,226 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-ML04-Classification" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/03/ML04-Classification/">ML04 Classification</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/03/ML04-Classification/" class="archive-article-date">
+  	<time datetime="2020-06-03T01:05:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h1><p>基本模型：</p>
+<p>Input:x</p>
+<p>Output:Class n</p>
+<p>Application</p>
+<ol>
+<li>Credit Scoring </li>
+<li>Medical Diagnosis</li>
+<li>Handwritten character recognition</li>
+</ol>
+<h2 id="如何将我要分类的东西数值化？"><a href="#如何将我要分类的东西数值化？" class="headerlink" title="如何将我要分类的东西数值化？"></a>如何将我要分类的东西数值化？</h2><h3 id="Example-Application"><a href="#Example-Application" class="headerlink" title="Example Application"></a>Example Application</h3><p>还是以宝可梦为例：</p>
+<p>Total: how strong 整体程度</p>
+<p>HP</p>
+<p>Attack</p>
+<p>Defense</p>
+<p>SP Atk</p>
+<p>SP Def</p>
+<p>Speed</p>
+<p>即一只宝可梦，是7个数字组成的<strong>vector.</strong></p>
+<p>每个宝可梦都是用feature来描述。</p>
+<h2 id="How-to-do-Classification？"><a href="#How-to-do-Classification？" class="headerlink" title="How to do Classification？"></a>How to do Classification？</h2><ol>
+<li><p>收集数据 Training data for Classification.</p>
+<p>（皮卡丘，type雷)/（杰尼龟，type水）/妙蛙种子，type木）</p>
+</li>
+</ol>
+<h3 id="Classification-v-s-Regression"><a href="#Classification-v-s-Regression" class="headerlink" title="Classification v.s. Regression"></a>Classification v.s. Regression</h3><blockquote>
+<p>机器学习定理：没有免费的午餐定理。</p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeykir3taj30tk0m6qjg.jpg" alt=""></p>
+<blockquote>
+<p>Regression: Output :realnumber</p>
+<p>Classification:Output:Discrete(Some class)</p>
+</blockquote>
+<ol>
+<li><p>回归方法：对数值型连续随机变量进行预测和建模。</p>
+<p>房价预测、股票预测、成绩预测</p>
+<p>1.1 线性回归：</p>
+<p>拟合，wx+b,值是连续值。</p>
+<p>$b+\sum_iw_ix_i$</p>
+<p>1.2 回归树</p>
+<p>1.3 深度学习</p>
+<p>1.4 最近邻算法</p>
+</li>
+<li><p>分类方法：</p>
+<p>邮件过滤，金融欺诈，预测雇员异动</p>
+<p>2.1 逻辑回归</p>
+<p>将线性回归的wx+b通过sigmoid函数映射到(0,1)，并利用threshold进行划分。</p>
+<blockquote>
+<p>N分类问题：先得到N组w值不同的wx+b,归一化，最后变成N个类上的概率问题。</p>
+</blockquote>
+<p>2.2 分类树（集成方法)CART算法</p>
+<p>2.3 深度学习</p>
+<p>2.4 支持向量机SVM</p>
+<p>2.5 朴素贝叶斯</p>
+</li>
+<li><p>聚类：</p>
+<p>3.1 k-means</p>
+<p>3.2 Affinity Propagation</p>
+<p>3.3 层次聚类</p>
+<p>3.4 DBSCAN</p>
+</li>
+</ol>
+<h3 id="Ideal-Alternatives"><a href="#Ideal-Alternatives" class="headerlink" title="Ideal Alternatives"></a>Ideal Alternatives</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeyp9ij1jj30tk0m612x.jpg" alt=""></p>
+<p>这里的Loss function是无法用Gradient Descent。</p>
+<p>Perceptron/SVM</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeyu9s21mj30tk0m6wmf.jpg" alt=""></p>
+<p>给一个宝可梦x，统计从哪一个class中来的几率最大。</p>
+<p>但是还有一个问题：</p>
+<p>如何estimating the probabilities from training data.</p>
+<h3 id="Generative-model"><a href="#Generative-model" class="headerlink" title="Generative model"></a>Generative model</h3><p>计算x出现的几率，得知x的distribution，然后利用distribution来generate一个x。</p>
+<p>$P(x)=P(X|C_1)P(C_1)+P(X|C_2)P(C_2)$</p>
+<h2 id="Modelling-Process-using-Genreative-model"><a href="#Modelling-Process-using-Genreative-model" class="headerlink" title="Modelling Process using Genreative model"></a>Modelling Process using Genreative model</h2><h3 id="Gaussian-Distribution"><a href="#Gaussian-Distribution" class="headerlink" title="Gaussian Distribution"></a>Gaussian Distribution</h3><p>正态分布的由mean和variance来决定。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfezskm8dgj30wm0oswxn.jpg" alt=""></p>
+<h4 id="如何从sample来推断其背后的分布？"><a href="#如何从sample来推断其背后的分布？" class="headerlink" title="如何从sample来推断其背后的分布？"></a>如何从sample来推断其背后的分布？</h4><p>找$\mu$和$\sigma$</p>
+<h4 id="如何找-mu-和-sigma-极大似然估计Maximum-likelihood"><a href="#如何找-mu-和-sigma-极大似然估计Maximum-likelihood" class="headerlink" title="如何找$\mu$和$\sigma$?极大似然估计Maximum likelihood"></a>如何找$\mu$和$\sigma$?极大似然估计Maximum likelihood</h4><p>其实这堆sample可以是任何一个正态分布都有可能sample出来的。</p>
+<p>但是，每一个高斯分布能sample出这79个点的概率是(likelihood)不一样的。</p>
+<p>即</p>
+<blockquote>
+<p>Likelihood of a Gaussian with mean $\mu$,和协方差矩阵$\Sigma$ </p>
+<p>=</p>
+<p>the probability of the Gaussian samples $x^1,x^2,….,x^{79}$;</p>
+</blockquote>
+<p>$Likelihood(\mu,\Sigma)=\Pi_i f_{\mu,\Sigma}(x_i)$</p>
+<p>即likelihood of distribution是独立sample出这79个点的乘积。</p>
+<p>接下来，要找$Maximum \ likelihood$的那个Guassian</p>
+<p>$\mu^<em>,\Sigma^</em>=arg \space max \space Likelihood(\mu,\Sigma) $</p>
+<p>什么能让它最大呢？</p>
+<blockquote>
+<p>平均值能让它最大：</p>
+<p>$\mu^*=\frac{1}{n}\sum_ix^i$;</p>
+<p>$\Sigma^<em>=\frac{1}{n}\sum(x^i-\mu^</em>)(x^i-\mu^*)^T$;</p>
+</blockquote>
+<h3 id="Now-we-can-do-classification"><a href="#Now-we-can-do-classification" class="headerlink" title="Now we can do classification"></a>Now we can do classification</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gff0a0frbqj30q80jyn6t.jpg" alt=""></p>
+<h3 id="How’s-the-results"><a href="#How’s-the-results" class="headerlink" title="How’s the results?"></a>How’s the results?</h3><p>把分类放到更到的维度上去。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gff0de85euj30q80jknga.jpg" alt=""></p>
+<p>但是放到了更高的维度上，好像也只有54%de accuracy。</p>
+<h3 id="那怎么提高accuracy呢？–Modifying-Model"><a href="#那怎么提高accuracy呢？–Modifying-Model" class="headerlink" title="那怎么提高accuracy呢？–Modifying Model"></a>那怎么提高accuracy呢？–Modifying Model</h3><ol>
+<li>修改coveriance matrix：</li>
+</ol>
+<p>即修改两个class分布的Gaussian，强迫其共用Convariance Matrix。</p>
+<p>如此，如何计算likelihood呢？</p>
+<p>这样就有140个sample point了，即变成了140个的乘积。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffeczrl4zj30q80jkwna.jpg" alt=""></p>
+<p>$\mu_1,\mu_2$的计算方式仍不变。</p>
+<h4 id="如何选择概率几率模型呢？"><a href="#如何选择概率几率模型呢？" class="headerlink" title="如何选择概率几率模型呢？"></a>如何选择概率几率模型呢？</h4><ul>
+<li><p>You can always use the distribution you like</p>
+</li>
+<li><p>这里$p(x|C_1)$的x可以是一个vector,所以$p(x|C_1)=p(x_1|C_1)p(x_2|C_2)…p(x_k|C_1)$</p>
+<p>拆解了以后，就变成了一维度的Gaussian了，此时可以更好的减少次数，但模型的正确率。即需要model 不同feature之间的covariance.</p>
+</li>
+<li><p>对于binary feature:是或不是，可以是Bernoulli distributions.</p>
+</li>
+</ul>
+<blockquote>
+<p>当你把这些维度拆开的时候，你就在假设各个维度之间<strong>没有相关性</strong>了。</p>
+<p><strong>当independent的时候，是Naive Bayes Classifier.</strong></p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfffdvoij2j30q80jkdmr.jpg" alt=""></p>
+<p>这也解释了为啥两个$\Sigma$相等的时候是linear的boundary</p>
+<h3 id="如何理解先验概率和后验概率"><a href="#如何理解先验概率和后验概率" class="headerlink" title="如何理解先验概率和后验概率"></a>如何理解先验概率和后验概率</h3><p>设玩lol的是60%,不玩的是40%.</p>
+<p>P(X=1)=0.6;P(X=0)=0.4;</p>
+<p>玩lol中，0.8男性，0.2女性。</p>
+<p>则不玩lol中，0.2男性，0.8女性。</p>
+<p>P(Y=1|X=1)=0.8;</p>
+<p>P(Y=0|X=1)=0.2;</p>
+<p>P(Y=1|X=0)=0.2;</p>
+<p>P(Y=0|X=0)=0.8;</p>
+<p><strong>P(X=1)=0.6;P(X=0)=0.4;</strong>这个概率是统计得到的，所以X的概率分布是已知的。</p>
+<p>现在又来了一个样本，x,在他是男性的情况下，这里x取1的概率是多少：</p>
+<p>P(x=1|Y=1)=$\frac{P(x=1\cap Y=1)}{P(Y=1)}$</p>
+<p>$P(x=1\cap Y=1)/P(x=1)=P(Y=1|x=1)$</p>
+<p>P(x=1|Y=1)=$\frac{P(Y=1| x=1)P(x=1)}{P(Y=1)}$</p>
+<p>$P(Y=1)=P（Y=1|X=0)<em>P(X=0)+P(Y=1|X=1)</em>P(X=1)$</p>
+<p>=0.2$\times$0.4+0.8$\times$0.6</p>
+<p>P(x=1|Y=1)=$\frac{0.8*0.6}{0.56}$</p>
+<p><strong>最后算出的P(X=玩lol|Y=男性)称之为X的后验概率，即它获得是在观察到事件Y发生后得到的</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/03/ML04-Classification/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-DATA-MINING03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1072,162 +1292,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ML01-Regression-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/29/ML01-Regression-2/">ML01-Regression-2</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/29/ML01-Regression-2/" class="archive-article-date">
-  	<time datetime="2020-05-29T00:19:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h1><h2 id="Case-Study-gt-Pokemon"><a href="#Case-Study-gt-Pokemon" class="headerlink" title="Case Study -&gt;Pokemon"></a>Case Study -&gt;Pokemon</h2><ol>
-<li><p>Gradient的定义:</p>
-<p>将对参数的偏微分,排列成一个向量.</p>
-</li>
-<li><p>Gradient Descent 的不足:</p>
-<p>对于存在Local optimal的模型的处理不佳.</p>
-<p>但是Linear Regression的模型是convex的,所以不存在local optimal的情况.</p>
-</li>
-</ol>
-<p>##关于模型训练结果的分析</p>
-<h3 id="How’s-the-result"><a href="#How’s-the-result" class="headerlink" title="How’s the result?"></a>How’s the result?</h3><p>因为我们更想得到的是generalization的结果,所以我们最关心的是error on new data(testing data) instead of training data itself.</p>
-<blockquote>
-<p>Training data上看起来更准一点就说明model更准了吗?</p>
-<p>过拟合与交叉验证.</p>
-</blockquote>
-<h3 id="How-can-we-do-better"><a href="#How-can-we-do-better" class="headerlink" title="How can we do better?"></a>How can we do better?</h3><blockquote>
-<p>Selecting another Model</p>
-</blockquote>
-<p>重新设计模型:</p>
-<p>原model:</p>
-<p>$y=b+wx_{cp}$;</p>
-<p>现在的model:</p>
-<p>$y=b+w_1x_{cp}+w_2x_{cp}^2$;</p>
-<p>How can we do more better?</p>
-<p>$y=b+w_1x_{cp}+w_2x_{cp}^2+w_3x_{cp}^3$</p>
-<h4 id="对于三次和二次在pokemon例子上的比较"><a href="#对于三次和二次在pokemon例子上的比较" class="headerlink" title="对于三次和二次在pokemon例子上的比较"></a>对于三次和二次在pokemon例子上的比较</h4><p><strong>Slightly</strong> better.</p>
-<h4 id="什么是“好的”model"><a href="#什么是“好的”model" class="headerlink" title="什么是“好的”model?"></a>什么是“好的”model?</h4><p>对于宝可梦模型,我们先后使用了1次2次…4次进行拟合,我们发现,随着模型的复杂度上升,我们的error on training data确实在下降,但是我们的error on testing da ta 却<strong>反而上升</strong>了.</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf916eob7uj30s20l813e.jpg" alt=""></p>
-<p>显然,当$w_4=0$时,三次模型所涵盖的表达都可以用4次模型的model表达出来.</p>
-<h2 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h2><p>为什么复杂model在training data上得到这么好的结果,而在testing上的error这么可怕呢?</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91eo6kffj30s20l8aj6.jpg" alt=""></p>
-<blockquote>
-<p>比如不是选择复杂的model,而是选择一个合适的model.</p>
-</blockquote>
-<h2 id="Let’s-collect-more-data"><a href="#Let’s-collect-more-data" class="headerlink" title="Let’s collect more data"></a>Let’s collect more data</h2><h3 id="What-are-the-hidden-factors"><a href="#What-are-the-hidden-factors" class="headerlink" title="What are the hidden factors?"></a>What are the hidden factors?</h3><p>进化后物种的影响仍是很大的.</p>
-<p>所以刚才的model本身就不好.</p>
-<blockquote>
-<p>Back to Step1.</p>
-</blockquote>
-<h2 id="Redesign-the-Model"><a href="#Redesign-the-Model" class="headerlink" title="Redesign the Model"></a>Redesign the Model</h2><blockquote>
-<p>不同的物种,不同的linear func</p>
-</blockquote>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91k13gbij30s20l8jyn.jpg" alt=""></p>
-<p>可以用一种更奇妙的函数表示形式,将之前有if的式子表示成带信号处理(i.e.“是”即1,“不是”即0);</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91m87p2ej30s20l8thu.jpg" alt=""></p>
-<p>当我们的输入$x_s=Pidgey$时,其即$y=b_1.1+w_1x_{cp}$</p>
-<h3 id="Are-there-any-other-hidden-factors"><a href="#Are-there-any-other-hidden-factors" class="headerlink" title="Are there any other hidden factors?"></a>Are there any other hidden factors?</h3><p>把我们想到的factor 以后 都back to step 1.</p>
-<h3 id="如何处理overfitting"><a href="#如何处理overfitting" class="headerlink" title="如何处理overfitting?"></a>如何处理overfitting?</h3><h2 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h2><p>重新定义我们的loss function,把knowledge放进去进行Redesign.</p>
-<p>$Loss:y=b+\sum w_ix_i$;</p>
-<p><strong>这里面这个求和是把种类不同考虑进去了。</strong></p>
-<p>$L=\sum_n(\hat{y}^n-(b+\sum w_ix_i))^2+\lambda\sum(w_i)^2$</p>
-<p>对于正则项:我们期待一个越小的$w_i$这个function越好.</p>
-<p>参数接近0时:</p>
-<h3 id="平滑"><a href="#平滑" class="headerlink" title="平滑"></a>平滑</h3><p>平滑是什么意思?</p>
-<p>输入有变化时,整体的变化对输入的变化是 <strong>不敏感</strong>的.</p>
-<p>$y=b+\sum w_ix_i$;</p>
-<p>如果我们的输入变化$\Delta x$,那么相应的,我们的输出变化,$w_i\Delta x_i$.</p>
-<p>$w_i$越接近0,function越平滑</p>
-<h4 id="为什么我们喜欢平滑的function"><a href="#为什么我们喜欢平滑的function" class="headerlink" title="为什么我们喜欢平滑的function?"></a>为什么我们喜欢平滑的function?</h4><p>因为当我们的输入被噪声所干扰时,一个平滑的function会被噪声有很小的影响.</p>
-<p>$\lambda$越大,代表考虑regularization的smooth正则项的影响力越大.</p>
-<blockquote>
-<p>我们喜欢平滑的function,但我们不喜欢太平滑的function.</p>
-<p>最平滑的function是一条水平线.</p>
-</blockquote>
-<h3 id="为什么在正则项中没有加上b"><a href="#为什么在正则项中没有加上b" class="headerlink" title="为什么在正则项中没有加上b?"></a>为什么在正则项中没有加上b?</h3><blockquote>
-<p>在做regularization是不需要考虑bias一项的.</p>
-</blockquote>
-<p>bias是作为常数项只是函数的上下移动而已.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>对于我们没有得到的data,即在testing data中没有包含的测试数据.</p>
-<p>我们的最终建模系统是”Underestimate?””Overestimate”?</p>
-<p><strong>Following lectures :validation</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/29/ML01-Regression-2/">展开全文 >></a>
         </p>
       
 

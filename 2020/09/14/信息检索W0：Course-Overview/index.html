@@ -16,7 +16,7 @@
 <meta property="og:description" content="Moden information retrival 每双周一实验课，每四周一个实验。 学习目的： 了解IR(Information Research)的原理 考核标准 上课问答表现 实验课35% 期末考试50% 突出表现5%    【考试】">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-14T03:18:28.000Z">
-<meta property="article:modified_time" content="2020-09-14T03:29:42.477Z">
+<meta property="article:modified_time" content="2020-09-21T02:50:21.231Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="课程">
 <meta property="article:tag" content="大三上">
@@ -70,7 +70,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 171
+			总文章数 172
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -264,8 +264,9 @@
 </blockquote>
 <h2 id="大文档集"><a href="#大文档集" class="headerlink" title="大文档集"></a>大文档集</h2><p>Term-Doc 矩阵是高度稀疏的</p>
 <blockquote>
-<p>如何做到只记住1的位置?</p>
+<p>如何做到只记住1的位置?即，将文档词向量空间进行压缩。</p>
 </blockquote>
+<p>列数，远远大于每一行文档所应该包含的词数(unique term)。</p>
 <h2 id="倒排索引"><a href="#倒排索引" class="headerlink" title="倒排索引"></a>倒排索引</h2><ul>
 <li>对于每一个词T，记录所有包含T的文档列表</li>
 <li><strong>问题：能否采用定长数组的方式来存储DOCID列表</strong><ul>
@@ -274,18 +275,31 @@
 </ul>
 </li>
 </ul>
-<p>Posting:倒排(记录)表【考试】</p>
+<blockquote>
+<p><strong>Posting:倒排(记录)表【考试】</strong></p>
+<p>考试画图—&gt;填出来?</p>
+</blockquote>
 <p>为什么要按照DOCID顺序排列？二分查找(单纯数组的时候)</p>
-<h3 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h3><p>分词工具(现有的工具包)</p>
-<p>Tokenization</p>
-<p>Linguistic modules</p>
+<h3 id="构建"><a href="#构建" class="headerlink" title="构建"></a>构建</h3><blockquote>
+<p>构建过程：词典+倒排记录表</p>
+</blockquote>
+<p>分词工具(现有的工具包)</p>
+<p>Tokenization(切词)</p>
+<p>Linguistic modules：语言分析工具，将不同的词的形式用同一种表达方式表达)</p>
+<p>如Windows，等大小写的变化会带来很多转义时候的错误，从而导致检索精度的损失。</p>
 <p>Indexer</p>
 <p>按照这个流程构建所需要的Posting.</p>
-<h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><ol>
+<h4 id="过程-lt-词条，DOCID-gt"><a href="#过程-lt-词条，DOCID-gt" class="headerlink" title="过程:&lt;词条，DOCID&gt;"></a>过程:&lt;词条，DOCID&gt;</h4><ol>
 <li>按词项排序(字母序)</li>
 <li>Posting按，DOCID进行排序，</li>
 <li>某词项出现多次时会被合并</li>
+<li>词项(Doc,frequency,df)</li>
 </ol>
+<blockquote>
+<p>为什么要记录这个词在多少个文档里面？</p>
+</blockquote>
+<h4 id="存储开销"><a href="#存储开销" class="headerlink" title="存储开销"></a>存储开销</h4><p>词项+频率</p>
+<p>链表+指针</p>
 
       
 

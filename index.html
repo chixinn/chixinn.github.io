@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 169
+			总文章数 171
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,601 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-操作系统知识点复习总结-期末版" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93-%E6%9C%9F%E6%9C%AB%E7%89%88/">操作系统知识点复习总结(期末版)</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/09/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93-%E6%9C%9F%E6%9C%AB%E7%89%88/" class="archive-article-date">
+  	<time datetime="2020-09-21T00:12:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>这是我在本学期开学的操作系统理论考试复习笔记，针对的更多是个人不会的地方。</p>
+<p>教材配套是操作系统设计与实现这本书，也是我们专业课使用的教材。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gixyiaih2ij309d0dw0tv.jpg" alt></p>
+<p>长上面这个样子。</p>
+<p>对照着也有王道408考研书的，虽然表述不同，但大都大同小异，针对的都是操作系统的核心。</p>
+<p>操作系统速记</p>
+<ol>
+<li>操作系统控制和管理系统内的各种资源，源程序资源不是操作系统应该管理的</li>
+<li>系统调用只能通过用户程序间接使用，是操作系统给编程人员的借口，系统调用的目的是请求系统服务。</li>
+<li>操作系统与用户的通信接口不包括缓存管理指令</li>
+<li>操作系统开机后，被最终加载到RAM。</li>
+<li>提高单CPU利用率：多道程序设计，批处理OS的主要缺点是无交互能力。</li>
+<li>OS的基本类型：批处理OS分时OS实时OS</li>
+<li>多道程序系统的系统开销大</li>
+<li>实时系统：抢占式的优先级调度</li>
+<li>分时系统：优先级+非抢占</li>
+<li>时间片一定，用户数越多，响应时间越长</li>
+<li>甘特图CPU运行时间，进程周转时间</li>
+<li>中断处理是OS必须提供的功能，</li>
+<li>地址映射：重定位需要硬件的支持；时钟管理,中断系统也需要。</li>
+<li>中断和异常</li>
+<li>用户态执行命令解释程序</li>
+<li>系统调用，是OS给用户的借口，用户态，进程切换只可能在和心态。</li>
+<li>中断处理程序，PSWR/PC</li>
+<li>中断是完成时的提醒，所以”缺页中断”是异常，但是广义来说，缺页中断作为中断，一条指令在执行期间，可能产生多次缺页中断。</li>
+<li>执行系统调用的过程，传递系统调用参数，执行中断指令，执行相应的服务程序返回用户态</li>
+<li>定时器产生时钟中断后，由时钟中断，所有与时间相关的都更新了。</li>
+<li>显然，微内核没有大内核高效和稳定，但系统更可靠。</li>
+</ol>
+<hr>
+<ol>
+<li><p>每一个进程必须有一个唯一的标示：PCB</p>
+</li>
+<li><p>进程状态的改变：</p>
+<ol>
+<li>就绪，除了CPU都有了</li>
+<li>阻塞，等待事件发生，等I/O的完成，等待中断的结束，等待其他资源</li>
+<li>当I/O完成时，由阻塞进入就绪态。</li>
+<li>时间片结束进入就绪态</li>
+<li>就绪态不可能直接到阻塞态</li>
+<li>进程的阻塞是进程自身的一种主动行为，因此也只有running才可以到wait态。</li>
+<li>进程间通信(IPC)需要进程同步和互斥手段的辅助</li>
+</ol>
+</li>
+<li><p>进程通信机制：共享存储消息传递管道PV原语</p>
+</li>
+<li><p>进程是拥有资源的基本单位，县城作为调度的基本单位</p>
+</li>
+<li><p>为啥要有线程？线程开销比进程开销小啊</p>
+</li>
+<li><p>有新进程进入就绪态不是引起操作系统选择新进程的直接原因</p>
+</li>
+<li><p>堆栈指针属于PCB但是全局变量不属于PCB</p>
+</li>
+<li><p>进程创建完成时会进入就绪序列</p>
+</li>
+<li><p>当就绪队列非空时，操作系统总是繁忙</p>
+</li>
+<li><p>对进程的管理和控制使用原语</p>
+</li>
+<li><p>设备分配由I/O系统完成，一种数据结构用来记录不会导致新进程的创建</p>
+</li>
+<li><p>属于同一个进程的线程也有属于自己的战指针</p>
+</li>
+<li><p>降低进程优先级的合理时机时进程时间片用完。</p>
+</li>
+<li><p>操作系统空闲，就绪队列为0，CPU处于空闲状态；当系统中所有进程处于阻塞状态时可能是死锁。</p>
+</li>
+<li><p>现代OS中，不能进行进程调度与切换的情况：</p>
+<ol>
+<li>处理中断</li>
+<li>进程在临界区</li>
+<li>完全屏蔽中断的原子操作过程</li>
+</ol>
+</li>
+<li><p>系统吞吐量时单位时间内CPU完成作业的数量，所以CPU完成的作业越多，CPU利用率高</p>
+</li>
+<li><p>FCFS不可剥夺算法，对长作业有利，长作业属于IO繁忙型，短作业属于CPU繁忙型(相对于SJF和高响应比)</p>
+</li>
+<li><p>SJF：导致饥饿，饥饿是由于策略调度产生的，死锁是循环等待，是由于系统资源互斥占有从而循环等待产生的。</p>
+</li>
+<li><p>优先级算法：剥夺式非剥夺式</p>
+</li>
+<li><p>优先级标准：IO &gt;计算</p>
+</li>
+<li><p>高响应比优先调度：（等待+服务）/服务</p>
+</li>
+<li><p>时间片，适用于分时系统，为了多个用户可以及时干预系统，人机交互也应采用时间片轮转调度算法</p>
+</li>
+<li><p>时间片轮转调度算法是绝对可抢占的</p>
+</li>
+<li><p>进程处于临界区时可以进行处理机调度(28)</p>
+</li>
+<li><p>可以满足短作业优先且不会饥饿：高响应比优先</p>
+</li>
+<li><p>临界区是访问共享资源(临界资源)的那段<strong>代码</strong>！！！</p>
+</li>
+<li><p>可以用信号量机制来解决互斥与同步的问题,p/v操作</p>
+</li>
+<li><p>信号量实现同步：前V后P</p>
+</li>
+<li><p>信号量实现互斥：p(mutex)v(mutex)</p>
+</li>
+<li><p>一个进程只有通过管城内的过程才能进入管程访问共享数据</p>
+</li>
+<li><p>每次仅允许一个进程(任何时候)在管程内执行某个内部过程。管程可以实现进程的互斥和同步。管程是由编程语言支持的进程同步机制，管程中定义的变量只能被管程内的过程访问。</p>
+</li>
+<li><p>经典IPC问题：</p>
+<ol>
+<li><p>生产者消费者问题：</p>
+<p>信号量：标示资源，初始化为资源的数量</p>
+<p>p(资源)：要用什么p一下</p>
+<p>v(资源)：提供什么v一下</p>
+</li>
+<li><p>p(mutex) do sth on critical section v(mutex)</p>
+</li>
+<li><p>读者写者问题的三种类型和不同的思路</p>
+</li>
+<li><p>哲学家就餐问题</p>
+</li>
+</ol>
+</li>
+<li><p>某个信号量的处置是n，当信号量n&lt;0,|n|阻塞队列的进程个数。n&gt;=0表示可用资源的个数</p>
+</li>
+<li><p>临界区是指并发进程访问共享变量段的<strong>代码程序。</strong></p>
+</li>
+<li><p>p操作可能导致进程阻塞</p>
+</li>
+<li><p>管程定义了共享数据结构和各种进程在该数据结构上的全部操作。</p>
+</li>
+<li><p>用v操作唤醒，被唤醒进程变为就绪态。</p>
+<p>阻塞态-&gt;就绪态。</p>
+</li>
+<li><p>可以被多个进程在任意时刻共享的代码必须是不允许任何修改的代码</p>
+</li>
+<li><p>如果有进程在等待进入临界区的话，mu tex一定&lt;0</p>
+</li>
+<li><p>临界区是代码，</p>
+</li>
+<li><p>互斥使用的资源一定是1.</p>
+</li>
+<li><p>x.wait()阻塞该进程，并将之插入x的阻塞队列中。</p>
+</li>
+<li><p>对共享变量的操作需要互斥执行。</p>
+</li>
+<li><p>死锁</p>
+<ol>
+<li><p>死锁预防</p>
+<p>破坏死锁的四个条件</p>
+<ul>
+<li>互斥：任意时刻只允许一个进程使用资源【对所有资源进行spooling】</li>
+<li><strong>环路等待：顺序资源分配，资源编号，资源有序分配</strong></li>
+<li>破坏不剥夺：已占用的不会被强制剥夺</li>
+<li>请求并保持(占有并请求)：进程在请求剩余资源，不主动释放所占用的资源，<strong>运行前一次性申请完所需要的资源</strong></li>
+</ul>
+</li>
+<li><p>死锁检测：资源分配图</p>
+</li>
+<li><p>死锁避免：银行家算法，检查<strong>系统的安全状态，</strong>防止系统进入不安全的状态</p>
+</li>
+</ol>
+</li>
+<li><p>产生死锁的可能原因是独占资源分配不当，系统资源分配不足只会产生饥饿而不是死锁。</p>
+</li>
+<li><p>解除死锁通常不采用从非死锁进程抢夺资源</p>
+</li>
+<li><p>两级调度</p>
+</li>
+<li><p>忙等算法</p>
+</li>
+<li><p>两阶段加锁</p>
+</li>
+</ol>
+<hr>
+<ol>
+<li><p>虚拟存储器(virtual memory)：使进程在只有一部分主存的情况下也能运行。</p>
+<p>虚拟存储是把内存与外存有机结合起来使用</p>
+<p>虚拟存储器：在具有层次结构存储器的计算机系统中，自动实现部分装入和部分替换功能，能从逻辑上为用户提供一个比物理内存大得多，可寻址的内存。虚拟存储区的容量与物理内存(主存)大小无关，而受限于计算机的地址结构(最大容量取决于虚拟地址空间，即虚拟存储器的最大容量由计算机的地址结构决定)和可用磁盘容量。</p>
+<p>48位虚拟地址空间，针对于64位计算机而言。</p>
+<p><strong>虚拟存储只能基于非连续分配技术。</strong></p>
+</li>
+<li><p>虚拟内存技术的实现：</p>
+<p>虚拟内存实现：分页存储/分段存储/请求段页式存储</p>
+<p>不管哪种方式，都需要一定的硬件支持。</p>
+</li>
+<li><p>地址重定位：(将用户空间中使用的逻辑地址转变为物理地址的过程)</p>
+<ul>
+<li>静态重定位：固定分区</li>
+<li>动态重定位：作业执行过程</li>
+</ul>
+<p>重定位与地址保护：一个既针对重定位又针对保护问题的解决方法是设置基址和界限寄存器</p>
+</li>
+<li><p>地址映射</p>
+<p>逻辑地址变为物理地址：</p>
+<p>虚拟地址是用户空间的逻辑地址</p>
+</li>
+<li><p>固定分区</p>
+</li>
+<li><p>动态分区（FF/BF/NF/WF）</p>
+</li>
+<li><p>软件模拟LRU算法(NFU )</p>
+</li>
+<li><p>非连续分配管理方式：(虚拟存储管理)</p>
+<p>分页存储管理，没有外碎片，1/2内碎片；地址变换由硬件自动完成。</p>
+<p>逻辑地址结构与页表项结构</p>
+<p>多级页表：不浪费空间存储无用页表项在内存中，【不盲目顺序式查找页表项】地址映射需要非常迅速</p>
+<p>多级页表的缺点是我们需要多次访问内存以查找页表。</p>
+<p>分段存储管理：没有内碎片</p>
+<p>分段/段表/地址变换机构</p>
+<p>段页式管理方式：一个进程中，段表只有一个，页表可能有多个。段式：编程时程序的逻辑结构。段没有内碎片但有外碎片</p>
+</li>
+<li><p>页式存储管理的设计问题：</p>
+<ol>
+<li>工作集模型：<ol>
+<li>抖动：分配给进程的物理页数太小，无法包含其工作集，频繁的在内存和外存间换页。</li>
+<li>预先调页</li>
+</ol>
+</li>
+<li>分配策略</li>
+<li>页面大小：内碎片在最后一页</li>
+<li>虚拟存储接口</li>
+</ol>
+</li>
+<li><p>LRU算法耗费高的原因是需要对所有的页进行排序。</p>
+</li>
+<li><p>虚拟存储管理系统的基础是基于程序的局部性</p>
+</li>
+<li><p>使用覆盖，交换可以实现虚拟存储</p>
+</li>
+</ol>
+<hr>
+<p>I/O的各种控制方式：</p>
+<ol>
+<li>程序控制</li>
+<li>中断控制</li>
+<li>DMA控制</li>
+<li>通道控制</li>
+</ol>
+<p>设备驱动程序</p>
+<p>设备无关软件的设计目标</p>
+<p>设备无关性</p>
+<p>Spooling</p>
+<p>磁盘</p>
+<p>磁盘调度算法</p>
+<p>时钟</p>
+<p>终端设备</p>
+<hr>
+<ol>
+<li><p>文件系统</p>
+</li>
+<li><p>字符设备文件/块设备文件</p>
+</li>
+<li><p>I-node ：</p>
+<p>inode包含了文件的元信息，inode也会消耗磁盘空间，所以在磁盘格式化的时候，磁盘中也有inode区。</p>
+<p><strong>unix/linux系统内部不使用文件名，而是使用inode号来识别文件。</strong></p>
+<p><strong>unix</strong>中目录也是一种文件，所以，打开目录就是打开文件，每个目录的目录项由两部分组成，包含文件的文件名与该文件名的inode号。</p>
+<p>硬连接：<strong>文件名和inode号码之间是一一对应的关系，每个inode对应一个文件名。但是unix系统允许多个文件名指向同一个inode号码。</strong></p>
+<p>所以，可以用不同的文件名访问同样的内容。对文件内容的修改，会影响到所有文件名，但是删除一个文件名不会影响另一个文件名的访问。</p>
+<p>即inode信息项中有一项叫做链接数，记录指向该inode的文件名总数，这时会增加1.</p>
+<p>删除一个文件名，会使得inode节点中的“链接数”减1，当这个值减到0，表示没有文件名指向这个inode.</p>
+<p> 符号链接是一个包含文件名的小文件。 硬链接比符号链接更有效。 </p>
+<p>所以删除原文件的时候，符号链接就失效啦，符号链接类比于快捷方式，但是符号链接可以跨系统</p>
+</li>
+</ol>
+<ol start="4">
+<li>磁盘块结构</li>
+<li>FOT</li>
+<li>文件系统安装</li>
+<li>磁盘空间管理</li>
+<li>块高速缓存</li>
+<li>文件系统的性能</li>
+</ol>
+<hr>
+<h2 id="生产者-消费者问题"><a href="#生产者-消费者问题" class="headerlink" title="生产者-消费者问题"></a>生产者-消费者问题</h2><ol>
+<li>生产者消费者共享一个初始为空，大小为n的缓冲区</li>
+<li>缓冲区没满，生产者才能生产</li>
+<li>缓冲区没空，消费者才能消费</li>
+<li>缓冲区是临界资源，必须互斥访问。</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex=<span class="number">1</span>;</span><br><span class="line">semaphore full=<span class="number">0</span>;</span><br><span class="line">semaphore empty=n;</span><br><span class="line">producer()&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    p(empty)<span class="comment">//消耗一个空的slot</span></span><br><span class="line">    p(mutex)<span class="comment">//p操作会导致进程阻塞，所以实现互斥的p操作一定要放在实现同步的p操作之后。</span></span><br><span class="line">    produce()</span><br><span class="line">    v(mutex)</span><br><span class="line">    v(full)<span class="comment">//增加一个满的</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">consumer()&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    p(full)</span><br><span class="line">    p(mutex)</span><br><span class="line">    consume()</span><br><span class="line">    v(mutex)</span><br><span class="line">    v(empty)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="读者-写者问题-三种变体，课后题"><a href="#读者-写者问题-三种变体，课后题" class="headerlink" title="读者-写者问题(三种变体，课后题)"></a>读者-写者问题(三种变体，课后题)</h2><h3 id="变体1"><a href="#变体1" class="headerlink" title="变体1"></a>变体1</h3><ol>
+<li>允许多个读者可以同时对文件进行读操作</li>
+<li>写写互斥</li>
+<li>读写互斥</li>
+<li>读者优先</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">semaphore db=<span class="number">1</span><span class="comment">//共享文件的互斥访问(写写)</span></span><br><span class="line"><span class="keyword">int</span> count =<span class="number">0</span>;<span class="comment">//引入count变量记录有多少读进程</span></span><br><span class="line">semaphore mutex=<span class="number">1</span>;<span class="comment">//count变量的互斥访问</span></span><br><span class="line">reader()&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    p(mutex);<span class="comment">//读进程互斥访问count</span></span><br><span class="line">    counter=counter+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(counter==<span class="number">1</span>)</span><br><span class="line">      p(db);<span class="comment">//因为读优先，所以对db加锁</span></span><br><span class="line">    v(mutex);<span class="comment">//living critical sectioncount</span></span><br><span class="line">    <span class="built_in">read</span>();</span><br><span class="line">    p(mutex);<span class="comment">//各读进程互斥访问count</span></span><br><span class="line">    counter=counter<span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">if</span>(counter==<span class="number">1</span>)</span><br><span class="line">      v(db);</span><br><span class="line">   	v(mutex)  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">writer()&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    p(db);<span class="comment">//可omit</span></span><br><span class="line">    p(mutex);<span class="comment">//写之前加锁</span></span><br><span class="line">    writer;</span><br><span class="line">    v(mutex);<span class="comment">//写之后解锁</span></span><br><span class="line">    v(db);<span class="comment">//可omit</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="变体2：公平竞争"><a href="#变体2：公平竞争" class="headerlink" title="变体2：公平竞争"></a>变体2：公平竞争</h3><p>设有一个数据库，存在多个读者和写者，读写互斥，写写互斥，写操作只需要等待它到来时处于活跃状态的读者结束，而不需要等待所有读者结束。</p>
+<p>读完才能写；写完才能读；</p>
+<p>读读不需要互斥。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">semaphore rw=<span class="number">1</span>;<span class="comment">//读写对共享资源的互斥访问</span></span><br><span class="line"><span class="keyword">int</span> count=<span class="number">0</span>;<span class="comment">//有多少读进程</span></span><br><span class="line">semaphore mutex=<span class="number">1</span>;<span class="comment">//对count共享变量互斥访问</span></span><br><span class="line">semaphore w=<span class="number">1</span>;<span class="comment">//写资源优先，</span></span><br><span class="line">writer()&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    p(w);<span class="comment">//拿到写令牌，阻塞读</span></span><br><span class="line">    p(rw);<span class="comment">//拿到访问数据库令牌</span></span><br><span class="line">    <span class="built_in">write</span>;</span><br><span class="line">    v(rw);</span><br><span class="line">    v(w); </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">reader()&#123;</span><br><span class="line">  p(w);<span class="comment">//拿到写令牌</span></span><br><span class="line">  p(mutex);</span><br><span class="line">  counter=counter+<span class="number">1</span>;<span class="comment">//都reader了，肯定counter计数要+1;</span></span><br><span class="line">  <span class="keyword">if</span>(counter==<span class="number">1</span>)<span class="comment">//如果是第一个读</span></span><br><span class="line">    p(rw);<span class="comment">//访问数据库的锁</span></span><br><span class="line">  v(mutex);<span class="comment">//counter咱不需要占着了嘛</span></span><br><span class="line">  <span class="built_in">read</span>();</span><br><span class="line">  <span class="comment">//读完以后呢</span></span><br><span class="line">  p(mutex);</span><br><span class="line">  counter=counter<span class="number">-1</span>;</span><br><span class="line">  <span class="keyword">if</span>(counter==<span class="number">0</span>)</span><br><span class="line">    v(rw);<span class="comment">//释放访问数据库的锁</span></span><br><span class="line">  v(mutex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="变体3-写者优先"><a href="#变体3-写者优先" class="headerlink" title="变体3 写者优先"></a>变体3 写者优先</h3><p>当有写者到来时阻塞读者线程的队列</p>
+<p>读写互斥，写完后才能读。</p>
+<p>没有写的时候，所有读都能读。</p>
+<p>增加计数这是第几个写？</p>
+<h2 id="哲学家就餐问题"><a href="#哲学家就餐问题" class="headerlink" title="哲学家就餐问题"></a>哲学家就餐问题</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 5</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LEFT (i+N-1)%N</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RIGHT (i+1)%N</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> THINKING 0</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> HUNGRY 1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EATING 2</span></span><br><span class="line">semaphore mutex=<span class="number">1</span>;<span class="comment">//临界区互斥</span></span><br><span class="line">semaphore s[N];<span class="comment">//每个哲学家一个信号量</span></span><br><span class="line"><span class="keyword">int</span> state[N]<span class="comment">//记录哲学家的状态</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">philosopher</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">  <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">    think();</span><br><span class="line">    take_forks(i);</span><br><span class="line">    eat();</span><br><span class="line">    put_forks(i);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">take_forks</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">  p(mutex);</span><br><span class="line">  state[i]=HUNGRY;</span><br><span class="line">  test(i);<span class="comment">//试图得到两把叉子</span></span><br><span class="line">  v(mutex);</span><br><span class="line">  p(s[i]);<span class="comment">//得不到叉子就阻塞该哲学家</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">put_forks</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">  p(mutex);</span><br><span class="line">  state[i]=THINKING:</span><br><span class="line">  test(LEFT);<span class="comment">//看左能否进餐</span></span><br><span class="line">  test(RIGHT);<span class="comment">//看右能否进餐</span></span><br><span class="line">  v(mutex)</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(i)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(state[i]==HUNGRY &amp;&amp;state[LEFT]!=EATING &amp;&amp;state[RIGHT]!=EATING)&#123;</span><br><span class="line">    state[i]=EATING;</span><br><span class="line">    v(s[i]);<span class="comment">//得到叉子后就唤醒</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h2 id="操作系统名词解释"><a href="#操作系统名词解释" class="headerlink" title="操作系统名词解释"></a>操作系统名词解释</h2><p>陷入</p>
+<p>管程：管程是由<strong>过程、变量及数据结构组成的集合</strong>，组成一个特殊的模块或软件包，进程可在任何需要的时候调用管程中的过程</p>
+<blockquote>
+<p><strong>把共享变量，和对共享变量的操作都集中在一个模块中</strong>。</p>
+</blockquote>
+<p>设备驱动程序：接受上方设备无关软件的请求，负责执行请求。</p>
+<p>设备无关性：用软件屏蔽硬件上的差异</p>
+<p>两阶段加锁法：【死锁预防的方案过于严格，死锁避免的方法需要无法得到信息】，【在很多数据库系统中，常常需要将若干记录上锁然后更新】</p>
+<p>在第一阶段，进程时图将其所需的全部记录加锁，一次锁一个记录。若成功，则开始第二阶段。完成更新然后释放锁。如果有一些记录已经被上锁，则它将已上锁的记录解锁并重新开始第一阶段。</p>
+<p>交换：把各个进程<strong>完整地</strong>掉入内存，运行一段时间，然后再放回磁盘</p>
+<p>虚拟存储器: virtual memory，进程即使只有一部分内容在内存中也能运行。程序代码\，数据和栈的总大小可以超过实际可用的物理内存的大小。OS把当前需要的留在内存中，不需要的保留在磁盘上。</p>
+<p>工作集模型：一个进程当前正在使用的页面的集合称为它的工作集。</p>
+<p>字符设备文件：与输入/输出有关，用于处理各种串行I/O设备；</p>
+<p>快设备，用于磁盘</p>
+<p>文件系统的布局：</p>
+<p>大多数磁盘可以分为若干个分区，每个分区上的FS是相互独立的，MBR(主引导技术)：</p>
+<p>整个磁盘：</p>
+<p>MBR(磁盘扇区0，用来启动计算机BIOS 读入执行MBR中的代码)+分区表</p>
+<p>单独分区：</p>
+<p>Boot block;Super block;空闲空间管理；I-nodes(索引节点)；根目录；文件和目录</p>
+<p>Difference between file discriptor and i-nodes.</p>
+<p>超级块用来管理文件系统</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giqkf6ib95j30vo0iadkb.jpg" alt></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giqkfc83n4j30vo0le0v9.jpg" alt></p>
+<hr>
+<ol>
+<li>Inode-与打开文件表</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1giqzz9dlklj30vo0goq7s.jpg" alt></p>
+<ol start="2">
+<li><p>magic number:</p>
+<p><strong>rwx（所有者)//同组(rwx)//其他</strong></p>
+</li>
+<li><p>CPU核心态OS使用，执行机器所有指令</p>
+</li>
+<li><p>用户态用户，I/O操作和其他操作都不能执行</p>
+</li>
+<li><p>先将参数放入预先确定的寄存器或堆栈，然后执行一条特殊的陷入指令</p>
+</li>
+<li><p>虚拟机：全虚拟化技术(虚拟成多个大型机，并且和硬件接口完全一致)，半虚拟化技术</p>
+</li>
+<li><p>部分虚拟化：在硬件支持不完全的情况下，仍然能够提供虚拟化</p>
+</li>
+<li><p>基于容器的虚拟化技术：计算机系统上运行着唯一的操作系统实例，通过在这个系统上加装虚拟化平台，可以将系统划分成多个独立隔离的容器，每个容器是一个虚拟的操作系统，不虚拟任何硬件设备。</p>
+</li>
+<li><p>PCB 进程控制块：资源占用信息：虚拟地址空间现状,打开文件列表。</p>
+</li>
+<li><p>中断处理的步骤：</p>
+</li>
+<li><p>用户线程：不依赖于OS核心；所以也没有用户态与核心态的切换</p>
+</li>
+<li><p>内核线程：依赖于OS核心</p>
+</li>
+<li><p>可能的方法：</p>
+<ol>
+<li>关中断；</li>
+<li>锁变量(如果锁变量是普通类型，不是原子类型，仍会发生竞争条件)</li>
+<li>严格交替法：即使代码在非临界区中，也会阻塞其他进程</li>
+<li>忙等待形式互斥：Peterson互斥，TSL解法</li>
+</ol>
+</li>
+<li><p>许多系统调用是原语，但并非所有系统调用都是原语</p>
+</li>
+<li><p>条件变量：在管程内部，存在某种等待机制，管程内部可以说明和使用的一种特殊类型的变量（条件变量）,每个表示一种等待原因，相当于每个原因对应一个队列。</p>
+</li>
+<li><p>利用消息传递进行进程间通信，使用SEND/RECEIVE两条原语</p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gir14ihv1nj30nq026jrz.jpg" alt></p>
+</li>
+<li><p>分时系统：多个用户分享使用同一台计算机，多个程序分时共享硬件和软件资源(按时间片分配)</p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gir1jtgubfj30t00h60xt.jpg" alt></p>
+</li>
+<li><p>OS的有些部分也需要定时器，即所谓的看门狗时钟。每次向硬盘控制器发命令时，都要安排唤醒调用，以便当命令执行完全失败时的试图恢复。</p>
+</li>
+<li><p>程序控制I/O：I/O操作由程序发起，CPU等待操作完成,数据的读写通过CPU，每个<strong>控制器</strong>都有一些用来与<strong>CPU通信的寄存器与缓冲区。</strong></p>
+<p>设备数据缓冲区按内存地址空间进行统一编址。</p>
+</li>
+<li><p>中断驱动：I/O操作由程序发起，在读/写字符数据完成时，向CPU发出中断，通知CPU，读写通过CPU</p>
+</li>
+<li><p>DMA：程序DMA硬件中的完成I/O操作，CPU只需要干预I/P操作的开始和结束。</p>
+</li>
+<li><p>通道，通道比CPU完成更为复杂的I/O控制，一个通道对应多个外设，一次完成几批I/O操作。</p>
+</li>
+<li><p>spooling ：假脱机，创建一个特殊的守护进程与特殊的目录，称为spooling 目录，进程将文件方在spooling 目录下，打印机是独占设备。</p>
+</li>
+<li><p>RAM 盘：在内存中保留一部分存储区域，使其像普通磁盘一样使用。</p>
+</li>
+<li><p>寻道时间是找道找柱面(磁道)！旋转延迟则是由于扇区的定位带来的！</p>
+</li>
+<li><p>终端是用户与计算机交互的工具，包括键盘和显示器</p>
+</li>
+<li><p>TLB：页表的缓存，lookaside buffer,快表</p>
+</li>
+<li><p>反置页表：一个物理页框对应一个页表项</p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gir3uyrf8cj30p60c8q6i.jpg" alt></p>
+</li>
+<li><p>一台虚拟机由48位虚拟地址和32位物理地址，页面大小为8KB，请问在页表中需要多少个页表项，页表项只取决于虚拟地址空间，所以为35位</p>
+</li>
+<li><p>TLB的大小只有工程上的折衷。</p>
+</li>
+<li><p>旋转时间8msec,一道的容量为1MB，所以transfer其实也相当于是知道了。</p>
+</li>
+<li><p>磁盘计算：20题。</p>
+<p>一个磁盘有4000个柱面，每个柱面有8个磁道，每个磁道有512个块，在寻道时每移过一个柱面需要1ms。</p>
+<p>逻辑上相邻两个块的平均寻道时间为5ms，</p>
+<p>逻辑上相邻两个块的平均寻道为100$\mu s$</p>
+<p>旋转延迟为10ms，传输时间时每块20$\mu s$.</p>
+<p>读100个块：</p>
+<p>旋转延迟10ms，所以平均旋转延迟是5ms。</p>
+<p>（5+5+0.02）✖️100</p>
+<p>（0.1+5+0.02）✖️100</p>
+<p>4000柱面 10ms，块与块rotation0.005</p>
+</li>
+</ol>
+<ol start="36">
+<li><p>OS关心磁盘存储，有效工作，管理安全一致性的问题</p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gir83vqt8zj314q0d6tc1.jpg" alt></p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/21/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86%E7%82%B9%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93-%E6%9C%9F%E6%9C%AB%E7%89%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-当代数据库管理系统W1-好的系统软件是好的模块" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/18/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW1-%E5%A5%BD%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%A5%BD%E7%9A%84%E6%A8%A1%E5%9D%97/">当代数据库管理系统W1:好的系统软件是好的模块</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/09/18/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW1-%E5%A5%BD%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%A5%BD%E7%9A%84%E6%A8%A1%E5%9D%97/" class="archive-article-date">
+  	<time datetime="2020-09-18T02:01:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据库管理系统（DBMS）"><a href="#数据库管理系统（DBMS）" class="headerlink" title="数据库管理系统（DBMS）"></a>数据库管理系统（DBMS）</h1><p>本课程围绕着系统软件开展</p>
+<p>Today:<strong>文档数据库</strong></p>
+        
+          <a class="article-more-a" href="/2020/09/18/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW1-%E5%A5%BD%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%A5%BD%E7%9A%84%E6%A8%A1%E5%9D%97/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大三下</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/18/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW1-%E5%A5%BD%E7%9A%84%E7%B3%BB%E7%BB%9F%E8%BD%AF%E4%BB%B6%E6%98%AF%E5%A5%BD%E7%9A%84%E6%A8%A1%E5%9D%97/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-统计与数据分析基础W1-概率论复习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1042,205 +1637,9 @@
 
 
   
-    <article id="post-MIT-FinTech-Machine-Learning-in-Credit-Risk-Prediction" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/19/MIT-FinTech-Machine-Learning-in-Credit-Risk-Prediction/">MIT+FinTech Machine Learning in Credit Risk Prediction</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/08/19/MIT-FinTech-Machine-Learning-in-Credit-Risk-Prediction/" class="archive-article-date">
-  	<time datetime="2020-08-19T06:27:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ML-in-Credit-Risk-Modeling"><a href="#ML-in-Credit-Risk-Modeling" class="headerlink" title="ML in Credit Risk Modeling"></a>ML in Credit Risk Modeling</h1><p> This is not a typical ML class.</p>
-<p>Use the credit Risk model as a lab.</p>
-<p>How to apply the tool in a wiser way.</p>
-        
-          <a class="article-more-a" href="/2020/08/19/MIT-FinTech-Machine-Learning-in-Credit-Risk-Prediction/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">FinTech</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ThoughtBridge</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/19/MIT-FinTech-Machine-Learning-in-Credit-Risk-Prediction/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MIT-Fintech-Modeling-Dynamic-User-Interests-A-Neural-Matrix-Factorization-Approach" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/18/MIT-Fintech-Modeling-Dynamic-User-Interests-A-Neural-Matrix-Factorization-Approach/">MIT+Fintech Modeling Dynamic User Interests: A Neural Matrix Factorization Approach</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/08/18/MIT-Fintech-Modeling-Dynamic-User-Interests-A-Neural-Matrix-Factorization-Approach/" class="archive-article-date">
-  	<time datetime="2020-08-18T06:42:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Modeling-Dynamic-User-Interests-A-Neural-Matrix-Factorization-Approach"><a href="#Modeling-Dynamic-User-Interests-A-Neural-Matrix-Factorization-Approach" class="headerlink" title="Modeling Dynamic User Interests: A Neural Matrix Factorization Approach"></a>Modeling Dynamic User Interests: A Neural Matrix Factorization Approach</h1><h2 id="Research-Context-Boston-Globe"><a href="#Research-Context-Boston-Globe" class="headerlink" title="Research Context:Boston Globe"></a>Research Context:Boston Globe</h2><ul>
-<li>What they really care about?<ul>
-<li>Content Recommendation:想变得有趣然后留住customer</li>
-<li>Dynamic User Segementation:<ul>
-<li>什么是Dynamic User Segementation？</li>
-<li>Person A :sports/ Person B:politics</li>
-<li>create profiles, and use this profiles for targeting ads, offers.</li>
-<li>Company want to figure out your interest and target you and hope you buy their product.</li>
-</ul>
-</li>
-<li>Optimize user experience: how to place articles at the front page? </li>
-</ul>
-</li>
-<li><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghuyszvtdcj30uc0futko.jpg" alt></li>
-</ul>
-<p><strong>Our broad contribution : A novel neural network for modeling dynamic of user interests</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1ghuyzpywajj30mu0ecwlc.jpg" alt></p>
-<p><strong>Desired Output:</strong> A sample user’s meaningful content consumption journey</p>
-<p><strong>Indentify these latent user interests</strong></p>
-        
-          <a class="article-more-a" href="/2020/08/18/MIT-Fintech-Modeling-Dynamic-User-Interests-A-Neural-Matrix-Factorization-Approach/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">FinTech</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ThoughtBridge</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/18/MIT-Fintech-Modeling-Dynamic-User-Interests-A-Neural-Matrix-Factorization-Approach/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1509,6 +1908,14 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据分析</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">大三下</a>
               </li>
             
             <div class="clearfix"></div>

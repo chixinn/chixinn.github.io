@@ -6,23 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>HTTP下午茶 | Chixinning的博客</title>
+  <title>统计与数据分析基础W2:概率论回顾(2) | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="终于受不了了，互联网在我眼里都是： 先写个HTTP ,然后冒号，谢岗斜杠，然后是三个w和所谓域名。 每次上网和计算机网络课程都重复着，可我就是无法建立逻辑和响应的感性认识。 本篇博客为阅读HTTP下午茶的笔记。">
+  <meta name="description" content="概率论(2)多项分布：一个骰子被投掷10次，6朝上次数的概率。  统计课讨论pdf  n元正态分布 2.n元正态分布设$X$&#x3D;$\begin{pmatrix}x_1\x_2\x_3\x_n\end{pmatrix}$为n维随机变量，其期望$\vec\mu\begin{pmatrix}\mu_1\\mu_2\\mu_3\\mu_n\end{pmatrix}$ 其方差-协方差矩阵$\Sigma$&#x3D; {">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTP下午茶">
-<meta property="og:url" content="http://yoursite.com/2020/07/26/HTTP%E4%B8%8B%E5%8D%88%E8%8C%B6/index.html">
+<meta property="og:title" content="统计与数据分析基础W2:概率论回顾(2)">
+<meta property="og:url" content="http://yoursite.com/2020/09/22/%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80W2-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9B%9E%E9%A1%BE-2/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="终于受不了了，互联网在我眼里都是： 先写个HTTP ,然后冒号，谢岗斜杠，然后是三个w和所谓域名。 每次上网和计算机网络课程都重复着，可我就是无法建立逻辑和响应的感性认识。 本篇博客为阅读HTTP下午茶的笔记。">
+<meta property="og:description" content="概率论(2)多项分布：一个骰子被投掷10次，6朝上次数的概率。  统计课讨论pdf  n元正态分布 2.n元正态分布设$X$&#x3D;$\begin{pmatrix}x_1\x_2\x_3\x_n\end{pmatrix}$为n维随机变量，其期望$\vec\mu\begin{pmatrix}\mu_1\\mu_2\\mu_3\\mu_n\end{pmatrix}$ 其方差-协方差矩阵$\Sigma$&#x3D; {">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4efcpdtej30vm054wf2.jpg">
-<meta property="article:published_time" content="2020-07-26T04:48:24.000Z">
-<meta property="article:modified_time" content="2020-07-26T07:50:13.501Z">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giz68yuzvvj319x0u0qv5.jpg">
+<meta property="article:published_time" content="2020-09-21T23:57:34.000Z">
+<meta property="article:modified_time" content="2020-09-22T01:38:42.791Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
-<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="大三上">
+<meta property="article:tag" content="统计">
+<meta property="article:tag" content="数据分析">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4efcpdtej30vm054wf2.jpg">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlgy1giz68yuzvvj319x0u0qv5.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -153,14 +155,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-HTTP下午茶" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-统计与数据分析基础W2-概率论回顾-2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      HTTP下午茶
+      统计与数据分析基础W2:概率论回顾(2)
     </h1>
   
 
@@ -177,56 +179,174 @@
 
 <!--显示阅读次数完毕-->
         
-        <a href="/2020/07/26/HTTP%E4%B8%8B%E5%8D%88%E8%8C%B6/" class="archive-article-date">
-  	<time datetime="2020-07-26T04:48:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-26</time>
+        <a href="/2020/09/22/%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80W2-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9B%9E%E9%A1%BE-2/" class="archive-article-date">
+  	<time datetime="2020-09-21T23:57:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>终于受不了了，互联网在我眼里都是：</p>
-<p>先写个HTTP ,然后冒号，谢岗斜杠，然后是三个w和所谓域名。</p>
-<p>每次上网和计算机网络课程都重复着，可我就是无法建立逻辑和响应的感性认识。</p>
-<p>本篇博客为阅读<a href="https://www.kancloud.cn/kancloud/tealeaf-http/43835" target="_blank" rel="noopener">HTTP下午茶</a>的笔记。</p>
-<a id="more"></a>
-
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>HTTP或超文本传输协议把应用程序和超文本文档之间的传输联系起来。</p>
-<p>HTTP遵循一个简单的模型：从客户端发出请求到服务器并等待相应。即也是一种Request-Response协议。</p>
-<ul>
-<li>IP地址是设备或服务器的标识符，端口是交互目标的标识符。</li>
-<li>互联网上每个设备都有 互联网服务供应商ISP提供的 <strong>公网IP地址</strong></li>
-</ul>
-<h2 id="DNS"><a href="#DNS" class="headerlink" title="DNS"></a>DNS</h2><p><a href="http://www.google.com是URL，我们只知道google的URL而不知道google的IP地址，DNS作为一种分布式数据库把http://www.google.comd的域名翻译成IP地址。" target="_blank" rel="noopener">http://www.google.com是URL，我们只知道google的URL而不知道google的IP地址，DNS作为一种分布式数据库把http://www.google.comd的域名翻译成IP地址。</a></p>
-<p>即DNS相当于一个IP地址翻译库。</p>
-<h2 id="客户端和服务器"><a href="#客户端和服务器" class="headerlink" title="客户端和服务器"></a>客户端和服务器</h2><p>最常见的客户端是Web Browser.</p>
-<p>Web Browser的指责是发送HTTP请求，并将响应处理成人类友好的形式在显示器上渲染。</p>
-<p>client$\rightarrow^{httpRequest}$Server</p>
-<p>Server$\rightarrow^{httpResponse}$client</p>
-<h2 id="资源Resources"><a href="#资源Resources" class="headerlink" title="资源Resources"></a>资源Resources</h2><p>资源是指互联网上通过URL与其交互的东西。</p>
-<h2 id="无状态的-statelessness"><a href="#无状态的-statelessness" class="headerlink" title="无状态的 statelessness"></a>无状态的 statelessness</h2><p>当一个协议设计成每一个请求/响应周期与前一个都是互相独立的话，我们就说这个协议是无状态的。</p>
-<p>HTTP协议下，服务器不需要在各次请求之间保留状体啊信息。</p>
-<ul>
-<li>web是很灵活和去中心化的，web的安全性是难以保证的。</li>
-</ul>
-<hr>
-<h2 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h2><p>Uniform Resource identifier</p>
-<p>即，资源的位置在哪里。</p>
-<h2 id="URL组成部分"><a href="#URL组成部分" class="headerlink" title="URL组成部分"></a>URL组成部分</h2><p><a href="https://www.ererzi.website/index.html" target="_blank" rel="noopener">https://www.ererzi.website/index.html</a></p>
-<p>其中：</p>
-<ul>
-<li>http是URL的模式，即协议</li>
-<li><a href="http://www.ererzi.website是资源路径或主机，即客户client资源的确切位置" target="_blank" rel="noopener">www.ererzi.website是资源路径或主机，即客户client资源的确切位置</a></li>
-<li>/index.html即URL路径，在请求和本地资源(相对于host)而言。</li>
-</ul>
-<p>另外，URL 可以包含一个主机用来监听 HTTP 请求的端口号。一个<code>http://localhost:3000/profile</code>这样的 URL，通过 3000 端口去监听 HTTP 请求。</p>
-<p>web 客户端用来监听 HTTP 请求的默认端口号<strong>是 80</strong>，如果一个 URL 中没有指定其他的端口号，那就等价于写了80 <strong>除非指定了其他的端口号代替，不然端口号80会被默认用于正常的 HTTP 请求</strong>。</p>
-<hr>
-<p>当你不论什么时候在浏览器的地址栏里输入网址进行浏览的时候，你就是在发起 HTTP 的 GET 请求。</p>
-<hr>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gh4efcpdtej30vm054wf2.jpg" alt></p>
-<p>原来Postman是一个插件啊…</p>
-<hr>
+        <h1 id="概率论-2"><a href="#概率论-2" class="headerlink" title="概率论(2)"></a>概率论(2)</h1><p>多项分布：一个骰子被投掷10次，6朝上次数的概率。</p>
+<blockquote>
+<p>统计课讨论pdf</p>
+</blockquote>
+<p>n元正态分布</p>
+<h2 id="2-n元正态分布"><a href="#2-n元正态分布" class="headerlink" title="2.n元正态分布"></a>2.n元正态分布</h2><p>设$X$=$\begin{pmatrix}x_1\x_2\x_3\x_n\end{pmatrix}$为n维随机变量，其期望$\vec\mu\begin{pmatrix}\mu_1\\mu_2\\mu_3\\mu_n\end{pmatrix}$</p>
+<p>其方差-协方差矩阵$\Sigma$= {  $\sigma_{ij} $ }$_{n\times n}$=Cov{$x_i,x_j$}</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1giz68yuzvvj319x0u0qv5.jpg" alt></p>
+<p>记实向量$X$=$\begin{pmatrix}x_1\x_2\x_3\x_n\end{pmatrix}$，如果$\vec{X}$的pdf为P(X=x)=$(2\pi)^{\frac{n}{2}}|\Sigma|^{\frac{-1}{2}}exp(\frac{-1}{2}(x-\mu)^T\Sigma^{-1}(x-\mu))$</p>
+<p>那么，称$X$服从n元正态分布，记$X$～$N_p(\vec{\mu},\Sigma)$</p>
+<h3 id="Special-Case"><a href="#Special-Case" class="headerlink" title="Special Case"></a>Special Case</h3><p>当是二元向量时：$N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2)$</p>
+<p>$\mu=(\mu_1,\mu_2)^{T}$,$\Sigma=\begin{pmatrix}\sigma_1^2&amp;&amp;\rho\sigma_1\sigma_2\\rho\sigma_1\sigma_2&amp;&amp;\sigma_1^2\end{pmatrix}$</p>
+<h2 id="3-指数分布族"><a href="#3-指数分布族" class="headerlink" title="3.指数分布族"></a>3.指数分布族</h2><p>分布族理解，是一个分布的集合。</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>设一个随机变量/向量X，其分布列/密度函数(pdf)</p>
+<p>为$p(x)=h(x)exp(\eta(\theta)^TT(x)-F(\theta))$，那么称这个随机变量来自于指数分布族。这里$F(\theta)$是$\theta$的函数变换。</p>
+<p>这里都是向量。</p>
+<ol>
+<li>参数$\theta\in参数空间\in R^d$，参数向量</li>
+<li>$\eta(\theta):参数空间-&gt;R^p$映射，做完变换，p维横向量，与后面的T(x)做内积。</li>
+<li>$T(x)$是一个p维列向量。(使内积可以计算)，可理解为<em>随机</em>向量。</li>
+</ol>
+<blockquote>
+<p>随机性概念的理解。</p>
+</blockquote>
+<ol start="4">
+<li>$F(\theta)$是一个一维/实值函数</li>
+</ol>
+<h3 id="向量的例子"><a href="#向量的例子" class="headerlink" title="向量的例子"></a>向量的例子</h3><p>验证是不是指数分布族</p>
+<h4 id="Exa-1"><a href="#Exa-1" class="headerlink" title="Exa.1"></a>Exa.1</h4><p>$p(x)=p^x(1-p)^{1-x}$为二点分布。</p>
+<p>$p(x)=exp(ln(p^x(1-p)^{1-x}))=expexp(ln(p^x(1-p)^{-x})(1-p)^)=exp(ln(\frac{p}{1-p})^x(1-p))$</p>
+<p>=$exp(xln(\frac{p}{1-p})+ln(1-p))$</p>
+<p>$h(x)=1,T(x)=x,\theta=p,\eta(\theta)=ln(\frac{p}{1-p})$</p>
+<h4 id="Exa-2"><a href="#Exa-2" class="headerlink" title="Exa.2"></a>Exa.2</h4><p>验证正态分布也属于指数分布族。</p>
+<p>将参数与指数分离，写成乘积的形式。</p>
+<p>p(x)=$\frac{1}{\sqrt{2\pi}}(\sigma^2)^{-\frac{1}{2}} exp{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}$</p>
+<p>step1.先讲指数化出来</p>
+<p>p(x)=$exp(-ln(\sqrt{2\pi \sigma^2}))exp{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}$</p>
+<p>=$exp(-ln(\sqrt{2\pi \sigma^2})+-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2})$</p>
+<p>=$exp(-ln(\sqrt{2\pi \sigma^2})-\frac{1}{2\sigma^2}(x^2-2x\mu+\mu^2))$</p>
+<p>=$exp(-\frac{1}{2\sigma^2}x^2+\frac{1}{\sigma^2}x\mu)+与x无关的参数$</p>
+<p>所以，对照上面式子的标准形式</p>
+<p>$h(x)=1,T(\vec{x})=(x^2,x)^T,\eta(\theta)^T=(\frac{1}{2\sigma^2},\frac{\mu}{\sigma^2})$</p>
+<p>剩下的一堆是与x无关的参数。</p>
+<p>$-F(\theta)=-ln(\sqrt{2\pi\sigma^2})-\frac{1}{2\sigma^2}\mu^2$</p>
+<blockquote>
+<p>由上面的例子，离散和连续随机变量都可能来自于指数分布族，有益于对异构数据处理的统一表达。</p>
+</blockquote>
+<h2 id="4-独立性"><a href="#4-独立性" class="headerlink" title="4.独立性"></a>4.独立性</h2><ol>
+<li><p>A,B为随机事件：</p>
+<p>A，B独立表示:P(AB)=P(A)P(B)</p>
+</li>
+<li><p>称$(x_1,x_2,x_3,…,x_n)^T$是random vector,是相互独立的，$F_i(x)$是其cdf,则</p>
+<ol>
+<li>$F(x_1,x_2,x_3,…,x_n)=\Pi F_i(x)=\Pi P(X_i\le x)$【这里用事件去推理去理解。联合cdf与边际cdf</li>
+</ol>
+</li>
+<li><p>离散：</p>
+<p>联合分布列$P(X_1=x_1,X_2=x_2,…,X_n=x_n)=\Pi P(X_i=x_i)$</p>
+<p>连续：</p>
+<p>$P(X_1,X_2,…,X_n)=\Pi P(X_i)$</p>
+</li>
+</ol>
+<blockquote>
+<p>重要的是学会去用</p>
+</blockquote>
+<h2 id="5-多元的期望和方差的性质"><a href="#5-多元的期望和方差的性质" class="headerlink" title="5.多元的期望和方差的性质"></a>5.多元的期望和方差的性质</h2><p>设(X,Y)是二元随机变量</p>
+<ol>
+<li><p>E[X+Y]=E[X]+E[Y];无条件，基于积分的可加性求得。</p>
+</li>
+<li><p>若X与Y是独立的，则：</p>
+<ol>
+<li><p>有上面独立的联合概率的条件</p>
+<p>E[XY]=E[X]E[Y]</p>
+</li>
+<li><p>Var(X+-Y)=Var(X)<strong>+</strong>Var(Y)【无论那边是加号还是剪号，我的波动总是增加的！</p>
+</li>
+</ol>
+</li>
+<li><p>Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y)</p>
+<p>Var(X-Y)=Var(X)+Var(Y)-2Cov(X,Y)【比较有用</p>
+<p><strong>因为独立，协方差为0，上边加号是不变的。</strong></p>
+</li>
+<li><p>Cov(X,Y)=E[XY]-E[X]E[Y]</p>
+<p>独立时，协方差为0.</p>
+<blockquote>
+<p>独立性条件强于协方差</p>
+</blockquote>
+</li>
+<li><p>Cov(X,Y)=0,<strong>表示线性无关</strong>。</p>
+</li>
+<li><p>当(X,Y)服从二元正态的时候，相关性和独立性等价。</p>
+</li>
+<li><p>$\rho=\frac{Cov(X,Y)}{\sqrt{Var(x)Var(y)}}$</p>
+<p>所以正态分布算covariance远比直接推密度函数效率更高。</p>
+</li>
+</ol>
+<h2 id="6-多元随机变量的函数"><a href="#6-多元随机变量的函数" class="headerlink" title="6.多元随机变量的函数"></a>6.多元随机变量的函数</h2><h3 id="极值分布-最大值，最小值分布"><a href="#极值分布-最大值，最小值分布" class="headerlink" title="极值分布(最大值，最小值分布)"></a>极值分布(最大值，最小值分布)</h3><p>$x_1,x_2,x_3,…,x_n$是n个随机变量。</p>
+<p>$x_{max}=max(x_1,x_2,x_3,…,x_n)$，$x_{max}$是一个多元随机变量的函数。</p>
+<p><strong>随机变量的函数一定是一个随机变量，我们一定要用分布去刻画。</strong></p>
+<p>$x_{min}=min(x_1,x_2,x_3,…,x_n)$</p>
+<p>这个的最大应用，水位线的最大值，水坝的高度的建设相关。</p>
+<h3 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h3><p>若$X_1,X_2,..,X_n$是相互独立的随机变量</p>
+<p>若$Y=x_{max}=max(x_1,x_2,x_3,…,x_n)$，</p>
+<ol>
+<li><p>$X_i～F_i(x)$</p>
+<p>$F(y)=F(x_1,x_2,x_3,…,x_n\le y)=\Pi_{i=1}^n F(x_1\le y)$</p>
+</li>
+<li><p>$X_i$是同分布的</p>
+<p>$F_Y(y)=(F(y))^n$</p>
+</li>
+<li><p>$X_i$是连续随机变量，且$X_i$同分布，$p(x)$为$X_i$的概率密度函数。</p>
+<p>求Y的pdf</p>
+<p>$P_Y(y)=\frac{dF_Y(y)}{dy}=\frac{d[(F(y))^n]}{dy}$</p>
+<p>这里堪称一个复合函数求导。</p>
+<p>=$nF(y)^{n-1}p(y)$</p>
+</li>
+</ol>
+<blockquote>
+<p>模型v.s.结论</p>
+</blockquote>
+<ol start="4">
+<li><p>$X_i$~Exp($\lambda$)</p>
+<p>$p(X)$=$\lambda exp(-\lambda x),x\ge0$;</p>
+<p>$F(X)=1-exp(-\lambda x),x\ge0$</p>
+<p>Y的密度函数，$P_Y(y)=n(1-exp(-\lambda y))\lambda exp(-\lambda y),y\ge0,0 ,otherwised$</p>
+</li>
+</ol>
+<h3 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h3><p>若$X_1,X_2,..,X_n$是相互独立的随机变量</p>
+<p>若$Z=x_{min}=min(x_1,x_2,x_3,…,x_n)$，</p>
+<ol>
+<li><p>$F_Z(z)=P(Z\le z)=1-P(Z&gt;z)=1-\Pi P(X_1&gt;z)=1-\Pi_{i=1}^n(1-F_i(z))$</p>
+</li>
+<li><p>$X_i$是同分布的：</p>
+<p>$F_Z(z)=1-(1-F(z))^n$</p>
+</li>
+<li><p>求Z的概率密度函数：</p>
+<p>$P_Z(z)=-n(1-F_Z(z))^{n-1}(-p_Z(z))$</p>
+</li>
+<li><p>$X_i$~Exp($\lambda$)</p>
+<p>$p_Z(z)=n(1-1-exp(-\lambda z))^{n-1}\lambda exp(-\lambda z)$</p>
+<p>=$n\lambda(-exp(-\lambda z))^{n-1+1}$，$z\ge 0$</p>
+<p>注意这里，Z还是一个服从于$n\lambda$的exp分布</p>
+<blockquote>
+<p>pdf最重要的性质是非负性，要以此检查我的计算的正确性。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="卷积公式"><a href="#卷积公式" class="headerlink" title="卷积公式"></a>卷积公式</h2><h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><p>X和Yiid(一般只要求独立，不要求同分布)，求X+Y的分布。</p>
+<h3 id="重要结论"><a href="#重要结论" class="headerlink" title="重要结论"></a>重要结论</h3><ol>
+<li><p>$X_1$<del>N($\mu_1,\sigma_1^2$),$X_2$</del>N($\mu_2,\sigma_2^2$),</p>
+<p>$X_1+X_2～N(\mu_1+\mu_1,\sigma_1^2+\sigma_2^2)$</p>
+<p>先确定分布，再由期望和方差的关系，不要走密度函数硬推。</p>
+<p>n维随机变量独立同分布于正态分布，线性组合也是正态分布</p>
+</li>
+<li><p>$X_1$<del>$\Gamma(\alpha_1,\lambda)$,$X_2$</del>$\Gamma(\alpha_2,\lambda)$</p>
+<p>X+Y～$\Gamma(\alpha_1+\alpha_2,\lambda)$</p>
+<p>指数分布$\Gamma(1,\lambda)$相加不是指数分布</p>
+<p>卡方分布，$\Gamma(\frac{n}{2},\frac{1}{2})$，卡方分布相加还是卡方分布。</p>
+</li>
+</ol>
 
       
 
@@ -270,7 +390,15 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大三上</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">统计</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
         		</li>
       		
 		</ul>
@@ -326,7 +454,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/07/26/HTTP%E4%B8%8B%E5%8D%88%E8%8C%B6/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/09/22/%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80W2-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9B%9E%E9%A1%BE-2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -340,18 +468,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/07/27/%E5%88%A9%E7%94%A8IDEA-Maven%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BANetty%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          利用IDEA Maven项目搭建Netty开发环境
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/07/22/%E9%80%9A%E8%BF%87ssh%E4%BC%A0%E8%BE%93github%E4%BB%A5%E4%BF%9D%E8%AF%81%E9%80%9F%E5%BA%A6%E7%A8%B3%E5%AE%9A%E6%80%A7/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">通过ssh传输github以保证速度稳定性</div>
+    <a href="/2020/09/21/%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8A%E6%9C%BA1-MongoDB%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数据库上机1:MongoDB的安装和使用</div>
       <i class="icon-circle-right"></i>
     </a>
   

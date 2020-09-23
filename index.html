@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 174
+			总文章数 175
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,126 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-当代数据库管理系统W2MongoDB的实现原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/23/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW2MongoDB%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">当代数据库管理系统W2:MongoDB的实现原理/数据库系统正确性是如何保证的</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/09/23/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW2MongoDB%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-09-23T00:06:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="W2-MongoDB的实现原理"><a href="#W2-MongoDB的实现原理" class="headerlink" title="W2:MongoDB的实现原理"></a>W2:MongoDB的实现原理</h1><p><em>前情回顾</em></p>
+<p>memory hierarchy永远不会变的原因是什么？</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gj09ikym90j31480ma4og.jpg" alt></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gj09nkoqhgj318i0rctda.jpg" alt></p>
+<p>当有一块（页）被掉入Dram时，会被缓存而不是立刻扔掉。</p>
+<h2 id="文档数据库的组织"><a href="#文档数据库的组织" class="headerlink" title="文档数据库的组织"></a>文档数据库的组织</h2><blockquote>
+<p>Database-&gt;collection-&gt;document</p>
+</blockquote>
+<p>MongoDB如何实现find等操作。</p>
+<p>Collection 在数据库中的组织如file.</p>
+<p>File由i-node(page/block)组成。</p>
+<p>但是，页查找方式的<strong>效率很低。</strong></p>
+<blockquote>
+<p>如何提高查找效率呢?</p>
+</blockquote>
+<h3 id="利用索引提高查找效率"><a href="#利用索引提高查找效率" class="headerlink" title="利用索引提高查找效率"></a>利用索引提高查找效率</h3><p>Index/B-tree.</p>
+<h4 id="B树的结构特点"><a href="#B树的结构特点" class="headerlink" title="B树的结构特点"></a>B树的结构特点</h4><blockquote>
+<p>排序方式：所有节点关键字是按递增次序排列，并遵循左小右大原则；</p>
+</blockquote>
+<p>很多数据库系统都会用到类似B树的索引。</p>
+<p>通过B树的索引，找到某个ID的文档在哪一页，此时就无需再遍历所有的页。</p>
+<p>B树顶部的节点作为常用节点可能一直驻留在内存之中。而最后真正需要的I/O操作可能是最底部的一些节点。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gj0a0ox27yj30xy0fc7a7.jpg" alt></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在任何文档数据库中，ID常作为一种省缺的属性。</p>
+<p>文档数据库会自动的在ID属性上做索引。</p>
+<p>此时i-node可能是不需要的，因为我的所有文档集合都已经通过B树组织了。</p>
+<p>PremaryIndex的概念(__ID是系统创建的默认的主索引)</p>
+<p>有时要告诉数据库，以何关键字创建了索引。比如<code>Create Index:Name</code>这样数据库会再构建一个索引树。</p>
+<p>主索引/副索引。secondary Index.</p>
+<h3 id="索引是越多越好吗"><a href="#索引是越多越好吗" class="headerlink" title="索引是越多越好吗"></a>索引是越多越好吗</h3><ol>
+<li>索引越多，数据更新时，代价越大。</li>
+<li>建立更多索引时的额外代价。</li>
+</ol>
+        
+          <a class="article-more-a" href="/2020/09/23/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW2MongoDB%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大三下</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/23/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW2MongoDB%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-统计与数据分析基础W2-概率论回顾-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -1717,90 +1837,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/08/21/MIT-ML08-CNN/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MIT-Tech-Q-A" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/21/MIT-Tech-Q-A/">MIT+Tech: Q&amp;A</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/08/21/MIT-Tech-Q-A/" class="archive-article-date">
-  	<time datetime="2020-08-21T02:12:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="只是个人的碎碎念"><a href="#只是个人的碎碎念" class="headerlink" title="只是个人的碎碎念"></a>只是个人的碎碎念</h1><p><a href="http://www.mit.edu/~huichen/" target="_blank" rel="noopener">http://www.mit.edu/~huichen/</a></p>
-        
-          <a class="article-more-a" href="/2020/08/21/MIT-Tech-Q-A/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Fintech</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/21/MIT-Tech-Q-A/">展开全文 >></a>
         </p>
       
 

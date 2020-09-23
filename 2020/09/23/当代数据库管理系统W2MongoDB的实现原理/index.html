@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gj0dll2r8ej30n20ai3zv.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gj0dmalqjaj30n20ai0tu.jpg">
 <meta property="article:published_time" content="2020-09-23T00:06:16.000Z">
-<meta property="article:modified_time" content="2020-09-23T02:40:43.048Z">
+<meta property="article:modified_time" content="2020-09-23T06:06:54.610Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数据库">
@@ -326,6 +326,10 @@
 <h2 id="利用加锁解决操作之间的线性一致性的问题"><a href="#利用加锁解决操作之间的线性一致性的问题" class="headerlink" title="利用加锁解决操作之间的线性一致性的问题"></a>利用加锁解决操作之间的线性一致性的问题</h2><h2 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h2><ol>
 <li>出故障：日志</li>
 <li>并行的干扰：加锁</li>
+</ol>
+<h2 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h2><ol>
+<li>锁释放之前给用户反馈操作成功，还是之后？</li>
+<li>最后的commit日志在释放锁之前还是之后。</li>
 </ol>
 
       

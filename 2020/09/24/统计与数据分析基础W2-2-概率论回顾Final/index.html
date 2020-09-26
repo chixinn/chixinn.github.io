@@ -8,31 +8,24 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>统计与数据分析基础W2(2):概率论回顾Final | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的个人技术博客，由2020年寒假，其中以我的笔记为主，同时又有很多心得和不足，主要是一个人碎碎念的地方；个人利益相关，2018级ECNU DaSE在读～希望能收获成长吧，当然也可以联系我！">
+  <meta name="description" content="变量变换求卷积P152$Y&#x3D;f(X)$，$f(X)$是一个严格单调递增，$X&#x3D;h(Y)$,是其反函数。 设二元随机变量$(X,Y)$联合密度函数为$p(x,y)$，如果函数$\begin{cases}u&#x3D;g_1(x,y)\v&#x3D;g_2(x,y)\end{cases}$，有连续偏导数，且存在唯一的反函数。$\begin{cases}x&#x3D;x(u,v)\y&#x3D;y(u,v)\end{cases}$,其变换的雅">
 <meta property="og:type" content="article">
 <meta property="og:title" content="统计与数据分析基础W2(2):概率论回顾Final">
 <meta property="og:url" content="http://yoursite.com/2020/09/24/%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80W2-2-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9B%9E%E9%A1%BEFinal/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="这是我的个人技术博客，由2020年寒假，其中以我的笔记为主，同时又有很多心得和不足，主要是一个人碎碎念的地方；个人利益相关，2018级ECNU DaSE在读～希望能收获成长吧，当然也可以联系我！">
+<meta property="og:description" content="变量变换求卷积P152$Y&#x3D;f(X)$，$f(X)$是一个严格单调递增，$X&#x3D;h(Y)$,是其反函数。 设二元随机变量$(X,Y)$联合密度函数为$p(x,y)$，如果函数$\begin{cases}u&#x3D;g_1(x,y)\v&#x3D;g_2(x,y)\end{cases}$，有连续偏导数，且存在唯一的反函数。$\begin{cases}x&#x3D;x(u,v)\y&#x3D;y(u,v)\end{cases}$,其变换的雅">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gj1q0az8xgj31400u0kjl.jpg">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gj1q3lvdylj31400u0npd.jpg">
 <meta property="article:published_time" content="2020-09-24T09:40:26.000Z">
-<meta property="article:modified_time" content="2020-09-24T09:40:26.900Z">
+<meta property="article:modified_time" content="2020-09-26T02:23:45.088Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据">
-<meta property="article:tag" content="后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
-<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="大三上">
+<meta property="article:tag" content="统计">
+<meta property="article:tag" content="数据分析">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gj1q0az8xgj31400u0kjl.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -195,7 +188,71 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h2 id="变量变换求卷积P152"><a href="#变量变换求卷积P152" class="headerlink" title="变量变换求卷积P152"></a>变量变换求卷积P152</h2><p>$Y=f(X)$，$f(X)$是一个严格单调递增，$X=h(Y)$,是其反函数。</p>
+<p>设二元随机变量$(X,Y)$联合密度函数为$p(x,y)$，如果函数$\begin{cases}u=g_1(x,y)\v=g_2(x,y)\end{cases}$，有连续偏导数，且存在唯一的反函数。$\begin{cases}x=x(u,v)\y=y(u,v)\end{cases}$,其变换的雅可比行列式$J$。</p>
+<p>则$(U,V)$的联合密度函数为：$p(u,v)=p(x(u,v),y(u,v))|J|$</p>
+<h3 id="多元雅可比行列式"><a href="#多元雅可比行列式" class="headerlink" title="多元雅可比行列式"></a>多元雅可比行列式</h3><p>$|J|_{n\times n}$</p>
+<p>$J=|\frac{\part(h_1,h_2,…,h_n)}{\part(y_1,y_2,…,y_n)}|=|\frac{\part{h_i}}{\part{y_j}}|$，省去了转制</p>
+<p>此时多元的密度相同，把反函数带进去再求雅可比行列式。</p>
+<h2 id="例子：书上例3-3-10"><a href="#例子：书上例3-3-10" class="headerlink" title="例子：书上例3.3.10"></a>例子：书上例3.3.10</h2><p>X和Y是i.i.d.</p>
+<p>正态验证独立的另一种思路，先验证独立性再求边际要好求很多。</p>
+<h2 id="条件分布与条件期望"><a href="#条件分布与条件期望" class="headerlink" title="条件分布与条件期望"></a>条件分布与条件期望</h2><p>联合密度和边际密度的关系</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><h4 id="remarks"><a href="#remarks" class="headerlink" title="remarks"></a>remarks</h4><h3 id="连续场合的全概率公式和贝叶斯公式"><a href="#连续场合的全概率公式和贝叶斯公式" class="headerlink" title="连续场合的全概率公式和贝叶斯公式"></a>连续场合的全概率公式和贝叶斯公式</h3><blockquote>
+<p>贝叶斯公式并不一定意味着贝叶斯学派。</p>
+<p>即贝叶斯公式很counts.贝叶斯是利用已知信息对未知信息进行推断。</p>
+</blockquote>
+<h4 id="p-y-x-frac-p-x-y-p-x"><a href="#p-y-x-frac-p-x-y-p-x" class="headerlink" title="p(y|x)=$\frac{p(x,y)}{p(x)}$"></a>p(y|x)=$\frac{p(x,y)}{p(x)}$</h4><h4 id="全概率公式：利用某一个分割来求一个事件的概率-加权来算"><a href="#全概率公式：利用某一个分割来求一个事件的概率-加权来算" class="headerlink" title="全概率公式：利用某一个分割来求一个事件的概率(加权来算)"></a>全概率公式：利用某一个分割来求一个事件的概率(加权来算)</h4><p>连续：加权求和-&gt;求积分</p>
+<h4 id="连续贝叶斯公式"><a href="#连续贝叶斯公式" class="headerlink" title="连续贝叶斯公式"></a>连续贝叶斯公式</h4><p>联合正态，边际正态，条件正态</p>
+<h3 id="条件期望"><a href="#条件期望" class="headerlink" title="条件期望"></a>条件期望</h3><p>核心：$E(Y|X=x)=\int y·p(y|x)dy$</p>
+<p>remarks：</p>
+<ol>
+<li><p>$E[Y|X=x]$是x的函数</p>
+</li>
+<li><p>$E(Y|X)$是一个变量X的函数，它一定是随机变量。它自己也有期望。</p>
+<p>$E_X(E_Y(Y|X))=E(X)$，重期望定理。</p>
+<p>平均成绩：w1✖️男生均分+w2✖️女生均分=全班均分</p>
+</li>
+</ol>
+<h4 id="例题：经典例题：3-5-7"><a href="#例题：经典例题：3-5-7" class="headerlink" title="例题：经典例题：3.5.7"></a>例题：经典例题：3.5.7</h4><p>随机个随机变量的和也可以通过重期望公式去解(书上例题)。</p>
+<h4 id="冲期望的重要性质，书上习题："><a href="#冲期望的重要性质，书上习题：" class="headerlink" title="冲期望的重要性质，书上习题："></a>冲期望的重要性质，书上习题：</h4><p>$E(g(X)·Y|X)=g(X)·E(Y|X)$，在线性模型的推导比较有用。</p>
+<p>P185-15</p>
+<h3 id="概率不等式"><a href="#概率不等式" class="headerlink" title="概率不等式"></a>概率不等式</h3><ol>
+<li>马尔可夫不等式(tailProb)</li>
+<li>切比雪夫不等式(tailProb)</li>
+</ol>
+<blockquote>
+<p>尾概率控制风险</p>
+</blockquote>
+<ol start="3">
+<li><p>柯西-施瓦滋不等式：二阶内积小于二阶平方</p>
+<p>$(Cov(X,Y))^2\le Var(X)Var(Y)$</p>
+<p>证明Cov是在[-1，1]区间的</p>
+</li>
+<li><p>琴生不等式f是凸函数</p>
+<p>$f(E(X))\le E(f(X))$</p>
+<p>凸函数:二阶导</p>
+<p>证明EM算法的收敛性</p>
+</li>
+</ol>
+<h3 id="三种收敛性"><a href="#三种收敛性" class="headerlink" title="三种收敛性"></a>三种收敛性</h3><h4 id="定义4-1-2"><a href="#定义4-1-2" class="headerlink" title="定义4.1.2"></a>定义4.1.2</h4><p>$X_1,X_2,…,X_n$是一系列的随机变量，$F_i(X)$</p>
+<p>X一个r,v是$F(X)$</p>
+<h4 id="弱收敛"><a href="#弱收敛" class="headerlink" title="弱收敛"></a>弱收敛</h4><p>应用：CLT的定义</p>
+<h4 id="依概率收敛"><a href="#依概率收敛" class="headerlink" title="依概率收敛"></a>依概率收敛</h4><h4 id="书上缺乏：下周统计推断公式有用：以概率1收敛"><a href="#书上缺乏：下周统计推断公式有用：以概率1收敛" class="headerlink" title="书上缺乏：下周统计推断公式有用：以概率1收敛"></a>书上缺乏：下周统计推断公式有用：以概率1收敛</h4><p>P(lim X_n=X)=1</p>
+<h4 id="三种收敛关系之间有强弱之分"><a href="#三种收敛关系之间有强弱之分" class="headerlink" title="三种收敛关系之间有强弱之分"></a>三种收敛关系之间有强弱之分</h4><p>以概率1收敛&gt;依概率收敛&gt;弱收敛(按分布收敛)(general)</p>
+<p>有时，收依概率收敛于某一常数是有反向符号的</p>
+<h3 id="大数定律-LLN-和中心极限定理-CLT"><a href="#大数定律-LLN-和中心极限定理-CLT" class="headerlink" title="大数定律(LLN)和中心极限定理(CLT)"></a>大数定律(LLN)和中心极限定理(CLT)</h3><h4 id="大数定律"><a href="#大数定律" class="headerlink" title="大数定律"></a>大数定律</h4><p>大数定律：用频率，样本均值真的很好用!估计概率</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gj1q0az8xgj31400u0kjl.jpg" alt></p>
+<p> <a href="../Downloads/IMG_3688.HEIC">IMG_3688.HEIC</a> </p>
+<h4 id="CLT：独立同分布的CLT和独立不同分布的CLT。"><a href="#CLT：独立同分布的CLT和独立不同分布的CLT。" class="headerlink" title="CLT：独立同分布的CLT和独立不同分布的CLT。"></a>CLT：独立同分布的CLT和独立不同分布的CLT。</h4><p>和的某一倍数或线形组合，受到正态分布的控制。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gj1q3lvdylj31400u0npd.jpg" alt></p>
+<p>收敛到真值且不会太远，LLN度量的误差是可以被控制的</p>
+<blockquote>
+<p>期望存在，方差一定存在。反之不一定成立。</p>
+<p>但如果方差不存在，还有中心极限定理嘛？</p>
+</blockquote>
+<p>在现代，基于<strong>鞅Martingale</strong>的提出，对CLT的独立性也放宽到相关性。[left to do ]</p>
+<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><p>变量变换，条件，条件密度与重期望公式，LLN和CLT到底在说啥。</p>
+
       
 
       
@@ -229,6 +286,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大三上</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">统计</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       

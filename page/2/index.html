@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 178
+			总文章数 179
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,232 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-统计与数据分析基础W1-概率论复习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/15/%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80W1-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/">统计与数据分析基础W1:概率论复习</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/09/15/%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80W1-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2020-09-15T00:34:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="概率论复习"><a href="#概率论复习" class="headerlink" title="概率论复习"></a>概率论复习</h1><p>一元随机变量||CDF 和PDF的性质||$\Gamma$函数</p>
+<h2 id="一元随机变量"><a href="#一元随机变量" class="headerlink" title="一元随机变量"></a>一元随机变量</h2><p>定义在样本空间上的实值函数$x=x_n$称为随机变量。</p>
+<p>【Attention】</p>
+<ol>
+<li>相同样本空间却有不同的随机变量</li>
+<li>统计学研究对象是数字/时数：所以统计学往往研究的是结构化的东西。</li>
+</ol>
+<p>离散随机变量和连续随机变量怎么刻画？</p>
+<p>离散随机变量：取值有限个。</p>
+<h2 id="CDF和PDF"><a href="#CDF和PDF" class="headerlink" title="CDF和PDF"></a>CDF和PDF</h2><p>分布函数的三个性质：(后续定理证明的一些基础)</p>
+<ol>
+<li>单调性</li>
+<li><strong>连续性</strong></li>
+<li>有界性：F($-\infin$)=0;</li>
+</ol>
+<h2 id="Gamma函数"><a href="#Gamma函数" class="headerlink" title="Gamma函数"></a>Gamma函数</h2><p>$\Gamma(x)=\int_0^{\infin}x^{\alpha-1}e^{-x}dx,\alpha&gt;0$</p>
+<h3 id="Gamma分布"><a href="#Gamma分布" class="headerlink" title="Gamma分布"></a>Gamma分布</h3><p>$f_X(x)=\frac{x^{\alpha-1}\lambda^{\alpha}e^{-\lambda x}}{\Gamma(\alpha)}$,其中x&gt;=0；0，otherwised.</p>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ol>
+<li>$\Gamma(1)=1$</li>
+<li>$\Gamma(\frac{1}{2})=\sqrt{\pi}$</li>
+<li>$\Gamma(\alpha+1)=\alpha·\Gamma(\alpha)$ 【用的最多的性质，理解记忆可把该函数看成实数域上的阶乘，不太一样诶，那就分布积分法吧】</li>
+</ol>
+<blockquote>
+<p>统计中重要的计算技巧，构成密度函数的积分，密度在定义域上积分为1 。</p>
+</blockquote>
+<ol>
+<li>若一r.v.X 满足：[trick 待补充]<br>$$<br>p(x)=\begin{cases}\frac{\lambda^{\alpha}}x{\Gamma(\alpha)}\end{cases}<br>$$</li>
+</ol>
+<h3 id="特例"><a href="#特例" class="headerlink" title="特例"></a>特例</h3><ol>
+<li>$\Gamma(1,\lambda)$是指数分布，$\alpha=1$</li>
+<li>$\alpha=\frac{n}{2},\lambda=\frac{1}{2}$时，Gamma分布是自由度为n的卡方分布，记为$\Chi^2(n)$</li>
+</ol>
+<h2 id="Beta分布"><a href="#Beta分布" class="headerlink" title="Beta分布"></a>Beta分布</h2><h3 id="Beta函数"><a href="#Beta函数" class="headerlink" title="Beta函数"></a>Beta函数</h3><p>B(a,b)=$\int_0^1x^{a-1}(1-x)^{b-1}dx$，a&gt;0,b&gt;0,x$\in(0,1)$</p>
+<p>$x^{a-1}(1-x)^{b-1}$是核，核确定即密度函数确定。</p>
+<h3 id="beta-函数与-Gamma-函数的关系"><a href="#beta-函数与-Gamma-函数的关系" class="headerlink" title="$\beta$函数与$\Gamma$函数的关系"></a>$\beta$函数与$\Gamma$函数的关系</h3><p>$B(a,b)=\frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}$;</p>
+<h3 id="性质-1"><a href="#性质-1" class="headerlink" title="性质"></a>性质</h3><p>B(a,b)=B(b,a)；将1-x换成y再积分。</p>
+<h3 id="beta-分布："><a href="#beta-分布：" class="headerlink" title="$\beta$分布："></a>$\beta$分布：</h3><p>$p(x)=\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1},0&lt;x&lt;1\0,otherwised;$</p>
+<p>将$X～Be(a,b)$，称X服从贝塔分布</p>
+<h3 id="期望"><a href="#期望" class="headerlink" title="期望"></a>期望</h3><p>推导</p>
+<p>$E(x)=\int_0^1x\frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)}x^{a-1}(1-x)^{b-1}dx$</p>
+<p>=$\frac{\Gamma(a+1)\Gamma(a+b)}{\Gamma(a+1+b)\Gamma(a)}\int_0^1\frac{\Gamma(a+1+b)}{\Gamma(a+1)\Gamma(b)}x^{a+1-1}(1-x)^{b-1}dx$</p>
+<p>=$\frac{a}{a+b}$,后面这个积分，是Y~$\Beta(a+1,b)$</p>
+<p>【看这里，很明显的一个概率密度函数被配凑出来了，就是概率密度函数的积分为1好算而已，没啥技巧性</p>
+<p>=$\frac{a}{a+b}$;</p>
+<p>其中$x^{a+1-1}$，再去配那个系数，同时再用Gamma函数最重要的那个性质(阶乘递推性)；</p>
+<h3 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h3><p>$Var(X)=E[x^2]-E^2[x]$</p>
+<p>求$x^2$的用法是类似的。</p>
+<p>$Var(X)=\frac{ab}{(a+b+1)(a+b)^2}$</p>
+<blockquote>
+<p>尽可能的凑成一个密度函数的形式去积分</p>
+</blockquote>
+<h3 id="特例-1"><a href="#特例-1" class="headerlink" title="特例"></a>特例</h3><p>当a=1,b=1时，$\beta(X)=1,$即$Beta(1,1)$=$U（0，1）$,这里U表示均匀分布</p>
+<h2 id="正态分布"><a href="#正态分布" class="headerlink" title="正态分布"></a>正态分布</h2><blockquote>
+<p>对正态分布掌握的多深，统计学的多好。</p>
+</blockquote>
+<p>$f(x)=\frac{1}{\sqrt{2\pi\sigma}}exp{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}$</p>
+<p>=$\frac{1}{\sqrt{2\pi}}(\sigma^2)^{-\frac{1}{2}} exp{-\frac{1}{2}\frac{(x-\mu)^2}{\sigma^2}}$</p>
+<p>这样写是为了单纯<strong>保证方差</strong>的形式?</p>
+<p>$N(\mu,\sigma^2)$,$N(0,1)$【标准正态分布】</p>
+<h2 id="均匀分布-区间等概率"><a href="#均匀分布-区间等概率" class="headerlink" title="均匀分布(区间等概率)"></a>均匀分布(区间等概率)</h2><p>可定义在<strong>任何</strong>的ab区间</p>
+<h2 id="泊松分布"><a href="#泊松分布" class="headerlink" title="泊松分布"></a>泊松分布</h2><p>Possion($\lambda$)</p>
+<p>刻画记数随机变量</p>
+<h2 id="指数分布"><a href="#指数分布" class="headerlink" title="指数分布"></a>指数分布</h2><p>Exp($\lambda$)</p>
+<p>除常见形式外的另外一个形式：$\theta=\lambda^{-1}$，以期望的形式刻画</p>
+<p>$p(x)=\frac{1}{\theta}e^{-\frac{x}{\theta}},x&gt;0$</p>
+<p>用指数分布刻画寿命(非负),x$\ge0$</p>
+<h2 id="一元随机变量函数的分布"><a href="#一元随机变量函数的分布" class="headerlink" title="一元随机变量函数的分布"></a>一元随机变量函数的分布</h2><p>$X$是一元(连续)r.v. $g(X)$也是随机变量，已知$F(X)$,求$g(X)$这个随机变量的分布。</p>
+<blockquote>
+<p>仅仅是因为离散比较好求</p>
+</blockquote>
+<h3 id="Case1：-g-X-是严格单调函数"><a href="#Case1：-g-X-是严格单调函数" class="headerlink" title="Case1：$g(X)$是严格单调函数"></a>Case1：$g(X)$是严格单调函数</h3><h4 id="定理"><a href="#定理" class="headerlink" title="定理"></a>定理</h4><p>设一个r.v.X 是连续r.v.其pdf是p(x)，随机变量Y=g(X)是一个r.v.</p>
+<p>其反函数h(y)=x的导数存在且连续(存在连续的导函数)，那么我们说$Y=g(X)$的pdf,$P_{Y}(y)$(随机变量Y取值为y的时候的分布)<br>$$<br>P_Y(y)=\begin{cases}P_X[h(y)]|h’(y)|&amp;&amp;a&lt;y&lt;b\0&amp;&amp;otherwised\end{cases}<br>$$</p>
+<p>若$x\in(x_1,x_2),g(X)\in(g(x_1),g(x_2))$单增单减相同。</p>
+<p>$x=h(y),P_Y(y)=P_X(h(y))｜h’(y)｜,y\in(a,b),(a,b)$是x的值域</p>
+<blockquote>
+<p>注意这个地方有一个绝对值，因为密度函数是非负的。多元是Jaccobian行列式，行列式外还要求绝对值。</p>
+</blockquote>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><ol>
+<li>若$x$<del>$\Gamma(\alpha,\lambda)$,对k&gt;0,$kx$</del>$\Gamma(\alpha,\lambda/k)$</li>
+</ol>
+<p>证明:</p>
+<ol>
+<li><p>令g(x)=kx,g(x)是一个严格的单调增函数，其反函数x=h(y)=y/k.</p>
+</li>
+<li><p>那么存在x=h(y)存在连续导函数为h’(y)=1/k.</p>
+</li>
+<li><p>取值范围：x是gamma函数,所以x&gt;=0.所以y$\in[0,+\infin)$</p>
+</li>
+<li><p>所以$P_Y(y)=P_X(h(y))|h’(y)|$</p>
+<p>=$P_X(y/k)|\frac{1}{k}|=\frac{\lambda^{\alpha}}{k\Gamma(\alpha)}(\frac{y}{k})^{\alpha-1}exp(-\lambda\frac{y}{k})$</p>
+</li>
+</ol>
+<blockquote>
+<p>这一结论是很有用的，譬如当$X$～Ga(a,$\lambda$),则$2\lambda X～Ga(a,1/2)=\Chi^2(2a)$</p>
+</blockquote>
+<blockquote>
+<p>即，任意Gamma分布可以转化为卡方分布。</p>
+</blockquote>
+<h3 id="Case2-特例g-X-F-X-的分布-对x做分布变换套娃"><a href="#Case2-特例g-X-F-X-的分布-对x做分布变换套娃" class="headerlink" title="Case2:特例g(X)=F(X)的分布(对x做分布变换套娃)"></a>Case2:特例g(X)=F(X)的分布(对x做分布变换套娃)</h3><p>设X的分布函数是F(X)，这里Y=G(X)=F(X),求随机变量Y的分布</p>
+<h4 id="定理-1"><a href="#定理-1" class="headerlink" title="定理"></a>定理</h4><p>若随机变量X的分布函数F(X),F(X)作为分布函数本身的性质是单调增的，这里只需要将它限制在严格单增上，其反函数$F^{-1}_X(y)$(的导数连续且)存在，则Y=F(X)，随机变量Y的分布服从U(0,1)，即是[0,1]上的分布函数。</p>
+<p>证明：对于任意y&lt;0.分布函数是&gt;0的，{Y&lt;=y}是不可能事件，</p>
+<p>对任意y&gt;=1,{Y&lt;=y}是必然事件。</p>
+<p>0&lt;=y&lt;1:</p>
+<p>$F_Y(y)=P(Y&lt;=y)=P(F_X(X)&lt;=y)$</p>
+<p>因为$F_X(X)$是严格单增的，所以$P(F_X(X)&lt;=y)=P(X&lt;=F^{-1}_X(y))=F_X(F^{-1}_X(y))=y$</p>
+<p>得证。</p>
+<h4 id="例子：求一个给定分布的随机数"><a href="#例子：求一个给定分布的随机数" class="headerlink" title="例子：求一个给定分布的随机数"></a>例子：求一个给定分布的随机数</h4><p>X~Exp($\lambda$),</p>
+<p>在统计中做simulation.</p>
+<p>指数分布族的分布函数$F_X(x)=1-e^{-\lambda x}$</p>
+<p>U=$F_X(X)=1-e^{-\lambda X}～U(0,1)$</p>
+<p>从$U(0,1)$抽一个$U_1,U_2,U_3,….,U_n$是可以做到的。【假设现在的计算机可以做到，那我得到u,就可以得到x】</p>
+<p>由U=$1-e^{-\lambda X}$，所以$X_i=\frac{1}{-\lambda}ln(1-U_i)$</p>
+<blockquote>
+<p>应用中的经典应用，求一个很复杂的分布族的采样。</p>
+</blockquote>
+<h3 id="Case3-x～N-0-1-求-X-2-的分布-X-2-服从一个卡方分布"><a href="#Case3-x～N-0-1-求-X-2-的分布-X-2-服从一个卡方分布" class="headerlink" title="Case3:x～N(0,1);求$X^2$的分布?$X^2$服从一个卡方分布"></a>Case3:x～N(0,1);求$X^2$的分布?$X^2$服从一个卡方分布</h3><blockquote>
+<p>卡方分布是3大抽样分布之一。</p>
+</blockquote>
+<p>解：$Y=X^2$</p>
+<p>$F_Y(y)=P(Y\le y)=P(X^2\le y)(y&gt;0)=P(-\sqrt{y}\le X \le \sqrt{y})=2\Phi(\sqrt{y})-1$</p>
+<p>P(y)=F’(y),复合函数求导，求导出来是一个Gamma分布</p>
+<p>p(y)=2f_x($\sqrt{y}$)$\frac{1}{-2\sqrt{y}}$,</p>
+<p>p(y)=$\frac{1}{\sqrt{2\pi}}exp(-y/2)\frac{1}{-2\sqrt{y}}$</p>
+<p>$\lambda=\frac{1}{2}$,与Gamma分布的表达式对比之后，Y~Ga($\frac{1}{2},($\frac{1}{2}$)</p>
+<p>Q：标准正态分布的累积分布函数？  不需要知道，这里也是导数，即$\Phi(x)$的形式不需要知道。<img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gitmjhdn7oj31400u0hdt.jpg" alt></p>
+<hr>
+<h2 id="1-2-多元随机变量"><a href="#1-2-多元随机变量" class="headerlink" title="1.2 多元随机变量"></a>1.2 多元随机变量</h2><h3 id="多项分布，r项分布"><a href="#多项分布，r项分布" class="headerlink" title="多项分布，r项分布(?)"></a>多项分布，r项分布(?)</h3><p>多项分布是二项分布的推广</p>
+<p>$X ～b(n,p)$</p>
+<ol>
+<li>n个独立重复的实验</li>
+<li>每次实验有r个结果{$A_1,A_2,….,A_r$}</li>
+<li>$P(A_i)=p_i$</li>
+</ol>
+<p>那么$(X_1,X_2,…,X_r)$取值为$(n_1,n_2,…,n_r)$的概率$P(X_1=n_1,X_2=n_2,…,X_r=n_r)$=$\frac{n!}{n_1!n_2!n_3!…n_r!}p_1^{n_1}p_2^{n_2}p_3^{n_3}….p_r^{n_r}$,</p>
+<p>其中$\sum_i^rn_i=n$</p>
+<p>也由于这个限制，它是一个r-1维的随机变量。</p>
+<p>理解：$X_i$表示在n次投掷中i出现的次数，$X_i$的取值就是n选r的那个r.</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大三上</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">统计</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/09/15/%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80W1-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%A4%8D%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-信息检索W0：Course-Overview" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -984,106 +1210,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/08/18/MIT-Fintech-Modeling-Dynamic-User-Interests-A-Neural-Matrix-Factorization-Approach/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MIT-ML06-Intro-to-Neural-Networks" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/18/MIT-ML06-Intro-to-Neural-Networks/">MIT+ML06 Intro to Neural Networks</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/08/18/MIT-ML06-Intro-to-Neural-Networks/" class="archive-article-date">
-  	<time datetime="2020-08-18T01:41:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Intro-to-Neural-Networks"><a href="#Intro-to-Neural-Networks" class="headerlink" title="Intro to Neural Networks"></a>Intro to Neural Networks</h1><p>Overall Process:</p>
-<p>Data-&gt; Feature Extraction -&gt; Classifier</p>
-<p>Neural Networks:直接从数据中获取特征进行学习，无需进行特征提取。</p>
-<p>That is “<strong>turn a feature extraction by hand into a ML task</strong>“</p>
-<p>简单的分类问题：</p>
-<ol>
-<li><p>get a linear model: $h(x)=w^Tx+b$</p>
-</li>
-<li><p>get a linear model + sigmoid activation:  $h(x)=\sigma (w^Tx+b)$</p>
-</li>
-<li><p>set threshold to do classifier :<br>$$<br>y_{predicted}=\begin{cases}0 &amp;&amp; if h(x)&lt;0.5\1 &amp;&amp;if h(x)\ge0.5\end{cases}<br>$$<br>在这里，如果是多分类问题呢，我们就去用softmax。</p>
-</li>
-</ol>
-        
-          <a class="article-more-a" href="/2020/08/18/MIT-ML06-Intro-to-Neural-Networks/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Thought Bridge</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/08/18/MIT-ML06-Intro-to-Neural-Networks/">展开全文 >></a>
         </p>
       
 

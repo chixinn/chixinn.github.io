@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>当代数据库管理系统W2:MongoDB的实现原理/数据库系统正确性是如何保证的 | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="W2:MongoDB的实现原理前情回顾 memory hierarchy永远不会变的原因是什么？   当有一块（页）被掉入Dram时，会被缓存而不是立刻扔掉。 文档数据库的组织 Database-&gt;collection-&gt;document  MongoDB如何实现find等操作。 Collection 在数据库中的组织如file. File由i-node(page&#x2F;block)组成。">
+  <meta name="description" content="W2:MongoDB的实现原理前情回顾 memory hierarchy永远不会变的原因是什么？   当有一块（页）被掉入Dram时，会被缓存而不是立刻扔掉。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="当代数据库管理系统W2:MongoDB的实现原理&#x2F;数据库系统正确性是如何保证的">
 <meta property="og:url" content="http://yoursite.com/2020/09/23/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW2MongoDB%E7%9A%84%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="W2:MongoDB的实现原理前情回顾 memory hierarchy永远不会变的原因是什么？   当有一块（页）被掉入Dram时，会被缓存而不是立刻扔掉。 文档数据库的组织 Database-&gt;collection-&gt;document  MongoDB如何实现find等操作。 Collection 在数据库中的组织如file. File由i-node(page&#x2F;block)组成。">
+<meta property="og:description" content="W2:MongoDB的实现原理前情回顾 memory hierarchy永远不会变的原因是什么？   当有一块（页）被掉入Dram时，会被缓存而不是立刻扔掉。">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gj09ikym90j31480ma4og.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gj09nkoqhgj318i0rctda.jpg">
@@ -27,7 +27,7 @@
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gj0dll2r8ej30n20ai3zv.jpg">
 <meta property="og:image" content="https://tva1.sinaimg.cn/large/007S8ZIlly1gj0dmalqjaj30n20ai0tu.jpg">
 <meta property="article:published_time" content="2020-09-23T00:06:16.000Z">
-<meta property="article:modified_time" content="2020-09-25T02:39:12.593Z">
+<meta property="article:modified_time" content="2020-09-27T00:17:51.948Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="数据库">
@@ -81,7 +81,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 177
+			总文章数 178
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -201,6 +201,10 @@
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gj09ikym90j31480ma4og.jpg" alt></p>
 <p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gj09nkoqhgj318i0rctda.jpg" alt></p>
 <p>当有一块（页）被掉入Dram时，会被缓存而不是立刻扔掉。</p>
+<a id="more"></a>
+
+
+
 <h2 id="文档数据库的组织"><a href="#文档数据库的组织" class="headerlink" title="文档数据库的组织"></a>文档数据库的组织</h2><blockquote>
 <p>Database-&gt;collection-&gt;document</p>
 </blockquote>
@@ -229,7 +233,7 @@
 <li>索引越多，数据更新时，代价越大。</li>
 <li>建立更多索引时的额外代价。</li>
 </ol>
-<a id="more"></a>
+<!--more-->
 
 <h1 id="存储系统的正确性"><a href="#存储系统的正确性" class="headerlink" title="存储系统的正确性"></a>存储系统的正确性</h1><h2 id="什么是存储系统的正确性？"><a href="#什么是存储系统的正确性？" class="headerlink" title="什么是存储系统的正确性？"></a>什么是存储系统的正确性？</h2><ol>
 <li>宕机</li>

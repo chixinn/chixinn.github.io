@@ -16,7 +16,7 @@
 <meta property="og:description" content="Vim is powerful tool. Vim emulation is everywhere. Official exercises:L3 All Practice makes perfect It takes about 20hrs spent on one particular skill until you earn proficiency on it .">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-27T06:05:24.000Z">
-<meta property="article:modified_time" content="2020-09-27T08:23:03.166Z">
+<meta property="article:modified_time" content="2020-09-28T10:16:24.826Z">
 <meta property="article:author" content="Chi xinning">
 <meta property="article:tag" content="笔记">
 <meta property="article:tag" content="Missing Semester">
@@ -68,7 +68,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 179
+			总文章数 180
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -197,7 +197,25 @@
 <li><code>:</code>有很多常用命令，不会就去看mannul.或输入<code>help &lt;\name&gt;</code>进行查询。注意这里有趣的是，也是vim不同模式下面的理解，即，<code>help w</code>与<code>helo :w</code>的不同。<code>help w</code>是<code>w</code> movement.<code>help :w</code>是有了semicolon嘛，那肯定是<code>help</code>该command.</li>
 <li>vim概念中的 <strong>tab/window/buffer</strong>:可以在<code>:</code>的下面进行新建tab.<br><code>: sp</code>是多tab;<code>q</code>是退出当前tab。<code>qa</code>退出全部tab并退出。<br>Note: There is not a 1-to-1 correspondence between buffers and windows.</li>
 </ol>
-<h3 id="Vim-‘s-interface-is-a-programming-language"><a href="#Vim-‘s-interface-is-a-programming-language" class="headerlink" title="Vim ‘s  interface is a programming language."></a>Vim ‘s  interface is a programming language.</h3>
+<h3 id="Vim-‘s-interface-is-a-programming-language"><a href="#Vim-‘s-interface-is-a-programming-language" class="headerlink" title="Vim ‘s  interface is a programming language."></a>Vim ‘s  interface is a programming language.</h3><ol>
+<li>Vim emulation:即我在我所有的编辑器中都使用vim的仿真模式，以提高文本的编辑效率。</li>
+<li>normal mode is like home.</li>
+<li>Vim 一般是do some changes，不是说我整个编程在里面写，而是编完再debugs的过程。</li>
+<li>visual mode:进行选择。Type <code>v</code>以进入visual mode</li>
+<li><code>ci&lt;\charactre&gt;</code>，如我想更改<code>[hello](www.learning.com)</code>我可以输入，<code>ci[</code>即更改了。</li>
+<li>与<code>ci</code>同理，<code>ca</code>是change around；</li>
+<li>editing : 如<code>x</code>删除，<code>d</code>删除；连续输入<code>dd</code>表示删除正航</li>
+<li>注意vim的逻辑在于compose ：<code>dw/db/de</code>这种就是combine着结合表示的。</li>
+<li>vim中的搜寻功能<code>/&lt;你想查询的内容&gt;</code>,这样cursor就好用啦。</li>
+<li>还有某种重复上次修改操作的功能。</li>
+<li>vim customize.</li>
+</ol>
+<h2 id="vim-extensions"><a href="#vim-extensions" class="headerlink" title="vim extensions"></a>vim extensions</h2><p>left to do</p>
+<h2 id="vim-exercise"><a href="#vim-exercise" class="headerlink" title="vim exercise."></a>vim exercise.</h2><p>left to do</p>
+<blockquote>
+<p>still a long way to go.</p>
+</blockquote>
+
       
 
       
@@ -309,6 +327,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/09/28/%E4%BF%A1%E6%81%AF%E6%A3%80%E7%B4%A2W2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          信息检索W2:
+        
+      </div>
+    </a>
   
   
     <a href="/2020/09/27/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW3/" id="article-nav-older" class="article-nav-link-wrap">

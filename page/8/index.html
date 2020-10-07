@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 180
+			总文章数 184
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,519 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-操作系统Project4-内存管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject4-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">操作系统Project4 内存管理</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject4-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-06-16T02:16:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-16</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="P4-内存管理"><a href="#P4-内存管理" class="headerlink" title="P4:内存管理"></a>P4:内存管理</h1><h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol>
+<li>熟悉MINIX操作系统的进程管理</li>
+<li>学习Unix风格的内存管理</li>
+</ol>
+<h2 id="实验要求"><a href="#实验要求" class="headerlink" title="实验要求"></a>实验要求</h2><p>修改MINIX3.1.2a的进程管理器，改进brk系统调用的实现。</p>
+<p>使得分配给进程的数据段+栈段空间耗尽时，该brk系统调用会</p>
+<ol>
+<li><p>给该进程一个更大的内存空间，</p>
+</li>
+<li><p>并将原来空间中的数据复制到新分配的内存空间。</p>
+</li>
+<li><p>释放原来的内存空间</p>
+</li>
+<li><p>通知内核映射新分配的内存段。</p>
+</li>
+</ol>
+<p>MINIX3 独立ID空间，共享相同的代码段。</p>
+<p>Safety:使进程正常执行一小段时间，使其在执行这段时间的过程中，打印出此时“我出错了ENOMEM”(因为我本身不应该运行到safety内存中)和正常结束。</p>
+<p>当空间消耗殆尽时，要增加空间，此时会有更大的空间来执行，使之继续地正常执行下去。</p>
+<h2 id="实验说明"><a href="#实验说明" class="headerlink" title="实验说明"></a>实验说明</h2><ol>
+<li><p>修改/usr/src/servers/pm/break.c中的adjust函数。</p>
+</li>
+<li><p>在adjust函数中增加allocate_new_mem局部函数。</p>
+</li>
+<li><p>brk系统调用本身：</p>
+<ol>
+<li><p>Do_brk函数计算数据段新的边界</p>
+</li>
+<li><p>然后调用adjust函数，使用adjust函数来计算当前程序的空闲空间是否足够分配。</p>
+</li>
+<li><p>足够分配：</p>
+</li>
+<li><p>不够分配：调用allocate_new_mem函数申请新的<strong>足够大的内存空间</strong>。</p>
+<p>足够大的内存空间的申请和寻找是first-fit -&gt; best-fit.</p>
+<p>将数据段和栈段拷贝：数据段底部，栈段顶部</p>
+</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p>编译MINIX</p>
+<p>编译kernel后要把kernel的编号进行记住</p>
+<p>5是选项，save是进行保存。</p>
+<p>新生成的kernel是会变化的。</p>
+<h2 id="Project4也是又又又又需要配环境的一次haha"><a href="#Project4也是又又又又需要配环境的一次haha" class="headerlink" title="Project4也是又又又又需要配环境的一次haha!"></a>Project4也是又又又又需要配环境的一次haha!</h2><ol>
+<li>下载Minix3.1.2镜像文件</li>
+<li>在VMware中新建虚拟机，按照P1过程进行虚拟机的配置。</li>
+<li>然后就不能传文件啦！</li>
+<li>然后我把NAT的网络连接模式换了一种以后，就又可以传文件了~终于啊QAQ 我古董的windows重装都配好环境惹…</li>
+</ol>
+<hr>
+<blockquote>
+<p>另记：传文件是玄学，编译时玄学，内核是玄学，cc是玄学，计算机是玄学。</p>
+</blockquote>
+<hr>
+<p>主体思路就是对于allocate_new_mem函数进行调整。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Memory map for local text, stack, data segments. */</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">mem_map</span> &#123;</span></span><br><span class="line">  vir_clicks mem_vir;		<span class="comment">/* 虚拟地址 */</span></span><br><span class="line">  phys_clicks mem_phys;		<span class="comment">/*物理地址 */</span></span><br><span class="line">  vir_clicks mem_len;		<span class="comment">/* 长度 */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>Allocate_new_mem函数的整体内容：</p>
+<ol>
+<li>Alloc_mem分配内存</li>
+<li>Sys_abscopy拷贝内容</li>
+<li>释放</li>
+<li>通知内核相关变动并注册</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">PUBLIC <span class="keyword">int</span> <span class="title">allocate_new_mem</span><span class="params">(rmp,old_memory_clicks)</span></span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<ol>
+<li>通知变化是在if分支里面的，所以不需要sys_newmap</li>
+</ol>
+<p>TNND，终于写完了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/16/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FProject4-%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ML06-DeepLearning" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/ML06-DeepLearning/">ML06 DeepLearning</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/15/ML06-DeepLearning/" class="archive-article-date">
+  	<time datetime="2020-06-15T13:41:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Deep-Learning"><a href="#Deep-Learning" class="headerlink" title="Deep Learning"></a>Deep Learning</h1><p>Step1: define a set of function </p>
+<p>Step2: goodness of function</p>
+<p>Step3:pick the best function</p>
+<blockquote>
+<p>DL v.s.ML</p>
+</blockquote>
+<p>这里的function是一个Neurual Network</p>
+<p>可以用不同的方法链接不同的Neurual Network</p>
+        
+          <a class="article-more-a" href="/2020/06/15/ML06-DeepLearning/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/15/ML06-DeepLearning/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-操作系统W15MINIX3进程管理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW15MINIX3%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">操作系统W15MINIX3进程管理</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW15MINIX3%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-06-15T04:35:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天没有带书，那就只能记笔记了。</p>
+<p>4.1 -4.2 基本的内存管理</p>
+<p>4.3-4.5 页式管理技术</p>
+<p>虚拟地址-&gt;虚页号-&gt;物理页号</p>
+<p>缺页-&gt;缺页故障</p>
+<p>页面替换算法：减少缺页故障的总数</p>
+<p>PageSize的大小/工作集</p>
+        
+          <a class="article-more-a" href="/2020/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW15MINIX3%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/15/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9FW15MINIX3%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数据与数据分析与寿险行业" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%AF%BF%E9%99%A9%E8%A1%8C%E4%B8%9A/">数字化技术，尤其是数据与数据分析将如何影响和改变未来的寿险行业</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/15/%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%AF%BF%E9%99%A9%E8%A1%8C%E4%B8%9A/" class="archive-article-date">
+  	<time datetime="2020-06-15T01:39:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#数字化技术，尤其是数据与数据分析将如何影响和改变未来的寿险行业</p>
+<ul>
+<li>方案创新</li>
+<li>方案完整</li>
+<li>原创性</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfvhvxsejmj30u0190k0q.jpg" alt></p>
+<ul>
+<li><p><a href="[https://www.zhihu.com/search?type=content&q=%E5%A4%A7%E6%95%B0%E6%8D%AE%E4%B8%8E%E5%AF%BF%E9%99%A9%E8%A1%8C%E4%B8%9A](https://www.zhihu.com/search?type=content&q=大数据与寿险行业)">大数据与寿险行业–知乎</a></p>
+</li>
+<li><p>2020-2026全球及中国补充健康保险行业发展现状调研及投资前景分析报告</p>
+</li>
+<li><p>尤忠彬</p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxiw9fayjj313k0a0dgt.jpg" alt></p>
+</li>
+<li><p><a href="https://blog.csdn.net/zhaoyang17/article/details/128298" target="_blank" rel="noopener">数据挖掘的价值：寿险行业数据挖掘应用分析</a></p>
+</li>
+<li><p>德勤的视频</p>
+</li>
+<li><p>百度网盘资料：互联网+保险</p>
+</li>
+<li><p>商赛模版</p>
+</li>
+<li><p><a href="http://www.beeui.com/p/3690.html" target="_blank" rel="noopener"><strong>互联网+保险：20个大数据应用案例</strong></a></p>
+</li>
+<li><p><a href="[https://www.baidu.com/s?wd=%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%B0%86%E5%A6%82%E4%BD%95%E5%BD%B1%E5%93%8D%E5%92%8C%E6%94%B9%E5%8F%98%E6%9C%AA%E6%9D%A5%E7%9A%84%E5%AF%BF%E9%99%A9%E8%A1%8C%E4%B8%9A&rsv_spt=1&rsv_iqid=0xf5e0a0620001c0f7&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_enter=1&rsv_dl=tb&oq=%25E6%2596%25B0%25E6%25B5%25AA%25E5%25BE%25AE%25E5%258D%259A&rsv_btype=t&inputT=16732&rsv_t=28e6pwl%2F8sD5CZQGa1DEOSx3nsRe3vCQLryj1kIufgLJWewp%2BfTRaUwYbzgeFtPTRgRR&rsv_sug3=100&rsv_sug1=14&rsv_sug7=101&rsv_pq=b668f48600003da5&rsv_sug2=0&rsv_sug4=17415](https://www.baidu.com/s?wd=数据与数据分析将如何影响和改变未来的寿险行业&rsv_spt=1&rsv_iqid=0xf5e0a0620001c0f7&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_enter=1&rsv_dl=tb&oq=%E6%96%B0%E6%B5%AA%E5%BE%AE%E5%8D%9A&rsv_btype=t&inputT=16732&rsv_t=28e6pwl%2F8sD5CZQGa1DEOSx3nsRe3vCQLryj1kIufgLJWewp%2BfTRaUwYbzgeFtPTRgRR&rsv_sug3=100&rsv_sug1=14&rsv_sug7=101&rsv_pq=b668f48600003da5&rsv_sug2=0&rsv_sug4=17415)">百度搜索：数据与数据分析将如何影响和改变未来的寿险行业</a></p>
+</li>
+</ul>
+<hr>
+<p>技术融合给保险业带来了哪些方便呢？</p>
+<ol>
+<li>大量险企通过云技术与人工智能<strong>精简或优化业务</strong>的流程与支撑基础，从而提高效率、降低成本。</li>
+<li>二是部分险企通过新技术重塑客户体验, 形成了赢得客户的新方法，例如定制化服务等。</li>
+<li>三是物联网加多云互联为AI提供更广泛的客户数据，支持对保险服务的全链条实现实时的高水平决策。</li>
+<li>四是在前所未有的丰富数据、算力与数字化、智能化支持下，保险公司提供无处不在的保险服务。</li>
+<li>五是新技术产生全新的业务价值。其中，基于使用情况而灵活变化的“柔性保险”可能为客户带来不同的价值体验；强调预防风险而非赔付损失的“预防型产品”，则为保险公司提供了另一种价值定位的可能性。总而言之，在技术与创新为保险本身带来全面变革的同时，保险技术服务的周边生态也正在随着技术的变革而重塑。</li>
+</ol>
+<p>LS算法与DV算法/OSPF/BGP</p>
+<hr>
+<h2 id="zoom会议"><a href="#zoom会议" class="headerlink" title="zoom会议"></a>zoom会议</h2><ul>
+<li>不一定局限于寿险，故行业条件可以放开，自己熟悉且喜欢的即可</li>
+<li>瞄准关键业务环节，找准点即可。</li>
+<li>内容不要太多</li>
+<li>数据分析Program</li>
+</ul>
+<hr>
+<p>行业在寿险是例子</p>
+<ol>
+<li>寿险/银行业/零售/汽车等熟悉且喜欢的行业</li>
+<li>PPT形式转PDF不建议有动画</li>
+<li>即使选择了行业，也要在行业里重点聚焦1-2项。营销/财务/运营/人力资源管理</li>
+<li>把一件事情讲清楚就可以了</li>
+<li><strong>突出高级数据分析：机器学习/深度学习的价值</strong></li>
+<li>突出算法技术在<strong>应用上</strong>的价值，而不是代码本身的优化</li>
+</ol>
+<hr>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfxlkewwczj313g0k6gyv.jpg" alt></p>
+<ol>
+<li>创新：适当的做一些扎实的研究</li>
+<li>业务问题的定义，完整的数据分析和产生的洞察力，结论的业务含义和业务策略</li>
+<li>融入多元背景，<strong>管理咨询顾问</strong>，站在客户的视角帮助客户解决问题，端到端的业务流程。</li>
+<li>中英文自便</li>
+<li>Overall公司，业务链条中的业务。具体公司的数据集不受限制</li>
+<li>算法应用的角度对业务应用方面获得一个更清晰的创新。</li>
+</ol>
+<hr>
+<p>Stacking 模型与数据挖掘</p>
+<ol>
+<li>什么是管理咨询顾问</li>
+<li>数据分析与管理咨询</li>
+<li>德勤DC</li>
+<li>![截屏2020-06-20上午11.18.21](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-06-20上午11.18.21.png)</li>
+</ol>
+<hr>
+<ul>
+<li><p>改善数据分析的精确度：</p>
+<p>ML通过计算机识别市场行为模式和实时分析交易情况，改变了风险管理的方式。</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">DaSE</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">FinTech</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/15/%E6%95%B0%E6%8D%AE%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E4%B8%8E%E5%AF%BF%E9%99%A9%E8%A1%8C%E4%B8%9A/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-专业英语Project2-Mushroom-Classification" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -766,497 +1279,9 @@
 
 
   
-    <article id="post-数学基础W14随机变量特征与大数定理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/09/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W14%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%89%B9%E5%BE%81%E4%B8%8E%E5%A4%A7%E6%95%B0%E5%AE%9A%E7%90%86/">数学基础W14随机变量特征与大数定理与信息论</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/06/09/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W14%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%89%B9%E5%BE%81%E4%B8%8E%E5%A4%A7%E6%95%B0%E5%AE%9A%E7%90%86/" class="archive-article-date">
-  	<time datetime="2020-06-09T05:57:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-
-<h2 id="统计特征"><a href="#统计特征" class="headerlink" title="统计特征"></a>统计特征</h2><ul>
-<li><p>期望损失</p>
-<p>衡量模型的泛化性能</p>
-</li>
-</ul>
-<h3 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h3><p>模型性能</p>
-<h3 id="协方差"><a href="#协方差" class="headerlink" title="协方差"></a>协方差</h3><p>整体误差</p>
-<p>相关系数：特征选择的指标</p>
-<ul>
-<li><p>Laplace分布</p>
-</li>
-<li><p>高斯分布</p>
-</li>
-</ul>
-<h2 id="协方差矩阵"><a href="#协方差矩阵" class="headerlink" title="协方差矩阵"></a>协方差矩阵</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm09nzfcjj30og0aejub.jpg" alt=""></p>
-<p><strong>协方差矩阵的展开研究</strong></p>
-<p>协方差矩阵是一个对称的正半定矩阵</p>
-<p>依概率收敛与依分布收敛</p>
-<p>弱大数定律与中心极限定理：大样本统计过滤的理论基础</p>
-<hr>
-<p>经验风险与期望风险</p>
-<p>经验风险根据大数定律收敛到期望风险。</p>
-<h1 id="信息论：熵"><a href="#信息论：熵" class="headerlink" title="信息论：熵"></a>信息论：熵</h1><p>决策树的基础。</p>
-<p>信息论与概率相关。</p>
-<p>如何衡量事件所包含的信息量?</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0p13e3uj30r80ae7a8.jpg" alt=""></p>
-<h3 id="随机事件的自信息量"><a href="#随机事件的自信息量" class="headerlink" title="随机事件的自信息量"></a>随机事件的自信息量</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0q8vhdcj30r80bcqbv.jpg" alt=""></p>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>随机事件的自信息量为该事件发生概率的对数的负值。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0re0mfhj30r80bc42v.jpg" alt=""></p>
-<p>自信息量的单位与对数的底有关</p>
-<h3 id="简单例子"><a href="#简单例子" class="headerlink" title="简单例子"></a>简单例子</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0ta1owdj30r80bc78c.jpg" alt=""></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0trg52gj30r80amgpy.jpg" alt=""></p>
-<p>信息量的可加性是与对数函数的性质相加的。</p>
-<h3 id="互信息："><a href="#互信息：" class="headerlink" title="互信息："></a>互信息：</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0uq6wnlj30r809utdu.jpg" alt=""></p>
-<p>简单例子</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0w4oxr6j30r8052mzj.jpg" alt=""></p>
-<h3 id="平均自信息"><a href="#平均自信息" class="headerlink" title="平均自信息"></a>平均自信息</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0yb0g0lj30r8088444.jpg" alt=""></p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm0zrmjr6j30r80amjwi.jpg" alt=""></p>
-<p>将统计平均值定义为信息熵。</p>
-<h2 id="熵函数"><a href="#熵函数" class="headerlink" title="熵函数"></a>熵函数</h2><h2 id="确定信源的平均不确定度"><a href="#确定信源的平均不确定度" class="headerlink" title="确定信源的平均不确定度"></a>确定信源的平均不确定度</h2><h2 id="级值性"><a href="#级值性" class="headerlink" title="级值性"></a>级值性</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm17uvqytj30s60du0xf.jpg" alt=""></p>
-<p>Jensen不等式</p>
-<p>熵函数与优化的目标函数：交叉熵损失函数，需要判断熵函数的凸性。</p>
-<hr>
-<h2 id="信息和熵"><a href="#信息和熵" class="headerlink" title="信息和熵"></a>信息和熵</h2><ul>
-<li>信息有重要之分</li>
-<li>信息用以消除不确定性，如果能度量一件事的不确定性，即可以确定一件事情的信息量。</li>
-<li><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm8tt5ds2j310a0660uo.jpg" alt=""></li>
-<li><strong>不确定性的减少量</strong>等于<strong>信息的信息量。</strong></li>
-<li><strong>所以，信息消除对某件事情的不确定性，还要取决于信息的接受者是谁。</strong></li>
-<li><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm8yamaw8j310a092gp9.jpg" alt=""></li>
-</ul>
-<hr>
-<ul>
-<li>熵：是某一事情对某人不确定性的度量。</li>
-<li>在数值上等于消除某件事情不确定性所需要的平均信息量。</li>
-<li>熵是信息量的期望。</li>
-<li><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfm9818wu4j310a09wdj7.jpg" alt=""></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/09/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W14%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%89%B9%E5%BE%81%E4%B8%8E%E5%A4%A7%E6%95%B0%E5%AE%9A%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数学基础W14随机变量与分布" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/09/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W14%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E4%B8%8E%E5%88%86%E5%B8%83/">数学基础W14随机变量与分布</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/06/09/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W14%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E4%B8%8E%E5%88%86%E5%B8%83/" class="archive-article-date">
-  	<time datetime="2020-06-09T05:06:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="如何将样本空间与数据和事件联系起来呢？"><a href="#如何将样本空间与数据和事件联系起来呢？" class="headerlink" title="如何将样本空间与数据和事件联系起来呢？"></a>如何将样本空间与数据和事件联系起来呢？</h1><ul>
-<li>将随机变量理解为映射，是样本空间到实数集的映射。</li>
-<li>累计分布函数是一个单调增的函数。</li>
-<li>离散型概率质量函数</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/06/09/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W14%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E4%B8%8E%E5%88%86%E5%B8%83/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/09/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W14%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E4%B8%8E%E5%88%86%E5%B8%83/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语W13：learningSlow问题的解决" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/06/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW13%EF%BC%9AlearningSlow%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/">专业英语W13：learningSlow问题的解决</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/06/06/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW13%EF%BC%9AlearningSlow%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/" class="archive-article-date">
-  	<time datetime="2020-06-06T03:42:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>What is the learning slowdown problem? What general idea can we learn from the cross-entropy and softmax to solve the learning slowdown problem?</li>
-</ol>
-<p>Learning slowdown 问题描述：</p>
-<ol>
-<li><p>神经元在学习的过程中，没有很好地对出错很大的情况进行学习，learning rate的改变很小，learning rate学习的效果慢。</p>
-<p>Learning slowdown problem describes that  the neurons <strong>don’t learn very well</strong> ( don’t change their learning rate fast ) when they make big errors in the learning process especially at the begin stage of learnning. Instead, these neurons tend to learn very quick when the errors are small. Such learning  behaviors lead to very low efficiency. But we expect neurons to learn like human ,that is, the bigger the error made during learning, the faster it they learn from the error.</p>
-<hr>
-</li>
-</ol>
-<p>   models change their learning rate very slowly when they make some big errors, but we expect them to learn very quick from bad mistakes just like  humans. What’s worse, these models tend to learn very quick when the errors are small. Such learning   behaviors make it very low efficient especially when the errors are big at the beginning of learning(trainning).</p>
-<hr>
-<p>   The  learning slowdown problem  arises from the partial derivative of cost function those models apply. For instance, the MSE cost function’s partial derivative to the weight matrix behave like the bigger the error, the smaller the derivative, the lower the change of gradient decent,  and the slower the neuron learn from wrong experience.</p>
-<p>   Therefore , the key to solve the learning slowdown problem as well as the general idea of cross entropy and softmax is to adjust the models to  make the neurons learning like human. In other words, the larger the error, the more impressed the neurons is ,and the faster it learns.</p>
-<p>   导数小，偏导数小，梯度变化慢，学的慢。</p>
-<p>   那这种问题是由什么原因导致的呢：机器学习在使用梯度下降的过程中需要利用损失函数对权重矩阵求偏导，而拥有learning rate problem的损失函数中(如MSE)，它的偏导形式确是误差(错误)越大，其导数越小，learning rate改变越慢。</p>
-<ol start="2">
-<li>所以，我个人理解中解决learning slowdown problem需要 调整学习背后的数学模型，让对于错误越大的case，使机器像人一样，错误越大，印象越深，学的越快。</li>
-</ol>
-<p>Learning slowdown problem describes that  the neurons <strong>don’t learn very well</strong> ( don’t change their learning rate fast ) when they make big errors in the learning process especially at the begin stage. Instead, these neurons tend to learn very quick when the errors are small. Such learning  behaviors lead to very low efficiency. But we expect neurons to learn like human ,that is, the bigger the error made during learning, the faster  they learn from the error.</p>
-<p>The  learning slow problem  arises from the partial derivative of cost function those models apply. For instance, the MSE cost function’s partial derivative to the weight matrix behave like the bigger the error, the smaller the derivative, the lower the change of gradient decent,  and the slower the neuron learns from wrong experience.</p>
-<p>Therefore , the key to solve the learning slowdown problem as well as the general idea of cross entropy and softmax is to adjust the models to  make the neurons learning like human. In other words, the larger the error they make, the more impressed the neurons are ,and the faster they learn.</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/06/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADW13%EF%BC%9AlearningSlow%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-专业英语chapter3读书笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/06/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADchapter3%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">专业英语W13：learningSlow问题的解决</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/06/06/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADchapter3%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-06-06T03:42:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="专业英语chapter3"><a href="#专业英语chapter3" class="headerlink" title="专业英语chapter3"></a>专业英语chapter3</h1><h2 id="本章概览"><a href="#本章概览" class="headerlink" title="本章概览"></a>本章概览</h2><p>the cross-entropy cost function(交叉熵损失函数).Four so called regulariation methods (四个正则化项方法)</p>
-<h2 id="Cross-entropy"><a href="#Cross-entropy" class="headerlink" title="Cross-entropy"></a>Cross-entropy</h2><p>It will pick the initial weight to be (some value)and the initial bias to be  (some value) .</p>
-<p>These are generic choices used as a place to </p>
-<p>begin learning.</p>
-<p>也就是说这些初始化方法是随机选取的。</p>
-<hr>
-<p>It wasn t picking them to be special in any way.</p>
-<p>This behaviour is strange when contrasted to human learning. </p>
-<p>在人类学习过程中，对于错误比较大的地方往往会学的比较快，错误小的地方会学的比较慢。</p>
-<p>可是在神经元学习过程中，对于错误比较大的地方往往会学的比较慢。</p>
-<p>It was said at the beginning of this section, we often learn fastest when we are badly wrong about something. </p>
-<p>But we ve just seen that our artificial neuron has a lot of difficulty learning when it s badly wrong - far more difficulty than when it s just a little wrong.</p>
-<p>解决slow learning 方法的目标</p>
-<p><strong>The larger the error, the faster the neuron will learn.</strong></p>
-<h3 id="What-is-the-learning-slowdown-problem"><a href="#What-is-the-learning-slowdown-problem" class="headerlink" title="What is the learning slowdown problem?"></a>What is the learning slowdown problem?</h3><p>What general idea can we learn from cross-entropy and softmax to solve the learning slowdown problem?</p>
-<p>1.学的慢/对于出错很大的case并没有很好的学习，</p>
-<p>开始学习速度慢。</p>
-<p>梯度偏导数很小</p>
-<p>Slowdown problem：learning rate变化很小，学习的效果慢。</p>
-<h3 id="为什么交叉熵损失函数可以作为代价函数？"><a href="#为什么交叉熵损失函数可以作为代价函数？" class="headerlink" title="为什么交叉熵损失函数可以作为代价函数？"></a>为什么交叉熵损失函数可以作为代价函数？</h3><p>可以作为代价函数的原因：</p>
-<p>The cross-entropy is positive, and tends toward zero as the neuron gets better at computing the desired output, for all training inputs, </p>
-<p>当模型距离我们先要的真实值越近的时候，我们的函数离0也越近，就可以是一个损失函数模型。</p>
-<p><strong>非负性</strong>(看到的时候没抓住这个重点)。</p>
-<p>交叉熵损失函数的偏导形式告诉我们什么呢？错误越大，印象越深，学的越快。general idea to solve slowdown problem.</p>
-<blockquote>
-<p>神经元的输出就是 <em>a</em> = <em>σ</em>(<em>z</em>)，<strong>Sigmoid Function</strong>是神经元的输出。</p>
-</blockquote>
-<blockquote>
-<p>Epoch-Cost 图像上的上凸和下凹</p>
-</blockquote>
-<p>当sigmoid funtion作为输出的时候，交叉熵损失函数来表达Loss function是个很好的选择。</p>
-<p>在对单个神经元讨论中，我们指出如果对所有的训练数据有 <em>σ</em>(<em>z</em>) ≈ <em>y</em>，交叉熵会很⼩。这个论断其实是和 <em>y</em> 只是等于 1 或者 0 有关。这在分类问题⼀般是可⾏的，但是对其他的问题（如回归问题）<em>y</em> 可以取 0 和 1 之间的中间值的。</p>
-<p>证明，交叉熵对所有训练输⼊在<em>σ</em>(<em>z</em>) = <em>y</em> 时仍然是最⼩化的。此神经元的饱和问题。</p>
-<p><strong>学习速度下降是$\sigma’(z)$的问题。</strong></p>
-<h3 id="二次代价损失函数学的慢的原因"><a href="#二次代价损失函数学的慢的原因" class="headerlink" title="二次代价损失函数学的慢的原因"></a>二次代价损失函数学的慢的原因</h3><p>Greater initial error 对学习率的影响。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhsgkh6quj30xc04ot90.jpg" alt=""></p>
-<p>Roughly speaking, the idea is that the cross-entropy is a measure of surprise.(即熵是对不确定性的度量。)</p>
-<p>相对熵又称KL散度，用于衡量对于同一个随机变量x的两个分布p(x)和q(x)之间的差异。</p>
-<p>回归问题的值与分类问题的(0,1)。</p>
-<h2 id="Softmax"><a href="#Softmax" class="headerlink" title="Softmax"></a>Softmax</h2><p>同样解决交叉熵损失函数的方法还有softmax方法。</p>
-<p>softmax和sigmoid思想类似，都是改变输出层的输出方式：out put layer.</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfhsxm40f8j30d806aq33.jpg" alt=""></p>
-<p>we see that the output from the softmax layer is a set of positive numbers which sum up to 1.</p>
-<p>In other words, the output from the softma[ layer can be thought of as a probability distribution. </p>
-<p> 你可以将其想象成⼀种重新调节 某些参数 的⽅法，然后将这个结果整合起来构成⼀个概率分布。</p>
-<blockquote>
-<p>也就是说调节参数让和变成1.</p>
-</blockquote>
-<h3 id="对数似然损失函数。"><a href="#对数似然损失函数。" class="headerlink" title="对数似然损失函数。"></a>对数似然损失函数。</h3><p>GD方法的实质是偏导数的改变，偏导数的改变影响训练的走的方向，所以改变slowdown问题实质还是改变偏导数的问题。</p>
-<p> In fact, it s useful to think of a Softmax output layer with log-likelihood cost as being quite similar to a sigmoid output layer with cross-entropy cost. </p>
-<p>Softmax输出+对数似然损失函数 与 sigmoid输出+交叉熵损失函数。</p>
-<h4 id="在已知这种相似性的情况下又该做何选择呢？"><a href="#在已知这种相似性的情况下又该做何选择呢？" class="headerlink" title="在已知这种相似性的情况下又该做何选择呢？"></a>在已知这种相似性的情况下又该做何选择呢？</h4><p>In many cases: both work well.softmax plus log-likelihood is worth using whenever you want to interpret the output activations as probabilities. </p>
-<p>multi-Classification : independent的情况适配的很好。</p>
-<p><strong>softmax用于多分类过程中</strong>，它将多个神经元的输出，映射到（0,1）区间内，可以看成概率来理解，从而来进行多分类.</p>
-<blockquote>
-<p>softmax为什么有soft？</p>
-<p>看到了一个很形象的回答，当我把本来的max函数映射到概率以后，变成了不是数值大的一定会取到，而是数值大的有较大概率也会取到，这样就比较好的理解了soft.</p>
-</blockquote>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfif36qmr9j30v40ag75w.jpg" alt=""></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">专业英语</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/06/06/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADchapter3%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/9/">Next &amp;raquo;</a>
     </nav>
   
 

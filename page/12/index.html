@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 180
+			总文章数 184
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,361 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-TCP拥塞控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/24/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/">TCP拥塞控制</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/05/24/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/" class="archive-article-date">
+  	<time datetime="2020-05-24T11:26:09.686Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>1.为什么会产生拥塞?</p>
+</blockquote>
+<p>网络资源(缓存空间,链路带宽容量和中间节点处理能力等)不足以满足用户的需求,网络性能发生了变化,产生了拥塞.</p>
+<p>(很像交通堵车c.f. congestion)</p>
+<blockquote>
+<p>2.拥塞控制和流量控制的区别?</p>
+</blockquote>
+<p><strong>流量控制</strong>针对的是发送方和接收方发送和接受的<strong>速率不匹配</strong>的问题.(端到端)</p>
+<p><strong>拥塞控制</strong>是根据<strong>网络整体</strong>的<strong>通过能力</strong>或<strong>网络拥挤程度</strong>来调整数据发送速率和数据量.即目的是使网络负载不超过网络传送能力.</p>
+<blockquote>
+<ol start="3">
+<li>TCP拥塞控制的方法</li>
+</ol>
+</blockquote>
+<p><strong>慢开始、拥塞避免、快重传、快恢复.</strong></p>
+<p>发送方会维持一个<strong>动态变化</strong>的<strong>拥塞窗口(cwnd)</strong>,但cwnd仍只是状态变量,<strong>实际决定</strong>发送方发送多少数据的是发送方的窗口.</p>
+<blockquote>
+<p>3.1 如何发现拥塞?</p>
+</blockquote>
+<p>Case1:当对同一个报文连续收到三个重复的ACK时,举例来说连续收到三个$M_2$,便认为其下一个$M_3$丢失,后续$M_4,M_5$继续到达,发现了拥塞.</p>
+<p>对于<strong>个别报文段的丢失</strong>如本例$M_3$的丢失,认为拥塞的情况较轻.</p>
+<p>Case2:超时</p>
+<blockquote>
+<p>3.2 TCP 拥塞控制方法的具体分析</p>
+</blockquote>
+<p><strong>慢开始</strong>:发送方进行网络拥挤程度的探测,不是一开始就发送大量的数据,而是根据实时拥塞程度进行拥塞窗口的动态调整.拥塞窗口的大小取决于网络的拥塞程度.</p>
+<p>这里cwnd一开始以翻倍进行指数增长.</p>
+<p>慢开始阶段<strong>开始</strong>,cwnd=1,此时发送方只能发送1个报文段,当收到确认后,将cwnd翻倍(a.k.a cwnd*2),</p>
+<p><strong>拥塞避免:当cwnd&gt;=ssthresh(慢开始门限)时,</strong>进入<strong>拥塞避免</strong>阶段,从此以后的每个轮次都只将cwnd进行<strong>线性+1</strong>;</p>
+<p>如在过程中出现任何<strong>超时</strong>情况,则令ssthresh=cwnd/2,重新执行<strong>慢开始</strong>.</p>
+<p><strong>针对个别报文段丢失:快重传与快恢复</strong>:</p>
+<p><strong>快重传</strong>:当发现连续收到关于$M_2$的3个ACK时,执行快重传,立即重传$M_3$而不会等待$M_3$的超时时间到期.要求<strong>接收方</strong>在收到一个失序的报文段后就立即发出重复确认,而不要等到自己发送数据时捎带确认；</p>
+<p><strong>快恢复</strong>:快重传完成后进入快恢复阶段，将ssthresh修改为cwnd/2，同时cwnd=ssthresh，然后进入拥塞避免阶段，重复上述过程。</p>
+<p><strong>针对超时重传</strong>:</p>
+<p>发送数据包在一定时间周期内没有收到相应的ACK，等待RTO时间，超时之后就认为这个数据包丢失，就会重新发送。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/24/TCP%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-专业英语mini-batch的作用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADmini-batch%E7%9A%84%E4%BD%9C%E7%94%A8/">专业英语mini-batch的作用</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/05/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADmini-batch%E7%9A%84%E4%BD%9C%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2020-05-24T07:18:10.633Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="专业英语-mini-batch的作用"><a href="#专业英语-mini-batch的作用" class="headerlink" title="专业英语:mini-batch的作用"></a>专业英语:mini-batch的作用</h1><blockquote>
+<p>What is mini-batch used for? Please use your own words to answer the question. </p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2020/05/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADmini-batch%E7%9A%84%E4%BD%9C%E7%94%A8/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/24/%E4%B8%93%E4%B8%9A%E8%8B%B1%E8%AF%ADmini-batch%E7%9A%84%E4%BD%9C%E7%94%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-数学基础W12向量与矩阵的微分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/24/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W12%E5%90%91%E9%87%8F%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%9A%84%E5%BE%AE%E5%88%86/">数学基础W12:向量与矩阵的微分</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/05/24/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W12%E5%90%91%E9%87%8F%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%9A%84%E5%BE%AE%E5%88%86/" class="archive-article-date">
+  	<time datetime="2020-05-24T01:22:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数学基础W12-向量与矩阵的微分"><a href="#数学基础W12-向量与矩阵的微分" class="headerlink" title="数学基础W12:向量与矩阵的微分"></a>数学基础W12:向量与矩阵的微分</h1>
+        
+          <a class="article-more-a" href="/2020/05/24/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W12%E5%90%91%E9%87%8F%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%9A%84%E5%BE%AE%E5%88%86/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/24/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W12%E5%90%91%E9%87%8F%E4%B8%8E%E7%9F%A9%E9%98%B5%E7%9A%84%E5%BE%AE%E5%88%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-计算机网络W11TCP协议3.5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/">计算机网络W11:TCP协议3.5</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/" class="archive-article-date">
+  	<time datetime="2020-05-22T04:58:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="计算机网络W11-TCP协议3-5"><a href="#计算机网络W11-TCP协议3-5" class="headerlink" title="计算机网络W11:TCP协议3.5"></a>计算机网络W11:TCP协议3.5</h1><blockquote>
+<p>如何在传输层设计出一个可靠的协议?</p>
+</blockquote>
+<p>IP地址是分配给我们的逻辑地址,MAC是硬件地址,存在IP地址与MAC硬件地址的翻译流程存在.</p>
+<p>当出现过早超时时,会有一些延迟ACK即重复收到ACK,此时什么都不做继续等待即可.</p>
+<p>窗口大小:最多能忍受的已发送未确认的packet的个数.</p>
+<p>GBN的定时器:最早的已发送没有被确认的的分组上设置的timer,所以收到确认以后,我们的定时器会发生变化.</p>
+        
+          <a class="article-more-a" href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/05/22/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW11TCP%E5%8D%8F%E8%AE%AE3.5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-数学基础W11奇异值分解与优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -731,452 +1086,9 @@
 
 
   
-    <article id="post-用户画像构建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%9E%84%E5%BB%BA/">用户画像构建</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/15/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%9E%84%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2020-05-15T13:17:17.077Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="用户画像构建"><a href="#用户画像构建" class="headerlink" title="用户画像构建"></a>用户画像构建</h1><p>在初赛的基础上,对用户画像的构建进行了完善.</p>
-<h2 id="Login"><a href="#Login" class="headerlink" title="Login"></a>Login</h2><p>用户在登录第三方平台时,可以选择使用支付宝账号登录.</p>
-<blockquote>
-<p>用户授权使用支付宝登录.</p>
-</blockquote>
-<h3 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h3><h4 id="数据来源1-支付宝-用户消费意愿获取"><a href="#数据来源1-支付宝-用户消费意愿获取" class="headerlink" title="数据来源1:支付宝(用户消费意愿获取)"></a>数据来源1:支付宝(用户消费意愿获取)</h4><p>平台可以从支付宝获得用户使用支付宝的交易记录:</p>
-<p>下面将支付宝的消费记录划分如下:</p>
-<ol>
-<li>用户账单</li>
-<li>使用支付宝相关服务的情况:<ol>
-<li>总资产</li>
-<li>余额</li>
-<li>余额宝(支付宝相关理财产品)</li>
-<li>花呗/借呗(支付宝相关类似借记卡信息)</li>
-<li>支付宝绑定的银行卡信息</li>
-<li>芝麻信用</li>
-<li>用户真实地理位置</li>
-</ol>
-</li>
-</ol>
-<h4 id="数据来源2-在金融、证券机构等的交易记录"><a href="#数据来源2-在金融、证券机构等的交易记录" class="headerlink" title="数据来源2:在金融、证券机构等的交易记录"></a>数据来源2:在金融、证券机构等的交易记录</h4><p>利用改进的Brinson用户业绩归因模型对用户的真实的投资决策能力进行评估.</p>
-<h4 id="数据来源3-用户填写的个人真实基本信息-心理学问卷"><a href="#数据来源3-用户填写的个人真实基本信息-心理学问卷" class="headerlink" title="数据来源3:用户填写的个人真实基本信息+心理学问卷"></a>数据来源3:用户填写的个人真实基本信息+心理学问卷</h4><p>信息收集有以下方向:</p>
-<ol>
-<li>用户个人基本信息:<ol>
-<li>姓名/性别/年龄/职业/家庭收入情况(均保留用户意愿进行可选择的披露)</li>
-</ol>
-</li>
-<li>用户个人消费意愿/投资偏好:<ol>
-<li>用户主观填写</li>
-<li>邀请用户使用心理学类情景问卷使用户更好的认清自己真实的消费意愿;</li>
-</ol>
-</li>
-<li>用户风险偏好</li>
-</ol>
-<h3 id="用户画像的特征提取-input"><a href="#用户画像的特征提取-input" class="headerlink" title="用户画像的特征提取(input)"></a>用户画像的特征提取(input)</h3><ol>
-<li><p>盈利能力 (实际收入能力)yes</p>
-</li>
-<li><p>总体决策(择时 Timing) yes</p>
-</li>
-<li><p>群体判断(行业 Other) yes</p>
-</li>
-<li><p>个体选择(择股 Seletion) </p>
-</li>
-<li><p>风险控制(用户个人风控能力) </p>
-</li>
-<li><p>流动性 (资金流动性)</p>
-</li>
-<li><p>用户偏好:</p>
-<ol>
-<li>消费(投资)意愿</li>
-<li>风险偏好</li>
-</ol>
-</li>
-</ol>
-<p><a href="https://www.wenjuan.com/lib_detail_full/549bb0dcf7405b0c9b1c3b7b" target="_blank" rel="noopener">消费意愿</a></p>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><h2 id="用户偏好模型构建"><a href="#用户偏好模型构建" class="headerlink" title="用户偏好模型构建"></a>用户偏好模型构建</h2><p>用户基本信息/用户消费记录/账单/</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/15/%E7%94%A8%E6%88%B7%E7%94%BB%E5%83%8F%E6%9E%84%E5%BB%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-英语歌曲文化赏析-乡村音乐3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/">英文歌曲文化赏析W11Hip hop culture</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/15/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/" class="archive-article-date">
-  	<time datetime="2020-05-15T01:22:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="乡村音乐3"><a href="#乡村音乐3" class="headerlink" title="乡村音乐3"></a>乡村音乐3</h1><h2 id="Identification"><a href="#Identification" class="headerlink" title="Identification:"></a>Identification:</h2><blockquote>
-<p>以”Remeber me “歌曲引入</p>
-</blockquote>
-<p>Typical musical instruments: Mendolin(Blur grass曼陀林)/fidle(Violin:不是很排他)/Guita</p>
-<p>Typical voice:声音低沉有磁性鼻音浓重</p>
-<p>Melody:simple,but touching/easy to sing</p>
-<p>Dressing style:carboy-like ;</p>
-<p>Lyric:too straight forward even make people (含蓄)比较直白:</p>
-<pre><code>&gt;“You were the first so was I 
-&gt;
-&gt;We made love and then you cried
-&gt;
-&gt;---《Rememebr when》</code></pre>
-        
-          <a class="article-more-a" href="/2020/05/15/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/15/%E8%8B%B1%E8%AF%AD%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90-%E4%B9%A1%E6%9D%91%E9%9F%B3%E4%B9%903/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-概率论W10-DataStreams" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/">概率论W10:DataStreams</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/" class="archive-article-date">
-  	<time datetime="2020-05-13T01:02:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="概率论W10-DataStreams"><a href="#概率论W10-DataStreams" class="headerlink" title="概率论W10:DataStreams"></a>概率论W10:DataStreams</h1><ol>
-<li><p>当取样足够好的时候,当Datastream无限时,取样相当于一个物理规律.</p>
-</li>
-<li><p>Tail Inequalities;</p>
-</li>
-<li><p>一个经典的取样方法:Reservoir Sampling[水库抽样]</p>
-<p>Add each element to S with probability M/n;</p>
-</li>
-<li><p>Concise sampling</p>
-<p>以1/T的概率加入到取样之中.</p>
-</li>
-<li><p>如果我们用&lt;value, count&gt;来表示取样的样本，用concise sampling取样，对于什么样的&lt;value, count&gt;能做准确的估计，对于什么样的样本作出的估计是不准确的？</p>
-<p>Effective for answering hot list queries;</p>
-<p>所以,对k most frequent values的情况下的估计比较好;k most frequent 会在sampling中沉淀下来;</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">概率论</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/13/%E6%A6%82%E7%8E%87%E8%AE%BAW10-DataStreams/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数学基础W10:对称矩阵的谱分解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10:%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E8%B0%B1%E5%88%86%E8%A7%A3/">数学基础W10:对称矩阵的谱分解</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10:%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E8%B0%B1%E5%88%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-05-12T05:10:30.309Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="数学基础对称矩阵的谱分解"><a href="#数学基础对称矩阵的谱分解" class="headerlink" title="数学基础对称矩阵的谱分解"></a>数学基础对称矩阵的谱分解</h1><h2 id="谱分解"><a href="#谱分解" class="headerlink" title="谱分解"></a>谱分解</h2><p>对称矩阵的谱分解,即是对称矩阵的特征分解;</p>
-<p>特征分解:$A=PDP^{-1}$;</p>
-<p>矩阵可特征分解的条件:矩阵A的n个特征向量不同,即P是可逆的,即P的列向量线性无关.</p>
-<blockquote>
-<p>特别的,当A是对称矩阵时,P作为特征向量构成的矩阵为正交矩阵;</p>
-</blockquote>
-<h3 id="谱分解在机器学习的应用"><a href="#谱分解在机器学习的应用" class="headerlink" title="谱分解在机器学习的应用"></a>谱分解在机器学习的应用</h3><ol>
-<li><p>PCA降维</p>
-<p>最大特征值对应特征向量方向上往往含有较多有用信息,故矩阵在进行特征提取时可以放弃一些辅助的无用信息,仅保留较大的特征值.</p>
-</li>
-<li><p>压缩</p>
-</li>
-</ol>
-<h3 id="对称矩阵的好的性质"><a href="#对称矩阵的好的性质" class="headerlink" title="对称矩阵的好的性质"></a>对称矩阵的好的性质</h3><ol>
-<li>A是实对称矩阵,A的特征值是实数;</li>
-<li>A是 n阶矩阵,下面三个命题等价;<ol>
-<li>$A=A^T$</li>
-<li>$A=Q\Lambda Q^T,Q^T\Lambda Q=A$</li>
-<li>A的特征向量$q_1,q_2,…,q_n$是$R^n$的一组<strong>标准</strong>正交基;</li>
-</ol>
-</li>
-</ol>
-<blockquote>
-<p>副对称矩阵也有相应的对角化定理</p>
-</blockquote>
-<h3 id="谱分解定义"><a href="#谱分解定义" class="headerlink" title="谱分解定义"></a>谱分解定义</h3><p>也可以将对称矩阵A,$A=Q\Lambda Q^T=\sum_{i=1}^n\lambda_iq_iq_i^T$,即在这里写成了rank-1矩阵和的形式;</p>
-<h3 id="特征分解的几何意义"><a href="#特征分解的几何意义" class="headerlink" title="特征分解的几何意义"></a>特征分解的几何意义</h3><p>$设A=\lambda_1q_1q_1^T+\lambda_2q_2q_2^T,显然q_1和q_2是两组基;$</p>
-<p>$q_1^Tq_1=1;q_2^Tq_2=1;$</p>
-<p>所以</p>
-<h3 id="谱分解与二次函数的优化"><a href="#谱分解与二次函数的优化" class="headerlink" title="谱分解与二次函数的优化"></a>谱分解与二次函数的优化</h3><p>$Q(x)=x^TAx$,限制$||x||_2=1$;</p>
-<p>$xQ(x)=xx^TAx=Ax$,故当x等于某个特征向量时,$Q(x)$是对应的特征值;</p>
-<p>$Q(x)<em>{MAX}=\lambda</em>{MAX}$;</p>
-<p>$Q(x)<em>{MIN}=\lambda</em>{MIN}$;</p>
-<p>可以跟正半定矩阵特征值的性质相结合;$\lambda_{min}\ge0$;</p>
-<blockquote>
-<p>无向图的拉普拉斯矩阵L=D-A是正半定矩阵,故有</p>
-<p>min$x^TLx=0$;</p>
-</blockquote>
-<p><strong>所以,谱聚类问题转化成了相应的求次小特征值的问题</strong>;</p>
-<h3 id="瑞利商"><a href="#瑞利商" class="headerlink" title="瑞利商"></a>瑞利商</h3><p>$R(x)=\frac{x^TxA}{x^Tx}$</p>
-<p>A是正半定矩阵等价于R(x)$\ge$0;</p>
-<p><img src="https://i.loli.net/2020/05/12/p3wegGKbxdmVOYN.png" alt="截屏2020-05-12下午2.58.36.png"></p>
-<p><img src="https://i.loli.net/2020/05/12/cL3D6TqgBxaIRtN.png" alt="截屏2020-05-12下午2.59.32.png"></p>
-<h3 id="庞加莱不等式"><a href="#庞加莱不等式" class="headerlink" title="庞加莱不等式"></a>庞加莱不等式</h3><p>令$A\in S^n$,V是$R^n$中的任意一个k维自空间;</p>
-<p>存在单位向量x,y;<br>$$<br>x^TAx\le\lambda_k(A),y^TAy\ge\lambda_{n-k+1}(A)<br>$$</p>
-<h3 id="Poincare不等式的应用-极小极大准则"><a href="#Poincare不等式的应用-极小极大准则" class="headerlink" title="Poincare不等式的应用:极小极大准则"></a>Poincare不等式的应用:极小极大准则</h3><p><img src="https://i.loli.net/2020/05/12/VkwgrHauQ63bFdJ.png" alt="截屏2020-05-12下午3.04.54.png"></p>
-<blockquote>
-<p>极大极小准则可以用于比较两个对称矩阵和的特征值和原矩阵特征值的大小关系:</p>
-</blockquote>
-<p><img src="https://i.loli.net/2020/05/12/Ngn8BJTGeft4ir6.png" alt="截屏2020-05-12下午3.06.08.png"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/12/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10:%E5%AF%B9%E7%A7%B0%E7%9F%A9%E9%98%B5%E7%9A%84%E8%B0%B1%E5%88%86%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/11/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/13/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/11/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><span class="page-number current">12</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/13/">Next &amp;raquo;</a>
     </nav>
   
 

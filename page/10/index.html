@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 180
+			总文章数 184
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,603 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-数学基础W13:向量值函数和矩阵值函数的梯度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/04/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W13:%E5%90%91%E9%87%8F%E5%80%BC%E5%87%BD%E6%95%B0%E5%92%8C%E7%9F%A9%E9%98%B5%E5%80%BC%E5%87%BD%E6%95%B0%E7%9A%84%E6%A2%AF%E5%BA%A6/">数学基础W13:向量值函数和矩阵值函数的梯度</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/04/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W13:%E5%90%91%E9%87%8F%E5%80%BC%E5%87%BD%E6%95%B0%E5%92%8C%E7%9F%A9%E9%98%B5%E5%80%BC%E5%87%BD%E6%95%B0%E7%9A%84%E6%A2%AF%E5%BA%A6/" class="archive-article-date">
+  	<time datetime="2020-06-04T00:04:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前面的回顾"><a href="#前面的回顾" class="headerlink" title="前面的回顾"></a>前面的回顾</h2><ol>
+<li>运算法则</li>
+<li>向量函数和矩阵函数的微分</li>
+<li>迹微分的性质。</li>
+</ol>
+<h2 id="向量值函数和矩阵值函数的梯度-R-n-gt-R-m-R-m-times-n-gt-R-n-times-n"><a href="#向量值函数和矩阵值函数的梯度-R-n-gt-R-m-R-m-times-n-gt-R-n-times-n" class="headerlink" title="向量值函数和矩阵值函数的梯度$R^n-&gt;R^m/R^{m\times n}-&gt;R^{n\times n}$"></a>向量值函数和矩阵值函数的梯度$R^n-&gt;R^m/R^{m\times n}-&gt;R^{n\times n}$</h2><p>可以用这些微分来解决什么？</p>
+<p>链式法则：复合函数的梯度和导数。</p>
+<h3 id="定义5"><a href="#定义5" class="headerlink" title="定义5"></a>定义5</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffxy7iqc4j30ty0fo0yl.jpg" alt=""></p>
+<p>Output是一个向量。</p>
+<h3 id="Jacobian矩阵"><a href="#Jacobian矩阵" class="headerlink" title="Jacobian矩阵"></a>Jacobian矩阵</h3><p>梯度在向量与向量之间的变化关系上的推广。</p>
+<p>将矩阵向量化：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffy2ea576j30mi0aotbp.jpg" alt=""></p>
+<h3 id="向量函数微分"><a href="#向量函数微分" class="headerlink" title="向量函数微分"></a>向量函数微分</h3><p>$df=\frac{\part f^T}{\part x}^T dx$</p>
+<p>从分量的角度去考虑。</p>
+<blockquote>
+<p>多远正态分布的推广</p>
+</blockquote>
+<h3 id="定理8"><a href="#定理8" class="headerlink" title="定理8"></a>定理8</h3><p>当f和x是相同大小:</p>
+<p>$\frac{\part f^T}{\part x}^{-1}=\frac{\part x^T}{\part f}$</p>
+<p>这个结论很适用于<strong>变量替换</strong>。</p>
+<h3 id="Hessian矩阵"><a href="#Hessian矩阵" class="headerlink" title="Hessian矩阵"></a>Hessian矩阵</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffycwz7rrj30n00b476q.jpg" alt=""></p>
+<p>当一阶导数求完后，$\frac{\part f}{\part x_1}$</p>
+<p>其还要关于$x^T$进行求。(行向量？)</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffyfgwuoej30r00b4wjj.jpg" alt=""></p>
+<p>Hessian 矩阵在机器学习优雅上有很多应用，</p>
+<p>Hessian是对称矩阵，二阶优化算法：牛顿法。</p>
+<h2 id="18-4链式法则与一些有用的梯度公式"><a href="#18-4链式法则与一些有用的梯度公式" class="headerlink" title="18.4链式法则与一些有用的梯度公式"></a>18.4链式法则与一些有用的梯度公式</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffyjst8v4j30r008a41m.jpg" alt=""></p>
+<h3 id="定理9"><a href="#定理9" class="headerlink" title="定理9"></a>定理9</h3><p>假设我们有n个列向量。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffylie7thj30r005mq5c.jpg" alt=""></p>
+<h3 id="定理10"><a href="#定理10" class="headerlink" title="定理10"></a>定理10</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffynfywm7j30r008swj6.jpg" alt=""></p>
+<h4 id="例16"><a href="#例16" class="headerlink" title="例16"></a>例16</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffyptbju3j30r00e20w1.jpg" alt=""></p>
+<h4 id="例17"><a href="#例17" class="headerlink" title="例17"></a>例17</h4><p>$(x-\mu)^T\Sigma^{-1}(x-\mu)$关于$\mu$求导。</p>
+<h3 id="一些常用的梯度计算公式"><a href="#一些常用的梯度计算公式" class="headerlink" title="一些常用的梯度计算公式"></a>一些常用的梯度计算公式</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffysdofysj30r00e2gnv.jpg" alt=""></p>
+<blockquote>
+<p>18.3/18.4有符号的错误</p>
+</blockquote>
+<h2 id="18-5-反向传播与自动微分"><a href="#18-5-反向传播与自动微分" class="headerlink" title="18.5 反向传播与自动微分"></a>18.5 反向传播与自动微分</h2><p>神经网络中的梯度与链式法则。</p>
+<h3 id="例18"><a href="#例18" class="headerlink" title="例18"></a>例18</h3><p>考虑$f(x)=\sqrt{x^2+exp(x^2)}+cos(x^2+exp(x^2))$</p>
+<p>这样的微分的计算会很冗余</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffz7coq7lj30s80e2acz.jpg" alt=""></p>
+<p>正向传播过程中，我们需要每层的偏导数。</p>
+<p>每层的偏导数计算兜涉及到链式法则。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffzarpumzj30s80e2419.jpg" alt=""></p>
+<p>此部分笔记，在专业英语反向传播的那篇博客中也有涉及。</p>
+<p>$e=(a+b)(b+1)$</p>
+<p>求a=2,b=1时的e 的梯度：</p>
+<p>$\part e/\part a=b+1$</p>
+<p>$\part e/\part b=(b+1)+(b+a)$</p>
+<p>引入中间变量c/d</p>
+<p>c=b+1</p>
+<p>d=b+a</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffzmh4nwkj31310m176n.jpg" alt=""></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/04/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W13:%E5%90%91%E9%87%8F%E5%80%BC%E5%87%BD%E6%95%B0%E5%92%8C%E7%9F%A9%E9%98%B5%E5%80%BC%E5%87%BD%E6%95%B0%E7%9A%84%E6%A2%AF%E5%BA%A6/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ML3-5-Optimization-for-DL" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/03/ML3-5-Optimization-for-DL/">ML3.5 Optimization for DL</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/03/ML3-5-Optimization-for-DL/" class="archive-article-date">
+  	<time datetime="2020-06-03T01:06:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>前注：</strong></p>
+<blockquote>
+<p>本讲的内容按照学习路线上Gradient Descent的补充知识</p>
+</blockquote>
+<p><strong>New Optimization</strong></p>
+<h1 id="New-Optimizers-for-Deep-Learning"><a href="#New-Optimizers-for-Deep-Learning" class="headerlink" title="New Optimizers for Deep Learning"></a>New Optimizers for Deep Learning</h1><h2 id="What-you-have-known-before"><a href="#What-you-have-known-before" class="headerlink" title="What  you have known before?"></a>What  you have known before?</h2><p><strong>常见Optimization的方法</strong></p>
+<ul>
+<li>SGD(随机梯度下降)</li>
+<li>SGD with momentum</li>
+<li>Adagrad</li>
+<li>RMSProp</li>
+<li>Adam</li>
+</ul>
+<h2 id="一些Notation"><a href="#一些Notation" class="headerlink" title="一些Notation"></a>一些Notation</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg16wre6ej30s80l0gs5.jpg" alt=""></p>
+<p>Momentum：History</p>
+<p>送进一个$x_t$，送入$\theta_t$得到，$y_t$，会与送入的label比较a.k.a $\hat{y_t}$</p>
+<h2 id="Why-Optimization"><a href="#Why-Optimization" class="headerlink" title="Why Optimization"></a>Why Optimization</h2><p>使损失函数最小(优化问题)</p>
+<p>如何sumover所有的dataset？</p>
+<p><strong>On-line v.s. Off-line</strong></p>
+<p>Off-line : pour all into model at every time step.</p>
+<p>On-line: one pair of $(x_t,\hat{y_t})$ at a time step.</p>
+<h3 id="SGD"><a href="#SGD" class="headerlink" title="SGD"></a>SGD</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2e9ryv6j30i70cbq3u.jpg" alt=""></p>
+<h3 id="SGDM"><a href="#SGDM" class="headerlink" title="SGDM"></a>SGDM</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2axlwgxj30q20jktjk.jpg" alt=""></p>
+<p>把momentum累计</p>
+<p>时间上的weighted Sum。</p>
+<p>考虑到过去的momentum的影响。</p>
+<h4 id="为啥要SGDM呢？"><a href="#为啥要SGDM呢？" class="headerlink" title="为啥要SGDM呢？"></a>为啥要SGDM呢？</h4><p>当某一个gradientj接近0的时候，或local minimum的时候，有可能有卡住不动的情况出现。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2gr5d09j30q20jkah7.jpg" alt=""></p>
+<p>以为我们前面的移动(左1梯度大)会我们累加过来使我们继续移动，虽然这一点(左2)的gradient很小，</p>
+<h3 id="Adagrad"><a href="#Adagrad" class="headerlink" title="Adagrad"></a>Adagrad</h3><p>实时调整learning rate。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2szfdo8j30ig0dajsl.jpg" alt=""></p>
+<h3 id="RMSProp"><a href="#RMSProp" class="headerlink" title="RMSProp"></a>RMSProp</h3><p>与adgrad唯一的差别在于分母的算法。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2pk2m5gj30q20jk0zd.jpg" alt=""></p>
+<p>确保$v_t$不会永无止境的变大，而是在时间上有weighted sum，不会因为前几步的步伐太大而停下来。给之前的vt乘上一个系数 <img src="https://www.zhihu.com/equation?tex=%5Calpha" alt="[公式]"> 就不会出现前几步grad太大，造成的分母太大，更新为0。</p>
+<p>因为Adagrad是前面所有的求和，所以$v_t$会永无止境的变大，使步伐越来越小。</p>
+<h3 id="Adam"><a href="#Adam" class="headerlink" title="Adam"></a>Adam</h3><p>上两个也很难解决local mimum的问题</p>
+<p>Adam=SGDM+RMSProp的优势结合。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg2wma7cbj30ii0cqq3v.jpg" alt=""></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg30pl9y1j30k00argm4.jpg" alt=""></p>
+<p>[参考资料](SGD，SGDM，Adagrad，RMSProp，Adam，AdamW复习笔记 - 木吉子的文章 - 知乎 <a href="https://zhuanlan.zhihu.com/p/129702058" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/129702058</a>)</p>
+<h2 id="还有没有别的Optimizer？"><a href="#还有没有别的Optimizer？" class="headerlink" title="还有没有别的Optimizer？"></a>还有没有别的Optimizer？</h2><p>事实上，是很少再有了。</p>
+<h2 id="Optimizer的Real-Application"><a href="#Optimizer的Real-Application" class="headerlink" title="Optimizer的Real Application"></a>Optimizer的Real Application</h2><p>2014年以后，很少有可以超越SGDM/Adam的算法。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfg5fmehu3j30q20jkjzg.jpg" alt=""></p>
+<blockquote>
+<p>视频没有看完，但现阶段对Adam和SGDM的优化暂且与我无瓜。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/03/ML3-5-Optimization-for-DL/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-ML04-Classification" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/03/ML04-Classification/">ML04 Classification</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/03/ML04-Classification/" class="archive-article-date">
+  	<time datetime="2020-06-03T01:05:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h1><p>基本模型：</p>
+<p>Input:x</p>
+<p>Output:Class n</p>
+<p>Application</p>
+<ol>
+<li>Credit Scoring </li>
+<li>Medical Diagnosis</li>
+<li>Handwritten character recognition</li>
+</ol>
+<h2 id="如何将我要分类的东西数值化？"><a href="#如何将我要分类的东西数值化？" class="headerlink" title="如何将我要分类的东西数值化？"></a>如何将我要分类的东西数值化？</h2><h3 id="Example-Application"><a href="#Example-Application" class="headerlink" title="Example Application"></a>Example Application</h3><p>还是以宝可梦为例：</p>
+<p>Total: how strong 整体程度</p>
+<p>HP</p>
+<p>Attack</p>
+<p>Defense</p>
+<p>SP Atk</p>
+<p>SP Def</p>
+<p>Speed</p>
+<p>即一只宝可梦，是7个数字组成的<strong>vector.</strong></p>
+<p>每个宝可梦都是用feature来描述。</p>
+<h2 id="How-to-do-Classification？"><a href="#How-to-do-Classification？" class="headerlink" title="How to do Classification？"></a>How to do Classification？</h2><ol>
+<li><p>收集数据 Training data for Classification.</p>
+<p>（皮卡丘，type雷)/（杰尼龟，type水）/妙蛙种子，type木）</p>
+</li>
+</ol>
+<h3 id="Classification-v-s-Regression"><a href="#Classification-v-s-Regression" class="headerlink" title="Classification v.s. Regression"></a>Classification v.s. Regression</h3><blockquote>
+<p>机器学习定理：没有免费的午餐定理。</p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeykir3taj30tk0m6qjg.jpg" alt=""></p>
+<blockquote>
+<p>Regression: Output :realnumber</p>
+<p>Classification:Output:Discrete(Some class)</p>
+</blockquote>
+<ol>
+<li><p>回归方法：对数值型连续随机变量进行预测和建模。</p>
+<p>房价预测、股票预测、成绩预测</p>
+<p>1.1 线性回归：</p>
+<p>拟合，wx+b,值是连续值。</p>
+<p>$b+\sum_iw_ix_i$</p>
+<p>1.2 回归树</p>
+<p>1.3 深度学习</p>
+<p>1.4 最近邻算法</p>
+</li>
+<li><p>分类方法：</p>
+<p>邮件过滤，金融欺诈，预测雇员异动</p>
+<p>2.1 逻辑回归</p>
+<p>将线性回归的wx+b通过sigmoid函数映射到(0,1)，并利用threshold进行划分。</p>
+<blockquote>
+<p>N分类问题：先得到N组w值不同的wx+b,归一化，最后变成N个类上的概率问题。</p>
+</blockquote>
+<p>2.2 分类树（集成方法)CART算法</p>
+<p>2.3 深度学习</p>
+<p>2.4 支持向量机SVM</p>
+<p>2.5 朴素贝叶斯</p>
+</li>
+<li><p>聚类：</p>
+<p>3.1 k-means</p>
+<p>3.2 Affinity Propagation</p>
+<p>3.3 层次聚类</p>
+<p>3.4 DBSCAN</p>
+</li>
+</ol>
+<h3 id="Ideal-Alternatives"><a href="#Ideal-Alternatives" class="headerlink" title="Ideal Alternatives"></a>Ideal Alternatives</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeyp9ij1jj30tk0m612x.jpg" alt=""></p>
+<p>这里的Loss function是无法用Gradient Descent。</p>
+<p>Perceptron/SVM</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gfeyu9s21mj30tk0m6wmf.jpg" alt=""></p>
+<p>给一个宝可梦x，统计从哪一个class中来的几率最大。</p>
+<p>但是还有一个问题：</p>
+<p>如何estimating the probabilities from training data.</p>
+<h3 id="Generative-model"><a href="#Generative-model" class="headerlink" title="Generative model"></a>Generative model</h3><p>计算x出现的几率，得知x的distribution，然后利用distribution来generate一个x。</p>
+<p>$P(x)=P(X|C_1)P(C_1)+P(X|C_2)P(C_2)$</p>
+<h2 id="Modelling-Process-using-Genreative-model"><a href="#Modelling-Process-using-Genreative-model" class="headerlink" title="Modelling Process using Genreative model"></a>Modelling Process using Genreative model</h2><h3 id="Gaussian-Distribution"><a href="#Gaussian-Distribution" class="headerlink" title="Gaussian Distribution"></a>Gaussian Distribution</h3><p>正态分布的由mean和variance来决定。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfezskm8dgj30wm0oswxn.jpg" alt=""></p>
+<h4 id="如何从sample来推断其背后的分布？"><a href="#如何从sample来推断其背后的分布？" class="headerlink" title="如何从sample来推断其背后的分布？"></a>如何从sample来推断其背后的分布？</h4><p>找$\mu$和$\sigma$</p>
+<h4 id="如何找-mu-和-sigma-极大似然估计Maximum-likelihood"><a href="#如何找-mu-和-sigma-极大似然估计Maximum-likelihood" class="headerlink" title="如何找$\mu$和$\sigma$?极大似然估计Maximum likelihood"></a>如何找$\mu$和$\sigma$?极大似然估计Maximum likelihood</h4><p>其实这堆sample可以是任何一个正态分布都有可能sample出来的。</p>
+<p>但是，每一个高斯分布能sample出这79个点的概率是(likelihood)不一样的。</p>
+<p>即</p>
+<blockquote>
+<p>Likelihood of a Gaussian with mean $\mu$,和协方差矩阵$\Sigma$ </p>
+<p>=</p>
+<p>the probability of the Gaussian samples $x^1,x^2,….,x^{79}$;</p>
+</blockquote>
+<p>$Likelihood(\mu,\Sigma)=\Pi_i f_{\mu,\Sigma}(x_i)$</p>
+<p>即likelihood of distribution是独立sample出这79个点的乘积。</p>
+<p>接下来，要找$Maximum \ likelihood$的那个Guassian</p>
+<p>$\mu^<em>,\Sigma^</em>=arg \space max \space Likelihood(\mu,\Sigma) $</p>
+<p>什么能让它最大呢？</p>
+<blockquote>
+<p>平均值能让它最大：</p>
+<p>$\mu^*=\frac{1}{n}\sum_ix^i$;</p>
+<p>$\Sigma^<em>=\frac{1}{n}\sum(x^i-\mu^</em>)(x^i-\mu^*)^T$;</p>
+</blockquote>
+<h3 id="Now-we-can-do-classification"><a href="#Now-we-can-do-classification" class="headerlink" title="Now we can do classification"></a>Now we can do classification</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gff0a0frbqj30q80jyn6t.jpg" alt=""></p>
+<h3 id="How’s-the-results"><a href="#How’s-the-results" class="headerlink" title="How’s the results?"></a>How’s the results?</h3><p>把分类放到更到的维度上去。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gff0de85euj30q80jknga.jpg" alt=""></p>
+<p>但是放到了更高的维度上，好像也只有54%de accuracy。</p>
+<h3 id="那怎么提高accuracy呢？–Modifying-Model"><a href="#那怎么提高accuracy呢？–Modifying-Model" class="headerlink" title="那怎么提高accuracy呢？–Modifying Model"></a>那怎么提高accuracy呢？–Modifying Model</h3><ol>
+<li>修改coveriance matrix：</li>
+</ol>
+<p>即修改两个class分布的Gaussian，强迫其共用Convariance Matrix。</p>
+<p>如此，如何计算likelihood呢？</p>
+<p>这样就有140个sample point了，即变成了140个的乘积。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gffeczrl4zj30q80jkwna.jpg" alt=""></p>
+<p>$\mu_1,\mu_2$的计算方式仍不变。</p>
+<h4 id="如何选择概率几率模型呢？"><a href="#如何选择概率几率模型呢？" class="headerlink" title="如何选择概率几率模型呢？"></a>如何选择概率几率模型呢？</h4><ul>
+<li><p>You can always use the distribution you like</p>
+</li>
+<li><p>这里$p(x|C_1)$的x可以是一个vector,所以$p(x|C_1)=p(x_1|C_1)p(x_2|C_2)…p(x_k|C_1)$</p>
+<p>拆解了以后，就变成了一维度的Gaussian了，此时可以更好的减少次数，但模型的正确率。即需要model 不同feature之间的covariance.</p>
+</li>
+<li><p>对于binary feature:是或不是，可以是Bernoulli distributions.</p>
+</li>
+</ul>
+<blockquote>
+<p>当你把这些维度拆开的时候，你就在假设各个维度之间<strong>没有相关性</strong>了。</p>
+<p><strong>当independent的时候，是Naive Bayes Classifier.</strong></p>
+</blockquote>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfffdvoij2j30q80jkdmr.jpg" alt=""></p>
+<p>这也解释了为啥两个$\Sigma$相等的时候是linear的boundary</p>
+<h3 id="如何理解先验概率和后验概率"><a href="#如何理解先验概率和后验概率" class="headerlink" title="如何理解先验概率和后验概率"></a>如何理解先验概率和后验概率</h3><p>设玩lol的是60%,不玩的是40%.</p>
+<p>P(X=1)=0.6;P(X=0)=0.4;</p>
+<p>玩lol中，0.8男性，0.2女性。</p>
+<p>则不玩lol中，0.2男性，0.8女性。</p>
+<p>P(Y=1|X=1)=0.8;</p>
+<p>P(Y=0|X=1)=0.2;</p>
+<p>P(Y=1|X=0)=0.2;</p>
+<p>P(Y=0|X=0)=0.8;</p>
+<p><strong>P(X=1)=0.6;P(X=0)=0.4;</strong>这个概率是统计得到的，所以X的概率分布是已知的。</p>
+<p>现在又来了一个样本，x,在他是男性的情况下，这里x取1的概率是多少：</p>
+<p>P(x=1|Y=1)=$\frac{P(x=1\cap Y=1)}{P(Y=1)}$</p>
+<p>$P(x=1\cap Y=1)/P(x=1)=P(Y=1|x=1)$</p>
+<p>P(x=1|Y=1)=$\frac{P(Y=1| x=1)P(x=1)}{P(Y=1)}$</p>
+<p>$P(Y=1)=P（Y=1|X=0)<em>P(X=0)+P(Y=1|X=1)</em>P(X=1)$</p>
+<p>=0.2$\times$0.4+0.8$\times$0.6</p>
+<p>P(x=1|Y=1)=$\frac{0.8*0.6}{0.56}$</p>
+<p><strong>最后算出的P(X=玩lol|Y=男性)称之为X的后验概率，即它获得是在观察到事件Y发生后得到的</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/03/ML04-Classification/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-DATA-MINING03" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/03/DATA-MINING03/">DATA MINING03</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/06/03/DATA-MINING03/" class="archive-article-date">
+  	<time datetime="2020-06-03T00:05:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-06-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Data-Mining-process"><a href="#Data-Mining-process" class="headerlink" title="Data Mining process"></a>Data Mining process</h1><h2 id="什么是决策树？"><a href="#什么是决策树？" class="headerlink" title="什么是决策树？"></a>什么是决策树？</h2><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfes9pwikpj310c0fk11t.jpg" alt=""></p>
+<ol>
+<li><p>结构树：数据模型；</p>
+</li>
+<li><p>通常的决策树以二叉树为主。</p>
+</li>
+<li><p>每个内部/叶子节点都会带一个label，作为数据如何划分的依据。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gfesc7pgz6j30hs0ajdgz.jpg" alt=""></p>
+</li>
+</ol>
+<h3 id="模型与结构"><a href="#模型与结构" class="headerlink" title="模型与结构"></a>模型与结构</h3><ol>
+<li>如何使用我的模型？Inference：将模型在树上过一遍</li>
+</ol>
+<h3 id="决策树的推断"><a href="#决策树的推断" class="headerlink" title="决策树的推断"></a>决策树的推断</h3><ol>
+<li><p>所到数据的标签位置，从根节点往下走，走到叶子结点，拿叶子上的label，作为record上的标签。</p>
+</li>
+<li><p>如何学习？训练得到模型？</p>
+</li>
+<li><p>自定向下/自定向上</p>
+<p>构造完成后的剪纸修正。</p>
+</li>
+</ol>
+<blockquote>
+<p>C4.5算法以及CART算法</p>
+</blockquote>
+<ol start="4">
+<li><p>通常使用决策树，使用贪心算法。</p>
+<p>寻找最易将label划分开的属性</p>
+</li>
+<li><p>决策树用crossvalidation和loss进行评价。</p>
+</li>
+</ol>
+<h2 id="APRORI"><a href="#APRORI" class="headerlink" title="APRORI"></a>APRORI</h2><ol>
+<li>在不同的属性上数数。</li>
+<li>关联规则挖掘</li>
+</ol>
+<p><a href="http://cda.pinggu.org/view/19854.html" target="_blank" rel="noopener">关联规则</a></p>
+<h2 id="打分规则"><a href="#打分规则" class="headerlink" title="打分规则"></a>打分规则</h2><p>多维场景下的维度灾难？</p>
+<p>维度高/稀疏/模型不可靠。</p>
+<h2 id="EM搜索方法"><a href="#EM搜索方法" class="headerlink" title="EM搜索方法"></a>EM搜索方法</h2><ol>
+<li>E-step</li>
+<li>M-step</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/06/03/DATA-MINING03/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-操作系统Project3-IOPS" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -805,452 +1402,9 @@
 
 
   
-    <article id="post-计算机网络W12-IP层" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/">计算机网络原理与编程W12:IP层</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/" class="archive-article-date">
-  	<time datetime="2020-05-29T05:02:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="IP-层-The-Data-Plane"><a href="#IP-层-The-Data-Plane" class="headerlink" title="IP 层:The Data Plane"></a>IP 层:The Data Plane</h1><p>SDN: software defined network:软件定义网络和软件定义一切.</p>
-<p>本章重点 4.3节</p>
-<ul>
-<li>network layer service models</li>
-<li>forwarding versus routing</li>
-<li>how a router works</li>
-<li>Generalized forwarding</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9CW12-IP%E5%B1%82/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-英文歌曲文化赏析W12-HIPHOP2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/">英文歌曲文化赏析W12:HIPHOP2</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/" class="archive-article-date">
-  	<time datetime="2020-05-29T02:09:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Hiphop-culture"><a href="#Hiphop-culture" class="headerlink" title="Hiphop culture"></a>Hiphop culture</h1><p>“The words of the prophets are written on the subway walls and tenement halls”</p>
-        
-          <a class="article-more-a" href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">非技术</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">英文选修</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/29/%E8%8B%B1%E6%96%87%E6%AD%8C%E6%9B%B2%E6%96%87%E5%8C%96%E8%B5%8F%E6%9E%90W12-HIPHOP2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-ML01-Regression-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/29/ML01-Regression-2/">ML01-Regression-2</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/29/ML01-Regression-2/" class="archive-article-date">
-  	<time datetime="2020-05-29T00:19:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Regression"><a href="#Regression" class="headerlink" title="Regression"></a>Regression</h1><h2 id="Case-Study-gt-Pokemon"><a href="#Case-Study-gt-Pokemon" class="headerlink" title="Case Study -&gt;Pokemon"></a>Case Study -&gt;Pokemon</h2><ol>
-<li><p>Gradient的定义:</p>
-<p>将对参数的偏微分,排列成一个向量.</p>
-</li>
-<li><p>Gradient Descent 的不足:</p>
-<p>对于存在Local optimal的模型的处理不佳.</p>
-<p>但是Linear Regression的模型是convex的,所以不存在local optimal的情况.</p>
-</li>
-</ol>
-<p>##关于模型训练结果的分析</p>
-<h3 id="How’s-the-result"><a href="#How’s-the-result" class="headerlink" title="How’s the result?"></a>How’s the result?</h3><p>因为我们更想得到的是generalization的结果,所以我们最关心的是error on new data(testing data) instead of training data itself.</p>
-<blockquote>
-<p>Training data上看起来更准一点就说明model更准了吗?</p>
-<p>过拟合与交叉验证.</p>
-</blockquote>
-<h3 id="How-can-we-do-better"><a href="#How-can-we-do-better" class="headerlink" title="How can we do better?"></a>How can we do better?</h3><blockquote>
-<p>Selecting another Model</p>
-</blockquote>
-<p>重新设计模型:</p>
-<p>原model:</p>
-<p>$y=b+wx_{cp}$;</p>
-<p>现在的model:</p>
-<p>$y=b+w_1x_{cp}+w_2x_{cp}^2$;</p>
-<p>How can we do more better?</p>
-<p>$y=b+w_1x_{cp}+w_2x_{cp}^2+w_3x_{cp}^3$</p>
-<h4 id="对于三次和二次在pokemon例子上的比较"><a href="#对于三次和二次在pokemon例子上的比较" class="headerlink" title="对于三次和二次在pokemon例子上的比较"></a>对于三次和二次在pokemon例子上的比较</h4><p><strong>Slightly</strong> better.</p>
-<h4 id="什么是“好的”model"><a href="#什么是“好的”model" class="headerlink" title="什么是“好的”model?"></a>什么是“好的”model?</h4><p>对于宝可梦模型,我们先后使用了1次2次…4次进行拟合,我们发现,随着模型的复杂度上升,我们的error on training data确实在下降,但是我们的error on testing da ta 却<strong>反而上升</strong>了.</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf916eob7uj30s20l813e.jpg" alt=""></p>
-<p>显然,当$w_4=0$时,三次模型所涵盖的表达都可以用4次模型的model表达出来.</p>
-<h2 id="Overfitting"><a href="#Overfitting" class="headerlink" title="Overfitting"></a>Overfitting</h2><p>为什么复杂model在training data上得到这么好的结果,而在testing上的error这么可怕呢?</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91eo6kffj30s20l8aj6.jpg" alt=""></p>
-<blockquote>
-<p>比如不是选择复杂的model,而是选择一个合适的model.</p>
-</blockquote>
-<h2 id="Let’s-collect-more-data"><a href="#Let’s-collect-more-data" class="headerlink" title="Let’s collect more data"></a>Let’s collect more data</h2><h3 id="What-are-the-hidden-factors"><a href="#What-are-the-hidden-factors" class="headerlink" title="What are the hidden factors?"></a>What are the hidden factors?</h3><p>进化后物种的影响仍是很大的.</p>
-<p>所以刚才的model本身就不好.</p>
-<blockquote>
-<p>Back to Step1.</p>
-</blockquote>
-<h2 id="Redesign-the-Model"><a href="#Redesign-the-Model" class="headerlink" title="Redesign the Model"></a>Redesign the Model</h2><blockquote>
-<p>不同的物种,不同的linear func</p>
-</blockquote>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91k13gbij30s20l8jyn.jpg" alt=""></p>
-<p>可以用一种更奇妙的函数表示形式,将之前有if的式子表示成带信号处理(i.e.“是”即1,“不是”即0);</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gf91m87p2ej30s20l8thu.jpg" alt=""></p>
-<p>当我们的输入$x_s=Pidgey$时,其即$y=b_1.1+w_1x_{cp}$</p>
-<h3 id="Are-there-any-other-hidden-factors"><a href="#Are-there-any-other-hidden-factors" class="headerlink" title="Are there any other hidden factors?"></a>Are there any other hidden factors?</h3><p>把我们想到的factor 以后 都back to step 1.</p>
-<h3 id="如何处理overfitting"><a href="#如何处理overfitting" class="headerlink" title="如何处理overfitting?"></a>如何处理overfitting?</h3><h2 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h2><p>重新定义我们的loss function,把knowledge放进去进行Redesign.</p>
-<p>$Loss:y=b+\sum w_ix_i$;</p>
-<p><strong>这里面这个求和是把种类不同考虑进去了。</strong></p>
-<p>$L=\sum_n(\hat{y}^n-(b+\sum w_ix_i))^2+\lambda\sum(w_i)^2$</p>
-<p>对于正则项:我们期待一个越小的$w_i$这个function越好.</p>
-<p>参数接近0时:</p>
-<h3 id="平滑"><a href="#平滑" class="headerlink" title="平滑"></a>平滑</h3><p>平滑是什么意思?</p>
-<p>输入有变化时,整体的变化对输入的变化是 <strong>不敏感</strong>的.</p>
-<p>$y=b+\sum w_ix_i$;</p>
-<p>如果我们的输入变化$\Delta x$,那么相应的,我们的输出变化,$w_i\Delta x_i$.</p>
-<p>$w_i$越接近0,function越平滑</p>
-<h4 id="为什么我们喜欢平滑的function"><a href="#为什么我们喜欢平滑的function" class="headerlink" title="为什么我们喜欢平滑的function?"></a>为什么我们喜欢平滑的function?</h4><p>因为当我们的输入被噪声所干扰时,一个平滑的function会被噪声有很小的影响.</p>
-<p>$\lambda$越大,代表考虑regularization的smooth正则项的影响力越大.</p>
-<blockquote>
-<p>我们喜欢平滑的function,但我们不喜欢太平滑的function.</p>
-<p>最平滑的function是一条水平线.</p>
-</blockquote>
-<h3 id="为什么在正则项中没有加上b"><a href="#为什么在正则项中没有加上b" class="headerlink" title="为什么在正则项中没有加上b?"></a>为什么在正则项中没有加上b?</h3><blockquote>
-<p>在做regularization是不需要考虑bias一项的.</p>
-</blockquote>
-<p>bias是作为常数项只是函数的上下移动而已.</p>
-<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>对于我们没有得到的data,即在testing data中没有包含的测试数据.</p>
-<p>我们的最终建模系统是”Underestimate?””Overestimate”?</p>
-<p><strong>Following lectures :validation</strong></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Machine Learning</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">李宏毅</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/29/ML01-Regression-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数学基础W10矩阵的SVD分解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/28/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/">数学基础W10:矩阵的SVD分解</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/05/28/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2020-05-28T01:39:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-05-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#数学基础W10:矩阵的SVD分解</p>
-<hr>
-<h1 id="面对方阵"><a href="#面对方阵" class="headerlink" title="面对方阵:"></a>面对方阵:</h1><ol>
-<li>A=LU</li>
-<li>A=QR</li>
-<li>A=$Q\Lambda Q$</li>
-<li>正定矩阵的cholosky分解</li>
-</ol>
-<p>面对非方阵:</p>
-<p>$A_{m\times n}=SVD$;</p>
-<blockquote>
-<p>数学基础的重点;</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2020/05/28/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大二下</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数学基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/05/28/%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80W10%E7%9F%A9%E9%98%B5%E7%9A%84SVD%E5%88%86%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/9/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/11/">Next &amp;raquo;</a>
     </nav>
   
 

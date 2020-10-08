@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2020/10/08/mongoDB-%E6%8A%A5%E9%94%99-Error-couldn-t-connect-to-server-127-0-0-1-27017-connection-attempt-failed-SocketException-Error-connecting-to-127-0-0-1-27017-caused-by-Connection-refused-connect-src-mongo-shell-mongo-js-362-17/</loc>
+    <lastmod>2020-10-08</lastmod>
+  </url>  <url>
+    <loc>http://yoursite.com/2020/10/07/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FHomework1-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F-%E4%B8%80/</loc>
+    <lastmod>2020-10-08</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2020/09/30/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW3-2-DB%E7%9A%84%E4%BA%8B%E5%8A%A1%E5%8A%9F%E8%83%BD/</loc>
     <lastmod>2020-10-07</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/10/07/python3-8%E5%AE%89%E8%A3%85mysqlclient%E6%8A%A5%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2020-10-07</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2020/10/07/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FHomework1-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F-%E4%B8%80/</loc>
     <lastmod>2020-10-07</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2020/09/30/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FW3-%E6%96%87%E6%A1%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%8EMongoDB%E6%80%BB%E7%BB%93/</loc>

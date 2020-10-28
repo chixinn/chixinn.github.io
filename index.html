@@ -78,7 +78,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 185
+			总文章数 186
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -162,6 +162,429 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-RandomWalk-马尔可夫链｜RandomProcess-PageRank" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/27/RandomWalk-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE%EF%BD%9CRandomProcess-PageRank/">RandomWalk|马尔可夫链｜RandomProcess|PageRank</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/10/27/RandomWalk-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE%EF%BD%9CRandomProcess-PageRank/" class="archive-article-date">
+  	<time datetime="2020-10-27T02:29:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>【参考资料：<a href="https://www.ituring.com.cn/book/tupubarticle/7121" target="_blank" rel="noopener">https://www.ituring.com.cn/book/tupubarticle/7121</a></p>
+<p>#马尔科夫链</p>
+<p>注意从时间(time)和空间(which state)的两个维度理解马尔可夫链。</p>
+<h2 id="Markov-property"><a href="#Markov-property" class="headerlink" title="Markov property"></a>Markov property</h2><p>当一个随机过程在给定现在状态及所有过去状态情况下，未来与过去无关。</p>
+<h3 id="Mathematically"><a href="#Mathematically" class="headerlink" title="Mathematically"></a>Mathematically</h3><p>如果$X(t),t&gt;0$为一个随机过程，则：</p>
+<p>$Pr[X(t+h)=y｜X(s)=x(s),s\le t]=Pr[X(t+h)=y|X(t)=x(t)]$</p>
+<h2 id="Markov-process"><a href="#Markov-process" class="headerlink" title="Markov process"></a>Markov process</h2><p>A random process which has Markov property is called Markov process</p>
+<h2 id="时齐"><a href="#时齐" class="headerlink" title="时齐"></a>时齐</h2><h3 id="Mathematically-1"><a href="#Mathematically-1" class="headerlink" title="Mathematically"></a>Mathematically</h3><p>如果$X(t),t&gt;0$为一个随机过程，则：</p>
+<p>$Pr[X(t+h)=y｜X(t)=x(t)]=Pr[X(h)=y|X(0)=x(0)]$</p>
+<h2 id="马尔科夫链的概率分布"><a href="#马尔科夫链的概率分布" class="headerlink" title="马尔科夫链的概率分布"></a>马尔科夫链的概率分布</h2><p>令$\pi^t$未马尔可夫链在时刻t的状态分布</p>
+<p>$\pi^t=P(X_t)=x$.</p>
+<p>$t=0$，就是初始的概率分布</p>
+<p>马尔科夫链X的绝对分布由其初始分布和一步转移概率完全确定。</p>
+<h3 id="平稳分布"><a href="#平稳分布" class="headerlink" title="平稳分布"></a>平稳分布</h3><p>$\pi P=\pi,\pi$叫做马尔可夫链的平稳分布，$\pi P^2=\pi PP=\pi P=\pi $</p>
+<h3 id="平稳分布的存在性与唯一性的讨论-马尔可夫链收敛定理"><a href="#平稳分布的存在性与唯一性的讨论-马尔可夫链收敛定理" class="headerlink" title="平稳分布的存在性与唯一性的讨论(马尔可夫链收敛定理)"></a>平稳分布的存在性与唯一性的讨论(马尔可夫链收敛定理)</h3><p>Q1：是否每个马尔可夫链都具有一个稳态分布？(存在性)</p>
+<p>Q2：该稳态分布是否唯一？(唯一性)</p>
+<p>Q3：<em>πn</em> 是否总是趋向于稳态分布？(收敛性)</p>
+<p>不可约+非周期=充要=平稳分布唯一存在</p>
+<p>所有状态的周期都不为1，平稳分布也不存在。</p>
+<h3 id="不可约"><a href="#不可约" class="headerlink" title="不可约"></a>不可约</h3><p>强连通</p>
+<h3 id="非周期"><a href="#非周期" class="headerlink" title="非周期"></a>非周期</h3><p>所有状态的周期均为1。</p>
+<h3 id="一些定理"><a href="#一些定理" class="headerlink" title="一些定理"></a>一些定理</h3><ol>
+<li>如果x和y是连通的，那么$d_x=d_y$</li>
+</ol>
+<h1 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h1><p>PageRank通过计算网页的”重要程度”来对网页进行排序。</p>
+<h2 id="如何定义网页的级别-重要程度"><a href="#如何定义网页的级别-重要程度" class="headerlink" title="如何定义网页的级别/重要程度?"></a>如何定义网页的级别/重要程度?</h2><p>定义网页$i$的级别$\pi(i)$为一个正数，</p>
+<p>$\pi(i)=\sum \pi(j)P(j,i) $,$P(j,i)$指我在状态j转移到i的的概率。</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk4u5mf4vfj30sg0h6myo.jpg" alt></p>
+<p>这里$P(A,B)=\frac{1}{2}$,</p>
+<p>有一个<strong>方程</strong>：$\begin{cases}\pi_A=\pi_Cp(c,a)+\pi_Dp(d,a)\\pi_b=\pi_ap(a,b)+\pi_Dp(d,b)+\pi_Ep(e,b)\…\end{cases}$，以此类推。</p>
+<p>注意到，这里只有未知数$\pi_i,i\in(A,B,C,D,E)$</p>
+<p>设$\pi=(\pi_A,\pi_B,\pi_C,\pi_D,\pi_E)$,$P_{n\times n}=P(i,j)$是一个以$P(i,j)$为元素的方针。</p>
+<p>这个方程很牛逼，我们叫它平衡方程。</p>
+<p>这里我们注意到，如果一个向量 <em>π</em> 是这个方程的解，那么 <em>π</em> 的任意倍数也是这个方程的解．为方便起见，我们将解归一化，使得所有网页的级别之和为1：$\sum \pi(i)=1$。</p>
+<h2 id="我们怎么在PageRank中引入马尔可夫链模型的"><a href="#我们怎么在PageRank中引入马尔可夫链模型的" class="headerlink" title="我们怎么在PageRank中引入马尔可夫链模型的?"></a>我们怎么在PageRank中引入马尔可夫链模型的?</h2><p>想象一下你正在浏览网页：假设你在网页 <em>i</em> 上浏览了一个单位时间，然后随机点击进入了网页 <em>i</em> 指向的一个网页．在这个过程中，从网页 <em>i</em> 到网页 <em>j</em> 的概率正好为<em>P</em>(<em>i</em>, <em>j</em> )，与前面的例子相同．</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">认真的博客哒！</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据科学与工程算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/27/RandomWalk-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE%EF%BD%9CRandomProcess-PageRank/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-当代数据库数据库管理系统Homework1寻宝游戏(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/10/19/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FHomework1%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F(%E4%B8%80)/">当代数据库数据库管理系统Homework1寻宝游戏(一)</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/10/19/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FHomework1%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F(%E4%B8%80)/" class="archive-article-date">
+  	<time datetime="2020-10-19T07:47:41.809Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="当代数据库数据库管理系统Homework1-寻宝游戏-一"><a href="#当代数据库数据库管理系统Homework1-寻宝游戏-一" class="headerlink" title="当代数据库数据库管理系统Homework1:寻宝游戏(一)"></a>当代数据库数据库管理系统Homework1:寻宝游戏(一)</h1><p><strong>10185501409 池欣宁</strong></p>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><ol>
+<li><p>MongoDB community @ 4.4</p>
+</li>
+<li><p>MongoDB 可视化： MongoDB Compass</p>
+</li>
+<li><p>Flask 框架</p>
+</li>
+<li><p>Flask APSschedule</p>
+</li>
+<li><p>前端：html+ Jinja2</p>
+</li>
+<li><p>Python 3.8</p>
+</li>
+<li><p>venv 虚拟环境与python包版本管理</p>
+<p>venv 对应的包各版本如下：</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjw1nc8u3yj30zq0h0tja.jpg" alt></p>
+</li>
+<li><p>pytest 测试与coverage</p>
+</li>
+</ol>
+<h2 id="支持的游戏场景"><a href="#支持的游戏场景" class="headerlink" title="支持的游戏场景"></a>支持的游戏场景</h2><h3 id="homework1所描述的场景"><a href="#homework1所描述的场景" class="headerlink" title="homework1所描述的场景"></a>homework1所描述的场景</h3><ol>
+<li>每个游戏玩家都有一定数量的金币、宝物。有一个市场供玩家们买卖宝物。玩家可以将宝物放到市场上<strong>挂牌</strong>，自己确定价格。其他玩家支付足够的金币，可购买宝物。</li>
+<li>宝物分为两类：一类为<strong>工具，它决定持有玩家的工作能力</strong>；一类为<strong>配饰，它决定持有玩家的运气</strong>。</li>
+<li>每位玩家每天可以通过<strong>寻宝</strong>获得一件宝物，宝物的价值由玩家的运气决定。每位玩家每天可以通过<strong>劳动</strong>赚取金币，赚得多少由玩家的工作能力决定。（游戏中的一天可以是现实中的1分钟、5分钟、10分钟。自主设定。）</li>
+<li>每个宝物都有一个自己的名字（尽量不重复）。每位玩家能够<strong>佩戴</strong>的宝物是有限的（比如一个玩家只能佩戴一<strong>个工具和两个配饰</strong>）。多余的宝物被放在存储箱中，不起作用，但可以拿到市场出售。</li>
+<li>在市场上<strong>挂牌</strong>的宝物必须在存储箱中并仍然在存储箱中，直到宝物被卖出。挂牌的宝物可以被<strong>收回</strong>，并以新的价格重新挂牌。当存储箱装不下时，运气或工作能力值最低的宝物将被系统自动回收。</li>
+<li>假设游戏永不停止而玩家的最终目的是<strong>获得最好的宝物</strong>。（不停提升运气 提升共工作能力，获得好的饰品和最好的工具 循环）</li>
+</ol>
+<h3 id="额外实现的更符合游戏完整逻辑的功能"><a href="#额外实现的更符合游戏完整逻辑的功能" class="headerlink" title="额外实现的更符合游戏完整逻辑的功能"></a>额外实现的更符合游戏完整逻辑的功能</h3><ol start="7">
+<li><p>玩家查看个人主页(基本信息)</p>
+</li>
+<li><p>玩家查看个人存储箱</p>
+</li>
+<li><p>玩家查看个人操作历史，玩家可以通过输入operation_type查看自己进行的操作历史。</p>
+</li>
+<li><p>玩家售卖物品支持改价，当有treasure被某玩家挂牌出售时，支持玩家直接修改该宝物价格，而不是通过先回收再重新出售</p>
+</li>
+<li><p>玩家查看个人出售列表</p>
+</li>
+<li><p>玩家初次进入游戏时的注册操作，同时记录玩家登陆密码</p>
+</li>
+<li><p>玩家登陆进入游戏</p>
+</li>
+<li><p>玩家忘记密码时，回看个人密码。</p>
+</li>
+</ol>
+<h2 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h2><h3 id="需求分析：了解用户需求，确定软件的基本功能"><a href="#需求分析：了解用户需求，确定软件的基本功能" class="headerlink" title="需求分析：了解用户需求，确定软件的基本功能"></a>需求分析：了解用户需求，确定软件的基本功能</h3><h4 id="用户需求"><a href="#用户需求" class="headerlink" title="用户需求"></a>用户需求</h4><p>用户：游戏玩家</p>
+<h5 id="用户属性："><a href="#用户属性：" class="headerlink" title="用户属性："></a>用户属性：</h5><ol>
+<li>一定数量的金币</li>
+<li>随身携带：一个工具类宝物和两个运气类宝物，随身携带的宝物<strong>决定</strong>着当天玩家在自动寻宝的时间段过程中获得的收益。</li>
+<li>存储箱：一定数量的宝物(分位工具类)</li>
+<li>宝物：<ol>
+<li>类型：宝物功能用途</li>
+<li>等级：宝物等级决定了用户某种事件的结果。</li>
+</ol>
+</li>
+</ol>
+<h5 id="用户操作："><a href="#用户操作：" class="headerlink" title="用户操作："></a>用户操作：</h5><h6 id="Type1-系统自动帮助玩家进行的-即以游戏中的”天”为单位。"><a href="#Type1-系统自动帮助玩家进行的-即以游戏中的”天”为单位。" class="headerlink" title="Type1: 系统自动帮助玩家进行的,即以游戏中的”天”为单位。"></a>Type1: 系统<strong>自动</strong>帮助玩家进行的,即以游戏中的”天”为单位。</h6><ol>
+<li><p>寻宝(afschedule定期巡航)：</p>
+<p> details:寻宝根据玩家佩戴的饰品进行，使用randint在level处保证随机性，对于这一个可多人在线的游戏而言，系统后台的宝物数据库的个数/种类对每个登陆游戏玩家是不透明的，但对每个玩家而言，系统后台的宝物数据库为不可更改的同一宝物数据库。</p>
+</li>
+</ol>
+<ol start="2">
+<li><p>打工：(afschedule定期巡航)</p>
+<p>根据佩戴的物品的labour属性帮助玩家打工</p>
+</li>
+</ol>
+<blockquote>
+<p>说明：为了使寻宝和打工操作更符合真实的游戏逻辑，默认flask 框架所构建的web应用app.py是全天候运行，即游戏后台服务器一直处于后台状态，所以系统自动帮助玩家进行的活动，默认只要flask run，即遍历players列表的所有玩家，自动帮助玩家进行打工和寻宝操作。<strong>【无论玩家是否真实登陆游戏查看或进行相关操作】</strong></p>
+</blockquote>
+<h6 id="Type2-系统自动帮助玩家进行的-即系统帮助玩家的”自动”丢弃机制。"><a href="#Type2-系统自动帮助玩家进行的-即系统帮助玩家的”自动”丢弃机制。" class="headerlink" title="Type2: 系统自动帮助玩家进行的,即系统帮助玩家的”自动”丢弃机制。"></a>Type2: 系统<strong>自动</strong>帮助玩家进行的,即系统帮助玩家的”自动”丢弃机制。</h6><ul>
+<li><p>回收</p>
+<p>当玩家<strong>进行寻宝</strong>前，判断玩家存储箱的大小，如果存储箱的大小超过maxlen，则自动回收level最低的宝物，这里working宝物和fortune宝物一起被排序。</p>
+<p>当玩家想在市场上确定购买宝物时，系统自动帮助玩家进行不必要的宝物的回收操作。</p>
+<p>同时，当玩家想将宝物从市场上回收时，也有此操作。</p>
+<p>总结：当玩家进行所有涉及到存储箱数量改变的操作时，均应该使用此操作。</p>
+</li>
+</ul>
+<h6 id="Type3-玩家自主进行的操作-opearation"><a href="#Type3-玩家自主进行的操作-opearation" class="headerlink" title="Type3: 玩家自主进行的操作(opearation)"></a>Type3: 玩家自主进行的操作(opearation)</h6><ol>
+<li><p>玩家浏览自己的个人基本信息(个人主页)</p>
+</li>
+<li><p>玩家浏览自己的存储箱</p>
+</li>
+<li><p>玩家浏览市场</p>
+</li>
+<li><p>玩家在市场挂牌售卖宝物</p>
+</li>
+<li><p>玩家在市场对售卖宝物进行改价</p>
+</li>
+<li><p>玩家将宝物从市场上回收</p>
+</li>
+<li><p>玩家查看个人主页(基本信息)</p>
+</li>
+<li><p>玩家查看个人存储箱</p>
+</li>
+<li><p>玩家查看个人操作历史，玩家可以通过输入operation_type查看自己进行的操作历史。</p>
+</li>
+<li><p>玩家售卖物品支持改价，当有treasure被某玩家挂牌出售时，支持玩家直接修改该宝物价格，而不是通过先回收再重新出售</p>
+</li>
+<li><p>玩家查看个人出售列表</p>
+</li>
+<li><p>玩家初次进入游戏时的注册操作，同时记录玩家登陆密码</p>
+</li>
+<li><p>玩家登陆进入游戏</p>
+</li>
+<li><p>玩家忘记密码时，回看个人密码。</p>
+</li>
+</ol>
+<h3 id="概念模型设计：确定数据库需要记录的信息-Raw-Info"><a href="#概念模型设计：确定数据库需要记录的信息-Raw-Info" class="headerlink" title="概念模型设计：确定数据库需要记录的信息(Raw Info)"></a>概念模型设计：确定数据库需要记录的信息(Raw Info)</h3><p>从上述用户需求可得，确定Object即Nosql类型数据库的collection类型如下：</p>
+<ol>
+<li>宝物(treasure)</li>
+<li>宝物库(Box)</li>
+<li>用户(player)</li>
+<li>市场(market)</li>
+<li>历史(history)</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjuskjxothj30qp0hwmyo.jpg" alt></p>
+<h3 id="模拟UI"><a href="#模拟UI" class="headerlink" title="模拟UI"></a>模拟UI</h3><p>模拟用户操作而模拟用户访问频率，得到初始的DB design Schema，通过<strong>模拟CRUD次数</strong>对数据库结构进行调整。</p>
+<h4 id="用户界面UI"><a href="#用户界面UI" class="headerlink" title="用户界面UI"></a>用户界面UI</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gjupwjos0bj31150sqmzm.jpg" alt></p>
+<h4 id="市场列表UI"><a href="#市场列表UI" class="headerlink" title="市场列表UI"></a>市场列表UI</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlgy1gjuptq02j4j30wd0u077i.jpg" alt></p>
+<h4 id="UI模拟结论-按照访问频率从高到低排列"><a href="#UI模拟结论-按照访问频率从高到低排列" class="headerlink" title="UI模拟结论,按照访问频率从高到低排列"></a>UI模拟结论,按照访问频率从高到低排列</h4><p>正常玩家的操作：</p>
+<h5 id="Most-Frequent"><a href="#Most-Frequent" class="headerlink" title="Most Frequent:"></a>Most Frequent:</h5><p>用户登陆，即进入用户主界面，所以Player这个collection是用户访问最多的文档集，由于用户访问的频繁行，所以要尽可能多的涉及用户有关的常用信息嵌入到player 这个collection的单个对象中，便于用户需要时夺得及时的访问，以及减少数据库其他文档集的频繁访问，以增强用户体验。</p>
+<h5 id="查看仓库"><a href="#查看仓库" class="headerlink" title="查看仓库"></a>查看仓库</h5><p>用户点击主页面的仓库按钮，即可查看仓库与更改takeaway等。</p>
+<h5 id="与市场有关的交易操作"><a href="#与市场有关的交易操作" class="headerlink" title="与市场有关的交易操作"></a>与市场有关的交易操作</h5><p>通常而言，用户一般在浏览完自身信息和存储库信息后，才会去选择去市场进行相关交易，以增强自身能力，防止存储箱溢出等。</p>
+<h5 id><a href="#" class="headerlink" title></a></h5><h3 id="Raw-schema"><a href="#Raw-schema" class="headerlink" title="Raw schema"></a>Raw schema</h3><ol>
+<li>Player{OID,storage[Treasure:{OID},],takeaway{OID1,OID2,OID3}attribute:{money, working,fortune}，myself[working:[],fortune:[]]}</li>
+<li>Market{Treasure:{[player:OID],OID,price,attribute:{working,fortune}}}</li>
+<li>workingtreasure(寻宝):{OID,attribute:{working,fortune}}</li>
+<li>Fortune treasure(寻宝):{OID,attribute:{working,fortune}}</li>
+<li>Box:{ownername:[]}</li>
+</ol>
+<h2 id="在实际编写过程中最终的数据库设计"><a href="#在实际编写过程中最终的数据库设计" class="headerlink" title="在实际编写过程中最终的数据库设计"></a>在实际编写过程中最终的数据库设计</h2><h3 id="players"><a href="#players" class="headerlink" title="players"></a>players</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjw12tuyb7j30kc0n6go9.jpg" alt></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjw13hwvxcj30fy0pw771.jpg" alt></p>
+<p>player collection 插入的document内容如下：</p>
+<ul>
+<li>username:  string 类型，为玩家用户名，不可重复，其中的不可重复性由mongoDB 提供的<code>players.create_index([(&quot;name&quot;, pymongo.ASCENDING)], unique=True</code>保证。</li>
+<li>money：int 类型，该玩家当前拥有的金币数量</li>
+<li>Takeaway:array 类型，其中array中存放的是玩家随身携带的treasure类型的document.</li>
+<li>Box:array类型，其中array中存放的是玩家随身携带的treasure类型的document.</li>
+<li>Passed：str类型，为玩家的登陆密码</li>
+</ul>
+<h3 id="treasure"><a href="#treasure" class="headerlink" title="treasure"></a>treasure</h3><p>treasure文档集，相当于系统默认的宝物库，对于每个初次注册登陆的玩家，为保证游戏起始的公平性，宝物库相同，【可以模拟玩家“出生”的偶然性，模拟不同玩家有不同质量的宝物库~游戏后续升级的🍑之一】</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjw24g1dxpj30u00v10xd.jpg" alt></p>
+<p>宝物库，只记录宝物的最基本信息，即宝物名称，注意，这里将宝物名称作为唯一的宝物索引不同的宝物。我自行编写<code>generate_basic_db.py</code>文件使用random函数随机生成的宝物名称。</p>
+<ul>
+<li>Name:str宝物名称</li>
+<li>Level:宝物等级</li>
+<li>Type:working 即为工具类宝物，fortune即为玩具类宝物。</li>
+</ul>
+<h3 id="markets"><a href="#markets" class="headerlink" title="markets"></a>markets</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjw299otppj30zq0eqdhv.jpg" alt></p>
+<p>当玩家准备在市场上售出时，向markets 集合插入一条信息，如上图所示。</p>
+<ul>
+<li><p>Name:str类型 记录宝物名称</p>
+</li>
+<li><p>Price: int类型，记录宝物出售的价格，功能支持宝物售卖者进行改价。</p>
+</li>
+<li><p>Owner:str类型，记录出售者的名称。更符合正常游戏逻辑的设计。</p>
+<p>因为我在初始化宝物库，即treasure collection的时候，只向其中插入了62个document，且所有玩家在第一次寻宝(hunt)之前，自身的幸运等级和工作能力等级被初始化相同，所以，有很高的概率在游戏的初始阶段，不同玩家寻到的宝物是有大比例重叠的。所以需要在市场信息中记录出售玩家以<strong>区分同名宝物</strong>，玩家在后续的购买功能时，需要以(treasurename,sellername)来唯一指定购买的是哪一款宝物。</p>
+</li>
+<li><p>level:int类型，记录该宝物的等级。更符合正常游戏逻辑的设计。</p>
+</li>
+</ul>
+<h3 id="history"><a href="#history" class="headerlink" title="history"></a>history</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjw2gfy0unj30w80u0jwm.jpg" alt></p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjw2h8w12sj316p0u0gqt.jpg" alt></p>
+<p>history文档集的设计：</p>
+<ul>
+<li>name: str类型，记录操作的玩家</li>
+<li>Opt_time:float类型，由time()库函数获得，记录操作发生的时间</li>
+<li>opt_type:str类型；操作类型：包括玩家主动进行的操作和系统帮助玩家自动进行的操作</li>
+<li>Detail：操作细节：str类型</li>
+</ul>
+<h2 id="对比raw-schema与final-schema"><a href="#对比raw-schema与final-schema" class="headerlink" title="对比raw schema与final schema"></a>对比raw schema与final schema</h2><h3 id="问题1-是否需要额外新建立box-collection"><a href="#问题1-是否需要额外新建立box-collection" class="headerlink" title="问题1:是否需要额外新建立box collection?"></a>问题1:是否需要额外新建立box collection?</h3><p>我在一开始设计的时候，对于玩家的宝库仓库放在哪里纠结了很久。在raw schema的设计时，准备新增一个box collection。打算只在玩家player中嵌套一个”box”key,它的value指向box collection中的索引，但是，经过后面游戏具体设计实现发现，自动寻宝功能//穿戴，脱下宝物功能//买卖功能等，即所有游戏的核心功能，都围绕着玩家box的更改进行。所以不惜牺牲player collection的存储size略微庞大，来获得这种对于player box的交互的快速，即减少CRUD的时间。</p>
+<p>同理，对于玩家穿戴的操作，涉及到玩家”takeaway”这个key所对应的value的更新，但由于takeaway的上限容量更小，所以直接将takeaway嵌套入玩家collection。</p>
+<h3 id="问题2-是否设置玩家自身的属性ability当作一个Key？"><a href="#问题2-是否设置玩家自身的属性ability当作一个Key？" class="headerlink" title="问题2:是否设置玩家自身的属性ability当作一个Key？"></a>问题2:是否设置玩家自身的属性ability当作一个Key？</h3><p>我起初，想在玩家的document中增加,”ability”Key，即玩家的能力属性，由游戏的实现逻辑可得，能力属性决定了玩家寻宝和打工时的收获。但也由于游戏的实现逻辑较简单，即玩家实时的ability并没有即时的显示在玩家的个人信息主页，所以玩家自身的属性ability当作一个Key，并不是有十分的必要性。因为如果在游戏逻辑没有要求的情况下，每次玩家在进行wear/unwear操作的时候，都需要对此进行update.</p>
+<p>但是，如果将游戏逻辑补充完整到，在玩家的个人信息主页，实时的显示玩家的ability，那么，abilityKey就很有必要作为玩家的一个Key，也是通过additional information的存储以提高用户体验。</p>
+<h3 id="问题3-我为什么没有选择增加”on-sale-flag”Key"><a href="#问题3-我为什么没有选择增加”on-sale-flag”Key" class="headerlink" title="问题3:我为什么没有选择增加”on-sale-flag”Key?"></a>问题3:我为什么没有选择增加”on-sale-flag”Key?</h3><p>游戏设计的逻辑要求，需要保证玩家自己挂牌在市场上售卖的宝物，不能供玩家穿戴时选择，即玩家穿戴时，要看自己的存储库，去除掉那些onsale的宝物。同时，由于玩家也需要直接看到自己哪些物品挂在市场（或者说哪些物品在背包中但其实被锁定住因为挂在市场），所以建立on-sale-flag属性（这样不需要到market中遍历sell是自己的物品才能知道哪些是我已挂在市场的宝物，而且便于维护）。但是，对于on-sale-flage属性，若选择在所有宝物库初始化时置为0，不符合宝物被用户获得才有可出售性的逻辑，所以，应该选择在寻宝时，被加入进玩家宝物库(box)时维护。但是，box中给每个物品贴”on-sale-flag”标签，需要遍历box获得我的出售。但是，box中物品也是过多，不方便查找属性，且还需要遍历整个box字典才能知道那些东西在市场或者不在市场上。</p>
+<h3 id="问题4-如何高效获得“我的出售”"><a href="#问题4-如何高效获得“我的出售”" class="headerlink" title="问题4:如何高效获得“我的出售”"></a>问题4:如何高效获得“我的出售”</h3><p>问题3讨论了我为什么没有选择增加“on-sale-flag”,为了维护游戏逻辑的完整性，我需要记录我的出售。在市场出售列表中，因为属于不同玩家的同名宝物售卖的可能性，我该如何获得我的出售呢？</p>
+<p>一种选择方案是，在player document中再额外增加一个冗余信息。</p>
+<p>另一种选择方案是，在market的document中，对于每一个宝物，额外增加一个seller的Key，作为除了name of treasure以外的secondary Index。</p>
+<p>对比这两种选择方案，第一种需要通过”player_name”作为索引搜索B树这个mongoDB 的索引结构。在每一次出售时，修改working_treasure_onsale和fortune_treasure_onsale数组，在每一次挂牌回收时，需要遍历这两个数组进行删除。</p>
+<p>第二种通过’treasure_name_onmarket’和’seller_name’这一个二元的索引结构，主要还是“seller_name”这个索引，获得“我的出售”。在挂牌回收时，也是同样的操作。</p>
+<p>对比两种方案，显然值得选择第二种。</p>
+<h3 id="问题4-为什么不单独区分working-treasure-和fortune-treasure"><a href="#问题4-为什么不单独区分working-treasure-和fortune-treasure" class="headerlink" title="问题4:为什么不单独区分working treasure 和fortune treasure?"></a>问题4:为什么不单独区分working treasure 和fortune treasure?</h3><p>为了系统丢弃时考虑。</p>
+<p>系统自动帮助玩家回收宝物，需要将working treasure和fortune treasure作为同等权的宝物丢弃，所以在这里，我没有将working treasure 和fortune treasure分开，考虑到玩家可佩戴的不同种类的宝物的最大值和系统可寻宝宝物库的个数，可以赋不同权，在这里等权的情况下，单独区分working treasure和fortune treasure没有太大的意义。</p>
+<h3 id="问题5-为什么要存储冗余-重复-信息"><a href="#问题5-为什么要存储冗余-重复-信息" class="headerlink" title="问题5: 为什么要存储冗余(重复)信息"></a>问题5: 为什么要存储冗余(重复)信息</h3><p>玩家可读可操作自由操作sell为自己的object或进行buy操作。由于有查看market操作，需要快速向玩家展示所有market中的信息，故组织成good ，price，sell格式，当然也可以只考虑每个good在原来user的treasure的_id，单个人认为这样对于如果程序出错，数据库出现问题时维护起来会很累，因为需要反向找到_id，再对market进行操作，所以组织成这样，而且对于仅访问（如查看 毕竟查看操作必然比交易操作多）market某个object，不需要去直接对用户个人属性进行访问，防止造成不必要的数据损失。</p>
+<h3 id="问题6-嵌套文档的索引均省去了”-id”的存放，而是使用名称"><a href="#问题6-嵌套文档的索引均省去了”-id”的存放，而是使用名称" class="headerlink" title="问题6:嵌套文档的索引均省去了”_id”的存放，而是使用名称"></a>问题6:嵌套文档的索引均省去了”_id”的存放，而是使用名称</h3><p>在理论部分，可以使用”OID”指向不同集合的document，但是在操作的具体实现中，我发现。”_id”一般都是用hash生成的不是特别readable的值，所以变换思路，有比较易于想到的name作为索引的值。</p>
+<p>同时，在问题5中，可以知道在数据库设计时，以不同的key作为index，可以提高CRUD的效率，</p>
+<h2 id="程序设计与游戏最终支持的功能展示"><a href="#程序设计与游戏最终支持的功能展示" class="headerlink" title="程序设计与游戏最终支持的功能展示"></a>程序设计与游戏最终支持的功能展示</h2><p>为了保证说明文档的简介性，只保留实现思路，不保留代码。</p>
+<h3 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h3><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwx3anps6j30wm07075c.jpg" alt></p>
+<h4 id="register"><a href="#register" class="headerlink" title="register"></a>register</h4><p>用户注册，不同玩家不能拥有相同的用户名，以”name”作为unique索引，避免重复。</p>
+<p>注册初始化时，默认玩家working_level=fortube_level=10,也是什么都不佩戴时的level。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwx41x65bj30ii0q00v5.jpg" alt></p>
+<h4 id="homepage"><a href="#homepage" class="headerlink" title="homepage"></a>homepage</h4><p>用户查看主页，使用render_templates,前端采用Jinjia2渲染。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwxays46wj30j40y4juy.jpg" alt></p>
+<h4 id="look-history"><a href="#look-history" class="headerlink" title="look_history"></a>look_history</h4><p>用户查看历史，使用render_templates,前端采用Jinjia2渲染。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwxf3q5eqj30mu13mq74.jpg" alt></p>
+<h4 id="Look-box"><a href="#Look-box" class="headerlink" title="Look_box"></a>Look_box</h4><p>用户查看存储箱，使用render_templates,前端采用Jinjia2渲染。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwxfvyfemj30gw0z60wc.jpg" alt></p>
+<h4 id="unwear"><a href="#unwear" class="headerlink" title="unwear"></a>unwear</h4><p> 用户脱下身上takeaway着的某物品。毕竟takeaway有上限，先脱下才能再穿上。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwxibal82j30k406kaay.jpg" alt></p>
+<h4 id="sell：首次出售"><a href="#sell：首次出售" class="headerlink" title="sell：首次出售"></a>sell：首次出售</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwxj6ddsxj30l00fw0ug.jpg" alt></p>
+<h4 id="Sell-改价"><a href="#Sell-改价" class="headerlink" title="Sell:改价"></a>Sell:改价</h4><p>用户将宝物挂牌出售。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwxjtfchxj30l0068wff.jpg" alt></p>
+<h4 id="Sell-Error-detect"><a href="#Sell-Error-detect" class="headerlink" title="Sell_Error_detect"></a>Sell_Error_detect</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwxm1qzioj31d4068gnl.jpg" alt></p>
+<h4 id="Look-mysale"><a href="#Look-mysale" class="headerlink" title="Look_mysale"></a>Look_mysale</h4><p>用户查看我的出售，使用render_templates,前端采用Jinjia2渲染。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwxyduajcj30i40hg765.jpg" alt></p>
+<h4 id="withdraw"><a href="#withdraw" class="headerlink" title="withdraw"></a>withdraw</h4><p>用户将某宝物挂牌回收。</p>
+<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwxzdc9lpj30lg06u0tm.jpg" alt></p>
+<h4 id="wear"><a href="#wear" class="headerlink" title="wear"></a>wear</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwxki81wej30l0068aax.jpg" alt></p>
+<h4 id="buy"><a href="#buy" class="headerlink" title="buy"></a>buy</h4><p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjwy1h1161j30lg06uaay.jpg" alt></p>
+<p>再次查看市场时，该宝物已从市场上删除。</p>
+<p>![截屏2020-10-21 下午3.24.29](/Users/chixinning/Desktop/截屏2020-10-21 下午3.24.29.png)</p>
+<h3 id="前端以index-html为例子"><a href="#前端以index-html为例子" class="headerlink" title="前端以index.html为例子"></a>前端以index.html为例子</h3><p>![截屏2020-10-21 下午3.25.51](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-10-21 下午3.25.51.png)</p>
+<p>因为我的前端也是为了做这个实验现学的，所以设计的界面很简陋。</p>
+<p>即Jinjia2将我后段传入的content(这里是User)内容传入，嵌套进html语句中，基于的base是base.html，为了使templates有统一的版式。</p>
+<h3 id="程序编写核心点："><a href="#程序编写核心点：" class="headerlink" title="程序编写核心点："></a>程序编写核心点：</h3><ul>
+<li><p>设计到玩家box更改操作，只要是使box_size增加的函数，都要检查box容量上限，即使调用自动自动丢弃函数。所以，有可能前后两次update的操作。</p>
+</li>
+<li><p>同时，还有一处比较关键和核心的地方时，一次update后的索引重建：</p>
+<p>![截屏2020-10-21 下午3.30.22](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-10-21 下午3.30.22.png)</p>
+</li>
+<li><p>挂牌出售时，支持玩家改价的功能很重要，否则对于mongoDB来说会显示两条玩家信息</p>
+</li>
+<li><p>还有很多程序设计的细节，要点展示在代码注释。</p>
+</li>
+<li><p><strong>自动寻宝/打工的整体逻辑</strong>借鉴了这个代码：<a href="https://www.cnblogs.com/huiwenhua/p/11310833.html" target="_blank" rel="noopener">APS Scheduler自动巡航</a></p>
+</li>
+</ul>
+<h2 id="Test-测试"><a href="#Test-测试" class="headerlink" title="Test 测试"></a>Test 测试</h2><p>因为一开始我的pytest一直会有找不到fixture的报错，找了一圈也没有找到相应的解决问题，导致pytest一直无法运行。</p>
+<p>后来又看了一下github上的JSON_EXAMPLE,对<code>setup.cfg</code>重写后，解决了问题。</p>
+<p>测试结果如下</p>
+<p>![截屏2020-10-21 下午8.27.22](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-10-21 下午8.27.22.png)</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这次的数据库作业实践，让我第一次完整的体会到了web应用的构建流程，并以此应用为驱动，获得了很多web应用开发的知识。使刚刚结束的计算机网络课程中的http协议，前端、后端、数据设计、测试等，有了脱离于纸的理解与认识，同时对python语言本身也得到了熟悉，也逐渐学会去看一些报错信息。</p>
+<p>如最近一次报错信息：</p>
+<p><code>NoneType&#39; object is not subscriptable</code>我之前一直以为是我选择的数据结构不能索引的问题，仔细排查以后，才发现是索引的空对象。</p>
+<p>同样，为了不使我的web应用看起来过于简陋，我再一次在菜鸟教程上学习了html语言，并第一次尝试自己在html中使用unorderedlist , table等语言。</p>
+<p>同时，我在web应用开发准备初期，在网上浏览flask应用开发demo时，首次接触到了Jinjia2渲染，并实现了后端到前端的传值和搭建。</p>
+<p>![截屏2020-10-21 下午9.30.29](/Users/chixinning/Library/Application Support/typora-user-images/截屏2020-10-21 下午9.30.29.png)</p>
+<p>上面是我在准备初期的一些学习书签。</p>
+<p>不过，纸上得来终觉浅，绝知此事要躬行，这次实验使我收获颇丰，获益匪浅。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/10/19/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FHomework1%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F(%E4%B8%80)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-mongoDB-报错-Error-couldn-t-connect-to-server-127-0-0-1-27017-connection-attempt-failed-SocketException-Error-connecting-to-127-0-0-1-27017-caused-by-Connection-refused-connect-src-mongo-shell-mongo-js-362-17" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -321,134 +744,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2020/10/07/python3-8%E5%AE%89%E8%A3%85mysqlclient%E6%8A%A5%E9%94%99%E7%9A%84%E5%A4%84%E7%90%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-当代数据库数据库管理系统Homework1-寻宝游戏-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/10/07/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FHomework1-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F-%E4%B8%80/">当代数据库数据库管理系统Homework1:寻宝游戏(一)</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/10/07/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FHomework1-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F-%E4%B8%80/" class="archive-article-date">
-  	<time datetime="2020-10-07T11:24:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Treasure-Hunting"><a href="#Treasure-Hunting" class="headerlink" title="Treasure Hunting"></a>Treasure Hunting</h1><p>User Interface</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gjhlf8y3q3j30go09ejul.jpg" alt></p>
-<p>游戏玩家：</p>
-<p>存储箱物资：金币，宝物(工具,配饰)；(具有最大容量，当超越最大容量时，运气/能力最低的宝物会被系统自动回收)</p>
-<p>随身携带：一个工具和两个配饰</p>
-<p>随身携带的宝物决定着当天玩家在自动寻宝的时间段过程中获得的收益。</p>
-<p>属性:工作能力，运气</p>
-<ul>
-<li>工作能力：金币的数量(某种关系)</li>
-<li>宝物价值：运气(某种关系，如何衡量?)</li>
-</ul>
-<p>玩家操作: </p>
-<ul>
-<li>寻宝(自动每天)，用工具打工赚钱(自动每天)；</li>
-<li>选择什么宝物携带//浏览市场(买卖，挂牌)</li>
-</ul>
-<p>玩家目的:</p>
-<p>获得最好的宝物(即工具类宝物可以让自己赚最多的钱，运气类宝物可以让自己获得最高的价值)玩家每天佩戴(即使用赚钱的肯定是每天最好的，这是玩家玩游戏的目的嘛)</p>
-<p>寻宝：各50%的概率获得工具类和配饰类宝物，工具类宝物的属性和运气类宝物的属性均与玩家自身价值的属性有某种关系。</p>
-<h2 id="Q"><a href="#Q" class="headerlink" title="Q"></a>Q</h2><ol>
-<li>web应用完整的开发流程是什么样的</li>
-<li>web框架是什么</li>
-<li>Ajax？json http接口是什么</li>
-</ol>
-<h2 id="Pre-raw-UI-Architecture"><a href="#Pre-raw-UI-Architecture" class="headerlink" title="Pre: raw UI//Architecture"></a>Pre: raw UI//Architecture</h2><p><a href="https://www.processon.com/diagrams" target="_blank" rel="noopener">ProcessOn 在线UI</a></p>
-<p>Web Browser/ Server/DataBase</p>
-<h2 id="Raw-schema"><a href="#Raw-schema" class="headerlink" title="Raw schema"></a>Raw schema</h2><h3 id="先找Object"><a href="#先找Object" class="headerlink" title="先找Object"></a>先找Object</h3><ol>
-<li>Player{OID,storage[Treasure:{OID},],takeaway{OID1,OID2,OID3}attribute:{money, working,fortune}}</li>
-<li>Market{Treasure:{[player:OID],OID,price,attribute:{working,fortune}}}</li>
-<li>Treasure(寻宝):{OID,attribute:{working,fortune}}</li>
-</ol>
-<ul>
-<li>用户表，存储用户名字和信息。Player:{name,storege:{[Treasure:OID]},attribute:{money, working,fortune},takeaway:{OID1,OID2,OID3}}</li>
-<li>市场表，存储在市场上出售的宝物信息和简介。Market{Treasure:{OID,owner:OID,price,attribute:{working,fortune}}}</li>
-<li>宝物表，存储所有宝物和属性。Treasure:{attribute:{working,fortune},selectedflag(是否已经sought),name(不重复的name可以作为OID吗?)}</li>
-</ul>
-<h3 id="根据UI模拟访问代价"><a href="#根据UI模拟访问代价" class="headerlink" title="根据UI模拟访问代价"></a>根据UI模拟访问代价</h3><h4 id="index-html"><a href="#index-html" class="headerlink" title="index.html"></a>index.html</h4><p>只要是用户一登陆即必须访问的部分:</p>
-<p>用户注册登陆以后，获取用户自身takeaway，通过takeaway中宝物的OID索引(访问宝物collection)，获取当前用户自身的属性，与累积属性money.一轮迭代(一天3h)，通过takeaway获取属性的增量。</p>
-<h4 id="查看仓库"><a href="#查看仓库" class="headerlink" title="查看仓库"></a>查看仓库</h4><p>用户点击主页面的仓库按钮，即可更改takeaway，即用户每6h(真实)可以随机获得一件宝物和金额。</p>
-<p>既然这种随机性随关系肯定不能是线性一对一的而是随<strong>概率</strong>波动的。</p>
-<h4 id="交易市场"><a href="#交易市场" class="headerlink" title="交易市场"></a>交易市场</h4><p>用户在市场中，可以通过点击仓库按钮，查看自己的仓库。自主选择仓库中出售的宝物，(即用户并不强制一直出售仓库中的所有产品)。</p>
-<p>当存储箱装不下时，运气或工作能力值最低的宝物将被系统自动回收。</p>
-<p>同时，用户也可通过浏览市场的出售商品列表，决定购买哪些商品。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大三上</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">作业</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/10/07/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FHomework1-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F-%E4%B8%80/">展开全文 >></a>
         </p>
       
 
@@ -1031,159 +1326,6 @@
 
 
   
-    <article id="post-统计与数据分析基础W2-2-概率论回顾Final" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/09/24/%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80W2-2-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9B%9E%E9%A1%BEFinal/">统计与数据分析基础W2(2):概率论回顾Final</a>
-    </h1>
-  
-
-        <!--显示阅读次数-->
-
-
-<!--显示阅读次数完毕-->
-        
-        <a href="/2020/09/24/%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80W2-2-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9B%9E%E9%A1%BEFinal/" class="archive-article-date">
-  	<time datetime="2020-09-24T09:40:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-09-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="变量变换求卷积P152"><a href="#变量变换求卷积P152" class="headerlink" title="变量变换求卷积P152"></a>变量变换求卷积P152</h2><p>$Y=f(X)$，$f(X)$是一个严格单调递增，$X=h(Y)$,是其反函数。</p>
-<p>设二元随机变量$(X,Y)$联合密度函数为$p(x,y)$，如果函数$\begin{cases}u=g_1(x,y)\v=g_2(x,y)\end{cases}$，有连续偏导数，且存在唯一的反函数。$\begin{cases}x=x(u,v)\y=y(u,v)\end{cases}$,其变换的雅可比行列式$J$。</p>
-<p>则$(U,V)$的联合密度函数为：$p(u,v)=p(x(u,v),y(u,v))|J|$</p>
-<h3 id="多元雅可比行列式"><a href="#多元雅可比行列式" class="headerlink" title="多元雅可比行列式"></a>多元雅可比行列式</h3><p>$|J|_{n\times n}$</p>
-<p>$J=|\frac{\part(h_1,h_2,…,h_n)}{\part(y_1,y_2,…,y_n)}|=|\frac{\part{h_i}}{\part{y_j}}|$，省去了转制</p>
-<p>此时多元的密度相同，把反函数带进去再求雅可比行列式。</p>
-<h2 id="例子：书上例3-3-10"><a href="#例子：书上例3-3-10" class="headerlink" title="例子：书上例3.3.10"></a>例子：书上例3.3.10</h2><p>X和Y是i.i.d.</p>
-<p>正态验证独立的另一种思路，先验证独立性再求边际要好求很多。</p>
-<h2 id="条件分布与条件期望"><a href="#条件分布与条件期望" class="headerlink" title="条件分布与条件期望"></a>条件分布与条件期望</h2><p>联合密度和边际密度的关系</p>
-<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><h4 id="remarks"><a href="#remarks" class="headerlink" title="remarks"></a>remarks</h4><h3 id="连续场合的全概率公式和贝叶斯公式"><a href="#连续场合的全概率公式和贝叶斯公式" class="headerlink" title="连续场合的全概率公式和贝叶斯公式"></a>连续场合的全概率公式和贝叶斯公式</h3><blockquote>
-<p>贝叶斯公式并不一定意味着贝叶斯学派。</p>
-<p>即贝叶斯公式很counts.贝叶斯是利用已知信息对未知信息进行推断。</p>
-</blockquote>
-<h4 id="p-y-x-frac-p-x-y-p-x"><a href="#p-y-x-frac-p-x-y-p-x" class="headerlink" title="p(y|x)=$\frac{p(x,y)}{p(x)}$"></a>p(y|x)=$\frac{p(x,y)}{p(x)}$</h4><h4 id="全概率公式：利用某一个分割来求一个事件的概率-加权来算"><a href="#全概率公式：利用某一个分割来求一个事件的概率-加权来算" class="headerlink" title="全概率公式：利用某一个分割来求一个事件的概率(加权来算)"></a>全概率公式：利用某一个分割来求一个事件的概率(加权来算)</h4><p>连续：加权求和-&gt;求积分</p>
-<h4 id="连续贝叶斯公式"><a href="#连续贝叶斯公式" class="headerlink" title="连续贝叶斯公式"></a>连续贝叶斯公式</h4><p>联合正态，边际正态，条件正态</p>
-<h3 id="条件期望"><a href="#条件期望" class="headerlink" title="条件期望"></a>条件期望</h3><p>核心：$E(Y|X=x)=\int y·p(y|x)dy$</p>
-<p>remarks：</p>
-<ol>
-<li><p>$E[Y|X=x]$是x的函数</p>
-</li>
-<li><p>$E(Y|X)$是一个变量X的函数，它一定是随机变量。它自己也有期望。</p>
-<p>$E_X(E_Y(Y|X))=E(X)$，重期望定理。</p>
-<p>平均成绩：w1✖️男生均分+w2✖️女生均分=全班均分</p>
-</li>
-</ol>
-<h4 id="例题：经典例题：3-5-7"><a href="#例题：经典例题：3-5-7" class="headerlink" title="例题：经典例题：3.5.7"></a>例题：经典例题：3.5.7</h4><p>随机个随机变量的和也可以通过重期望公式去解(书上例题)。</p>
-<h4 id="冲期望的重要性质，书上习题："><a href="#冲期望的重要性质，书上习题：" class="headerlink" title="冲期望的重要性质，书上习题："></a>冲期望的重要性质，书上习题：</h4><p>$E(g(X)·Y|X)=g(X)·E(Y|X)$，在线性模型的推导比较有用。</p>
-<p>P185-15</p>
-<h3 id="概率不等式"><a href="#概率不等式" class="headerlink" title="概率不等式"></a>概率不等式</h3><ol>
-<li>马尔可夫不等式(tailProb)</li>
-<li>切比雪夫不等式(tailProb)</li>
-</ol>
-<blockquote>
-<p>尾概率控制风险</p>
-</blockquote>
-<ol start="3">
-<li><p>柯西-施瓦滋不等式：二阶内积小于二阶平方</p>
-<p>$(Cov(X,Y))^2\le Var(X)Var(Y)$</p>
-<p>证明Cov是在[-1，1]区间的</p>
-</li>
-<li><p>琴生不等式f是凸函数</p>
-<p>$f(E(X))\le E(f(X))$</p>
-<p>凸函数:二阶导</p>
-<p>证明EM算法的收敛性</p>
-</li>
-</ol>
-<h3 id="三种收敛性"><a href="#三种收敛性" class="headerlink" title="三种收敛性"></a>三种收敛性</h3><h4 id="定义4-1-2"><a href="#定义4-1-2" class="headerlink" title="定义4.1.2"></a>定义4.1.2</h4><p>$X_1,X_2,…,X_n$是一系列的随机变量，$F_i(X)$</p>
-<p>X一个r,v是$F(X)$</p>
-<h4 id="弱收敛"><a href="#弱收敛" class="headerlink" title="弱收敛"></a>弱收敛</h4><p>应用：CLT的定义</p>
-<h4 id="依概率收敛"><a href="#依概率收敛" class="headerlink" title="依概率收敛"></a>依概率收敛</h4><h4 id="书上缺乏：下周统计推断公式有用：以概率1收敛"><a href="#书上缺乏：下周统计推断公式有用：以概率1收敛" class="headerlink" title="书上缺乏：下周统计推断公式有用：以概率1收敛"></a>书上缺乏：下周统计推断公式有用：以概率1收敛</h4><p>P(lim X_n=X)=1</p>
-<h4 id="三种收敛关系之间有强弱之分"><a href="#三种收敛关系之间有强弱之分" class="headerlink" title="三种收敛关系之间有强弱之分"></a>三种收敛关系之间有强弱之分</h4><p>以概率1收敛&gt;依概率收敛&gt;弱收敛(按分布收敛)(general)</p>
-<p>有时，收依概率收敛于某一常数是有反向符号的</p>
-<h3 id="大数定律-LLN-和中心极限定理-CLT"><a href="#大数定律-LLN-和中心极限定理-CLT" class="headerlink" title="大数定律(LLN)和中心极限定理(CLT)"></a>大数定律(LLN)和中心极限定理(CLT)</h3><h4 id="大数定律"><a href="#大数定律" class="headerlink" title="大数定律"></a>大数定律</h4><p>大数定律：用频率，样本均值真的很好用!估计概率</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gj1q0az8xgj31400u0kjl.jpg" alt></p>
-<p> <a href="../Downloads/IMG_3688.HEIC">IMG_3688.HEIC</a> </p>
-<h4 id="CLT：独立同分布的CLT和独立不同分布的CLT。"><a href="#CLT：独立同分布的CLT和独立不同分布的CLT。" class="headerlink" title="CLT：独立同分布的CLT和独立不同分布的CLT。"></a>CLT：独立同分布的CLT和独立不同分布的CLT。</h4><p>和的某一倍数或线形组合，受到正态分布的控制。</p>
-<p><img src="https://tva1.sinaimg.cn/large/007S8ZIlly1gj1q3lvdylj31400u0npd.jpg" alt></p>
-<p>收敛到真值且不会太远，LLN度量的误差是可以被控制的</p>
-<blockquote>
-<p>期望存在，方差一定存在。反之不一定成立。</p>
-<p>但如果方差不存在，还有中心极限定理嘛？</p>
-</blockquote>
-<p>在现代，基于<strong>鞅Martingale</strong>的提出，对CLT的独立性也放宽到相关性。[left to do ]</p>
-<h3 id="重点"><a href="#重点" class="headerlink" title="重点"></a>重点</h3><p>变量变换，条件，条件密度与重期望公式，LLN和CLT到底在说啥。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大三上</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">统计</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/09/24/%E7%BB%9F%E8%AE%A1%E4%B8%8E%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80W2-2-%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9B%9E%E9%A1%BEFinal/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1466,7 +1608,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">作业</a>
+                <a href="javascript:void(0)" class="js-tag color3">认真的博客哒！</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据科学与工程算法</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,31 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 作业 | Chixinning的博客</title>
+  <title>RandomWalk|马尔可夫链｜RandomProcess|PageRank | Chixinning的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的个人技术博客，由2020年寒假，其中以我的笔记为主，同时又有很多心得和不足，主要是一个人碎碎念的地方；个人利益相关，2018级ECNU DaSE在读～希望能收获成长吧，当然也可以联系我！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Chixinning的博客">
-<meta property="og:url" content="http://yoursite.com/tags/%E4%BD%9C%E4%B8%9A/index.html">
+  <meta name="description" content="【参考资料：https:&#x2F;&#x2F;www.ituring.com.cn&#x2F;book&#x2F;tupubarticle&#x2F;7121 #马尔科夫链 注意从时间(time)和空间(which state)的两个维度理解马尔可夫链。 Markov property当一个随机过程在给定现在状态及所有过去状态情况下，未来与过去无关。 Mathematically如果$X(t),t&gt;0$为一个随机过程，则： $Pr[X(t">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RandomWalk|马尔可夫链｜RandomProcess|PageRank">
+<meta property="og:url" content="http://yoursite.com/2020/10/27/RandomWalk-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE%EF%BD%9CRandomProcess-PageRank/index.html">
 <meta property="og:site_name" content="Chixinning的博客">
-<meta property="og:description" content="这是我的个人技术博客，由2020年寒假，其中以我的笔记为主，同时又有很多心得和不足，主要是一个人碎碎念的地方；个人利益相关，2018级ECNU DaSE在读～希望能收获成长吧，当然也可以联系我！">
+<meta property="og:description" content="【参考资料：https:&#x2F;&#x2F;www.ituring.com.cn&#x2F;book&#x2F;tupubarticle&#x2F;7121 #马尔科夫链 注意从时间(time)和空间(which state)的两个维度理解马尔可夫链。 Markov property当一个随机过程在给定现在状态及所有过去状态情况下，未来与过去无关。 Mathematically如果$X(t),t&gt;0$为一个随机过程，则： $Pr[X(t">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tva1.sinaimg.cn/large/0081Kckwly1gk4u5mf4vfj30sg0h6myo.jpg">
+<meta property="article:published_time" content="2020-10-27T02:29:17.000Z">
+<meta property="article:modified_time" content="2020-10-28T02:36:55.759Z">
 <meta property="article:author" content="Chi xinning">
-<meta property="article:tag" content="C">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="Linux">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="大数据">
-<meta property="article:tag" content="后端">
-<meta property="article:tag" content="分布式系统">
-<meta property="article:tag" content="数据科学">
-<meta property="article:tag" content="机器学习">
-<meta property="article:tag" content="代码">
-<meta property="article:tag" content="OpenSource">
-<meta property="article:tag" content="Developer">
-<meta property="article:tag" content="DataScience">
-<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="认真的博客哒！">
+<meta property="article:tag" content="数据科学与工程算法">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tva1.sinaimg.cn/large/0081Kckwly1gk4u5mf4vfj30sg0h6myo.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Chixinning的博客" type="application/atom+xml">
   
@@ -78,7 +70,7 @@
 			</ul>
 		</nav>
 		<nav>
-			总文章数 185
+			总文章数 186
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -161,68 +153,222 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-RandomWalk-马尔可夫链｜RandomProcess-PageRank" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/07/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FHomework1-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F-%E4%B8%80/" class="archive-article-date">
-  	<time datetime="2020-10-07T11:24:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/07/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FHomework1-%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F-%E4%B8%80/">当代数据库数据库管理系统Homework1:寻宝游戏(一)</a>
+    <h1 class="article-title" itemprop="name">
+      RandomWalk|马尔可夫链｜RandomProcess|PageRank
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        <!--显示阅读次数-->
+
+  <br/>
+  <a class="cloud-tie-join-count" href="javascript:void(0);" style="color:gray;font-size:14px;">
+  <span class="icon-sort"></span>
+  <span id="busuanzi_container_page_pv" style="color:#ef7522;font-size:14px;">
+    阅读数: <span id="busuanzi_value_page_pv"></span>次 &nbsp;&nbsp;
+  </span>
+  </a>
+
+
+<!--显示阅读次数完毕-->
+        
+        <a href="/2020/10/27/RandomWalk-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE%EF%BD%9CRandomProcess-PageRank/" class="archive-article-date">
+  	<time datetime="2020-10-27T02:29:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>【参考资料：<a href="https://www.ituring.com.cn/book/tupubarticle/7121" target="_blank" rel="noopener">https://www.ituring.com.cn/book/tupubarticle/7121</a></p>
+<p>#马尔科夫链</p>
+<p>注意从时间(time)和空间(which state)的两个维度理解马尔可夫链。</p>
+<h2 id="Markov-property"><a href="#Markov-property" class="headerlink" title="Markov property"></a>Markov property</h2><p>当一个随机过程在给定现在状态及所有过去状态情况下，未来与过去无关。</p>
+<h3 id="Mathematically"><a href="#Mathematically" class="headerlink" title="Mathematically"></a>Mathematically</h3><p>如果$X(t),t&gt;0$为一个随机过程，则：</p>
+<p>$Pr[X(t+h)=y｜X(s)=x(s),s\le t]=Pr[X(t+h)=y|X(t)=x(t)]$</p>
+<h2 id="Markov-process"><a href="#Markov-process" class="headerlink" title="Markov process"></a>Markov process</h2><p>A random process which has Markov property is called Markov process</p>
+<h2 id="时齐"><a href="#时齐" class="headerlink" title="时齐"></a>时齐</h2><h3 id="Mathematically-1"><a href="#Mathematically-1" class="headerlink" title="Mathematically"></a>Mathematically</h3><p>如果$X(t),t&gt;0$为一个随机过程，则：</p>
+<p>$Pr[X(t+h)=y｜X(t)=x(t)]=Pr[X(h)=y|X(0)=x(0)]$</p>
+<h2 id="马尔科夫链的概率分布"><a href="#马尔科夫链的概率分布" class="headerlink" title="马尔科夫链的概率分布"></a>马尔科夫链的概率分布</h2><p>令$\pi^t$未马尔可夫链在时刻t的状态分布</p>
+<p>$\pi^t=P(X_t)=x$.</p>
+<p>$t=0$，就是初始的概率分布</p>
+<p>马尔科夫链X的绝对分布由其初始分布和一步转移概率完全确定。</p>
+<h3 id="平稳分布"><a href="#平稳分布" class="headerlink" title="平稳分布"></a>平稳分布</h3><p>$\pi P=\pi,\pi$叫做马尔可夫链的平稳分布，$\pi P^2=\pi PP=\pi P=\pi $</p>
+<h3 id="平稳分布的存在性与唯一性的讨论-马尔可夫链收敛定理"><a href="#平稳分布的存在性与唯一性的讨论-马尔可夫链收敛定理" class="headerlink" title="平稳分布的存在性与唯一性的讨论(马尔可夫链收敛定理)"></a>平稳分布的存在性与唯一性的讨论(马尔可夫链收敛定理)</h3><p>Q1：是否每个马尔可夫链都具有一个稳态分布？(存在性)</p>
+<p>Q2：该稳态分布是否唯一？(唯一性)</p>
+<p>Q3：<em>πn</em> 是否总是趋向于稳态分布？(收敛性)</p>
+<p>不可约+非周期=充要=平稳分布唯一存在</p>
+<p>所有状态的周期都不为1，平稳分布也不存在。</p>
+<h3 id="不可约"><a href="#不可约" class="headerlink" title="不可约"></a>不可约</h3><p>强连通</p>
+<h3 id="非周期"><a href="#非周期" class="headerlink" title="非周期"></a>非周期</h3><p>所有状态的周期均为1。</p>
+<h3 id="一些定理"><a href="#一些定理" class="headerlink" title="一些定理"></a>一些定理</h3><ol>
+<li>如果x和y是连通的，那么$d_x=d_y$</li>
+</ol>
+<h1 id="PageRank"><a href="#PageRank" class="headerlink" title="PageRank"></a>PageRank</h1><p>PageRank通过计算网页的”重要程度”来对网页进行排序。</p>
+<h2 id="如何定义网页的级别-重要程度"><a href="#如何定义网页的级别-重要程度" class="headerlink" title="如何定义网页的级别/重要程度?"></a>如何定义网页的级别/重要程度?</h2><p>定义网页$i$的级别$\pi(i)$为一个正数，</p>
+<p>$\pi(i)=\sum \pi(j)P(j,i) $,$P(j,i)$指我在状态j转移到i的的概率。</p>
+<p><img src="https://tva1.sinaimg.cn/large/0081Kckwly1gk4u5mf4vfj30sg0h6myo.jpg" alt></p>
+<p>这里$P(A,B)=\frac{1}{2}$,</p>
+<p>有一个<strong>方程</strong>：$\begin{cases}\pi_A=\pi_Cp(c,a)+\pi_Dp(d,a)\\pi_b=\pi_ap(a,b)+\pi_Dp(d,b)+\pi_Ep(e,b)\…\end{cases}$，以此类推。</p>
+<p>注意到，这里只有未知数$\pi_i,i\in(A,B,C,D,E)$</p>
+<p>设$\pi=(\pi_A,\pi_B,\pi_C,\pi_D,\pi_E)$,$P_{n\times n}=P(i,j)$是一个以$P(i,j)$为元素的方针。</p>
+<p>这个方程很牛逼，我们叫它平衡方程。</p>
+<p>这里我们注意到，如果一个向量 <em>π</em> 是这个方程的解，那么 <em>π</em> 的任意倍数也是这个方程的解．为方便起见，我们将解归一化，使得所有网页的级别之和为1：$\sum \pi(i)=1$。</p>
+<h2 id="我们怎么在PageRank中引入马尔可夫链模型的"><a href="#我们怎么在PageRank中引入马尔可夫链模型的" class="headerlink" title="我们怎么在PageRank中引入马尔可夫链模型的?"></a>我们怎么在PageRank中引入马尔可夫链模型的?</h2><p>想象一下你正在浏览网页：假设你在网页 <em>i</em> 上浏览了一个单位时间，然后随机点击进入了网页 <em>i</em> 指向的一个网页．在这个过程中，从网页 <em>i</em> 到网页 <em>j</em> 的概率正好为<em>P</em>(<em>i</em>, <em>j</em> )，与前面的例子相同．</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果❤️<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/img/alipay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">大三上</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">认真的博客哒！</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">数据库</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">作业</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">数据科学与工程算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/10/27/RandomWalk-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE%EF%BD%9CRandomProcess-PageRank/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2020/10/19/%E5%BD%93%E4%BB%A3%E6%95%B0%E6%8D%AE%E5%BA%93%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9FHomework1%E5%AF%BB%E5%AE%9D%E6%B8%B8%E6%88%8F(%E4%B8%80)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">当代数据库数据库管理系统Homework1寻宝游戏(一)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -247,9 +393,9 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
@@ -500,7 +646,11 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">作业</a>
+                <a href="javascript:void(0)" class="js-tag color3">认真的博客哒！</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据科学与工程算法</a>
               </li>
             
             <div class="clearfix"></div>
